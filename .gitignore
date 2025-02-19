@@ -1,0 +1,52 @@
+*.sdf
+*.sln
+*.suo
+bin/
+bin64/
+arm64/
+vs.proj/Debug
+vs.proj/Release
+vs.proj/x64
+vs.proj/ARM64
+vs.proj/GpscriptPlugin/x64
+vs.proj/NppPluginTemplate.opensdf
+vs.proj/NppPluginTemplate.exp
+vs.proj/NppPluginTemplate.lib
+vs.proj/NppPluginTemplate.vcxproj.user
+vs.proj/.vs/
+*.aps
+*.zip
+*.bak
+
+# Ignora directory di build
+/build/
+/bin/
+/obj/
+.vs/
+
+# Ignora file di compilazione
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.lib
+*.a
+*.out
+
+# Ignora file di log
+*.log
+
+# Ignora file di configurazione dell'IDE
+*.user
+*.suo
+*.vcxproj.user
+*.ncb
+*.sdf
+*.opensdf
+*.cache
+*.pdb
+*.ipch
+*.tlog
+*.lastbuildstate

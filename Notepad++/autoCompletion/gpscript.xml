@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<NotepadPlus>
+	<AutoComplete language="gpscript">
+		<Environment ignoreCase="yes" startFunc="(" stopFunc=")" paramSeparator="," terminal=";" additionalWordChar=".:"/>
+
+		<!-- GPScript syntax-->
+		<KeyWord name="and" func="no"/>
+		<KeyWord name="do" func="no"/>
+		<KeyWord name="else" func="no"/>
+		<KeyWord name="elseif" func="no"/>
+		<KeyWord name="end" func="no"/>
+		<KeyWord name="End" func="no"/>
+		<KeyWord name="false" func="no"/>
+		<KeyWord name="for" func="no"/>
+		<KeyWord name="Function" func="yes"/>
+		<KeyWord name="if" func="no"/>
+		<KeyWord name="in" func="no"/>
+		<KeyWord name="not" func="no"/>
+		<KeyWord name="or" func="no"/>
+		<KeyWord name="On" func="yes"/>
+		<KeyWord name="then" func="no"/>
+		<KeyWord name="true" func="no"/>
+		<KeyWord name="until" func="no"/>
+		<KeyWord name="var" func="no"/>
+		<KeyWord name="while" func="no"/>
+		<!-- Opaque types -->
+		<KeyWord name="ADSR" func="no" />
+		<KeyWord name="AfterTouchMessage" func="no" />
+		<KeyWord name="AudioMixerBlock" func="no" />
+		<KeyWord name="AutoSustainer" func="no" />
+		<KeyWord name="Block" func="no" />
+		<KeyWord name="Continuous" func="no" />
+		<KeyWord name="ControlChangeMessage" func="no" />
+		<KeyWord name="Discrete" func="no" />
+		<KeyWord name="ExternalApplication" func="no" />
+        <KeyWord name="ExternalWidget" func="no" />
+        <KeyWord name="Generator" func="no" />
+        <KeyWord name="MidiInBlock" func="no" />
+		<KeyWord name="MidiInDevice" func="no" />
+        <KeyWord name="MidiMessage" func="no" />
+        <KeyWord name="MidiOutBlock" func="no" />
+        <KeyWord name="MidiSequence" func="no" />
+        <KeyWord name="MultiChannelNoteTracker" func="no" />
+        <KeyWord name="NoteMapper" func="no" />
+        <KeyWord name="NoteMessage" func="no" />
+        <KeyWord name="NoteTracker" func="no" />
+		<KeyWord name="OSCMessage" func="no" />
+		<KeyWord name="Parameter" func="no" />
+		<KeyWord name="PitchBendMessage" func="no" />
+		<KeyWord name="PluginBlock" func="no" />
+		<KeyWord name="PolyTouchMessage" func="no" />
+		<KeyWord name="ProgramChangeMessage" func="no" />
+		<KeyWord name="Ramp" func="no" />
+		<KeyWord name="Subrange" func="no" />
+		<KeyWord name="SysexMessage" func="no" />
+		<KeyWord name="Widget" func="no" />
+		
+		<!-- GPScript 5.0  -->
+		<!-- https://gigperformer.com/docs_5_0/LanguageManual/-->
+        
+		<!-- Rackspace callback -->
+		<KeyWord name="Initialization" func="yes">
+			<Overload retVal="" descr="
+Initialization code here. 
+Allows variables to be initialized and functions to be called
+automatically when a script is first loaded. Note that as of GP 4.5, 
+most variables can be initialized during declaration
+GP4 allows multiple initialization sections
+Initialization
+  var...
+End
+">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="activate" func="yes">
+			<Overload retVal="" descr="
+On activate
+Called whenever a rackspace is activated
+End
+">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="deactivate" func="yes">
+			<Overload retVal="" descr="
+On deactivate
+ // Called whenever we deactivate a rackspace
+End
+">
+			</Overload>
+		</KeyWord>
+		
+		
+		
+		<!-- Midi callback -->
+		<KeyWord name="NoteOnEvent" func="yes">
+			<Overload retVal="" descr="
+Called whenever a Note On message is received
+Warning: if you define this callback but you do not define
+a matching NoteOff event, NoteOff events will not be passed on
+by the receiving MIDI In block because of the way note tracking
+is managed.
+
+var Arturia : MidiInDevice
+On NoteOnEvent(m : NoteMessage) matching D#6 from Arturia
+ ....
+End
+">
+				<Param name="m : NoteMessage"/>
+				<Param name="From 'MidiIn block name'"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteOffEvent" func="yes">
+			<Overload retVal="" descr="
+Called whenever a Note Off message is received
+
+var Arturia : MidiInDevice
+On NoteOffEvent(m : NoteMessage) matching D#6 from Arturia
+ ....
+End
+">
+				<Param name="m : NoteMessage"/>
+				<Param name="From 'MidiIn block name'"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteEvent" func="yes">
+			<Overload retVal="" descr="
+Called whenever a Note On or Note Off message is received
+Warning: this callback will not be invoked for NoteOn events
+or for NoteOff events if you have defined 
+NoteOnEvent or NoteOffEvent respectively callbacks
+
+var Arturia : MidiInDevice
+On NoteEvent(m : NoteMessage) matching D#6 from Arturia
+ ....
+End
+">
+				<Param name="m : NoteMessage"/>
+				<Param name="From 'MidiIn block name'"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ControlChangeEvent" func="yes">
+			<Overload retVal="" descr="
+Called when a CC message is received at some MidiIn device
+
+var Arturia : MidiInDevice
+On ControlChangeEvent(m : ControlChangeMessage) from Arturia
+ ....
+End
+
+The CC numbers must be within the specified range
+On ControlChangeEvent(m : ControlChangeMessage) Matching [7..10] from Arturia
+ ....
+End
+
+
+">
+				<Param name="m : ControlChangeMessage"/>
+				<Param name="From 'MidiIn block name'"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="PitchBendEvent" func="yes">
+			<Overload retVal="" descr="
+Called when a pitchbend message is received at some MidiIn device
+
+var Arturia : MidiInDevice
+On PitchBendEvent(m : PitchBendMessage) from Arturia
+ ....
+End
+
+">
+				<Param name="m : PitchBendMessage"/>
+				<Param name="From 'MidiIn block name'"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AfterTouchEvent" func="yes">
+			<Overload retVal="" descr="
+Called when an aftertouch (channel pressure) message is received at some MidiIn device
+
+var Arturia : MidiInDevice
+On AfterTouchEvent(m : AfterTouchMessage) from Arturia
+ ....
+End
+
+">
+				<Param name="m : AfterTouchMessage"/>
+				<Param name="From 'MidiIn block name'"/>
+			</Overload>
+		</KeyWord>
+		<!-- Widget callback -->
+		
+		<!-- Plugin callback -->
+		
+		<!-- Scriptlet  callback -->
+		
+		<!-- Generator  callback -->
+		
+		<!-- OSC  callback -->
+		
+		<!-- Playhead  callback -->
+		
+		<!-- Global Transpose  callback -->
+		
+		<!-- Gig  Loaded  callback -->
+		
+		<!-- System -->
+			<KeyWord name="Print" func="yes">
+			<Overload retVal="" descr="
+Displays the string in the log window
+Declaration: function Print (s : String) Autotype
+Category: System
+Parameters
+
+Autotype
+
+Initialization
+Print(&quot;Hello&quot;)
+End
+">
+				<Param name="s : String"/>
+				<Param name="Autotype"/>
+			</Overload>
+		</KeyWord>
+		
+	</AutoComplete>
+</NotepadPlus>

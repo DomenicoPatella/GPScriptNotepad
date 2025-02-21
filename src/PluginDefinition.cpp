@@ -1,4 +1,4 @@
-//this file is part of notepad++
+﻿//this file is part of notepad++
 //Copyright (C)2022 Don HO <don.h@free.fr>
 //
 //This program is free software; you can redistribute it and/or
@@ -23,6 +23,7 @@
 #include <algorithm> // Necessario per std::max
 #include <regex>
 #include <cctype> // Necessario per std::tolower
+#include <pugixml.hpp>
 
 //
 // The plugin data that Notepad++ needs
@@ -34,13 +35,14 @@ FuncItem funcItem[nbFunc];
 //
 NppData nppData;
 
-
+ShortcutKey* scAutoComplete;
 
 //
 // Initialize your plugin data here
 // It will be called while plugin loading   
 void pluginInit(HANDLE /*hModule*/)
 {
+	
 }
 
 
@@ -57,7 +59,7 @@ void pluginCleanUp()
 void onCharAdded(SCNotification* notification) {
 
 	if (notification->ch == '\n') {
-		hello();
+		CreateGlobalScript();
 		int line = static_cast<int>(SendMessage(nppData._scintillaMainHandle, SCI_LINEFROMPOSITION, notification->position, 0));
 
 		// Ottieni il testo della riga precedente
@@ -111,7 +113,14 @@ void onCharAdded(SCNotification* notification) {
 // You should fill your plugins commands here
 void commandMenuInit()
 {
+	scAutoComplete = new ShortcutKey;
+	scAutoComplete->_isCtrl = true;  // Ctrl premuto
+	scAutoComplete->_isAlt = false;
+	scAutoComplete->_isShift = false;
+	scAutoComplete->_key = VK_F10; // Spazio
+	
 
+	
 	//--------------------------------------------//
 	//-- STEP 3. CUSTOMIZE YOUR PLUGIN COMMANDS --//
 	//--------------------------------------------//
@@ -122,13 +131,12 @@ void commandMenuInit()
 	//            ShortcutKey *shortcut,          // optional. Define a shortcut to trigger this command
 	//            bool check0nInit                // optional. Make this menu item be checked visually
 	//            );
-	setCommand(0, TEXT("Hello Notepad++ here GPScript"), hello, NULL, false);
+	setCommand(0, TEXT("GPScript create Global Script "), CreateGlobalScript, NULL, false);
 	setCommand(1, TEXT("Hello (with dialog)"), helloDlg, NULL, false);
 	setCommand(2, TEXT("Auto Indent"), applyIndentation, NULL, false);
-	//funcItem[2] = { TEXT("Auto Indent"), autoIndent, 0, false, nullptr };
-
-
-
+	setCommand(3, TEXT("Show Autocompletion"), showCalltipFromXML, scAutoComplete, false);
+	
+    
 
 }
 
@@ -183,37 +191,174 @@ HWND getCurrentNppHandle()
 //----------------------------------------------//
 //-- STEP 4. DEFINE YOUR ASSOCIATED FUNCTIONS --//
 //----------------------------------------------//
-void hello()
+void CreateGlobalScript()
 {
 	// Open a new document
-	::SendMessage(nppData._nppHandle, NPPM_MENUCOMMAND, 0, IDM_FILE_NEW);
+	//::SendMessage(nppData._nppHandle, NPPM_MENUCOMMAND, 0, IDM_FILE_NEW);
 
 	
 	HWND curScintilla = getCurrentNppHandle();
 	if (curScintilla == nullptr) return;
 
-	// Scintilla control has no Unicode mode, so we use (char *) here
+		
 	std::string hello = 
-		"/******************************************************\n"
-		"//\n"
-		"// Global Script\n"
-		"//\n"
-		"******************************************************/\n"
-		"var keyboard : MidiInDevice\n"
-		""
-		""
-		;
-	
-	::SendMessage(curScintilla, SCI_SETTEXT, 0, (LPARAM)hello.c_str());
-	
-	//::SendMessage(curScintilla, SCI_SETTEXT, 0, (LPARAM)"Hello, Notepad++! my name is dome");
-	::SendMessage(nppData._scintillaMainHandle, SCI_SETAUTOMATICFOLD, SC_AUTOMATICFOLD_CHANGE, 0);
+    R"(/******************************************************
+	//
+	// Global Script
+	//
+	******************************************************/
+	var keyboard : MidiInDevice
 
+	Initialization
+    // var ..
+	 Print("Hello")
+    End
+	)";
+	//(^[ \t]+)
+	//hello = std::regex_replace(hello, std::regex(R"(^[ \t+)"), "");
+	hello = std::regex_replace(hello, std::regex(R"(^[ \t]+)"), "");
+
+	// Scintilla control has no Unicode mode, so we use (char *) here
+	::SendMessage(curScintilla, SCI_SETTEXT, 0, (LPARAM)hello.c_str());
+	/*::SendMessage(curScintilla, NPPM_SETCURRENTLANGTYPE, 0, langBuffer);*/
+	
+	::SendMessage(nppData._scintillaMainHandle, SCI_SETAUTOMATICFOLD, SC_AUTOMATICFOLD_CHANGE, 0);
+	selectAllText();
+	applyIndentation();	
 }
 
 void helloDlg()
 {
 	::MessageBox(NULL, TEXT("Hello, Notepad++!"), TEXT("GPScript plugin"), MB_OK);
+}
+//
+// Select all the text in the current scintilla
+//
+void selectAllText()
+{
+	HWND curScintilla = getCurrentNppHandle();
+	if (curScintilla == nullptr) return;
+
+	LRESULT textLength = ::SendMessage(nppData._scintillaMainHandle, SCI_GETTEXTLENGTH, 0, 0);
+	if (textLength == 0) return;
+	SendMessage(curScintilla, SCI_SETSEL, 0, textLength);
+}
+
+void showAutoCompletion()
+{
+	// Lunghezza minima prima di mostrare il menu (0 per mostrarlo subito)
+	int lengthEntered = 0;
+
+	// Invia il comando a Scintilla per mostrare l'autocompletamento
+	SendMessage(nppData._scintillaMainHandle, SCI_AUTOCSHOW, lengthEntered, (LPARAM)"");
+}
+
+void showCalltip()
+{
+	HWND curScintilla = getCurrentNppHandle();
+	if (curScintilla == nullptr) return;
+
+	LRESULT pos = SendMessage(nppData._scintillaMainHandle, SCI_GETCURRENTPOS, 0, 0);
+	SendMessage(curScintilla, SCI_CALLTIPSHOW, pos, (LPARAM)"NoteOnEvent(m: message)");
+}
+
+//
+// Show the calltip from the XML file
+//
+void showCalltipFromXML()
+{
+	HWND curScintilla = getCurrentNppHandle();
+	if (curScintilla == nullptr) return;
+
+	// Controlla il linguaggio attuale
+	LRESULT lenbuffer = SendMessage(curScintilla, NPPM_GETLANGUAGENAME, 0, 0);
+	char* langBuffer = new char[lenbuffer];
+	SendMessage(curScintilla, NPPM_GETLANGUAGENAME, 0, (LPARAM)langBuffer);
+
+	//if (langType != L_GPSCRIPT) // Sostituisci con il valore esatto di GPScript
+	//	return; // Esce se il linguaggio attuale non è GPScript
+
+	// Ottieni la posizione del cursore
+	LRESULT posResult = SendMessage(curScintilla, SCI_GETCURRENTPOS, 0, 0);
+	int pos = static_cast<int>(posResult);
+
+	// Trova l'inizio della parola (backtrack fino a uno spazio o carattere speciale)
+	int start = pos;
+	while (start > 0)
+	{
+		LRESULT chResult = SendMessage(curScintilla, SCI_GETCHARAT, start - 1, 0);
+		char ch = static_cast<char>(chResult);
+		if (!isalnum(ch) && ch != '_') break; // Interrompi se trovi un carattere non valido per un nome di funzione
+		start--;
+	}
+
+	// Ottieni il nome della funzione
+	int length = pos - start;
+	if (length <= 0) return; // Evita problemi con stringhe vuote
+
+	std::string functionName(length, '\0');
+	for (int i = 0; i < length; i++)
+	{
+		LRESULT charResult = SendMessage(curScintilla, SCI_GETCHARAT, start + i, 0);
+		functionName[i] = static_cast<char>(charResult);
+	}
+
+	// Controlla se la funzione esiste nel file GPScript.xml
+	std::string calltipText = getCalltipFromXML(functionName);
+	if (!calltipText.empty())
+	{
+		SendMessage(curScintilla, SCI_CALLTIPSHOW, pos, (LPARAM)calltipText.c_str());
+	}
+}
+
+//
+// Get the calltip from the XML file
+//
+std::string getCalltipFromXML(const std::string& functionName)
+{
+	//	pugi::xml_parse_result result = doc.load(file);	
+	// Percorso del file XML
+	pugi::xml_document doc;
+	//pugi::xml_parse_result result = doc.load_file("C:\\Program Files\\Notepad++\\autoCompletion\\GPScript.xml");
+
+	pugi::xml_parse_result result = doc.load_file("C:\\Program Files\\Notepad++\\autoCompletion\\GPScript.xml", pugi::parse_minimal);
+	if (!result) {
+		//std::cout << "Errore di caricamento del file XML: " << result.description() << std::endl;
+		return std::string(); // Restituisci una stringa vuota se non trovi nulla
+
+	}
+	else {
+		// Trova il nodo <AutoComplete>
+		pugi::xml_node autoCompleteNode = doc.child("NotepadPlus").child("AutoComplete");
+		if (!autoCompleteNode) {
+			//std::cerr << "Nodo <AutoComplete> non trovato!" << std::endl;
+			return std::string(); // Restituisci una stringa vuota se non trovi nulla
+		}
+
+		// Trova tutti i nodi <KeyWord> all'interno di <AutoComplete>
+		for (pugi::xml_node keyWordNode : autoCompleteNode.children("KeyWord")) {
+			// Verifica se l'attributo "name" corrisponde a functionName
+			std::string name = keyWordNode.attribute("name").value();
+			if (name == functionName) {
+				// Trova il nodo <Overload> all'interno di <KeyWord>
+				pugi::xml_node overloadNode = keyWordNode.child("Overload");
+				if (overloadNode) {
+					// Estrai il valore dell'attributo "descr"
+					std::string descr = overloadNode.attribute("descr").value();
+					//descr= replaceEscapeSequences(descr);
+					return descr;
+					//std::cout << "Contenuto di descr per '" << functionName << "':\n" << descr << std::endl;
+				}
+				else {
+					//std::cerr << "Nodo <Overload> non trovato per '" << functionName << "'!" << std::endl;
+				}
+				break; // Esci dal ciclo dopo aver trovato la corrispondenza
+			}
+		}
+
+	}
+
+	return std::string(); // Restituisci una stringa vuota se non trovi nulla
 }
 
 
@@ -305,6 +450,15 @@ void applyIndentation()
 {
 	HWND curScintilla = getCurrentNppHandle();
 	if (curScintilla == nullptr) return;
+	
+	// 1️⃣ Ottieni il linguaggio attuale prima della modifica
+	int id=static_cast<int>(SendMessage(curScintilla, NPPM_GETCURRENTBUFFERID, 0, 0));
+	if (id != 0) {
+		// Utilizza la variabile id se necessario
+	}
+	char langBuffer[1024] = { 0 };
+	SendMessage(curScintilla, NPPM_GETCURRENTLANGTYPE, sizeof(langBuffer), (LPARAM)langBuffer);
+
 
 	// length of the selected text
 	int length = static_cast<int>(SendMessage(curScintilla, SCI_GETSELTEXT, 0, NULL));
@@ -323,6 +477,8 @@ void applyIndentation()
 
 			// Replace the selected text with the indented text
 			SendMessage(curScintilla, SCI_REPLACESEL, 0, (LPARAM)indentedText.c_str());
+
+			SendMessage(curScintilla, NPPM_SETCURRENTLANGTYPE, 0, (LPARAM)langBuffer);
 		}
 	}
 }
@@ -331,9 +487,9 @@ void applyIndentation()
 // Log a message to a file with a word
 //
 void logMessage(const std::string& message, const std::string& word) {
-	//std::ofstream logFile("C:/Users/mecca/documents/log.txt", std::ios::app | std::ios::out); // Apri il file in modalit� append
+	//std::ofstream logFile("C:/Users/mecca/documents/log.txt", std::ios::app | std::ios::out); // Apri il file in modalità append
 	const wchar_t* p{ L"C:/Users/mecca/Documents/log.txt" };
-	std::ofstream logFile(p, std::ios::app); // Apri il file in modalit� append
+	std::ofstream logFile(p, std::ios::app); // Apri il file in modalità append
 	if (logFile.is_open()) {
 		logFile << message << ": " << word << std::endl;
 		logFile.close();
@@ -343,9 +499,9 @@ void logMessage(const std::string& message, const std::string& word) {
 // Log a message to a file
 //
 void logMessage(const std::string& message) {
-	//std::ofstream logFile("C:/Users/mecca/documents/log.txt", std::ios::app | std::ios::out); // Apri il file in modalit� append
+	//std::ofstream logFile("C:/Users/mecca/documents/log.txt", std::ios::app | std::ios::out); // Apri il file in modalità append
 	const wchar_t* p{ L"C:/Users/mecca/Documents/log.txt" };
-	std::ofstream logFile(p, std::ios::app); // Apri il file in modalit� append
+	std::ofstream logFile(p, std::ios::app); // Apri il file in modalità append
 	if (logFile.is_open()) {
 		logFile << message << ": " << std::endl;
 		logFile.close();

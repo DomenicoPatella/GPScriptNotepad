@@ -41,7 +41,7 @@ const TCHAR NPP_PLUGIN_NAME[] = TEXT("GPScript plugin template");
 //
 // Here define the number of your plugin commands
 //
-const int nbFunc = 3;
+const int nbFunc = 4;
 
 
 //
@@ -84,10 +84,10 @@ bool setCommand(size_t index, TCHAR *cmdName, PFUNCPLUGINCMD pFunc, ShortcutKey 
 //
 // Your plugin command functions
 //
-void hello();
+void CreateGlobalScript();
 void helloDlg();
 
-
+void selectAllText();
 
 // Funzione chiamata quando il testo viene modificato
 void onCharAdded(SCNotification* notification);
@@ -96,12 +96,15 @@ void onCharAdded(SCNotification* notification);
 void logMessage(const std::string& message, const std::string& word);
 void logMessage(const std::string& message);
 
-void insertSpacesForIndentation(int line, int spaces);
 
-std::string getSelectedText();
 bool findWordVector(std::vector<std::string>& increaseIndentKeywords, std::string& trimmed);
+
 void applyIndentation();
 bool keyword(const std::string& testo, const std::string& parola);
+void showAutoCompletion();
+void showCalltip();
+void showCalltipFromXML();
+std::string getCalltipFromXML(const std::string& functionName);
 
 
 

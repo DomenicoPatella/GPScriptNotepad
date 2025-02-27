@@ -18,6 +18,6 @@ Auto indentation
   - **Function and data type calltips:** Press **Shift + Tab** to display detailed hints.
   - **Function parameter insertion:** If available, insert parameters automatically with **Shift + Space**.
 
-With this integration, Notepad++ becomes a more powerful and convenient editor for GPScript scripting. 
+
 ![Calltips](https://github.com/DomenicoPatella/GPScriptNotepad/blob/main/Gif/Notepad_4.gif)
 

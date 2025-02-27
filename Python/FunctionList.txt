@@ -1,0 +1,6187 @@
+ACos : Returns the inverse cos of x
+ 
+	• Declaration: function ACos (x : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+ASin : Returns the inverse sin of x
+ 
+	• Declaration: function ASin (x : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+ATan : Returns the inverse tan of x
+ 
+	• Declaration: function ATan (x : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+AbletonLink_Enable : Enable or disable Ableton Link
+ 
+	• Declaration: function AbletonLink_Enable (enable : Boolean)
+	• Category: Ableton
+	
+		Parameters
+		• enable : Boolean
+(Back to top) 
+
+
+AbletonLink_Enabled : Returns whether Ableton Link is enabled
+ 
+	• Declaration: function AbletonLink_Enabled () returns Boolean
+	• Category: Ableton
+	• returns Boolean
+(Back to top) 
+
+
+Abs : Returns the absolute value of x
+ 
+	• Declaration: function Abs (x : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+AddChordInterval : Add a user defined chord interval to the chord dictionary
+ 
+	• Declaration: function AddChordInterval (cr : ChordRecognizer, interval : integer array, chordName : string)
+	• Category: NoteManagement
+	
+		Parameters
+		• cr : ChordRecognizer
+		• interval : integer array
+		• chordName : string
+(Back to top) 
+
+
+AllNotesOff : Send All Notes Off and reset controllers
+ 
+	• Declaration: function AllNotesOff (p : MidiInBlock)
+	• Category: MIDI
+	
+		Parameters
+		• p : MidiInBlock
+(Back to top) 
+
+
+AllNotesOff : Send All Notes Off and reset controllers
+ 
+	• Declaration: function AllNotesOff ()
+	• Category: MIDI
+(Back to top) 
+
+
+AltKeyDown : See if alt key is down
+ 
+	• Declaration: function AltKeyDown () Returns Boolean
+	• Category: System
+	• returns Boolean
+(Back to top) 
+
+
+AppendBoolean : Append the boolean to the end of the array if there is room otherwise fail silently
+ 
+	• Declaration: function AppendBoolean (a : Boolean Array, value : Boolean) deprecated "Use <-- operator instead"
+	• Warning -- This function is deprecated. Use <-- operator instead 
+	• Category: Arrays
+	
+		Parameters
+		• a : Boolean Array
+		• value : Boolean
+(Back to top) 
+
+
+AppendDouble : Append the double to the end of the array if there is room otherwise fail silently
+ 
+	• Declaration: function AppendDouble (a : Double Array, value : Double) autotype deprecated "Use <-- operator instead"
+	• Warning -- This function is deprecated. Use <-- operator instead 
+	• Category: Arrays
+	
+		Parameters
+		• a : Double Array
+		• value : Double
+	• Autotype
+(Back to top) 
+
+
+AppendInteger : Append the integer to the end of the array if there is room otherwise fail silently
+ 
+	• Declaration: function AppendInteger (a : Integer Array, value : Integer) autotype deprecated "Use <-- operator instead"
+	• Warning -- This function is deprecated. Use <-- operator instead 
+	• Category: Arrays
+	
+		Parameters
+		• a : Integer Array
+		• value : Integer
+	• Autotype
+(Back to top) 
+
+
+AppendString : Append the string to the end of the array if there is room otherwise fail silently
+ 
+	• Declaration: function AppendString (a : String Array, value : String) deprecated "Use <-- operator instead"
+	• Warning -- This function is deprecated. Use <-- operator instead 
+	• Category: Arrays
+	
+		Parameters
+		• a : String Array
+		• value : String
+(Back to top) 
+
+
+AudioMixer_GetChannelStripName : Returns the name of the channel strip at the given number - zero indexd
+ 
+	• Declaration: function AudioMixer_GetChannelStripName (aBlock : AudioMixerBlock, channelStripNumber : integer) returns String
+	• Category: AudioMixer
+	
+		Parameters
+		• aBlock : AudioMixerBlock
+		• channelStripNumber : integer
+	• returns String
+(Back to top) 
+
+
+AudioMixer_GetNumberOfChannelStrips : Returns the number of channels in an audio mixer block
+ 
+	• Declaration: function AudioMixer_GetNumberOfChannelStrips (aBlock : AudioMixerBlock) returns Integer
+	• Category: AudioMixer
+	
+		Parameters
+		• aBlock : AudioMixerBlock
+	• returns Integer
+(Back to top) 
+
+
+AudioMixer_SetChannelStripName : Set the name of the channel strip at the given number - zero indexd
+ 
+	• Declaration: function AudioMixer_SetChannelStripName (aBlock : AudioMixerBlock, channelStripNumber : integer, channelStripName : String)
+	• Category: AudioMixer
+	
+		Parameters
+		• aBlock : AudioMixerBlock
+		• channelStripNumber : integer
+		• channelStripName : String
+(Back to top) 
+
+
+AudioStreamer_GetCurrentTrackNumber : Returns the index number of the currently selected track - returns -1 if no track selected - Experimental
+ 
+	• Declaration: function AudioStreamer_GetCurrentTrackNumber (aBlock : StreamingFilePlayerBlock) returns Integer
+	• Category: Streaming
+	
+		Parameters
+		• aBlock : StreamingFilePlayerBlock
+	• returns Integer
+(Back to top) 
+
+
+AudioStreamer_GetMarkerCount : Returns the number of markers for the specified track number - Experimental
+ 
+	• Declaration: function AudioStreamer_GetMarkerCount (aBlock : StreamingFilePlayerBlock, trackNumber : integer) returns Integer
+	• Category: Streaming
+	
+		Parameters
+		• aBlock : StreamingFilePlayerBlock
+		• trackNumber : integer
+	• returns Integer
+(Back to top) 
+
+
+AudioStreamer_GetMarkerName : Returns the name of a specific marker in the specified track number - Experimental
+ 
+	• Declaration: function AudioStreamer_GetMarkerName (aBlock : StreamingFilePlayerBlock, trackNumber : integer, markerNumber : integer) returns String
+	• Category: Streaming
+	
+		Parameters
+		• aBlock : StreamingFilePlayerBlock
+		• trackNumber : integer
+		• markerNumber : integer
+	• returns String
+(Back to top) 
+
+
+AudioStreamer_GetTrackCount : Returns the number of tracks in the streamer - Experimental
+ 
+	• Declaration: function AudioStreamer_GetTrackCount (aBlock : StreamingFilePlayerBlock) returns Integer
+	• Category: Streaming
+	
+		Parameters
+		• aBlock : StreamingFilePlayerBlock
+	• returns Integer
+(Back to top) 
+
+
+AudioStreamer_GetTrackName : Returns the name of the track if it exists - Experimental
+ 
+	• Declaration: function AudioStreamer_GetTrackName (aBlock : StreamingFilePlayerBlock, trackNumber : integer) returns String
+	• Category: Streaming
+	
+		Parameters
+		• aBlock : StreamingFilePlayerBlock
+		• trackNumber : integer
+	• returns String
+(Back to top) 
+
+
+AudioStreamer_GoToMarkerNumber : Go to the specific marker in the current track - Experimental
+ 
+	• Declaration: function AudioStreamer_GoToMarkerNumber (aBlock : StreamingFilePlayerBlock, markerNumber : integer) returns bool
+	• Category: Streaming
+	
+		Parameters
+		• aBlock : StreamingFilePlayerBlock
+		• markerNumber : integer
+	• returns bool
+(Back to top) 
+
+
+AudioStreamer_SwitchToTrack : Switch to a tracknumber if it exists otherwise ignore
+ 
+	• Declaration: function AudioStreamer_SwitchToTrack (aBlock : StreamingFilePlayerBlock, trackNumber : integer)
+	• Category: Streaming
+	
+		Parameters
+		• aBlock : StreamingFilePlayerBlock
+		• trackNumber : integer
+(Back to top) 
+
+
+AudioStreamer_getIndexOfFirstTrackStartingWithName : Returns the track index for the given name - -1 if not found
+ 
+	• Declaration: function AudioStreamer_getIndexOfFirstTrackStartingWithName (aBlock : StreamingFilePlayerBlock, trackName : String) returns Integer
+	• Category: Streaming
+	
+		Parameters
+		• aBlock : StreamingFilePlayerBlock
+		• trackName : String
+	• returns Integer
+(Back to top) 
+
+
+AutoSustainer_GetHeldNotes : returns all currently held down notes as an integer array without velocities
+ 
+	• Declaration: function AutoSustainer_GetHeldNotes (sustainer : AutoSustainer) returns integer array
+	• Category: NoteManagement
+	
+		Parameters
+		• sustainer : AutoSustainer
+	• returns integer
+(Back to top) 
+
+
+AutoSustainer_Play : Play and sustain an incoming note message through the AutoSustainer
+ 
+	• Declaration: function AutoSustainer_Play (sustainer : AutoSustainer, m : NoteMessage)
+	• Category: NoteManagement
+	
+		Parameters
+		• sustainer : AutoSustainer
+		• m : NoteMessage
+(Back to top) 
+
+
+AutoSustainer_RespectParameters : Indicate whether notes should respect MidiInBlock parameters
+ 
+	• Declaration: function AutoSustainer_RespectParameters (sustainer : AutoSustainer, respect : boolean)
+	• Category: NoteManagement
+	
+		Parameters
+		• sustainer : AutoSustainer
+		• respect : boolean
+(Back to top) 
+
+
+AutoSustainer_SetTarget : Specify the MidiInBlock to use for sending out notes using this AutoSustainer object
+ 
+	• Declaration: function AutoSustainer_SetTarget (sustainer : AutoSustainer, m : MidiInBlock)
+	• Category: NoteManagement
+	
+		Parameters
+		• sustainer : AutoSustainer
+		• m : MidiInBlock
+(Back to top) 
+
+
+AutoSustainer_Stop : Stop all pending notes
+ 
+	• Declaration: function AutoSustainer_Stop (sustainer : AutoSustainer)
+	• Category: NoteManagement
+	
+		Parameters
+		• sustainer : AutoSustainer
+(Back to top) 
+
+
+BetweenNotes : Returns true if the MIDI Note message is between the lower and higher values exclusive
+ 
+	• Declaration: function BetweenNotes (lowerNote : int, note : NoteMessage, upperNote : int) returns Boolean
+	• Category: MIDI
+	
+		Parameters
+		• lowerNote : int
+		• note : NoteMessage
+		• upperNote : int
+	• returns Boolean
+(Back to top) 
+
+
+BindExternalWidget : Access a widget in another rackspace - boolean return value indicates whether widget was found - experimental
+ 
+	• Declaration: function BindExternalWidget (ew : ExternalWidget, widgetName : String, rackspaceName : String) returns Boolean
+	• Category: Widgets
+	
+		Parameters
+		• ew : ExternalWidget
+		• widgetName : String
+		• rackspaceName : String
+	• returns Boolean
+(Back to top) 
+
+
+BindWidget : Access a widget in the rackspace containing this scriptlet - boolean return value indicates whether widget was found - experimental
+ 
+	• Declaration: function BindWidget (ew : ExternalWidget, widgetName : String) returns Boolean
+	• Category: Widgets
+	
+		Parameters
+		• ew : ExternalWidget
+		• widgetName : String
+	• returns Boolean
+(Back to top) 
+
+
+BoolToString : Returns a string representation of a boolean value
+ 
+	• Declaration: function BoolToString (b : boolean) Returns String
+	• Category: Strings
+	
+		Parameters
+		• b : boolean
+	• returns String
+(Back to top) 
+
+
+BroadcastPluginParameters : Send out the current value of every parameter in the scriptlet 
+
+	• Declaration: function BroadcastPluginParameters ()
+	• Category: ScriptletBlock
+(Back to top) 
+
+
+CC_LoadFromFile : Load a curve that was created with a Curve Component
+ 
+	• Declaration: function CC_LoadFromFile (cc : CurveComponent, filename : string) Returns Boolean
+	• Category: Math
+	
+		Parameters
+		• cc : CurveComponent
+		• filename : string
+	• returns Boolean
+(Back to top) 
+
+
+CC_SaveToFile : Save a possibly changed curve to file
+ 
+	• Declaration: function CC_SaveToFile (cc : CurveComponent, filename : string) Returns Boolean
+	• Category: Math
+	
+		Parameters
+		• cc : CurveComponent
+		• filename : string
+	• returns Boolean
+(Back to top) 
+
+
+CC_Scale : Return the Y value for the inputted x value
+ 
+	• Declaration: function CC_Scale (cc : CurveComponent, x : double) Returns Double
+	• Category: Math
+	
+		Parameters
+		• cc : CurveComponent
+		• x : double
+	• returns Double
+(Back to top) 
+
+
+Ceiling : Rounds x upward returning the smallest integral value that is not less than x
+ 
+	• Declaration: function Ceiling (x : double) autotype returns integer
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns integer
+(Back to top) 
+
+
+ChangeSelectedPluginBusLayout : Show the bus layout of the selected plugin - if any
+ 
+	• Declaration: function ChangeSelectedPluginBusLayout ()
+	• Category: WiringOperations
+(Back to top) 
+
+
+ChordPro_GoToFractionOfPage : Set the top of the Chord Pro window to some fraction of the total page
+ 
+	• Declaration: function ChordPro_GoToFractionOfPage (fraction : Double)
+	• Category: ChordPro
+	
+		Parameters
+		• fraction : Double
+(Back to top) 
+
+
+ChordPro_GotoLine : Set the top of the Chord Pro window to the given line number
+ 
+	• Declaration: function ChordPro_GotoLine (lineNumber : integer)
+	• Category: ChordPro
+	
+		Parameters
+		• lineNumber : integer
+(Back to top) 
+
+
+ChordPro_GotoMarker : Set the top of the Chord Pro window to the given marker name
+ 
+	• Declaration: function ChordPro_GotoMarker (marker : String)
+	• Category: ChordPro
+	
+		Parameters
+		• marker : String
+(Back to top) 
+
+
+ChordPro_GotoSongPart : Set the top of the Chord Pro window to the given songpart
+ 
+	• Declaration: function ChordPro_GotoSongPart (songpartName : String)
+	• Category: ChordPro
+	
+		Parameters
+		• songpartName : String
+(Back to top) 
+
+
+ClearArray : Resets the array size to 0
+ 
+	• Declaration: function ClearArray (a : array) autotype
+	• Category: Arrays
+	
+		Parameters
+		• a : array
+	• Autotype
+(Back to top) 
+
+
+ClearLogWindow : Clear the log window - duh!
+ 
+	• Declaration: function ClearLogWindow ()
+	• Category: System
+(Back to top) 
+
+
+ClearNoteTracker : Reinitializes the note tracker although it is generally not necessary
+ 
+	• Declaration: function ClearNoteTracker (nt : NoteTracker) deprecated "Use NoteTracker_Clear"
+	• Warning -- This function is deprecated. Use NoteTracker_Clear 
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+(Back to top) 
+
+
+ClearSongPartSnapshot : Remove the current snapshot when in setlist mode - fails silently if not in setlist mode
+ 
+	• Declaration: function ClearSongPartSnapshot ()
+	• Category: Actions
+(Back to top) 
+
+
+ClockTime : Gets the current time in milliseconds
+ 
+	• Declaration: function ClockTime () returns double
+	• Category: System
+	• returns double
+(Back to top) 
+
+
+CloseAllPluginWindows : Close all plugins associated with this rackspace or optionally with all rackspaces - in the GigScript the allRackspaces argument MUST be true
+ 
+	• Declaration: function CloseAllPluginWindows (allRackspaces : Boolean)
+	• Category: Actions
+	
+		Parameters
+		• allRackspaces : Boolean
+(Back to top) 
+
+
+CloseLogWindow : Close the log window - duh!
+ 
+	• Declaration: function CloseLogWindow ()
+	• Category: System
+(Back to top) 
+
+
+ClosePlugin : Close the plugin editor
+ 
+	• Declaration: function ClosePlugin (p : Block) autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+	• Autotype
+(Back to top) 
+
+
+CloseScriptWindow : Close the script editor window - if open - for the current rackspace
+ 
+	• Declaration: function CloseScriptWindow ()
+	• Category: System
+(Back to top) 
+
+
+ColorToRGB : Convert a color back to R G B A values each between 0.0 and 1.0
+ 
+	• Declaration: function ColorToRGB (color : Integer, RGBA : double Array)
+	• Category: Graphics
+	
+		Parameters
+		• color : Integer
+		• RGBA : double Array
+(Back to top) 
+
+
+CopySubstring : Return the section of the source string based on the start index and desired length
+ 
+	• Declaration: function CopySubstring (source : String, startIndex : Integer, length : Integer) Returns String
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• startIndex : Integer
+		• length : Integer
+	• returns String
+(Back to top) 
+
+
+Cos : Returns the cos of x
+ 
+	• Declaration: function Cos (x : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+DecibelToLinear : Convert db value to its linear equivalent
+ 
+	• Declaration: function DecibelToLinear (value : Double) Returns Double
+	• Category: Math
+	
+		Parameters
+		• value : Double
+	• returns Double
+(Back to top) 
+
+
+DisplayTemporaryMessage : Displays the string at the top of the main window
+ 
+	• Declaration: function DisplayTemporaryMessage (s : String) Autotype
+	• Category: System
+	
+		Parameters
+		• s : String
+	• Autotype
+(Back to top) 
+
+
+DoubleToString : Converts a double to a string with the specified number of places
+ 
+	• Declaration: function DoubleToString (d : double, places : int) Returns String
+	• Category: Strings
+	
+		Parameters
+		• d : double
+		• places : int
+	• returns String
+(Back to top) 
+
+
+DuplicateSelectedPlugin : Duplicates the selected plugin - if any
+ 
+	• Declaration: function DuplicateSelectedPlugin ()
+	• Category: WiringOperations
+(Back to top) 
+
+
+EA_AddArgument : Add an argument to an external application manager
+ 
+	• Declaration: function EA_AddArgument (ea : ExternalApplication, arg : string)
+	• Category: ExternalApplication
+	
+		Parameters
+		• ea : ExternalApplication
+		• arg : string
+(Back to top) 
+
+
+EA_ClearAllArgs : Clear the list of arguments so you can start again
+ 
+	• Declaration: function EA_ClearAllArgs (ea : ExternalApplication)
+	• Category: ExternalApplication
+	
+		Parameters
+		• ea : ExternalApplication
+(Back to top) 
+
+
+EA_SetProgramName : Set the name of the program to be run
+ 
+	• Declaration: function EA_SetProgramName (ea : ExternalApplication, name : string)
+	• Category: ExternalApplication
+	
+		Parameters
+		• ea : ExternalApplication
+		• name : string
+(Back to top) 
+
+
+EA_Start : Open or run the external application
+ 
+	• Declaration: function EA_Start (ea : ExternalApplication)
+	• Category: ExternalApplication
+	
+		Parameters
+		• ea : ExternalApplication
+(Back to top) 
+
+
+EA_Stop : Close or terminate the external application - not guaranteed to work
+ 
+	• Declaration: function EA_Stop (ea : ExternalApplication)
+	• Category: ExternalApplication
+	
+		Parameters
+		• ea : ExternalApplication
+(Back to top) 
+
+
+EnableGenerator : Enables or disables any generator (LFO, ramp, squarewave, ADSR, etc)
+ 
+	• Declaration: function EnableGenerator (f : Generator, enable : boolean) Autotype
+	• Category: Generators
+	
+		Parameters
+		• f : Generator
+		• enable : boolean
+	• Autotype
+(Back to top) 
+
+
+EnableMetronome : Turn the metronome on or off
+ 
+	• Declaration: function EnableMetronome (enable : boolean)
+	• Category: System
+	
+		Parameters
+		• enable : boolean
+(Back to top) 
+
+
+EnablePlayhead : Start or stop the global playhead
+ 
+	• Declaration: function EnablePlayhead (enable : boolean)
+	• Category: System
+	
+		Parameters
+		• enable : boolean
+(Back to top) 
+
+
+Exp : Returns e to the power of x
+ 
+	• Declaration: function Exp (x : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+FileExists : Check if a file exists - experimental and unsupported - this could easily blow up Gig Performer or overwrite - returns whether saved
+ 
+	• Declaration: function FileExists (filename : String) returns Boolean
+	• Category: Strings
+	
+		Parameters
+		• filename : String
+	• returns Boolean
+(Back to top) 
+
+
+FindChordName : Given a note tracker with pending notes - get the string name of the chord
+ 
+	• Declaration: function FindChordName (cr : ChordRecognizer, nt : NoteTracker) returns String
+	• Category: NoteManagement
+	
+		Parameters
+		• cr : ChordRecognizer
+		• nt : NoteTracker
+	• returns String
+(Back to top) 
+
+
+Floor : Rounds x downward returning the largest integral value that is not greater than x
+ 
+	• Declaration: function Floor (x : double) autotype returns integer
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns integer
+(Back to top) 
+
+
+FormatTime : Returns a formatted timestamp from a given time in milliseconds
+ 
+	• Declaration: function FormatTime (timeInMS : double, format : String) returns String
+	• Category: System
+	
+		Parameters
+		• timeInMS : double
+		• format : String
+	• returns String
+(Back to top) 
+
+
+GPWindowToBack : Put this GP main window behind other windows
+ 
+	• Declaration: function GPWindowToBack ()
+	• Category: Windows
+(Back to top) 
+
+
+GPWindowToFront : Bring this GP window to the front
+ 
+	• Declaration: function GPWindowToFront ()
+	• Category: Windows
+(Back to top) 
+
+
+GPWindowVisible : Show or hide GP window
+ 
+	• Declaration: function GPWindowVisible (visible : boolean)
+	• Category: Windows
+	
+		Parameters
+		• visible : boolean
+(Back to top) 
+
+
+GetADSRAttackLevel : Get the maximum volume level of the attack phase of an ADSR
+ 
+	• Declaration: function GetADSRAttackLevel (f : ADSR) returns double
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+	• returns double
+(Back to top) 
+
+
+GetADSRAttackTime : Get the time in milliseconds of the attack phase of an ADSR
+ 
+	• Declaration: function GetADSRAttackTime (f : ADSR) returns int
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+	• returns int
+(Back to top) 
+
+
+GetADSRDecayTime : Get the time in milliseconds of the decay phase of an ADSR
+ 
+	• Declaration: function GetADSRDecayTime (f : ADSR) returns int
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+	• returns int
+(Back to top) 
+
+
+GetADSRReleaseTime : Get the time in milliseconds of the total release time of an ADSR
+ 
+	• Declaration: function GetADSRReleaseTime (f : ADSR) returns int
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+	• returns int
+(Back to top) 
+
+
+GetADSRSustainLevel : Get the level of the sustain phase of an ADSR
+ 
+	• Declaration: function GetADSRSustainLevel (f : ADSR) returns double
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+	• returns double
+(Back to top) 
+
+
+GetActivePreset : Get the index of the current preset in the plugin block
+ 
+	• Declaration: function GetActivePreset (p : Block) autotype returns Integer
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+	• Autotype
+	• returns Integer
+(Back to top) 
+
+
+GetAfterTouchValue : Returns the current aftertouch value of an Aftertouch MIDI message
+ 
+	• Declaration: function GetAfterTouchValue (m : AfterTouchMessage) returns Integer
+	• Category: MIDI
+	
+		Parameters
+		• m : AfterTouchMessage
+	• returns Integer
+(Back to top) 
+
+
+GetBPM : Returns the current global BPM value
+ 
+	• Declaration: function GetBPM () returns double
+	• Category: System
+	• returns double
+(Back to top) 
+
+
+GetByte : Returns one of the byte values of a MIDI message. The byteNumber must be within the range 0..2
+ 
+	• Declaration: function GetByte (m : MidiMessage, byteNumber : int) Autotype returns Integer
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+		• byteNumber : int
+	• Autotype
+	• returns Integer
+(Back to top) 
+
+
+GetCCNumber : Returns the Controller Number of a ControlChange MIDI message
+ 
+	• Declaration: function GetCCNumber (m : ControlChangeMessage) returns Integer
+	• Category: MIDI
+	
+		Parameters
+		• m : ControlChangeMessage
+	• returns Integer
+(Back to top) 
+
+
+GetCCValue : Returns the Controller value of a ControlChange MIDI message
+ 
+	• Declaration: function GetCCValue (m : ControlChangeMessage) returns Integer
+	• Category: MIDI
+	
+		Parameters
+		• m : ControlChangeMessage
+	• returns Integer
+(Back to top) 
+
+
+GetChannel : Returns the MIDI channel number (between 1 and 16) of any MIDI message
+ 
+	• Declaration: function GetChannel (m : MidiMessage) Autotype returns Integer
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns Integer
+(Back to top) 
+
+
+GetChordProFileName : Get the name of the associated chordpro file at the given index
+ 
+	• Declaration: function GetChordProFileName (index : integer) returns String
+	• Category: Songs
+	
+		Parameters
+		• index : integer
+	• returns String
+(Back to top) 
+
+
+GetContinuousPreviousValue : Get the previous value of this parameter
+ 
+	• Declaration: function GetContinuousPreviousValue (p : Continuous) returns Double
+	• Category: ScriptletBlock
+	
+		Parameters
+		• p : Continuous
+	• returns Double
+(Back to top) 
+
+
+GetCurrentProgramChangeOrBankNumber : Returns the PC MSB or LSB of the current varation or song part defined by itemNumber 0 1 2 respectively 
+
+	• Declaration: function GetCurrentProgramChangeOrBankNumber (itemNumber : integer) returns Integer
+	• Category: Rackspaces
+	
+		Parameters
+		• itemNumber : integer
+	• returns Integer
+(Back to top) 
+
+
+GetCurrentRackspaceIndex : Returns the index of the current rackspace
+ 
+	• Declaration: function GetCurrentRackspaceIndex () returns integer
+	• Category: Rackspaces
+	• returns integer
+(Back to top) 
+
+
+GetCurrentSetlistIndex : Get the index of the currently active setlist - returns -1 if not in setlist mode
+ 
+	• Declaration: function GetCurrentSetlistIndex () returns Integer
+	• Category: Songs
+	• returns Integer
+(Back to top) 
+
+
+GetCurrentSetlistName : Get the name of the current setlist
+ 
+	• Declaration: function GetCurrentSetlistName () returns String
+	• Category: Songs
+	• returns String
+(Back to top) 
+
+
+GetCurrentSongIndex : Get the index of the current song - negative 1 if it does not exist
+ 
+	• Declaration: function GetCurrentSongIndex () returns Integer
+	• Category: Songs
+	• returns Integer
+(Back to top) 
+
+
+GetCurrentSongName : Get the name of the current song
+ 
+	• Declaration: function GetCurrentSongName () returns String
+	• Category: Songs
+	• returns String
+(Back to top) 
+
+
+GetCurrentSongPart : Get the index of the current song part
+ 
+	• Declaration: function GetCurrentSongPart () returns integer
+	• Category: Songs
+	• returns integer
+(Back to top) 
+
+
+GetCurrentSongPartIndex : Get the index of the current song part - negative 1 if it does not exist
+ 
+	• Declaration: function GetCurrentSongPartIndex () returns Integer
+	• Category: Songs
+	• returns Integer
+(Back to top) 
+
+
+GetCurrentSongPartName : Get the name of the current song part
+ 
+	• Declaration: function GetCurrentSongPartName () returns String
+	• Category: Songs
+	• returns String
+(Back to top) 
+
+
+GetCurrentVariation : Returns the index of the current variation
+ 
+	• Declaration: function GetCurrentVariation () returns integer
+	• Category: Rackspaces
+	• returns integer
+(Back to top) 
+
+
+GetDiscreteParameterItem : Returns the string item at the given offset for this parameter
+ 
+	• Declaration: function GetDiscreteParameterItem (p : Discrete, offset : Integer) returns String
+	• Category: ScriptletBlock
+	
+		Parameters
+		• p : Discrete
+		• offset : Integer
+	• returns String
+(Back to top) 
+
+
+GetDiscreteParameterItemCount : Returns the number of strings defined for this parameter
+ 
+	• Declaration: function GetDiscreteParameterItemCount (p : Discrete) returns Integer
+	• Category: ScriptletBlock
+	
+		Parameters
+		• p : Discrete
+	• returns Integer
+(Back to top) 
+
+
+GetDiscretePreviousValue : Get the previous value of this parameter
+ 
+	• Declaration: function GetDiscretePreviousValue (p : Discrete) returns String
+	• Category: ScriptletBlock
+	
+		Parameters
+		• p : Discrete
+	• returns String
+(Back to top) 
+
+
+GetEnvVariable : Return the value of an environment variable
+ 
+	• Declaration: function GetEnvVariable (name : String) returns String
+	• Category: Strings
+	
+		Parameters
+		• name : String
+	• returns String
+(Back to top) 
+
+
+GetExternalWidgetHideState : Get the current hide state of an external widget
+ 
+	• Declaration: function GetExternalWidgetHideState (ew : ExternalWidget) returns Boolean
+	• Category: Widgets
+	
+		Parameters
+		• ew : ExternalWidget
+	• returns Boolean
+(Back to top) 
+
+
+GetExternalWidgetLabel : Get the current label of an external widget
+ 
+	• Declaration: function GetExternalWidgetLabel (ew : ExternalWidget) returns String
+	• Category: Widgets
+	
+		Parameters
+		• ew : ExternalWidget
+	• returns String
+(Back to top) 
+
+
+GetExternalWidgetValue : Get the current value of an external widget
+ 
+	• Declaration: function GetExternalWidgetValue (ew : ExternalWidget) returns Double
+	• Category: Widgets
+	
+		Parameters
+		• ew : ExternalWidget
+	• returns Double
+(Back to top) 
+
+
+GetGPPresetList : Get the Nth chunk of GP Preset names 
+
+	• Declaration: function GetGPPresetList (p : Block, chunkN : integer) autotype returns String Array
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• chunkN : integer
+	• Autotype
+	• returns String
+(Back to top) 
+
+
+GetGPPresetListCount : Returns the number of GP Presets for this plugin 
+
+	• Declaration: function GetGPPresetListCount (p : Block) autotype returns Integer
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+	• Autotype
+	• returns Integer
+(Back to top) 
+
+
+GetGPWindowKioskMode : Get whether Gig Performer is in kiosk mode
+ 
+	• Declaration: function GetGPWindowKioskMode () returns Boolean
+	• Category: Windows
+	• returns Boolean
+(Back to top) 
+
+
+GetGPWindowState : Get the current state of the main window
+ 
+	• Declaration: function GetGPWindowState () returns String
+	• Category: Windows
+	• returns String
+(Back to top) 
+
+
+GetGPWindowVisible : See if main window is visible
+ 
+	• Declaration: function GetGPWindowVisible () returns Boolean
+	• Category: Windows
+	• returns Boolean
+(Back to top) 
+
+
+GetGeneraterAmplitude : Deprecated - Get the current value of a generator
+ 
+	• Declaration: function GetGeneraterAmplitude (f : Generator) Autotype returns double deprecated "Use GetGeneratorAmplitude"
+	• Warning -- This function is deprecated. Use GetGeneratorAmplitude 
+	• Category: Generators
+	
+		Parameters
+		• f : Generator
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+GetGeneratorAmplitude : Get the current value of a generator
+ 
+	• Declaration: function GetGeneratorAmplitude (f : Generator) Autotype returns double
+	• Category: Generators
+	
+		Parameters
+		• f : Generator
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+GetGlobalTranspose : Get the current transpose value
+ 
+	• Declaration: function GetGlobalTranspose ( ) returns integer
+	• Category: System
+	• returns integer
+(Back to top) 
+
+
+GetIndexOfDiscreteParameterItem : Find the index of a discrete item and returns -1 if the item is not found
+ 
+	• Declaration: function GetIndexOfDiscreteParameterItem (p : Discrete, itemToFind : String) returns Integer
+	• Category: ScriptletBlock
+	
+		Parameters
+		• p : Discrete
+		• itemToFind : String
+	• returns Integer
+(Back to top) 
+
+
+GetIndexOfSubrangeParameterItem : Find the index of a subrange item and returns -1 if the item is not found
+ 
+	• Declaration: function GetIndexOfSubrangeParameterItem (p : Subrange, itemToFind : Integer) returns Integer
+	• Category: ScriptletBlock
+	
+		Parameters
+		• p : Subrange
+		• itemToFind : Integer
+	• returns Integer
+(Back to top) 
+
+
+GetLabelColor : Get the color of the widget label 
+
+	• Declaration: function GetLabelColor (w : Widget) returns Integer
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• returns Integer
+(Back to top) 
+
+
+GetMaxNoteFromMidiInBlock : Gets the max note number defined for the keyboard split
+ 
+	• Declaration: function GetMaxNoteFromMidiInBlock (aBlock : MidiInBlock) returns Integer
+	• Category: Plugins
+	
+		Parameters
+		• aBlock : MidiInBlock
+	• returns Integer
+(Back to top) 
+
+
+GetMetronomeVolume : Get the metronome volume
+ 
+	• Declaration: function GetMetronomeVolume () returns double
+	• Category: System
+	• returns double
+(Back to top) 
+
+
+GetMidiInDeviceCount : Returns the number of available MIDI In Devices 
+
+	• Declaration: function GetMidiInDeviceCount () returns integer
+	• Category: MIDI
+	• returns integer
+(Back to top) 
+
+
+GetMidiInDeviceFromRigManager : Find the name of a physical MidiIn device given its RigManager name
+ 
+	• Declaration: function GetMidiInDeviceFromRigManager (rmDeviceName : String) returns String
+	• Category: MIDI
+	
+		Parameters
+		• rmDeviceName : String
+	• returns String
+(Back to top) 
+
+
+GetMidiInDeviceName : Returns the name of the MIDI In Device at the specified index
+ 
+	• Declaration: function GetMidiInDeviceName (index : integer) returns String
+	• Category: MIDI
+	
+		Parameters
+		• index : integer
+	• returns String
+(Back to top) 
+
+
+GetMidiMessageSize : Returns the number of bytes in any MIDI Message
+ 
+	• Declaration: function GetMidiMessageSize (m : MidiMessage) Autotype returns Integer
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns Integer
+(Back to top) 
+
+
+GetMidiOutDeviceCount : Returns the number of available MIDI Out Devices 
+
+	• Declaration: function GetMidiOutDeviceCount () returns integer
+	• Category: MIDI
+	• returns integer
+(Back to top) 
+
+
+GetMidiOutDeviceName : Returns the name of the MIDI Out Device at the specified index
+ 
+	• Declaration: function GetMidiOutDeviceName (index : integer) returns String
+	• Category: MIDI
+	
+		Parameters
+		• index : integer
+	• returns String
+(Back to top) 
+
+
+GetMinNoteFromMidiInBlock : Gets the min note number defined for the keyboard split
+ 
+	• Declaration: function GetMinNoteFromMidiInBlock (aBlock : MidiInBlock) returns Integer
+	• Category: Plugins
+	
+		Parameters
+		• aBlock : MidiInBlock
+	• returns Integer
+(Back to top) 
+
+
+GetNoteNumber : Returns the note number of a NoteMessage MIDI event
+ 
+	• Declaration: function GetNoteNumber (m : NoteMessage) returns int
+	• Category: MIDI
+	
+		Parameters
+		• m : NoteMessage
+	• returns int
+(Back to top) 
+
+
+GetParameter : Gets the current parameter value associated with a parameter index of the plugin block. The value will be between 0.0 and 1.0
+ 
+	• Declaration: function GetParameter (p : Block, index : Int) Autotype returns Double
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• index : Int
+	• Autotype
+	• returns Double
+(Back to top) 
+
+
+GetParameterCount : Gets the number of parameters in the plugin block
+ 
+	• Declaration: function GetParameterCount (p : Block) Autotype returns Integer
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+	• Autotype
+	• returns Integer
+(Back to top) 
+
+
+GetParameterCount : Get the number of parameters
+ 
+	• Declaration: function GetParameterCount () Returns Integer
+	• Category: ScriptletBlock
+	• returns Integer
+(Back to top) 
+
+
+GetParameterName : Gets the name for the parameter index of the plugin block if available. 
+
+	• Declaration: function GetParameterName (p : Block, index : Int) Autotype returns String
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• index : Int
+	• Autotype
+	• returns String
+(Back to top) 
+
+
+GetParameterName : Returns the name of the parameter - preferring the alias if defined
+ 
+	• Declaration: function GetParameterName (p : Parameter) returns String
+	• Category: ScriptletBlock
+	
+		Parameters
+		• p : Parameter
+	• returns String
+(Back to top) 
+
+
+GetParameterText : Gets the value as text of the given parameter index of the plugin block if available. 
+
+	• Declaration: function GetParameterText (p : Block, index : Int) Autotype returns String
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• index : Int
+	• Autotype
+	• returns String
+(Back to top) 
+
+
+GetPitchBendValue : Returns the pitch bend value from a PitchBend MIDI message
+ 
+	• Declaration: function GetPitchBendValue (m : PitchBendMessage) returns Integer
+	• Category: MIDI
+	
+		Parameters
+		• m : PitchBendMessage
+	• returns Integer
+(Back to top) 
+
+
+GetPluginCaption : Gets the caption displayed in the plugin block
+ 
+	• Declaration: function GetPluginCaption (p : Block) autotype returns String
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+	• Autotype
+	• returns String
+(Back to top) 
+
+
+GetPluginInfo : Get information about the actual plugin --- 0=name - 1=manufacturer
+ 
+	• Declaration: function GetPluginInfo (p : Block, infoCode : integer) autotype returns String
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• infoCode : integer
+	• Autotype
+	• returns String
+(Back to top) 
+
+
+GetPolyTouchNoteNumber : Returns the note number of a PolyTouch MIDI event
+ 
+	• Declaration: function GetPolyTouchNoteNumber (m : PolyTouchMessage) returns int
+	• Category: MIDI
+	
+		Parameters
+		• m : PolyTouchMessage
+	• returns int
+(Back to top) 
+
+
+GetPolyTouchNotePressure : Returns the poly pressure value of a PolyTouch MIDI event
+ 
+	• Declaration: function GetPolyTouchNotePressure (m : PolyTouchMessage) returns int
+	• Category: MIDI
+	
+		Parameters
+		• m : PolyTouchMessage
+	• returns int
+(Back to top) 
+
+
+GetPresetCount : Get the number of available presets in the plugin block
+ 
+	• Declaration: function GetPresetCount (p : Block) autotype returns Integer
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+	• Autotype
+	• returns Integer
+(Back to top) 
+
+
+GetPresetName : Get the name of the preset at the given index of the plugin block
+ 
+	• Declaration: function GetPresetName (p : Block, index : Int) autotype returns String
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• index : Int
+	• Autotype
+	• returns String
+(Back to top) 
+
+
+GetProgramChangeNumber : Returns the program change number of a ProgramChangeMessage MIDI event
+ 
+	• Declaration: function GetProgramChangeNumber (m : ProgramChangeMessage) returns int
+	• Category: MIDI
+	
+		Parameters
+		• m : ProgramChangeMessage
+	• returns int
+(Back to top) 
+
+
+GetRackspaceBPM : Gets the BPM value associated with this rackspace
+ 
+	• Declaration: function GetRackspaceBPM () returns double
+	• Category: Rackspaces
+	• returns double
+(Back to top) 
+
+
+GetRackspaceCount : Returns the number of rackspaces in the system
+ 
+	• Declaration: function GetRackspaceCount () returns integer
+	• Category: Rackspaces
+	• returns integer
+(Back to top) 
+
+
+GetRackspaceIndex : Returns the name of the rackspace at the given index. Returns -1 if rackspace does not exist
+ 
+	• Declaration: function GetRackspaceIndex (name : String) returns Integer
+	• Category: Rackspaces
+	
+		Parameters
+		• name : String
+	• returns Integer
+(Back to top) 
+
+
+GetRackspaceName : Returns the name of the active rackspace
+ 
+	• Declaration: function GetRackspaceName () returns String
+	• Category: Rackspaces
+	• returns String
+(Back to top) 
+
+
+GetRackspaceNameAtIndex : Returns the name of the rackspace at the given index
+ 
+	• Declaration: function GetRackspaceNameAtIndex (index : integer) returns String
+	• Category: Rackspaces
+	
+		Parameters
+		• index : integer
+	• returns String
+(Back to top) 
+
+
+GetReleaseVelocity : Returns the release velocity of a NoteOffEvent MIDI message. You need to make sure that the message is in fact a NoteOff or the result will always be 0
+ 
+	• Declaration: function GetReleaseVelocity (m : NoteMessage) returns int
+	• Category: MIDI
+	
+		Parameters
+		• m : NoteMessage
+	• returns int
+(Back to top) 
+
+
+GetSetlistCount : Returns the number of setlists
+ 
+	• Declaration: function GetSetlistCount () returns integer
+	• Category: Songs
+	• returns integer
+(Back to top) 
+
+
+GetSetlistName : Get the name of the setlist at the given index
+ 
+	• Declaration: function GetSetlistName (index : integer) returns String
+	• Category: Songs
+	
+		Parameters
+		• index : integer
+	• returns String
+(Back to top) 
+
+
+GetSongArtistName : Get the artist name of the song at the given index
+ 
+	• Declaration: function GetSongArtistName (index : integer) returns String
+	• Category: Songs
+	
+		Parameters
+		• index : integer
+	• returns String
+(Back to top) 
+
+
+GetSongBPM : Get the BPM of the song at the given index
+ 
+	• Declaration: function GetSongBPM (index : integer) returns Double
+	• Category: Songs
+	
+		Parameters
+		• index : integer
+	• returns Double
+(Back to top) 
+
+
+GetSongCount : Returns the number of songs in the current setlist
+ 
+	• Declaration: function GetSongCount () returns integer
+	• Category: Songs
+	• returns integer
+(Back to top) 
+
+
+GetSongIndex : Get the index of the song for the given name - negative 1 if it does not exist
+ 
+	• Declaration: function GetSongIndex (songname : String) returns Integer
+	• Category: Songs
+	
+		Parameters
+		• songname : String
+	• returns Integer
+(Back to top) 
+
+
+GetSongKeySignature : Get the key signature of the song at the given index
+ 
+	• Declaration: function GetSongKeySignature (index : integer) returns String
+	• Category: Songs
+	
+		Parameters
+		• index : integer
+	• returns String
+(Back to top) 
+
+
+GetSongName : Get the name of the song at the given index
+ 
+	• Declaration: function GetSongName (index : integer) returns String
+	• Category: Songs
+	
+		Parameters
+		• index : integer
+	• returns String
+(Back to top) 
+
+
+GetSongPartCount : Returns the number of parts in the current song
+ 
+	• Declaration: function GetSongPartCount () returns integer
+	• Category: Songs
+	• returns integer
+(Back to top) 
+
+
+GetSongPartName : Get the name of the song part at the given index
+ 
+	• Declaration: function GetSongPartName (index : integer) returns String
+	• Category: Songs
+	
+		Parameters
+		• index : integer
+	• returns String
+(Back to top) 
+
+
+GetSongPartTimeSigDenominator : Get the denominator of the time signature of the songpart at the given indices
+ 
+	• Declaration: function GetSongPartTimeSigDenominator (songIndex : Integer, songPartIndex : integer) returns Integer
+	• Category: Songs
+	
+		Parameters
+		• songIndex : Integer
+		• songPartIndex : integer
+	• returns Integer
+(Back to top) 
+
+
+GetSongPartTimeSigNumerator : Get the numerator of the time signature of the songpart at the given indices
+ 
+	• Declaration: function GetSongPartTimeSigNumerator (songIndex : Integer, songPartIndex : integer) returns Integer
+	• Category: Songs
+	
+		Parameters
+		• songIndex : Integer
+		• songPartIndex : integer
+	• returns Integer
+(Back to top) 
+
+
+GetSongTimeSigDenominator : Get the denominator of the time signature of the song at the given index
+ 
+	• Declaration: function GetSongTimeSigDenominator (songIndex : integer) returns Integer
+	• Category: Songs
+	
+		Parameters
+		• songIndex : integer
+	• returns Integer
+(Back to top) 
+
+
+GetSongTimeSigNumerator : Get the numerator of the time signature of the song at the given index
+ 
+	• Declaration: function GetSongTimeSigNumerator (songIndex : integer) returns Integer
+	• Category: Songs
+	
+		Parameters
+		• songIndex : integer
+	• returns Integer
+(Back to top) 
+
+
+GetSongTranspose : Get the transpose amount of the song at the given index
+ 
+	• Declaration: function GetSongTranspose (index : integer) returns Integer
+	• Category: Songs
+	
+		Parameters
+		• index : integer
+	• returns Integer
+(Back to top) 
+
+
+GetSubrangeParameterItem : Returns the integer item at the given offset for this parameter
+ 
+	• Declaration: function GetSubrangeParameterItem (p : Subrange, offset : Integer) returns Integer
+	• Category: ScriptletBlock
+	
+		Parameters
+		• p : Subrange
+		• offset : Integer
+	• returns Integer
+(Back to top) 
+
+
+GetSubrangeParameterItemCount : Returns the number of integer values defined for this parameter
+ 
+	• Declaration: function GetSubrangeParameterItemCount (p : Subrange) returns Integer
+	• Category: ScriptletBlock
+	
+		Parameters
+		• p : Subrange
+	• returns Integer
+(Back to top) 
+
+
+GetSubrangePreviousValue : Get the previous value of this parameter
+ 
+	• Declaration: function GetSubrangePreviousValue (p : Subrange) returns Integer
+	• Category: ScriptletBlock
+	
+		Parameters
+		• p : Subrange
+	• returns Integer
+(Back to top) 
+
+
+GetTimeSigDenominator : Get the denominator of the global time signature 
+
+	• Declaration: function GetTimeSigDenominator () returns Integer
+	• Category: System
+	• returns Integer
+(Back to top) 
+
+
+GetTimeSigNumerator : Get the numerator of the globaltime signature 
+
+	• Declaration: function GetTimeSigNumerator () returns Integer
+	• Category: System
+	• returns Integer
+(Back to top) 
+
+
+GetTimersRunning : Indicates whether global timers are running or stopped
+ 
+	• Declaration: function GetTimersRunning () returns Boolean
+	• Category: Generators
+	• returns Boolean
+(Back to top) 
+
+
+GetTransposeFromMidiInBlock : Gets the max note number defined for the keyboard split
+ 
+	• Declaration: function GetTransposeFromMidiInBlock (aBlock : MidiInBlock) returns Integer
+	• Category: Plugins
+	
+		Parameters
+		• aBlock : MidiInBlock
+	• returns Integer
+(Back to top) 
+
+
+GetUserVariable : Get the value of a user defined variable
+ 
+	• Declaration: function GetUserVariable (name : String) Returns String
+	• Category: ScriptletBlock
+	
+		Parameters
+		• name : String
+	• returns String
+(Back to top) 
+
+
+GetVariationCount : Returns the number of variations in the current rackspace
+ 
+	• Declaration: function GetVariationCount () returns integer
+	• Category: Rackspaces
+	• returns integer
+(Back to top) 
+
+
+GetVariationCountForRackspaceAtIndex : Returns the number of variations in a specified rackspace
+ 
+	• Declaration: function GetVariationCountForRackspaceAtIndex (rackspaceIndex : integer) returns Integer
+	• Category: Rackspaces
+	
+		Parameters
+		• rackspaceIndex : integer
+	• returns Integer
+(Back to top) 
+
+
+GetVariationName : Returns the name of a variation
+ 
+	• Declaration: function GetVariationName (index : integer) returns String
+	• Category: Rackspaces
+	
+		Parameters
+		• index : integer
+	• returns String
+(Back to top) 
+
+
+GetVariationNameForRackspaceAtIndex : Returns the name of a variation in a specified rackspace
+ 
+	• Declaration: function GetVariationNameForRackspaceAtIndex (rackspaceIndex : integer, variationIndex : integer) returns String
+	• Category: Rackspaces
+	
+		Parameters
+		• rackspaceIndex : integer
+		• variationIndex : integer
+	• returns String
+(Back to top) 
+
+
+GetVelocity : Returns the velocity of a NoteEvent MIDI message. The value will be between 0 and 127
+ 
+	• Declaration: function GetVelocity (m : NoteMessage) returns int
+	• Category: MIDI
+	
+		Parameters
+		• m : NoteMessage
+	• returns int
+(Back to top) 
+
+
+GetVelocityCurveValue : Returns the velocity after applying the scale curve to it
+ 
+	• Declaration: function GetVelocityCurveValue (aBlock : MidiInBlock, velocity : integer) returns Integer
+	• Category: Plugins
+	
+		Parameters
+		• aBlock : MidiInBlock
+		• velocity : integer
+	• returns Integer
+(Back to top) 
+
+
+GetWidgetBounds : Fill the first four fields of the bounds array with the widget position and size on a panel 
+
+	• Declaration: function GetWidgetBounds (w : Widget, bounds : integer array)
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• bounds : integer array
+(Back to top) 
+
+
+GetWidgetCurveValue : For some value x - returns the y value of a widget after applying the scale curve to it
+ 
+	• Declaration: function GetWidgetCurveValue (w : Widget, x : double) Autotype returns Double
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• x : double
+	• Autotype
+	• returns Double
+(Back to top) 
+
+
+GetWidgetFillColor : Get the fill color for widgets that support this feature
+ 
+	• Declaration: function GetWidgetFillColor (w : Widget) returns Integer
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• returns Integer
+(Back to top) 
+
+
+GetWidgetHideState : Possibly returns the hide state of a widget - not guaranteed to be correct!
+ 
+	• Declaration: function GetWidgetHideState (w : Widget) returns Boolean
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• returns Boolean
+(Back to top) 
+
+
+GetWidgetLabel : Get the label of a widget
+ 
+	• Declaration: function GetWidgetLabel (w : Widget) returns String
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• returns String
+(Back to top) 
+
+
+GetWidgetMappedParameterValue : Get the current parameter text of the parameter number of plugin associated with this widget if available
+ 
+	• Declaration: function GetWidgetMappedParameterValue (w : Widget) returns String
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• returns String
+(Back to top) 
+
+
+GetWidgetOutlineColor : Get the outline color for widgets that support this feature
+ 
+	• Declaration: function GetWidgetOutlineColor (w : Widget) returns Integer
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• returns Integer
+(Back to top) 
+
+
+GetWidgetOutlineRoundness : Get the outline roundness for widgets that support this feature
+ 
+	• Declaration: function GetWidgetOutlineRoundness (w : Widget) returns Integer
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• returns Integer
+(Back to top) 
+
+
+GetWidgetOutlineThickness : Get the outline thickness for widgets that support this feature
+ 
+	• Declaration: function GetWidgetOutlineThickness (w : Widget) returns Integer
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• returns Integer
+(Back to top) 
+
+
+GetWidgetPluginMappedParameterNumber : Returns the mapped parameter number of this plugin or -99999 if unmapped
+ 
+	• Declaration: function GetWidgetPluginMappedParameterNumber (w : Widget, plugin : Block) autotype returns Integer
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• plugin : Block
+	• Autotype
+	• returns Integer
+(Back to top) 
+
+
+GetWidgetPreviousValue : Gets the previous value (position) of the widget. The value will be between 0.0 and 1.0
+ 
+	• Declaration: function GetWidgetPreviousValue (w : Widget) Autotype returns Double
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• Autotype
+	• returns Double
+(Back to top) 
+
+
+GetWidgetResetValue : Gets the reset value of the widget
+ 
+	• Declaration: function GetWidgetResetValue (w : Widget) Autotype returns Double
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• Autotype
+	• returns Double
+(Back to top) 
+
+
+GetWidgetScriptName : Gets the scripting name of this widget. Useful when widget is passed as a parameter somewhere
+ 
+	• Declaration: function GetWidgetScriptName (p : Widget) returns String
+	• Category: Widgets
+	
+		Parameters
+		• p : Widget
+	• returns String
+(Back to top) 
+
+
+GetWidgetValue : Gets the current value (position) of the widget. The value will be between 0.0 and 1.0
+ 
+	• Declaration: function GetWidgetValue (w : Widget) Autotype returns Double
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• Autotype
+	• returns Double
+(Back to top) 
+
+
+GigPerformerDocumentsFolder : Returns the root folder where GP content is stored
+ 
+	• Declaration: function GigPerformerDocumentsFolder () returns String
+	• Category: Strings
+	• returns String
+(Back to top) 
+
+
+GlobalRackspaceVisible : Indicates whether the global rackspace is visible
+ 
+	• Declaration: function GlobalRackspaceVisible () returns Boolean
+	• Category: Actions
+	• returns Boolean
+(Back to top) 
+
+
+GotNote : Track status of an incoming note
+ 
+	• Declaration: function GotNote (nt : NoteTracker, note : NoteMessage) deprecated "Use NoteTracker_GotNote"
+	• Warning -- This function is deprecated. Use NoteTracker_GotNote 
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+		• note : NoteMessage
+(Back to top) 
+
+
+GotNoteOff : Remember that a note was released
+ 
+	• Declaration: function GotNoteOff (nt : NoteTracker, noteNumber : integer) deprecated "Use NoteTracker_GotNoteOff"
+	• Warning -- This function is deprecated. Use NoteTracker_GotNoteOff 
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+		• noteNumber : integer
+(Back to top) 
+
+
+GotNoteOn : Remember that a note was played
+ 
+	• Declaration: function GotNoteOn (nt : NoteTracker, noteNumber : integer) deprecated "Use NoteTracker_GotNoteOn"
+	• Warning -- This function is deprecated. Use NoteTracker_GotNoteOn 
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+		• noteNumber : integer
+(Back to top) 
+
+
+InEditMode : Indicates whether we are in edit mode
+ 
+	• Declaration: function InEditMode () returns Boolean
+	• Category: System
+	• returns Boolean
+(Back to top) 
+
+
+InPanelView : See if we are in panel view
+ 
+	• Declaration: function InPanelView () Returns Boolean
+	• Category: Actions
+	• returns Boolean
+(Back to top) 
+
+
+InSetlistMode : Returns whether we are currently in setlist mode
+ 
+	• Declaration: function InSetlistMode () returns boolean
+	• Category: Songs
+	• returns boolean
+(Back to top) 
+
+
+InSetlistView : See if we are in the setlist view
+ 
+	• Declaration: function InSetlistView () Returns Boolean
+	• Category: Actions
+	• returns Boolean
+(Back to top) 
+
+
+InTunerView : Indicates whether we are in the tuner view
+ 
+	• Declaration: function InTunerView () returns Boolean
+	• Category: System
+	• returns Boolean
+(Back to top) 
+
+
+InWiringView : See if we are in the wiring view
+ 
+	• Declaration: function InWiringView () Returns Boolean
+	• Category: Actions
+	• returns Boolean
+(Back to top) 
+
+
+IndexOf : Returns the index containing the value otherwise returns -1
+ 
+	• Declaration: function IndexOf (a : Integer array, value : integer) returns integer
+	• Category: Arrays
+	
+		Parameters
+		• a : Integer array
+		• value : integer
+	• returns integer
+(Back to top) 
+
+
+IndexOfSubstring : Return the zero-based index of the substring or -1 if substring not found
+ 
+	• Declaration: function IndexOfSubstring (source : String, substring : String, caseSensitive : Boolean) Returns Integer
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• substring : String
+		• caseSensitive : Boolean
+	• returns Integer
+(Back to top) 
+
+
+InitADSR : Set all parameters of an ADSR in one function call
+ 
+	• Declaration: function InitADSR (f : ADSR, attackTime : int, attackLevel : double, decayTime : int, sustainLevel : double, releaseTime : int)
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+		• attackTime : int
+		• attackLevel : double
+		• decayTime : int
+		• sustainLevel : double
+		• releaseTime : int
+(Back to top) 
+
+
+InjectMidiEvent : Inject a message to any Midi Input Port with the specified physical device name
+ 
+	• Declaration: function InjectMidiEvent (physicalDeviceName : String, m : midiMessage) Autotype
+	• Category: MIDI
+	
+		Parameters
+		• physicalDeviceName : String
+		• m : midiMessage
+	• Autotype
+(Back to top) 
+
+
+InjectMidiEventViaRigManager : Inject a message to a MidiInDeviceAlias using its Rig Manager name directly
+ 
+	• Declaration: function InjectMidiEventViaRigManager (rmDeviceAliasName : MidiInDeviceAlias, m : MidiMessage) Autotype
+	• Category: MIDI
+	
+		Parameters
+		• rmDeviceAliasName : MidiInDeviceAlias
+		• m : MidiMessage
+	• Autotype
+(Back to top) 
+
+
+InjectSysexEvent : Inject a sysex message to any Midi Input Port with the specified physical device name
+ 
+	• Declaration: function InjectSysexEvent (physicalDeviceName : String, s : SysexMessage) Autotype
+	• Category: MIDI
+	
+		Parameters
+		• physicalDeviceName : String
+		• s : SysexMessage
+	• Autotype
+(Back to top) 
+
+
+InjectSysexEventViaRigManager : Inject a sysex message to a MidiInDeviceAlias using its Rig Manager name directly
+ 
+	• Declaration: function InjectSysexEventViaRigManager (rmDeviceAliasName : MidiInDeviceAlias, s : SysexMessage) Autotype
+	• Category: MIDI
+	
+		Parameters
+		• rmDeviceAliasName : MidiInDeviceAlias
+		• s : SysexMessage
+	• Autotype
+(Back to top) 
+
+
+InsertFavoriteAtMousePosition : Insert the named favorite at the current mouse position
+ 
+	• Declaration: function InsertFavoriteAtMousePosition (name : String)
+	• Category: WiringOperations
+	
+		Parameters
+		• name : String
+(Back to top) 
+
+
+IntTo7BitHexString : Converts an integer number to at least minByteLength sequence of 7 bit hex bytes as readable strings - intended for use with sysex messages
+ 
+	• Declaration: function IntTo7BitHexString (i : Integer, minByteLength : integer) Returns String
+	• Category: Strings
+	
+		Parameters
+		• i : Integer
+		• minByteLength : integer
+	• returns String
+(Back to top) 
+
+
+IntToFloat : Converts an integer to its floating point equivalent
+ 
+	• Declaration: function IntToFloat (x : integer) Returns double
+	• Category: Math
+	
+		Parameters
+		• x : integer
+	• returns double
+(Back to top) 
+
+
+IntToHex : Converts an integer number to a hex notated readable string
+ 
+	• Declaration: function IntToHex (i : Integer) Returns String deprecated "Use IntToHexString"
+	• Warning -- This function is deprecated. Use IntToHexString 
+	• Category: Strings
+	
+		Parameters
+		• i : Integer
+	• returns String
+(Back to top) 
+
+
+IntToHexString : Converts an integer number to a hex notated readable string
+ 
+	• Declaration: function IntToHexString (i : Integer) Returns String
+	• Category: Strings
+	
+		Parameters
+		• i : Integer
+	• returns String
+(Back to top) 
+
+
+IntToString : Returns a string representation of an integer value 
+
+	• Declaration: function IntToString (i : integer) Returns String
+	• Category: Strings
+	
+		Parameters
+		• i : integer
+	• returns String
+(Back to top) 
+
+
+IsAfterTouch : See if the current message is actually an Aftertouch MIDI message
+ 
+	• Declaration: function IsAfterTouch (m : MidiMessage) autotype returns boolean
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns boolean
+(Back to top) 
+
+
+IsController : See if the current message is actually a CC MIDI message
+ 
+	• Declaration: function IsController (m : MidiMessage) autotype returns boolean
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns boolean
+(Back to top) 
+
+
+IsGeneratorEnabled : Queries the state (start or stopped) of any generator
+ 
+	• Declaration: function IsGeneratorEnabled (f : Generator) Autotype returns boolean
+	• Category: Generators
+	
+		Parameters
+		• f : Generator
+	• Autotype
+	• returns boolean
+(Back to top) 
+
+
+IsGigLoading : Returns whether a gig file is currently loading
+ 
+	• Declaration: function IsGigLoading () returns Boolean
+	• Category: System
+	• returns Boolean
+(Back to top) 
+
+
+IsMetronomeEnabled : See if metronome is running
+ 
+	• Declaration: function IsMetronomeEnabled () returns boolean
+	• Category: System
+	• returns boolean
+(Back to top) 
+
+
+IsNote : See if the current message is a NoteOn or a NoteOff message
+ 
+	• Declaration: function IsNote (m : MidiMessage) autotype returns boolean
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns boolean
+(Back to top) 
+
+
+IsNoteOff : See if the current message is actually a noteOff message - this is not the same as a NoteOn with 0 velocity
+ 
+	• Declaration: function IsNoteOff (m : MidiMessage) autotype returns boolean
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns boolean
+(Back to top) 
+
+
+IsNoteOn : See if the current message is actually a noteOn message
+ 
+	• Declaration: function IsNoteOn (m : MidiMessage) autotype returns boolean
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns boolean
+(Back to top) 
+
+
+IsPitchBend : See if the current message is actually a pitchbend message
+ 
+	• Declaration: function IsPitchBend (m : MidiMessage) autotype returns boolean
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns boolean
+(Back to top) 
+
+
+IsPlayheadEnabled : Indicates whether the playhead is running
+ 
+	• Declaration: function IsPlayheadEnabled () returns Boolean
+	• Category: System
+	• returns Boolean
+(Back to top) 
+
+
+IsPluginBypassed : Returns whether the plugin block is bypassed
+ 
+	• Declaration: function IsPluginBypassed (p : Block) autotype returns Boolean
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+	• Autotype
+	• returns Boolean
+(Back to top) 
+
+
+IsPolyTouch : See if the current message is actually a Polytouch MIDI message
+ 
+	• Declaration: function IsPolyTouch (m : MidiMessage) autotype returns boolean
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns boolean
+(Back to top) 
+
+
+IsProgramChange : See if the current message is actually a program change message
+ 
+	• Declaration: function IsProgramChange (m : MidiMessage) autotype returns boolean
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns boolean
+(Back to top) 
+
+
+IsRecording : Return whether GP is currently recording audio and/or MIDI
+ 
+	• Declaration: function IsRecording () returns Boolean
+	• Category: System
+	• returns Boolean
+(Back to top) 
+
+
+LargestDouble : Returns the maximum value of a double array
+ 
+	• Declaration: function LargestDouble (a : Double array) returns Double
+	• Category: Arrays
+	
+		Parameters
+		• a : Double array
+	• returns Double
+(Back to top) 
+
+
+LargestInt : Returns the maximum value in an integer array
+ 
+	• Declaration: function LargestInt (a : Integer array) returns integer
+	• Category: Arrays
+	
+		Parameters
+		• a : Integer array
+	• returns integer
+(Back to top) 
+
+
+Length : Returns the length of a string
+ 
+	• Declaration: function Length (s : String) Returns Int
+	• Category: Strings
+	
+		Parameters
+		• s : String
+	• returns Int
+(Back to top) 
+
+
+LinearToDecibel : Convert linear value to its dB equivalent. Returns -99999 if input is invalid
+ 
+	• Declaration: function LinearToDecibel (value : Double) Returns Double
+	• Category: Math
+	
+		Parameters
+		• value : Double
+	• returns Double
+(Back to top) 
+
+
+Ln : Returns the log (base e) of x
+ 
+	• Declaration: function Ln (x : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+LoadGPPreset : Load a GP plugin preset asychronously - seriously experimental and probably very unsafe
+ 
+	• Declaration: function LoadGPPreset (p : Block, presetName : String) autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• presetName : String
+	• Autotype
+(Back to top) 
+
+
+LoadStringFromTextFile : Load the contents of a file into a string - experimental and unsupported - this could easily blow up Gig Performer
+ 
+	• Declaration: function LoadStringFromTextFile (filename : String) returns String
+	• Category: Strings
+	
+		Parameters
+		• filename : String
+	• returns String
+(Back to top) 
+
+
+Log : Returns the log (base 10) of x
+ 
+	• Declaration: function Log (x : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+MakeAfterTouchMessage : Returns an Aftertouch MIDI message with the specified value. The MIDI channel is 1
+ 
+	• Declaration: function MakeAfterTouchMessage (value : int) returns AfterTouchMessage
+	• Category: MIDI
+	
+		Parameters
+		• value : int
+	• returns AfterTouchMessage
+(Back to top) 
+
+
+MakeAfterTouchMessageEx : Returns an Aftertouch MIDI message with the specified value and MIDI channel
+ 
+	• Declaration: function MakeAfterTouchMessageEx (value : int, channel : int) returns AfterTouchMessage
+	• Category: MIDI
+	
+		Parameters
+		• value : int
+		• channel : int
+	• returns AfterTouchMessage
+(Back to top) 
+
+
+MakeControlChangeMessage : Returns a CC MIDI message with the specified CC number and value. The MIDI channel is 1
+ 
+	• Declaration: function MakeControlChangeMessage (number : int, value : int) returns ControlChangeMessage
+	• Category: MIDI
+	
+		Parameters
+		• number : int
+		• value : int
+	• returns ControlChangeMessage
+(Back to top) 
+
+
+MakeControlChangeMessageEx : Returns a CC MIDI message with the specified CC number and value and MIDI channel
+ 
+	• Declaration: function MakeControlChangeMessageEx (number : int, value : int, channel : int) returns ControlChangeMessage
+	• Category: MIDI
+	
+		Parameters
+		• number : int
+		• value : int
+		• channel : int
+	• returns ControlChangeMessage
+(Back to top) 
+
+
+MakeMidiMessage : Deprecated - Create an three byte MIDI message - you are on your own so make sure you get the values correct
+ 
+	• Declaration: function MakeMidiMessage (byte0 : integer, byte1 : integer, byte2 : integer) returns MidiMessage deprecated "Use MakeMidiMessage3"
+	• Warning -- This function is deprecated. Use MakeMidiMessage3 
+	• Category: MIDI
+	
+		Parameters
+		• byte0 : integer
+		• byte1 : integer
+		• byte2 : integer
+	• returns MidiMessage
+(Back to top) 
+
+
+MakeMidiMessage1 : Create one byte MIDI message - you are on your own so make sure you get the value correct
+ 
+	• Declaration: function MakeMidiMessage1 (byte0 : integer) returns MidiMessage
+	• Category: MIDI
+	
+		Parameters
+		• byte0 : integer
+	• returns MidiMessage
+(Back to top) 
+
+
+MakeMidiMessage2 : Create a 2 byte MIDI message - you are on your own so make sure you get the values correct
+ 
+	• Declaration: function MakeMidiMessage2 (byte0 : integer, byte1 : integer) returns MidiMessage
+	• Category: MIDI
+	
+		Parameters
+		• byte0 : integer
+		• byte1 : integer
+	• returns MidiMessage
+(Back to top) 
+
+
+MakeMidiMessage3 : Create an three byte MIDI message - you are on your own so make sure you get the values correct
+ 
+	• Declaration: function MakeMidiMessage3 (byte0 : integer, byte1 : integer, byte2 : integer) returns MidiMessage
+	• Category: MIDI
+	
+		Parameters
+		• byte0 : integer
+		• byte1 : integer
+		• byte2 : integer
+	• returns MidiMessage
+(Back to top) 
+
+
+MakeNoteMessage : Returns a Note MIDI message with the specified note number and velocity. The MIDI channel is 1
+ 
+	• Declaration: function MakeNoteMessage (number : int, velocity : int) returns NoteMessage
+	• Category: MIDI
+	
+		Parameters
+		• number : int
+		• velocity : int
+	• returns NoteMessage
+(Back to top) 
+
+
+MakeNoteMessageEx : Returns a Note MIDI message with the specified note number and velocity and MIDI channel
+ 
+	• Declaration: function MakeNoteMessageEx (number : int, velocity : int, channel : int) returns NoteMessage
+	• Category: MIDI
+	
+		Parameters
+		• number : int
+		• velocity : int
+		• channel : int
+	• returns NoteMessage
+(Back to top) 
+
+
+MakeNoteOffMessage : Returns a NoteOff MIDI message with the specified note number and release. The MIDI channel is 1
+ 
+	• Declaration: function MakeNoteOffMessage (number : int, release : int) returns NoteMessage
+	• Category: MIDI
+	
+		Parameters
+		• number : int
+		• release : int
+	• returns NoteMessage
+(Back to top) 
+
+
+MakeNoteOffMessageEx : Returns a NoteOff MIDI message with the specified note number and release and MIDI channel
+ 
+	• Declaration: function MakeNoteOffMessageEx (number : int, release : int, channel : int) returns NoteMessage
+	• Category: MIDI
+	
+		Parameters
+		• number : int
+		• release : int
+		• channel : int
+	• returns NoteMessage
+(Back to top) 
+
+
+MakePitchBendMessage : Returns a new Pitchbend MIDI message with the specified value. The MIDI channel is 1
+ 
+	• Declaration: function MakePitchBendMessage (value : int) returns PitchBendMessage
+	• Category: MIDI
+	
+		Parameters
+		• value : int
+	• returns PitchBendMessage
+(Back to top) 
+
+
+MakePitchBendMessageEx : Returns a new Pitchbend MIDI message with the specified value and MIDI channel
+ 
+	• Declaration: function MakePitchBendMessageEx (value : int, channel : int) returns PitchBendMessage
+	• Category: MIDI
+	
+		Parameters
+		• value : int
+		• channel : int
+	• returns PitchBendMessage
+(Back to top) 
+
+
+MakePolyTouchMessage : Returns a Polytouch MIDI message with the specified note number and pressure amount. The MIDI channel is 1
+ 
+	• Declaration: function MakePolyTouchMessage (number : int, pressure : int) returns PolyTouchMessage
+	• Category: MIDI
+	
+		Parameters
+		• number : int
+		• pressure : int
+	• returns PolyTouchMessage
+(Back to top) 
+
+
+MakePolyTouchMessageEx : Returns a Polytouch - sometimes called poly pressure - MIDI message with the specified note number and pressure ammount and MIDI channel
+ 
+	• Declaration: function MakePolyTouchMessageEx (number : int, pressure : int, channel : int) returns PolyTouchMessage
+	• Category: MIDI
+	
+		Parameters
+		• number : int
+		• pressure : int
+		• channel : int
+	• returns PolyTouchMessage
+(Back to top) 
+
+
+MakeProgramChangeMessage : Returns a new ProgramChange MIDI message with the specified value ranging from 0 to 127. The MIDI channel is 1
+ 
+	• Declaration: function MakeProgramChangeMessage (value : int) returns ProgramChangeMessage
+	• Category: MIDI
+	
+		Parameters
+		• value : int
+	• returns ProgramChangeMessage
+(Back to top) 
+
+
+MakeProgramChangeMessageEx : Returns a new ProgramChange MIDI message with the specified value ranging from 0 to 127 and with the specified MIDI channel
+ 
+	• Declaration: function MakeProgramChangeMessageEx (value : int, channel : int) returns ProgramChangeMessage
+	• Category: MIDI
+	
+		Parameters
+		• value : int
+		• channel : int
+	• returns ProgramChangeMessage
+(Back to top) 
+
+
+MapValueToDiscreteString : Select a string based on the proportional fractional value between 0.0 and 1.0
+ 
+	• Declaration: function MapValueToDiscreteString (x : double, values : string array) returns String
+	• Category: Strings
+	
+		Parameters
+		• x : double
+		• values : string array
+	• returns String
+(Back to top) 
+
+
+MapWidgetToPlugin : Map a widget to the specified parameter of the specified plugin
+ 
+	• Declaration: function MapWidgetToPlugin (w : Widget, plugin : Block, parameterNumber : Integer) autotype
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• plugin : Block
+		• parameterNumber : Integer
+	• Autotype
+(Back to top) 
+
+
+Max : Returns the larger of the two values
+ 
+	• Declaration: function Max (a : double, b : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• a : double
+		• b : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+MidiInDeviceExists : Returns whether the physical MIDI in device exists
+ 
+	• Declaration: function MidiInDeviceExists (deviceName : String) returns Boolean
+	• Category: MIDI
+	
+		Parameters
+		• deviceName : String
+	• returns Boolean
+(Back to top) 
+
+
+MidiOutDeviceExists : Returns whether the physical MIDI Out device exists
+ 
+	• Declaration: function MidiOutDeviceExists (deviceName : String) returns Boolean
+	• Category: MIDI
+	
+		Parameters
+		• deviceName : String
+	• returns Boolean
+(Back to top) 
+
+
+MidiSequence_CollectEventsNow : Collect events at the current position
+ 
+	• Declaration: function MidiSequence_CollectEventsNow (sequence : MidiSequence)
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+(Back to top) 
+
+
+MidiSequence_EndOfSong : True if there are no more events in track
+ 
+	• Declaration: function MidiSequence_EndOfSong (sequence : MidiSequence) returns Boolean
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+	• returns Boolean
+(Back to top) 
+
+
+MidiSequence_FingerTap : Send all the available events for each track to its associated MidiInBlock - optionally restart automatically
+ 
+	• Declaration: function MidiSequence_FingerTap (sequence : MidiSequence, trackNumbers : integer array, targets : MidiInBlock array, resetAtEndOfSong : boolean)
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+		• trackNumbers : integer array
+		• targets : MidiInBlock array
+		• resetAtEndOfSong : boolean
+(Back to top) 
+
+
+MidiSequence_FollowGlobalTranspose : When true MIDI note events will be transposed by the global transpose amount
+ 
+	• Declaration: function MidiSequence_FollowGlobalTranspose (sequence : MidiSequence, trackNumber : integer, follow : boolean)
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+		• trackNumber : integer
+		• follow : boolean
+(Back to top) 
+
+
+MidiSequence_GetCurrentBar : Returns the current bar
+ 
+	• Declaration: function MidiSequence_GetCurrentBar (sequence : MidiSequence) returns integer
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+	• returns integer
+(Back to top) 
+
+
+MidiSequence_GetCurrentBeat : Returns the current beat of the current bar
+ 
+	• Declaration: function MidiSequence_GetCurrentBeat (sequence : MidiSequence) returns integer
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+	• returns integer
+(Back to top) 
+
+
+MidiSequence_GetCurrentEvents : Access the current events at the current grid position for the specified track
+ 
+	• Declaration: function MidiSequence_GetCurrentEvents (sequence : MidiSequence, trackNumber : integer) returns MidiMessage array
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+		• trackNumber : integer
+	• returns MidiMessage
+(Back to top) 
+
+
+MidiSequence_GetCurrentTick : Returns the current tick offset 
+
+	• Declaration: function MidiSequence_GetCurrentTick (sequence : MidiSequence) returns integer
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+	• returns integer
+(Back to top) 
+
+
+MidiSequence_GetResolution : Get the base resolution of the sequence
+ 
+	• Declaration: function MidiSequence_GetResolution (sequence : MidiSequence)
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+(Back to top) 
+
+
+MidiSequence_GetSongLength : Populates and returns a 3 item array containing the length of the song in bar:beat and absolute ticks
+ 
+	• Declaration: function MidiSequence_GetSongLength (sequence : MidiSequence) returns Integer Array
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+	• returns Integer
+(Back to top) 
+
+
+MidiSequence_GetTrackCount : Returns the number of tracks in a loaded MIDI file
+ 
+	• Declaration: function MidiSequence_GetTrackCount (sequence : MidiSequence) returns integer
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+	• returns integer
+(Back to top) 
+
+
+MidiSequence_LoadMidiFile : Loads a midi file and returns the number of tracks
+ 
+	• Declaration: function MidiSequence_LoadMidiFile (sequence : MidiSequence, fromFile : String) returns integer deprecated "Use MidiSequence_LoadStandardMidiFile"
+	• Warning -- This function is deprecated. Use MidiSequence_LoadStandardMidiFile 
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+		• fromFile : String
+	• returns integer
+(Back to top) 
+
+
+MidiSequence_LoadStandardMidiFile : Loads a midi file and returns the number of tracks
+ 
+	• Declaration: function MidiSequence_LoadStandardMidiFile (sequence : MidiSequence, fromFile : String)
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+		• fromFile : String
+(Back to top) 
+
+
+MidiSequence_MapOutputChannel : Map the output channel for a track to the specified number between 1-16. Set to 0 to use individual event channel
+ 
+	• Declaration: function MidiSequence_MapOutputChannel (sequence : MidiSequence, trackNumber : integer, channel : integer)
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+		• trackNumber : integer
+		• channel : integer
+(Back to top) 
+
+
+MidiSequence_Quantize : Grid quantize - 1 2 4 8 16
+ 
+	• Declaration: function MidiSequence_Quantize (sequence : MidiSequence, q : integer)
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+		• q : integer
+(Back to top) 
+
+
+MidiSequence_ResetToStart : Reset to the beginning of the track
+ 
+	• Declaration: function MidiSequence_ResetToStart (sequence : MidiSequence)
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+(Back to top) 
+
+
+MidiSequence_ScriptletFingerTap : Send all the available events for each track out using the specified associated channel with 0 meaning unchanged - optionally restart automatically - for use in a scriptlet
+ 
+	• Declaration: function MidiSequence_ScriptletFingerTap (sequence : MidiSequence, trackNumbers : integer array, channelNumbers : integer array, resetAtEndOfSong : boolean)
+	• Category: Sequencing
+	
+		Parameters
+		• sequence : MidiSequence
+		• trackNumbers : integer array
+		• channelNumbers : integer array
+		• resetAtEndOfSong : boolean
+(Back to top) 
+
+
+MidiToParam : Maps an integer value between 0 and 127 into a floating point value between 0.0 and 1.0 and is a specialized (slightly) faster version of the generic Scale function
+ 
+	• Declaration: function MidiToParam (m : Int) Returns Double
+	• Category: Math
+	
+		Parameters
+		• m : Int
+	• returns Double
+(Back to top) 
+
+
+MidiToParamEx : Maps a value between xMin and xMax both with type integer into a value between yMin and yMax both with type double. Slightly faster than Scale if you can use the expected types so that no conversion is required
+ 
+	• Declaration: function MidiToParamEx (x : Int, xMin : Int, xMax : Int, yMin : Double, yMax : Double) Autotype Returns Double
+	• Category: Math
+	
+		Parameters
+		• x : Int
+		• xMin : Int
+		• xMax : Int
+		• yMin : Double
+		• yMax : Double
+	• Autotype
+	• returns Double
+(Back to top) 
+
+
+Min : Returns the smaller of the two values
+ 
+	• Declaration: function Min (a : double, b : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• a : double
+		• b : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+MinimizeOrRestoreGPWindow : Minimize or restore the GP main window
+ 
+	• Declaration: function MinimizeOrRestoreGPWindow (minimize : boolean)
+	• Category: Windows
+	
+		Parameters
+		• minimize : boolean
+(Back to top) 
+
+
+ModifierKeys : Returns the state of the various modifier keys: 1-Shift 2-Ctrl 4-Option 8-Cmd
+ 
+	• Declaration: function ModifierKeys () returns integer
+	• Category: System
+	• returns integer
+(Back to top) 
+
+
+MultiChannelNoteTracker_Clear : Reinitializes the note tracker for the specified channel
+ 
+	• Declaration: function MultiChannelNoteTracker_Clear (mt : MultiChannelNoteTracker, channel : integer)
+	• Category: MultiChannelNoteTracker
+	
+		Parameters
+		• mt : MultiChannelNoteTracker
+		• channel : integer
+(Back to top) 
+
+
+MultiChannelNoteTracker_GetHeldNotes : returns all currently held down notes as an integer array without velocities
+ 
+	• Declaration: function MultiChannelNoteTracker_GetHeldNotes (mt : MultiChannelNoteTracker, channel : integer) returns integer array
+	• Category: MultiChannelNoteTracker
+	
+		Parameters
+		• mt : MultiChannelNoteTracker
+		• channel : integer
+	• returns integer
+(Back to top) 
+
+
+MultiChannelNoteTracker_GetSpecificNoteOnCount : Count how many times a specific note on has been played without a corresponding note off
+ 
+	• Declaration: function MultiChannelNoteTracker_GetSpecificNoteOnCount (mt : MultiChannelNoteTracker, noteNumber : integer, channel : integer) returns integer
+	• Category: MultiChannelNoteTracker
+	
+		Parameters
+		• mt : MultiChannelNoteTracker
+		• noteNumber : integer
+		• channel : integer
+	• returns integer
+(Back to top) 
+
+
+MultiChannelNoteTracker_GotMidiMessage : Tracks notes and sustain messages automatically
+ 
+	• Declaration: function MultiChannelNoteTracker_GotMidiMessage (mt : MultiChannelNoteTracker, m : MidiMessage) Autotype
+	• Category: MultiChannelNoteTracker
+	
+		Parameters
+		• mt : MultiChannelNoteTracker
+		• m : MidiMessage
+	• Autotype
+(Back to top) 
+
+
+MultiChannelNoteTracker_GotNote : Track status of an incoming note
+ 
+	• Declaration: function MultiChannelNoteTracker_GotNote (mt : MultiChannelNoteTracker, note : NoteMessage) deprecated "Use MultiChannelNoteTracker_GotMidiMessage instead"
+	• Warning -- This function is deprecated. Use MultiChannelNoteTracker_GotMidiMessage instead 
+	• Category: MultiChannelNoteTracker
+	
+		Parameters
+		• mt : MultiChannelNoteTracker
+		• note : NoteMessage
+(Back to top) 
+
+
+MultiChannelNoteTracker_GotNoteOff : Remember that a note was released
+ 
+	• Declaration: function MultiChannelNoteTracker_GotNoteOff (mt : MultiChannelNoteTracker, noteNumber : integer, channel : integer)
+	• Category: MultiChannelNoteTracker
+	
+		Parameters
+		• mt : MultiChannelNoteTracker
+		• noteNumber : integer
+		• channel : integer
+(Back to top) 
+
+
+MultiChannelNoteTracker_GotNoteOn : Remember that a note was played
+ 
+	• Declaration: function MultiChannelNoteTracker_GotNoteOn (mt : MultiChannelNoteTracker, noteNumber : integer, channel : integer)
+	• Category: MultiChannelNoteTracker
+	
+		Parameters
+		• mt : MultiChannelNoteTracker
+		• noteNumber : integer
+		• channel : integer
+(Back to top) 
+
+
+MultiChannelNoteTracker_IsNoteOffPending : returns whether a specific note is still down
+ 
+	• Declaration: function MultiChannelNoteTracker_IsNoteOffPending (mt : MultiChannelNoteTracker, noteNumber : integer, channel : integer) returns boolean
+	• Category: MultiChannelNoteTracker
+	
+		Parameters
+		• mt : MultiChannelNoteTracker
+		• noteNumber : integer
+		• channel : integer
+	• returns boolean
+(Back to top) 
+
+
+MultiChannelNoteTracker_NoteOnCount : Count number of notes still being played
+ 
+	• Declaration: function MultiChannelNoteTracker_NoteOnCount (mt : MultiChannelNoteTracker, channel : integer) returns integer
+	• Category: MultiChannelNoteTracker
+	
+		Parameters
+		• mt : MultiChannelNoteTracker
+		• channel : integer
+	• returns integer
+(Back to top) 
+
+
+MultiChannelNoteTracker_StopAllPendingNotes : Send note offs for all pending notes on all channels in the tracker
+ 
+	• Declaration: function MultiChannelNoteTracker_StopAllPendingNotes (m : MidiInBlock, nt : NoteTracker)
+	• Category: MultiChannelNoteTracker
+	
+		Parameters
+		• m : MidiInBlock
+		• nt : NoteTracker
+(Back to top) 
+
+
+MultiChannelNoteTracker_StopAllPendingNotes : Send note offs for all pending notes on all channels in the tracker
+ 
+	• Declaration: function MultiChannelNoteTracker_StopAllPendingNotes (nt : MultiChannelNoteTracker)
+	• Category: MultiChannelNoteTracker
+	
+		Parameters
+		• nt : MultiChannelNoteTracker
+(Back to top) 
+
+
+Next : Switch to next rackspace variation song or song part
+ 
+	• Declaration: function Next ()
+	• Category: Actions
+(Back to top) 
+
+
+NextRackspace : Switch to the next rackspace
+ 
+	• Declaration: function NextRackspace ()
+	• Category: Rackspaces
+(Back to top) 
+
+
+NextSong : Move to the next song
+ 
+	• Declaration: function NextSong ()
+	• Category: Songs
+(Back to top) 
+
+
+NextVariation : Switch to the next variation
+ 
+	• Declaration: function NextVariation ()
+	• Category: Rackspaces
+(Back to top) 
+
+
+NoteMapper_CreateScale : Given a root note and an array of 12 offsets - create a scale covering the entire MIDI note range
+ 
+	• Declaration: function NoteMapper_CreateScale (nm : NoteMapper, rootNote : integer, scale : integer array)
+	• Category: NoteManagement
+	
+		Parameters
+		• nm : NoteMapper
+		• rootNote : integer
+		• scale : integer array
+(Back to top) 
+
+
+NoteMapper_GetMappedNotes : Returns the note or chord associated with the incoming note
+ 
+	• Declaration: function NoteMapper_GetMappedNotes (nm : NoteMapper, note : integer) returns Integer array
+	• Category: NoteManagement
+	
+		Parameters
+		• nm : NoteMapper
+		• note : integer
+	• returns Integer
+(Back to top) 
+
+
+NoteMapper_MapNote : Define note to be returned given an incoming note 
+
+	• Declaration: function NoteMapper_MapNote (nm : NoteMapper, note : integer, mapToNote : integer)
+	• Category: NoteManagement
+	
+		Parameters
+		• nm : NoteMapper
+		• note : integer
+		• mapToNote : integer
+(Back to top) 
+
+
+NoteMapper_MapNoteToChord : Associate a note with a chord
+ 
+	• Declaration: function NoteMapper_MapNoteToChord (nm : NoteMapper, note : integer, chord : integer array)
+	• Category: NoteManagement
+	
+		Parameters
+		• nm : NoteMapper
+		• note : integer
+		• chord : integer array
+(Back to top) 
+
+
+NoteMapper_MapNotes : Map a list of source notes to replacement notes - both arrays must be same size
+ 
+	• Declaration: function NoteMapper_MapNotes (nm : NoteMapper, source : integer array, dest : integer array)
+	• Category: NoteManagement
+	
+		Parameters
+		• nm : NoteMapper
+		• source : integer array
+		• dest : integer array
+(Back to top) 
+
+
+NoteMapper_Reset : Reset note mapper to defaults
+ 
+	• Declaration: function NoteMapper_Reset (nm : NoteMapper)
+	• Category: NoteManagement
+	
+		Parameters
+		• nm : NoteMapper
+(Back to top) 
+
+
+NoteNameToNoteNumber : returns integer value of a note name
+ 
+	• Declaration: function NoteNameToNoteNumber (s : String) Returns Integer
+	• Category: Strings
+	
+		Parameters
+		• s : String
+	• returns Integer
+(Back to top) 
+
+
+NoteNumberToNoteName : Returns a string representation of an integer note number 
+
+	• Declaration: function NoteNumberToNoteName (i : integer) Returns String
+	• Category: Strings
+	
+		Parameters
+		• i : integer
+	• returns String
+(Back to top) 
+
+
+NoteOnCount : Count number of notes still being played
+ 
+	• Declaration: function NoteOnCount (nt : NoteTracker) returns integer deprecated "Use NoteTracker_NoteOnCount"
+	• Warning -- This function is deprecated. Use NoteTracker_NoteOnCount 
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+	• returns integer
+(Back to top) 
+
+
+NoteTracker_Clear : Reinitializes the note tracker although it is generally not necessary
+ 
+	• Declaration: function NoteTracker_Clear (nt : NoteTracker)
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+(Back to top) 
+
+
+NoteTracker_GetHeldNotes : returns all currently held down notes as an integer array without velocities
+ 
+	• Declaration: function NoteTracker_GetHeldNotes (nt : NoteTracker) returns integer array
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+	• returns integer
+(Back to top) 
+
+
+NoteTracker_GetSpecificNoteOnCount : Count how many times a specific note on has been played without a corresponding note off
+ 
+	• Declaration: function NoteTracker_GetSpecificNoteOnCount (nt : NoteTracker, noteNumber : integer) returns integer
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+		• noteNumber : integer
+	• returns integer
+(Back to top) 
+
+
+NoteTracker_GotNote : Track status of an incoming note
+ 
+	• Declaration: function NoteTracker_GotNote (nt : NoteTracker, note : NoteMessage)
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+		• note : NoteMessage
+(Back to top) 
+
+
+NoteTracker_GotNoteOff : Remember that a note was released
+ 
+	• Declaration: function NoteTracker_GotNoteOff (nt : NoteTracker, noteNumber : integer)
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+		• noteNumber : integer
+(Back to top) 
+
+
+NoteTracker_GotNoteOn : Remember that a note was played
+ 
+	• Declaration: function NoteTracker_GotNoteOn (nt : NoteTracker, noteNumber : integer)
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+		• noteNumber : integer
+(Back to top) 
+
+
+NoteTracker_IsNoteOffPending : returns whether a specific note is still down
+ 
+	• Declaration: function NoteTracker_IsNoteOffPending (nt : NoteTracker, noteNumber : integer) returns boolean
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+		• noteNumber : integer
+	• returns boolean
+(Back to top) 
+
+
+NoteTracker_NoteOnCount : Count number of notes still being played
+ 
+	• Declaration: function NoteTracker_NoteOnCount (nt : NoteTracker) returns integer
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+	• returns integer
+(Back to top) 
+
+
+NoteTracker_StopAllPendingNotes : Send note offs for all pending notes in the tracker
+ 
+	• Declaration: function NoteTracker_StopAllPendingNotes (m : MidiInBlock, nt : NoteTracker)
+	• Category: NoteTracker
+	
+		Parameters
+		• m : MidiInBlock
+		• nt : NoteTracker
+(Back to top) 
+
+
+NoteTracker_StopAllPendingNotes : Send note offs for all pending notes in the tracker
+ 
+	• Declaration: function NoteTracker_StopAllPendingNotes (nt : NoteTracker)
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+(Back to top) 
+
+
+Notify : Displays a message on main window that will fade out
+ 
+	• Declaration: function Notify (s : string)
+	• Category: System
+	
+		Parameters
+		• s : string
+(Back to top) 
+
+
+OSC_AppendDoubleArg : Append a double argument to the OSC message
+ 
+	• Declaration: function OSC_AppendDoubleArg (m : OSCMessage, value : Double)
+	• Category: OSC
+	
+		Parameters
+		• m : OSCMessage
+		• value : Double
+(Back to top) 
+
+
+OSC_AppendIntArg : Append an integer argument to the OSC message
+ 
+	• Declaration: function OSC_AppendIntArg (m : OSCMessage, value : Integer)
+	• Category: OSC
+	
+		Parameters
+		• m : OSCMessage
+		• value : Integer
+(Back to top) 
+
+
+OSC_AppendStringArg : Append a string argument to the OSC message
+ 
+	• Declaration: function OSC_AppendStringArg (m : OSCMessage, value : String)
+	• Category: OSC
+	
+		Parameters
+		• m : OSCMessage
+		• value : String
+(Back to top) 
+
+
+OSC_ArgCount : Returns the number of arguments in an OSC message
+ 
+	• Declaration: function OSC_ArgCount (m : OSCMessage) returns int
+	• Category: OSC
+	
+		Parameters
+		• m : OSCMessage
+	• returns int
+(Back to top) 
+
+
+OSC_ClearArgs : Clear all arguments but leave the address pattern
+ 
+	• Declaration: function OSC_ClearArgs (m : OSCMessage)
+	• Category: OSC
+	
+		Parameters
+		• m : OSCMessage
+(Back to top) 
+
+
+OSC_Enabled : Returns whether OSC is enabled for this instance
+ 
+	• Declaration: function OSC_Enabled () returns Boolean
+	• Category: OSC
+	• returns Boolean
+(Back to top) 
+
+
+OSC_GetArgAsDouble : Returns the argument at the index - 0 based - as a double
+ 
+	• Declaration: function OSC_GetArgAsDouble (m : OSCMessage, index : integer) returns double
+	• Category: OSC
+	
+		Parameters
+		• m : OSCMessage
+		• index : integer
+	• returns double
+(Back to top) 
+
+
+OSC_GetArgAsInteger : Returns the argument at the index - 0 based - as an integer
+ 
+	• Declaration: function OSC_GetArgAsInteger (m : OSCMessage, index : integer) returns int
+	• Category: OSC
+	
+		Parameters
+		• m : OSCMessage
+		• index : integer
+	• returns int
+(Back to top) 
+
+
+OSC_GetArgAsString : Returns the argument at the index - 0 based - as a String
+ 
+	• Declaration: function OSC_GetArgAsString (m : OSCMessage, index : integer) returns String
+	• Category: OSC
+	
+		Parameters
+		• m : OSCMessage
+		• index : integer
+	• returns String
+(Back to top) 
+
+
+OSC_GetGPListeningPort : Return the port on which GP listens for incoming OSC messages
+ 
+	• Declaration: function OSC_GetGPListeningPort () returns Integer
+	• Category: OSC
+	• returns Integer
+(Back to top) 
+
+
+OSC_GetIPAddressFromTargetName : Returns the IP address or empty string if target does not exist
+ 
+	• Declaration: function OSC_GetIPAddressFromTargetName (targetName : String) Returns String
+	• Category: OSC
+	
+		Parameters
+		• targetName : String
+	• returns String
+(Back to top) 
+
+
+OSC_GetPortNumberFromTargetName : Returns the port number or -1 if target does not exist
+ 
+	• Declaration: function OSC_GetPortNumberFromTargetName (targetName : String) Returns Integer
+	• Category: OSC
+	
+		Parameters
+		• targetName : String
+	• returns Integer
+(Back to top) 
+
+
+OSC_GetTargetNames : Returns the list of available target names
+ 
+	• Declaration: function OSC_GetTargetNames () Returns String Array
+	• Category: OSC
+	• returns String
+(Back to top) 
+
+
+OSC_Send : Send out the message to the default IP address and port
+ 
+	• Declaration: function OSC_Send (m : OSCMessage)
+	• Category: OSC
+	
+		Parameters
+		• m : OSCMessage
+(Back to top) 
+
+
+OSC_SendCommand : Send an OSC message with no valueo the default ip address and port
+ 
+	• Declaration: function OSC_SendCommand (address : String) autotype
+	• Category: OSC
+	
+		Parameters
+		• address : String
+	• Autotype
+(Back to top) 
+
+
+OSC_SendCommandSpecific : Send an OSC message with no arguments to the specified ip address and port
+ 
+	• Declaration: function OSC_SendCommandSpecific (oscAddress : String, ipAddress : String, port : Integer) autotype
+	• Category: OSC
+	
+		Parameters
+		• oscAddress : String
+		• ipAddress : String
+		• port : Integer
+	• Autotype
+(Back to top) 
+
+
+OSC_SendDouble : Send an OSC message with a value of type double to the default ip address and port
+ 
+	• Declaration: function OSC_SendDouble (address : String, value : Double) autotype
+	• Category: OSC
+	
+		Parameters
+		• address : String
+		• value : Double
+	• Autotype
+(Back to top) 
+
+
+OSC_SendDoubleSpecific : Send an OSC message with a value of type double to the specified ip address and port
+ 
+	• Declaration: function OSC_SendDoubleSpecific (address : String, value : Double, ipAddress : String, port : Integer) autotype
+	• Category: OSC
+	
+		Parameters
+		• address : String
+		• value : Double
+		• ipAddress : String
+		• port : Integer
+	• Autotype
+(Back to top) 
+
+
+OSC_SendInteger : Send an OSC message with a value of type integer to the default ip address and port
+ 
+	• Declaration: function OSC_SendInteger (address : String, value : Integer) autotype
+	• Category: OSC
+	
+		Parameters
+		• address : String
+		• value : Integer
+	• Autotype
+(Back to top) 
+
+
+OSC_SendIntegerSpecific : Send an OSC message with a value of type integer to the specified ip address and port
+ 
+	• Declaration: function OSC_SendIntegerSpecific (address : String, value : Integer, ipAddress : String, port : Integer) autotype
+	• Category: OSC
+	
+		Parameters
+		• address : String
+		• value : Integer
+		• ipAddress : String
+		• port : Integer
+	• Autotype
+(Back to top) 
+
+
+OSC_SendSpecific : Send out the message to the specified IP address and port
+ 
+	• Declaration: function OSC_SendSpecific (m : OSCMessage, ipAddress : String, port : Integer)
+	• Category: OSC
+	
+		Parameters
+		• m : OSCMessage
+		• ipAddress : String
+		• port : Integer
+(Back to top) 
+
+
+OSC_SendString : Send an OSC message with a value of type String to the default ip address and port
+ 
+	• Declaration: function OSC_SendString (address : String, value : String) autotype
+	• Category: OSC
+	
+		Parameters
+		• address : String
+		• value : String
+	• Autotype
+(Back to top) 
+
+
+OSC_SendStringSpecific : Send an OSC message with a value of type String to the specified ip address and port
+ 
+	• Declaration: function OSC_SendStringSpecific (address : String, value : String, ipAddress : String, port : Integer) autotype
+	• Category: OSC
+	
+		Parameters
+		• address : String
+		• value : String
+		• ipAddress : String
+		• port : Integer
+	• Autotype
+(Back to top) 
+
+
+OSC_SetAddress : Set the address of an OSC message
+ 
+	• Declaration: function OSC_SetAddress (m : OSCMessage, address : String) autotype
+	• Category: OSC
+	
+		Parameters
+		• m : OSCMessage
+		• address : String
+	• Autotype
+(Back to top) 
+
+
+OSC_TargetNameExists : Returns whether a target name has been defined
+ 
+	• Declaration: function OSC_TargetNameExists (targetName : String) Returns Boolean
+	• Category: OSC
+	
+		Parameters
+		• targetName : String
+	• returns Boolean
+(Back to top) 
+
+
+OpenLogWindow : Open the log window - duh!
+ 
+	• Declaration: function OpenLogWindow ()
+	• Category: System
+(Back to top) 
+
+
+OpenPlugin : Open the plugin editor
+ 
+	• Declaration: function OpenPlugin (p : Block) autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+	• Autotype
+(Back to top) 
+
+
+OpenScriptWindow : Open the script editor window for the current rackspace
+ 
+	• Declaration: function OpenScriptWindow ()
+	• Category: System
+(Back to top) 
+
+
+OverrideParameterText : Override the default parameter string of the parameter displayed by a widget
+ 
+	• Declaration: function OverrideParameterText (p : parameter, value : String)
+	• Category: ScriptletBlock
+	
+		Parameters
+		• p : parameter
+		• value : String
+(Back to top) 
+
+
+Panic : Stop all notes in the current rackspace
+ 
+	• Declaration: function Panic ()
+	• Category: System
+(Back to top) 
+
+
+ParamToMidi : Maps an double value between 0.0 and 1.0 into an integer value between 0 and 127 and is a specialized (slightly) faster version of the generic Scale function
+ 
+	• Declaration: function ParamToMidi (m : Double) Returns Int
+	• Category: Math
+	
+		Parameters
+		• m : Double
+	• returns Int
+(Back to top) 
+
+
+ParamToMidiEx : Maps a double value between xMin and xMax - both between 0.0 and 1.0 - into a value between yMinMIDI and yMaxMIDI both with type integer and whose values will be constrained between 0 and 127. Slightly faster than Scale if you can use the expected types so that no conversion is required
+ 
+	• Declaration: function ParamToMidiEx (x : Double, xMin : Double, xMax : Double, yMinMIDI : Int, yMaxMIDI : Int) Autotype Returns Int
+	• Category: Math
+	
+		Parameters
+		• x : Double
+		• xMin : Double
+		• xMax : Double
+		• yMinMIDI : Int
+		• yMaxMIDI : Int
+	• Autotype
+	• returns Int
+(Back to top) 
+
+
+ParseCSVString : Breaksup a single line of a CSV into its parts
+ 
+	• Declaration: function ParseCSVString (line : String) Returns String Array
+	• Category: Strings
+	
+		Parameters
+		• line : String
+	• returns String
+(Back to top) 
+
+
+PlayNote : Send a noteOn event at startTimeMS and a noteOff event at durationMS later. If duration is less than 1 then we make it 1
+ 
+	• Declaration: function PlayNote (p : MidiInBlock, noteNumber : integer, velocity : integer, channel : integer, startTimeMS : integer, duration : integer)
+	• Category: System
+	
+		Parameters
+		• p : MidiInBlock
+		• noteNumber : integer
+		• velocity : integer
+		• channel : integer
+		• startTimeMS : integer
+		• duration : integer
+(Back to top) 
+
+
+PlayNote : Send a noteOn event at startTimeMS and a noteOff event at durationMS later. If duration is less than 1 then we make it 1
+ 
+	• Declaration: function PlayNote (noteNumber : integer, velocity : integer, channel : integer, startTimeMS : integer, duration : integer)
+	• Category: ScriptletBlock
+	
+		Parameters
+		• noteNumber : integer
+		• velocity : integer
+		• channel : integer
+		• startTimeMS : integer
+		• duration : integer
+(Back to top) 
+
+
+PlayNotes : Play a collection of note at startTimeMS and stop them durationMS later. If duration is less than 1 then we make it 1
+ 
+	• Declaration: function PlayNotes (p : MidiInBlock, noteNumbers : integer array, velocity : integer, channel : integer, startTimeMS : integer, duration : integer)
+	• Category: System
+	
+		Parameters
+		• p : MidiInBlock
+		• noteNumbers : integer array
+		• velocity : integer
+		• channel : integer
+		• startTimeMS : integer
+		• duration : integer
+(Back to top) 
+
+
+PlayNotes : Play a collection of note at startTimeMS and stop them durationMS later. If duration is less than 1 then we make it 1
+ 
+	• Declaration: function PlayNotes (noteNumbers : integer array, velocity : integer, channel : integer, startTimeMS : integer, duration : integer)
+	• Category: ScriptletBlock
+	
+		Parameters
+		• noteNumbers : integer array
+		• velocity : integer
+		• channel : integer
+		• startTimeMS : integer
+		• duration : integer
+(Back to top) 
+
+
+Power : Returns base raised to the power of exponent
+ 
+	• Declaration: function Power (base : double, exponent : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• base : double
+		• exponent : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+PrevSong : Move to the previous song
+ 
+	• Declaration: function PrevSong ()
+	• Category: Songs
+(Back to top) 
+
+
+Previous : Switch to previous rackspace variation song or song part
+ 
+	• Declaration: function Previous ()
+	• Category: Actions
+(Back to top) 
+
+
+PreviousRackspace : Switch to the previous rackspace
+ 
+	• Declaration: function PreviousRackspace ()
+	• Category: Rackspaces
+(Back to top) 
+
+
+PreviousVariation : Switch to the previous variation
+ 
+	• Declaration: function PreviousVariation ()
+	• Category: Rackspaces
+(Back to top) 
+
+
+Print : Displays the string in the log window
+ 
+	• Declaration: function Print (s : String) Autotype
+	• Category: System
+	
+		Parameters
+		• s : String
+	• Autotype
+(Back to top) 
+
+
+PromptToLoadGPUserPreset : Prompt to load a GP User Preset for the given plugin
+ 
+	• Declaration: function PromptToLoadGPUserPreset (p : Block) autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+	• Autotype
+(Back to top) 
+
+
+PromptToSaveGPUserPreset : Prompt to save a GP User Preset for the given plugin
+ 
+	• Declaration: function PromptToSaveGPUserPreset (p : Block) autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+	• Autotype
+(Back to top) 
+
+
+PushSnapshotToVariation : Update the underlying rackspace variation with the current song part overrides - fails silently if not in setlist mode
+ 
+	• Declaration: function PushSnapshotToVariation ()
+	• Category: Actions
+(Back to top) 
+
+
+QuickInsertPlugin : Uses the Quick Select Dialog to insert a new plugin 
+
+	• Declaration: function QuickInsertPlugin ()
+	• Category: WiringOperations
+(Back to top) 
+
+
+QuickReplaceSelectedPlugin : Use dialog to replace the plugin - if any - under the mouse
+ 
+	• Declaration: function QuickReplaceSelectedPlugin ()
+	• Category: WiringOperations
+(Back to top) 
+
+
+RGBToColor : Convert R G B A values between 0.0 and 1.0 into a color
+ 
+	• Declaration: function RGBToColor (red : double, green : double, blue : double, alpha : double) returns Integer
+	• Category: Graphics
+	
+		Parameters
+		• red : double
+		• green : double
+		• blue : double
+		• alpha : double
+	• returns Integer
+(Back to top) 
+
+
+Random : Returns a random value between 0.0 and 1.0
+ 
+	• Declaration: function Random () returns double
+	• Category: Math
+	• returns double
+(Back to top) 
+
+
+RandomRange : Returns a random integer value between min and max
+ 
+	• Declaration: function RandomRange (min : integer, max : integer) returns integer
+	• Category: Math
+	
+		Parameters
+		• min : integer
+		• max : integer
+	• returns integer
+(Back to top) 
+
+
+RecordInputs : Start or stop recording audio and/or MIDI
+ 
+	• Declaration: function RecordInputs (enable : boolean) deprecated "Use StartRecording() and StopRecording() instead."
+	• Warning -- This function is deprecated. Use StartRecording() and StopRecording() instead. 
+	• Category: System
+	
+		Parameters
+		• enable : boolean
+(Back to top) 
+
+
+RedrawWidgetCurve : Redraw the curve after making changes to it
+ 
+	• Declaration: function RedrawWidgetCurve (w : Widget)
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+(Back to top) 
+
+
+RefreshWidgetsMappedToPlugin : Update widget values to match their mapped parameters - useful when change to plugin preset does not notify the host
+ 
+	• Declaration: function RefreshWidgetsMappedToPlugin (p : Block) Autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+	• Autotype
+(Back to top) 
+
+
+ReinterpretAsAfterTouch : Reinterpret an arbitrary MIDI message - you need to know what you are doing
+ 
+	• Declaration: function ReinterpretAsAfterTouch (m : MidiMessage, UseThirdByte : boolean) autotype returns AftertouchMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+		• UseThirdByte : boolean
+	• Autotype
+	• returns AftertouchMessage
+(Back to top) 
+
+
+ReinterpretAsControllerMessage : Reinterpret an arbitrary MIDI message - you need to know what you are doing
+ 
+	• Declaration: function ReinterpretAsControllerMessage (m : MidiMessage) autotype returns ControlChangeMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns ControlChangeMessage
+(Back to top) 
+
+
+ReinterpretAsNoteOffMessage : Reinterpret an arbitrary MIDI message - you need to know what you are doing
+ 
+	• Declaration: function ReinterpretAsNoteOffMessage (m : MidiMessage) autotype returns NoteMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns NoteMessage
+(Back to top) 
+
+
+ReinterpretAsNoteOnMessage : Reinterpret an arbitrary MIDI message - you need to know what you are doing
+ 
+	• Declaration: function ReinterpretAsNoteOnMessage (m : MidiMessage) autotype returns NoteMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns NoteMessage
+(Back to top) 
+
+
+ReinterpretAsPitchBend : Reinterpret an arbitrary MIDI message - you need to know what you are doing
+ 
+	• Declaration: function ReinterpretAsPitchBend (m : MidiMessage) autotype returns PitchbendMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns PitchbendMessage
+(Back to top) 
+
+
+ReinterpretAsPolyTouchMessage : Reinterpret an arbitrary MIDI message - you need to know what you are doing
+ 
+	• Declaration: function ReinterpretAsPolyTouchMessage (m : MidiMessage) autotype returns PolyTouchMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+	• Autotype
+	• returns PolyTouchMessage
+(Back to top) 
+
+
+ReinterpretAsProgramChange : Reinterpret an arbitrary MIDI message - you need to know what you are doing
+ 
+	• Declaration: function ReinterpretAsProgramChange (m : MidiMessage , UseThirdByte : boolean) autotype returns ProgramChangeMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+		• UseThirdByte : boolean
+	• Autotype
+	• returns ProgramChangeMessage
+(Back to top) 
+
+
+RemoveChordInterval : Remove a chord interval from the chord dictionary
+ 
+	• Declaration: function RemoveChordInterval (cr : ChordRecognizer, interval : integer array)
+	• Category: NoteManagement
+	
+		Parameters
+		• cr : ChordRecognizer
+		• interval : integer array
+(Back to top) 
+
+
+RemoveLast : Remove the last item in the array and so reducing the array size by 1
+ 
+	• Declaration: function RemoveLast (a : array) autotype
+	• Category: Arrays
+	
+		Parameters
+		• a : array
+	• Autotype
+(Back to top) 
+
+
+RemoveSelectedPlugin : Removes the selected plugin - if any
+ 
+	• Declaration: function RemoveSelectedPlugin ()
+	• Category: WiringOperations
+(Back to top) 
+
+
+RenameSelectedPlugin : Opens the dialog to rename the selected plugin - if any
+ 
+	• Declaration: function RenameSelectedPlugin ()
+	• Category: WiringOperations
+(Back to top) 
+
+
+ReplacePlugin : Replace the plugin in the specified block - optionally load a preset if not blank value - experimental 
+
+	• Declaration: function ReplacePlugin (p : Block, fullPathToFilename : String, presetToLoad : String) autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• fullPathToFilename : String
+		• presetToLoad : String
+	• Autotype
+(Back to top) 
+
+
+ReplaceString : Replace a substring with another string
+ 
+	• Declaration: function ReplaceString (source : String, replaceThis : String, withThat : String, caseSensitive : Boolean) Returns String
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• replaceThis : String
+		• withThat : String
+		• caseSensitive : Boolean
+	• returns String
+(Back to top) 
+
+
+ReplaceStringSection : Extract a substring defined by startIndex and length and insert a new substring into that position
+ 
+	• Declaration: function ReplaceStringSection (source : String, startIndex : integer, length : integer, newSubstring : string) Returns String
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• startIndex : integer
+		• length : integer
+		• newSubstring : string
+	• returns String
+(Back to top) 
+
+
+ResetWidgetValue : Reset the widget to its default value - same as double clicking on the widget
+ 
+	• Declaration: function ResetWidgetValue (w : Widget) Autotype
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+	• Autotype
+(Back to top) 
+
+
+ResyncWidget : Resend the message to sync an external associated physical control with the widget
+ 
+	• Declaration: function ResyncWidget (p : Widget) Autotype
+	• Category: Widgets
+	
+		Parameters
+		• p : Widget
+	• Autotype
+(Back to top) 
+
+
+Reverse : Reverse the list of items in the array
+ 
+	• Declaration: function Reverse (a : array) autotype
+	• Category: Arrays
+	
+		Parameters
+		• a : array
+	• Autotype
+(Back to top) 
+
+
+Round : Rounds a floating point number to the nearest integer
+ 
+	• Declaration: function Round (x : Double) Autotype Returns Int
+	• Category: Math
+	
+		Parameters
+		• x : Double
+	• Autotype
+	• returns Int
+(Back to top) 
+
+
+SM_ChangeValue : Change a byte of a sysex message at some index starting at 0. Note that the F0 and F7 bytes cannot themselves be changed 
+
+	• Declaration: function SM_ChangeValue (sm : SysexMessage, index : integer, newValue : integer)
+	• Category: Sysex
+	
+		Parameters
+		• sm : SysexMessage
+		• index : integer
+		• newValue : integer
+(Back to top) 
+
+
+SM_CreateSysex : Store a sysex message efficiently for manipulation and sending
+ 
+	• Declaration: function SM_CreateSysex (sm : SysexManager, m : SysexMessage) Autotype deprecated "It is no longer necessary to create sysex objects"
+	• Warning -- This function is deprecated. It is no longer necessary to create sysex objects 
+	• Category: Sysex
+	
+		Parameters
+		• sm : SysexManager
+		• m : SysexMessage
+	• Autotype
+(Back to top) 
+
+
+SM_CreateSysexFromString : Interpret a string as a sysex and store it for manipulation and sending
+ 
+	• Declaration: function SM_CreateSysexFromString (sm : SysexManager, s : string) deprecated "Strings can now be assigned directly to variables of type SysexMessage"
+	• Warning -- This function is deprecated. Strings can now be assigned directly to variables of type SysexMessage 
+	• Category: Sysex
+	
+		Parameters
+		• sm : SysexManager
+		• s : string
+(Back to top) 
+
+
+SM_GetByte : Gets the byte at the specified index
+ 
+	• Declaration: function SM_GetByte (sm : SysexMessage, index : integer) returns integer deprecated "Use SM_GetValue"
+	• Warning -- This function is deprecated. Use SM_GetValue 
+	• Category: Sysex
+	
+		Parameters
+		• sm : SysexMessage
+		• index : integer
+	• returns integer
+(Back to top) 
+
+
+SM_GetValue : Gets the byte at the specified index
+ 
+	• Declaration: function SM_GetValue (sm : SysexMessage, index : integer) returns integer
+	• Category: Sysex
+	
+		Parameters
+		• sm : SysexMessage
+		• index : integer
+	• returns integer
+(Back to top) 
+
+
+SM_GetValues : Gets the combined bytes starting at the specified index
+ 
+	• Declaration: function SM_GetValues (sm : SysexMessage, first : integer, second : integer) returns integer
+	• Category: Sysex
+	
+		Parameters
+		• sm : SysexMessage
+		• first : integer
+		• second : integer
+	• returns integer
+(Back to top) 
+
+
+SM_Length : Returns the length of a system message
+ 
+	• Declaration: function SM_Length (sm : SysexMessage) returns integer
+	• Category: Sysex
+	
+		Parameters
+		• sm : SysexMessage
+	• returns integer
+(Back to top) 
+
+
+SM_Pretty : Returns a nicely formatted sysex message - possibly breaking it up into small blocks between 1 and 8 - blocksize of 0 will display indexing
+ 
+	• Declaration: function SM_Pretty (m : SysexMessage, blockSize : integer, uppercase : boolean) returns String
+	• Category: Sysex
+	
+		Parameters
+		• m : SysexMessage
+		• blockSize : integer
+		• uppercase : boolean
+	• returns String
+(Back to top) 
+
+
+SM_SendMidiIn : Send a stored sysex message from a MidiIn block
+ 
+	• Declaration: function SM_SendMidiIn (sm : SysexMessage, midiIn : MidiInBlock) deprecated "Use SendSysexInternalNow"
+	• Warning -- This function is deprecated. Use SendSysexInternalNow 
+	• Category: Sysex
+	
+		Parameters
+		• sm : SysexMessage
+		• midiIn : MidiInBlock
+(Back to top) 
+
+
+SM_SendMidiOut : Send a stored sysex message from a MidiOut block to an external MIDI device
+ 
+	• Declaration: function SM_SendMidiOut (sm : SysexMessage, midiOut : MidiOutBlock) deprecated "SendSysexExternal"
+	• Warning -- This function is deprecated. SendSysexExternal 
+	• Category: Sysex
+	
+		Parameters
+		• sm : SysexMessage
+		• midiOut : MidiOutBlock
+(Back to top) 
+
+
+SM_SendMidiOutNow : Send a sysex message through a MidiOut block to an external MIDI device
+ 
+	• Declaration: function SM_SendMidiOutNow (midiOut : MidiOutBlock, sm : SysexMessage) deprecated "SendSysexExternal"
+	• Warning -- This function is deprecated. SendSysexExternal 
+	• Category: Sysex
+	
+		Parameters
+		• midiOut : MidiOutBlock
+		• sm : SysexMessage
+(Back to top) 
+
+
+SaveGPPreset : Saves a GP plugin preset in the background - seriously experimental and probably very unsafe - no way to tell programatically if it was successful
+ 
+	• Declaration: function SaveGPPreset (p : Block, presetName : String) autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• presetName : String
+	• Autotype
+(Back to top) 
+
+
+SaveGigfile : Tries to save the gigfile - displays message in main window indicating success or failure
+ 
+	• Declaration: function SaveGigfile ()
+	• Category: Actions
+(Back to top) 
+
+
+SaveStringToTextFile : Save a string to a file - experimental and unsupported - this could easily blow up Gig Performer or overwrite - returns whether saved
+ 
+	• Declaration: function SaveStringToTextFile (filename : String, text : String) returns Boolean
+	• Category: Strings
+	
+		Parameters
+		• filename : String
+		• text : String
+	• returns Boolean
+(Back to top) 
+
+
+Scale : Maps a value between xMin and xMax into a value between yMin and yMax. Integers will be converted to doubles. See MidiToParam and ParamToMidi for slightly faster implementations
+ 
+	• Declaration: function Scale (x : Double, xMin : Double, xMax : Double, yMin : Double, yMax : Double) Autotype Returns Double
+	• Category: Math
+	
+		Parameters
+		• x : Double
+		• xMin : Double
+		• xMax : Double
+		• yMin : Double
+		• yMax : Double
+	• Autotype
+	• returns Double
+(Back to top) 
+
+
+ScaleInt : Maps a value between xMin and xMax into a value between yMin and yMax. Doubles will be truncated to integers. See MidiToParam and ParamToMidi for slightly faster implementations
+ 
+	• Declaration: function ScaleInt (x : Integer, xMin : Integer, xMax : Integer, yMin : Integer, yMax : Integer) Autotype Returns Integer
+	• Category: Math
+	
+		Parameters
+		• x : Integer
+		• xMin : Integer
+		• xMax : Integer
+		• yMin : Integer
+		• yMax : Integer
+	• Autotype
+	• returns Integer
+(Back to top) 
+
+
+ScaleRange : Maps a double value between 0.0 and 1.0 into a rounded integer value between yMin and yMax
+ 
+	• Declaration: function ScaleRange (x : Double, yMin : Integer, yMax : Integer) Autotype Returns Integer
+	• Category: Math
+	
+		Parameters
+		• x : Double
+		• yMin : Integer
+		• yMax : Integer
+	• Autotype
+	• returns Integer
+(Back to top) 
+
+
+ScaleRangeEx : Maps a double value between xMin and xMax into a rounded integer value between yMin and yMax
+ 
+	• Declaration: function ScaleRangeEx (x : Double, xMin : Double, xMax : Double, yMin : Integer, yMax : Integer) Autotype Returns Integer
+	• Category: Math
+	
+		Parameters
+		• x : Double
+		• xMin : Double
+		• xMax : Double
+		• yMin : Integer
+		• yMax : Integer
+	• Autotype
+	• returns Integer
+(Back to top) 
+
+
+ScheduleMidiEvent : Schedule a MIDI event to be reprocessed at some specified time in the future
+ 
+	• Declaration: function ScheduleMidiEvent (p : MidiInBlock, m : midiMessage, delayInMS : double) Autotype
+	• Category: System
+	
+		Parameters
+		• p : MidiInBlock
+		• m : midiMessage
+		• delayInMS : double
+	• Autotype
+(Back to top) 
+
+
+ScrollFrontPanel : Scroll the main panel to the given position as a fraction of the total height
+ 
+	• Declaration: function ScrollFrontPanel (toPostion : double)
+	• Category: Actions
+	
+		Parameters
+		• toPostion : double
+(Back to top) 
+
+
+ScrollRackspaces : Scroll the rackspace view to the given position as a fraction of the total height
+ 
+	• Declaration: function ScrollRackspaces (toPostion : double)
+	• Category: Actions
+	
+		Parameters
+		• toPostion : double
+(Back to top) 
+
+
+ScrollSetlist : Scroll the setlist view to the given position as a fraction of the total height
+ 
+	• Declaration: function ScrollSetlist (toPostion : double)
+	• Category: Actions
+	
+		Parameters
+		• toPostion : double
+(Back to top) 
+
+
+SelectPreset : Change the preset of the block - experimental
+ 
+	• Declaration: function SelectPreset (p : Block, index : Int) autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• index : Int
+	• Autotype
+(Back to top) 
+
+
+SendLater : Schedule a MIDI event to be sent out at some specified time in the future
+ 
+	• Declaration: function SendLater (p : MidiInBlock, m : midiMessage, delayInMS : double) Autotype
+	• Category: System
+	
+		Parameters
+		• p : MidiInBlock
+		• m : midiMessage
+		• delayInMS : double
+	• Autotype
+(Back to top) 
+
+
+SendLater : Schedule a MIDI event to be sent out in the future - only for use in a Scriptlet
+ 
+	• Declaration: function SendLater (m : midiMessage, delayInMS : double) Autotype
+	• Category: ScriptletBlock
+	
+		Parameters
+		• m : midiMessage
+		• delayInMS : double
+	• Autotype
+(Back to top) 
+
+
+SendNoteMessageWithTranspositionsLater : Send multiple MIDI noteon or noteoff events out some milliseconds later using note number added to each offset in the array
+ 
+	• Declaration: function SendNoteMessageWithTranspositionsLater (p : MidiInBlock, m : NoteMessage, transpositions : integer array, delayInMS : double)
+	• Category: System
+	
+		Parameters
+		• p : MidiInBlock
+		• m : NoteMessage
+		• transpositions : integer array
+		• delayInMS : double
+(Back to top) 
+
+
+SendNoteMessageWithTranspositionsNow : Send multiple note on or note off events out immediately using note number added to each offset in the array
+ 
+	• Declaration: function SendNoteMessageWithTranspositionsNow (p : MidiInBlock, m : NoteMessage, transpositions : integer array)
+	• Category: System
+	
+		Parameters
+		• p : MidiInBlock
+		• m : NoteMessage
+		• transpositions : integer array
+(Back to top) 
+
+
+SendNoteMessagesLater : Create a chord of note on or off events using the array of note numbers and send it out some milliseconds later
+ 
+	• Declaration: function SendNoteMessagesLater (p : MidiInBlock, noteNumbers : integer array, velocity : integer, channel : integer, delayInMS : double)
+	• Category: System
+	
+		Parameters
+		• p : MidiInBlock
+		• noteNumbers : integer array
+		• velocity : integer
+		• channel : integer
+		• delayInMS : double
+(Back to top) 
+
+
+SendNoteMessagesNow : Create a chord of note on or off events using the array of note numbers and send it out immediately
+ 
+	• Declaration: function SendNoteMessagesNow (p : MidiInBlock, noteNumbers : integer array, velocity : integer, channel : integer)
+	• Category: System
+	
+		Parameters
+		• p : MidiInBlock
+		• noteNumbers : integer array
+		• velocity : integer
+		• channel : integer
+(Back to top) 
+
+
+SendNotesNow : Play a collection of notes now
+ 
+	• Declaration: function SendNotesNow (noteNumbers : integer array, velocity : integer, channel : integer)
+	• Category: ScriptletBlock
+	
+		Parameters
+		• noteNumbers : integer array
+		• velocity : integer
+		• channel : integer
+(Back to top) 
+
+
+SendNow : Send a MIDI event out immediately
+ 
+	• Declaration: function SendNow (p : MidiInBlock, m : midiMessage) Autotype
+	• Category: MIDI
+	
+		Parameters
+		• p : MidiInBlock
+		• m : midiMessage
+	• Autotype
+(Back to top) 
+
+
+SendNow : Send a MIDI event out immediately - only for use in a Scriptlet
+ 
+	• Declaration: function SendNow (m : midiMessage) Autotype
+	• Category: ScriptletBlock
+	
+		Parameters
+		• m : midiMessage
+	• Autotype
+(Back to top) 
+
+
+SendNowExternal : Send a MIDI event out immediately through a MIDI Out block
+ 
+	• Declaration: function SendNowExternal (p : MidiOutBlock, m : midiMessage) Autotype
+	• Category: System
+	
+		Parameters
+		• p : MidiOutBlock
+		• m : midiMessage
+	• Autotype
+(Back to top) 
+
+
+SendNowRespectingParameters : Send a MIDI event out after applying MidiInBlock parameters
+ 
+	• Declaration: function SendNowRespectingParameters (p : MidiInBlock, m : midiMessage) Autotype
+	• Category: System
+	
+		Parameters
+		• p : MidiInBlock
+		• m : midiMessage
+	• Autotype
+(Back to top) 
+
+
+SendNowToMidiOutDevice : Send a MIDI event out immediately through a physical MIDI Out device
+ 
+	• Declaration: function SendNowToMidiOutDevice (deviceName : String, m : midiMessage) Autotype
+	• Category: MIDI
+	
+		Parameters
+		• deviceName : String
+		• m : midiMessage
+	• Autotype
+(Back to top) 
+
+
+SendSysexExternal : Send a MIDI sysex message out immediately through a MIDI Out block
+ 
+	• Declaration: function SendSysexExternal (p : MidiOutBlock, m : SysexMessage)
+	• Category: Sysex
+	
+		Parameters
+		• p : MidiOutBlock
+		• m : SysexMessage
+(Back to top) 
+
+
+SendSysexInternal : Send a MIDI sysex message out immediately from a MIDI In block
+ 
+	• Declaration: function SendSysexInternal (p : MidiInBlock, m : SysexMessage) deprecated "Use SendSysexInternalNow"
+	• Warning -- This function is deprecated. Use SendSysexInternalNow 
+	• Category: Sysex
+	
+		Parameters
+		• p : MidiInBlock
+		• m : SysexMessage
+(Back to top) 
+
+
+SendSysexInternalLater : Send a MIDI sysex message out at some specified time in the future from a MIDI In block
+ 
+	• Declaration: function SendSysexInternalLater (p : MidiInBlock, m : SysexMessage, delayInMS : double)
+	• Category: Sysex
+	
+		Parameters
+		• p : MidiInBlock
+		• m : SysexMessage
+		• delayInMS : double
+(Back to top) 
+
+
+SendSysexInternalNow : Send a MIDI sysex message out immediately from a MIDI In block
+ 
+	• Declaration: function SendSysexInternalNow (p : MidiInBlock, m : SysexMessage)
+	• Category: Sysex
+	
+		Parameters
+		• p : MidiInBlock
+		• m : SysexMessage
+(Back to top) 
+
+
+SendSysexNow : Send a MIDI sysex message out immediately 
+
+	• Declaration: function SendSysexNow (m : SysexMessage) Autotype
+	• Category: ScriptletBlock
+	
+		Parameters
+		• m : SysexMessage
+	• Autotype
+(Back to top) 
+
+
+SendSysexNowToMidiOutDevice : Send a MIDI sysex message out immediately through a MIDI output device
+ 
+	• Declaration: function SendSysexNowToMidiOutDevice (deviceName : String, m : SysexMessage) Autotype
+	• Category: Sysex
+	
+		Parameters
+		• deviceName : String
+		• m : SysexMessage
+	• Autotype
+(Back to top) 
+
+
+SendWidgetToBack : Put this widget behind other widgets
+ 
+	• Declaration: function SendWidgetToBack (w : Widget)
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+(Back to top) 
+
+
+SendWidgetToFront : Put this widget in front of other widgets
+ 
+	• Declaration: function SendWidgetToFront (w : Widget)
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+(Back to top) 
+
+
+SetADSRAttackLevel : Set the maximum volume level of the attack phase of an ADSR
+ 
+	• Declaration: function SetADSRAttackLevel (f : ADSR, level : double)
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+		• level : double
+(Back to top) 
+
+
+SetADSRAttackTime : Set the time in milliseconds of the attack phase of an ADSR
+ 
+	• Declaration: function SetADSRAttackTime (f : ADSR, milliseconds : int)
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+		• milliseconds : int
+(Back to top) 
+
+
+SetADSRDecayTime : Set the time in milliseconds of the decay phase of an ADSR
+ 
+	• Declaration: function SetADSRDecayTime (f : ADSR, milliseconds : int)
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+		• milliseconds : int
+(Back to top) 
+
+
+SetADSRReleaseTime : Set the time in milliseconds of the total release time of an ADSR
+ 
+	• Declaration: function SetADSRReleaseTime (f : ADSR, milliseconds : int)
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+		• milliseconds : int
+(Back to top) 
+
+
+SetADSRSustainLevel : Set the level of the sustain phase of an ADSR
+ 
+	• Declaration: function SetADSRSustainLevel (f : ADSR, level : double)
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+		• level : double
+(Back to top) 
+
+
+SetArtistName : Change the name of artist for the song at the specified index
+ 
+	• Declaration: function SetArtistName (songIndex : integer, newName : string)
+	• Category: Songs
+	
+		Parameters
+		• songIndex : integer
+		• newName : string
+(Back to top) 
+
+
+SetBPM : Set the global BPM value
+ 
+	• Declaration: function SetBPM (bpm : double) Autotype
+	• Category: System
+	
+		Parameters
+		• bpm : double
+	• Autotype
+(Back to top) 
+
+
+SetDisplayMessage : Displays a message at the bottom of a Scriptlet editor window
+ 
+	• Declaration: function SetDisplayMessage (value : String)
+	• Category: ScriptletBlock
+	
+		Parameters
+		• value : String
+(Back to top) 
+
+
+SetEnvVariable : Set an environment variable - be careful - may not be persistent
+ 
+	• Declaration: function SetEnvVariable (name : String, value : String)
+	• Category: Strings
+	
+		Parameters
+		• name : String
+		• value : String
+(Back to top) 
+
+
+SetExternalWidgetHideOnPresentation : Set the current hide state of an external widget
+ 
+	• Declaration: function SetExternalWidgetHideOnPresentation (ew : ExternalWidget, hide : Boolean )
+	• Category: Widgets
+	
+		Parameters
+		• ew : ExternalWidget
+		• hide : Boolean
+(Back to top) 
+
+
+SetExternalWidgetLabel : Set the current label of an external widget
+ 
+	• Declaration: function SetExternalWidgetLabel (ew : ExternalWidget, newValue : String )
+	• Category: Widgets
+	
+		Parameters
+		• ew : ExternalWidget
+		• newValue : String
+(Back to top) 
+
+
+SetExternalWidgetValue : Set the current value of an external widget
+ 
+	• Declaration: function SetExternalWidgetValue (ew : ExternalWidget, newValue : Double )
+	• Category: Widgets
+	
+		Parameters
+		• ew : ExternalWidget
+		• newValue : Double
+(Back to top) 
+
+
+SetExternalWidgetValueEx : Set the current value of an external widget - uses modulo arithmetic
+ 
+	• Declaration: function SetExternalWidgetValueEx (ew : ExternalWidget, newValue : Double )
+	• Category: Widgets
+	
+		Parameters
+		• ew : ExternalWidget
+		• newValue : Double
+(Back to top) 
+
+
+SetGPWindowFullScreen : Make the GP window be full screen or not fullscreen
+ 
+	• Declaration: function SetGPWindowFullScreen (fullScreen : boolean)
+	• Category: Windows
+	
+		Parameters
+		• fullScreen : boolean
+(Back to top) 
+
+
+SetGPWindowKioskMode : Make the GP window be kiosk or not kiosk
+ 
+	• Declaration: function SetGPWindowKioskMode (kiosk : boolean)
+	• Category: Windows
+	
+		Parameters
+		• kiosk : boolean
+(Back to top) 
+
+
+SetGPWindowState : Set the state of the main window
+ 
+	• Declaration: function SetGPWindowState (state : string)
+	• Category: Windows
+	
+		Parameters
+		• state : string
+(Back to top) 
+
+
+SetGeneratorCoarseness : Controls the jitter time of a callback (trading off accuracy against CPU cycles)
+ 
+	• Declaration: function SetGeneratorCoarseness (f : Generator, milliseconds : int ) Autotype
+	• Category: Generators
+	
+		Parameters
+		• f : Generator
+		• milliseconds : int
+	• Autotype
+(Back to top) 
+
+
+SetGeneratorFrequency : Set the frequency in cycles/second of any Generator
+ 
+	• Declaration: function SetGeneratorFrequency (f : Generator, hertz : double) Autotype
+	• Category: Generators
+	
+		Parameters
+		• f : Generator
+		• hertz : double
+	• Autotype
+(Back to top) 
+
+
+SetGeneratorLength : Set the length of a generator cycle
+ 
+	• Declaration: function SetGeneratorLength (f : Generator, milliseconds : int) Autotype
+	• Category: Generators
+	
+		Parameters
+		• f : Generator
+		• milliseconds : int
+	• Autotype
+(Back to top) 
+
+
+SetGeneratorOneShot : Controls whether a Generator repeats indefinitely or only runs once when triggered
+ 
+	• Declaration: function SetGeneratorOneShot (f : Generator, oneshot : boolean) Autotype
+	• Category: Generators
+	
+		Parameters
+		• f : Generator
+		• oneshot : boolean
+	• Autotype
+(Back to top) 
+
+
+SetGlobalTranspose : Transpose all incoming MIDI messages by semitones amount
+ 
+	• Declaration: function SetGlobalTranspose ( semitones : integer)
+	• Category: System
+	
+		Parameters
+		• semitones : integer
+(Back to top) 
+
+
+SetInfoMessage : Defines an info message to be displayed when user clicks on I button
+ 
+	• Declaration: function SetInfoMessage (value : String)
+	• Category: ScriptletBlock
+	
+		Parameters
+		• value : String
+(Back to top) 
+
+
+SetLabelColor : Set the label color of a widgets 
+
+	• Declaration: function SetLabelColor (w : Widget, color : Integer)
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• color : Integer
+(Back to top) 
+
+
+SetMetronomeVolume : Set the metronome volume
+ 
+	• Declaration: function SetMetronomeVolume (volume : double)
+	• Category: System
+	
+		Parameters
+		• volume : double
+(Back to top) 
+
+
+SetParameter : Send a parameter value to the plugin block
+ 
+	• Declaration: function SetParameter (p : Block, index : Int, value : double) Autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• index : Int
+		• value : double
+	• Autotype
+(Back to top) 
+
+
+SetPluginBypassed : Bypass or unbypass the plugin block
+ 
+	• Declaration: function SetPluginBypassed (p : Block, bypass : Boolean) autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• bypass : Boolean
+	• Autotype
+(Back to top) 
+
+
+SetPluginCaption : Sets the caption displayed in the plugin block
+ 
+	• Declaration: function SetPluginCaption (p : Block, newCaption : string) autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• newCaption : string
+	• Autotype
+(Back to top) 
+
+
+SetPluginEditorXYPosition : Open a plugin editor and set its position on screen 
+
+	• Declaration: function SetPluginEditorXYPosition (p : Block, x : integer, y : integer) autotype
+	• Category: Plugins
+	
+		Parameters
+		• p : Block
+		• x : integer
+		• y : integer
+	• Autotype
+(Back to top) 
+
+
+SetSongInformation : Change multiple attributes of a song at the specified index - invalid parameters will be ignored
+ 
+	• Declaration: function SetSongInformation (songIndex : integer, songName : string, artistName : string, BPM : double, key : Integer, scale : String, sigNumerator : integer, sigDenominator : integer)
+	• Category: Songs
+	
+		Parameters
+		• songIndex : integer
+		• songName : string
+		• artistName : string
+		• BPM : double
+		• key : Integer
+		• scale : String
+		• sigNumerator : integer
+		• sigDenominator : integer
+(Back to top) 
+
+
+SetSongName : Change the name of a song at the specified index
+ 
+	• Declaration: function SetSongName (songIndex : integer, newName : string)
+	• Category: Songs
+	
+		Parameters
+		• songIndex : integer
+		• newName : string
+(Back to top) 
+
+
+SetSongPart : Switch to another part in the current song
+ 
+	• Declaration: function SetSongPart (index : integer)
+	• Category: Songs
+	
+		Parameters
+		• index : integer
+(Back to top) 
+
+
+SetSongPartName : Change the name of the song part at songpart index in a song at the specified song index
+ 
+	• Declaration: function SetSongPartName (songIndex : Integer, songPartIndex : integer, newName : string)
+	• Category: Songs
+	
+		Parameters
+		• songIndex : Integer
+		• songPartIndex : integer
+		• newName : string
+(Back to top) 
+
+
+SetTimeSignatureDenominator : Set the denominator of global time signature 
+
+	• Declaration: function SetTimeSignatureDenominator (denominator : integer)
+	• Category: System
+	
+		Parameters
+		• denominator : integer
+(Back to top) 
+
+
+SetTimeSignatureNumerator : Set the numerator of the global time signature 
+
+	• Declaration: function SetTimeSignatureNumerator (numerator : integer)
+	• Category: System
+	
+		Parameters
+		• numerator : integer
+(Back to top) 
+
+
+SetTimersRunning : Start or stop the global timers
+ 
+	• Declaration: function SetTimersRunning (run : boolean)
+	• Category: Generators
+	
+		Parameters
+		• run : boolean
+(Back to top) 
+
+
+SetVariation : Switch to another variation in the active rackspace using zero based offsets
+ 
+	• Declaration: function SetVariation (index : integer)
+	• Category: Rackspaces
+	
+		Parameters
+		• index : integer
+(Back to top) 
+
+
+SetVariationByName : Switch to another variation in the active rackspace using the variation name
+ 
+	• Declaration: function SetVariationByName (name : String)
+	• Category: Rackspaces
+	
+		Parameters
+		• name : String
+(Back to top) 
+
+
+SetWidgetBounds : Set a widget x y width height on a panel from the first four fields of the bound array
+ 
+	• Declaration: function SetWidgetBounds (w : Widget, bounds : integer array)
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• bounds : integer array
+(Back to top) 
+
+
+SetWidgetBoundsFromOtherWidget : Make the target widget have the same position and size as the source
+ 
+	• Declaration: function SetWidgetBoundsFromOtherWidget (target : Widget, source : widget)
+	• Category: Widgets
+	
+		Parameters
+		• target : Widget
+		• source : widget
+(Back to top) 
+
+
+SetWidgetCurveValue : Returns the value of a widget after applying the scale curve to it
+ 
+	• Declaration: function SetWidgetCurveValue (w : Widget, x : double, y : double) Autotype
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• x : double
+		• y : double
+	• Autotype
+(Back to top) 
+
+
+SetWidgetFillColor : Set the fill color for widgets that support this feature
+ 
+	• Declaration: function SetWidgetFillColor (w : Widget, color : Integer)
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• color : Integer
+(Back to top) 
+
+
+SetWidgetHideOnPresentation : Set widget to be hidden when not in edit mode
+ 
+	• Declaration: function SetWidgetHideOnPresentation (w : Widget, hide : Boolean)
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• hide : Boolean
+(Back to top) 
+
+
+SetWidgetLabel : Set the label of a widget
+ 
+	• Declaration: function SetWidgetLabel (w : Widget, text : String) autotype
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• text : String
+	• Autotype
+(Back to top) 
+
+
+SetWidgetOutlineColor : Set the outline color for widgets that support this feature
+ 
+	• Declaration: function SetWidgetOutlineColor (w : Widget, color : Integer)
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• color : Integer
+(Back to top) 
+
+
+SetWidgetOutlineRoundness : Set the outline roundness for widgets that support this feature
+ 
+	• Declaration: function SetWidgetOutlineRoundness (w : Widget, roundness : Integer)
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• roundness : Integer
+(Back to top) 
+
+
+SetWidgetOutlineThickness : Set the outline thickness for widgets that support this feature
+ 
+	• Declaration: function SetWidgetOutlineThickness (w : Widget, thickness : Integer)
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• thickness : Integer
+(Back to top) 
+
+
+SetWidgetResetValue : Set the reset value of any widget
+ 
+	• Declaration: function SetWidgetResetValue (w : Widget, value : double) Autotype
+	• Category: Widgets
+	
+		Parameters
+		• w : Widget
+		• value : double
+	• Autotype
+(Back to top) 
+
+
+SetWidgetValue : Set the current value of any widget
+ 
+	• Declaration: function SetWidgetValue (p : Widget, value : double) Autotype
+	• Category: Widgets
+	
+		Parameters
+		• p : Widget
+		• value : double
+	• Autotype
+(Back to top) 
+
+
+SetWidgetValueEx : Set the current value of any widget - uses modulo arithmetic
+ 
+	• Declaration: function SetWidgetValueEx (p : Widget, value : double) Autotype
+	• Category: Widgets
+	
+		Parameters
+		• p : Widget
+		• value : double
+	• Autotype
+(Back to top) 
+
+
+SetWindowTitle : Changes the default rackspace title to the title
+ 
+	• Declaration: function SetWindowTitle (title : string)
+	• Category: System
+	
+		Parameters
+		• title : string
+(Back to top) 
+
+
+Shell : Run an OS Shell command synchronously returning an implementation defined integer indicating success or failure
+ 
+	• Declaration: function Shell (command : String) returns integer
+	• Category: System
+	
+		Parameters
+		• command : String
+	• returns integer
+(Back to top) 
+
+
+ShellEx : Run an OS Shell command (Mac only) that returns the output of the command
+ 
+	• Declaration: function ShellEx (command : String) returns String
+	• Category: System
+	
+		Parameters
+		• command : String
+	• returns String
+(Back to top) 
+
+
+ShiftKeyDown : See if shift key is down
+ 
+	• Declaration: function ShiftKeyDown () Returns Boolean
+	• Category: System
+	• returns Boolean
+(Back to top) 
+
+
+ShowChordProWindow : Show or hide the ChordPro Window
+ 
+	• Declaration: function ShowChordProWindow (show : boolean)
+	• Category: System
+	
+		Parameters
+		• show : boolean
+(Back to top) 
+
+
+ShowEditorForSelectedPlugin : Open the editor for the selected plugin - if any
+ 
+	• Declaration: function ShowEditorForSelectedPlugin ()
+	• Category: WiringOperations
+(Back to top) 
+
+
+ShowGlobalRackspace : Show or hide the global rackspace front panel
+ 
+	• Declaration: function ShowGlobalRackspace (show : boolean)
+	• Category: Actions
+	
+		Parameters
+		• show : boolean
+(Back to top) 
+
+
+ShowRigManager : Open or close the Rig Manager window
+ 
+	• Declaration: function ShowRigManager (show : Boolean)
+	• Category: Actions
+	
+		Parameters
+		• show : Boolean
+(Back to top) 
+
+
+Sign : Returns 1 if x > 0 -1 if x < 0 0 if x = 0
+ 
+	• Declaration: function Sign (x : double) autotype returns integer
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns integer
+(Back to top) 
+
+
+Sin : Returns the sin of x
+ 
+	• Declaration: function Sin (x : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+Size : Returns the size of an array
+ 
+	• Declaration: function Size (a : array) autotype returns integer
+	• Category: Arrays
+	
+		Parameters
+		• a : array
+	• Autotype
+	• returns integer
+(Back to top) 
+
+
+Sleep : Delay a script for specified milliseconds - experimental - maybe even dangerous
+ 
+	• Declaration: function Sleep (milliseconds : integer)
+	• Category: System
+	
+		Parameters
+		• milliseconds : integer
+(Back to top) 
+
+
+SmallestDouble : Returns the minimum value in a double array
+ 
+	• Declaration: function SmallestDouble (a : Double array) returns Double
+	• Category: Arrays
+	
+		Parameters
+		• a : Double array
+	• returns Double
+(Back to top) 
+
+
+SmallestInt : Returns the minimum value in an integer array
+ 
+	• Declaration: function SmallestInt (a : Integer array) returns integer
+	• Category: Arrays
+	
+		Parameters
+		• a : Integer array
+	• returns integer
+(Back to top) 
+
+
+SongMoveDown : Move to the next part or next song if allowed
+ 
+	• Declaration: function SongMoveDown ()
+	• Category: Songs
+(Back to top) 
+
+
+SongMoveUp : Move to the previous part or previous song if allowed
+ 
+	• Declaration: function SongMoveUp ()
+	• Category: Songs
+(Back to top) 
+
+
+SongNextPart : Move to the next song part of the current song
+ 
+	• Declaration: function SongNextPart ()
+	• Category: Songs
+(Back to top) 
+
+
+SongPrevPart : Move to the previous song part of the current song
+ 
+	• Declaration: function SongPrevPart ()
+	• Category: Songs
+(Back to top) 
+
+
+Sort : Sorts an array in ascending order
+ 
+	• Declaration: function Sort (a : array, ascending : boolean) autotype
+	• Category: Arrays
+	
+		Parameters
+		• a : array
+		• ascending : boolean
+	• Autotype
+(Back to top) 
+
+
+Sqrt : Returns the square root of x
+ 
+	• Declaration: function Sqrt (x : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+StartAttackPhase : Trigger the ADS phase of an ADSR
+ 
+	• Declaration: function StartAttackPhase (f : ADSR)
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+(Back to top) 
+
+
+StartRecording : Start recording now
+ 
+	• Declaration: function StartRecording ()
+	• Category: System
+(Back to top) 
+
+
+StartReleasePhase : Trigger the release phase of the ADSR
+ 
+	• Declaration: function StartReleasePhase (f : ADSR)
+	• Category: Generators
+	
+		Parameters
+		• f : ADSR
+(Back to top) 
+
+
+StopAllPendingNotes : Send note offs for all pending notes in the tracker
+ 
+	• Declaration: function StopAllPendingNotes (m : MidiInBlock, nt : NoteTracker) deprecated "Use NoteTracker_StopAllPendingNotes"
+	• Warning -- This function is deprecated. Use NoteTracker_StopAllPendingNotes 
+	• Category: NoteTracker
+	
+		Parameters
+		• m : MidiInBlock
+		• nt : NoteTracker
+(Back to top) 
+
+
+StopAllPendingNotes : Send note offs for all pending notes in the tracker
+ 
+	• Declaration: function StopAllPendingNotes (nt : NoteTracker) deprecated "Use NoteTracker_StopAllPendingNotes"
+	• Warning -- This function is deprecated. Use NoteTracker_StopAllPendingNotes 
+	• Category: NoteTracker
+	
+		Parameters
+		• nt : NoteTracker
+(Back to top) 
+
+
+StopOneShotRamp : Stop a one shot ramp generator before it normally finishes - - experimental
+ 
+	• Declaration: function StopOneShotRamp (r : Ramp)
+	• Category: Generators
+	
+		Parameters
+		• r : Ramp
+(Back to top) 
+
+
+StopRecording : Stop recording now
+ 
+	• Declaration: function StopRecording ()
+	• Category: System
+(Back to top) 
+
+
+StringAfterFirstOccurence : Deprecated - Return the section of the source string after the first occurrence of substringToStartFrom - optionally including the substring
+ 
+	• Declaration: function StringAfterFirstOccurence (source : String, substringToStartFrom : String, includeSubstring : Boolean, ignoreCase : Boolean) Returns String deprecated "Use StringAfterFirstOccurrence"
+	• Warning -- This function is deprecated. Use StringAfterFirstOccurrence 
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• substringToStartFrom : String
+		• includeSubstring : Boolean
+		• ignoreCase : Boolean
+	• returns String
+(Back to top) 
+
+
+StringAfterFirstOccurrence : Return the section of the source string after the first occurrence of substringToStartFrom - optionally including the substring
+ 
+	• Declaration: function StringAfterFirstOccurrence (source : String, substringToStartFrom : String, includeSubstring : Boolean, ignoreCase : Boolean) Returns String
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• substringToStartFrom : String
+		• includeSubstring : Boolean
+		• ignoreCase : Boolean
+	• returns String
+(Back to top) 
+
+
+StringAfterLastOccurence : Deprecated - Return the section of the source string after the last occurrence of substringToFind - optionally including the substring
+ 
+	• Declaration: function StringAfterLastOccurence (source : String, substringToFind : String, includeSubstring : Boolean, ignoreCase : Boolean) Returns String deprecated "Use StringAfterLastOccurrence"
+	• Warning -- This function is deprecated. Use StringAfterLastOccurrence 
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• substringToFind : String
+		• includeSubstring : Boolean
+		• ignoreCase : Boolean
+	• returns String
+(Back to top) 
+
+
+StringAfterLastOccurrence : Return the section of the source string after the last occurrence of substringToFind - optionally including the substring
+ 
+	• Declaration: function StringAfterLastOccurrence (source : String, substringToFind : String, includeSubstring : Boolean, ignoreCase : Boolean) Returns String
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• substringToFind : String
+		• includeSubstring : Boolean
+		• ignoreCase : Boolean
+	• returns String
+(Back to top) 
+
+
+StringToBool : returns true if string = "true" otherwise false
+ 
+	• Declaration: function StringToBool (s : String) Returns boolean
+	• Category: Strings
+	
+		Parameters
+		• s : String
+	• returns boolean
+(Back to top) 
+
+
+StringToDouble : returns double value of string
+ 
+	• Declaration: function StringToDouble (s : String) Returns Double
+	• Category: Strings
+	
+		Parameters
+		• s : String
+	• returns Double
+(Back to top) 
+
+
+StringToHex : Converts text characters to their hex equivalent values - intended for use with sysex messages
+ 
+	• Declaration: function StringToHex (s : String) Returns String deprecated "Use StringToHexString"
+	• Warning -- This function is deprecated. Use StringToHexString 
+	• Category: Strings
+	
+		Parameters
+		• s : String
+	• returns String
+(Back to top) 
+
+
+StringToHexString : Converts text characters to their hex equivalent values - intended for use with sysex messages
+ 
+	• Declaration: function StringToHexString (s : String) Returns String
+	• Category: Strings
+	
+		Parameters
+		• s : String
+	• returns String
+(Back to top) 
+
+
+StringToInt : returns integer value of string
+ 
+	• Declaration: function StringToInt (s : String) Returns Integer
+	• Category: Strings
+	
+		Parameters
+		• s : String
+	• returns Integer
+(Back to top) 
+
+
+StringUpToFirstOccurence : Deprecated - Return the section of the source string up to the first occurrence of substringToEndWith - optionally including the substring
+ 
+	• Declaration: function StringUpToFirstOccurence (source : String, substringToEndWith : String, includeSubstring : Boolean, ignoreCase : Boolean) Returns String deprecated "Use StringUpToFirstOccurrence"
+	• Warning -- This function is deprecated. Use StringUpToFirstOccurrence 
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• substringToEndWith : String
+		• includeSubstring : Boolean
+		• ignoreCase : Boolean
+	• returns String
+(Back to top) 
+
+
+StringUpToFirstOccurrence : Return the section of the source string up to the first occurrence of substringToEndWith - optionally including the substring
+ 
+	• Declaration: function StringUpToFirstOccurrence (source : String, substringToEndWith : String, includeSubstring : Boolean, ignoreCase : Boolean) Returns String
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• substringToEndWith : String
+		• includeSubstring : Boolean
+		• ignoreCase : Boolean
+	• returns String
+(Back to top) 
+
+
+StringUpToLastOccurence : Deprecated - Return the section of the source string up to the last occurrence of substringToFind - optionally including the substring
+ 
+	• Declaration: function StringUpToLastOccurence (source : String, substringToFind : String, includeSubstring : Boolean, ignoreCase : Boolean) Returns String deprecated "Use StringUpToLastOccurrence"
+	• Warning -- This function is deprecated. Use StringUpToLastOccurrence 
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• substringToFind : String
+		• includeSubstring : Boolean
+		• ignoreCase : Boolean
+	• returns String
+(Back to top) 
+
+
+StringUpToLastOccurrence : Return the section of the source string up to the last occurrence of substringToFind - optionally including the substring
+ 
+	• Declaration: function StringUpToLastOccurrence (source : String, substringToFind : String, includeSubstring : Boolean, ignoreCase : Boolean) Returns String
+	• Category: Strings
+	
+		Parameters
+		• source : String
+		• substringToFind : String
+		• includeSubstring : Boolean
+		• ignoreCase : Boolean
+	• returns String
+(Back to top) 
+
+
+SwitchToNextRack : Switch to the next rackspace
+ 
+	• Declaration: function SwitchToNextRack () deprecated "Use NextRackspace() instead."
+	• Warning -- This function is deprecated. Use NextRackspace() instead. 
+	• Category: Rackspaces
+(Back to top) 
+
+
+SwitchToNextVariation : Switch to the next variation
+ 
+	• Declaration: function SwitchToNextVariation () deprecated "Use NextVariation() instead."
+	• Warning -- This function is deprecated. Use NextVariation() instead. 
+	• Category: Rackspaces
+(Back to top) 
+
+
+SwitchToPanelView : Show the rackspace panel view
+ 
+	• Declaration: function SwitchToPanelView ()
+	• Category: Actions
+(Back to top) 
+
+
+SwitchToPreset : Switch to another preset in the rackspace
+ 
+	• Declaration: function SwitchToPreset (newPreset : integer) deprecated "Use SetVariation() instead."
+	• Warning -- This function is deprecated. Use SetVariation() instead. 
+	• Category: Rackspaces
+	
+		Parameters
+		• newPreset : integer
+(Back to top) 
+
+
+SwitchToPrevRack : Switch to the previous rackspace
+ 
+	• Declaration: function SwitchToPrevRack () deprecated "Use PreviousRackspace() instead."
+	• Warning -- This function is deprecated. Use PreviousRackspace() instead. 
+	• Category: Rackspaces
+(Back to top) 
+
+
+SwitchToPrevVariation : Switch to the previous variation
+ 
+	• Declaration: function SwitchToPrevVariation () deprecated "Use PreviousVariation() instead."
+	• Warning -- This function is deprecated. Use PreviousVariation() instead. 
+	• Category: Rackspaces
+(Back to top) 
+
+
+SwitchToProgramNumber : Switch to zero-based program number and bank Number if latter is greater than -1
+ 
+	• Declaration: function SwitchToProgramNumber (programNumber : integer, bankNumber : integer)
+	• Category: System
+	
+		Parameters
+		• programNumber : integer
+		• bankNumber : integer
+(Back to top) 
+
+
+SwitchToProgramNumberEx : Switch to zero-based program number and optionally use MSB and LSB values if they are greater than -1
+ 
+	• Declaration: function SwitchToProgramNumberEx (programNumber : integer, MSB : integer, LSB : integer)
+	• Category: System
+	
+		Parameters
+		• programNumber : integer
+		• MSB : integer
+		• LSB : integer
+(Back to top) 
+
+
+SwitchToRack : Switch to another rackspace by number and potentially to a specific newPreset in that rackspace
+ 
+	• Declaration: function SwitchToRack (newRackspaceNumber : integer, newPreset : integer) deprecated "Use SwitchToRackspace() instead."
+	• Warning -- This function is deprecated. Use SwitchToRackspace() instead. 
+	• Category: Rackspaces
+	
+		Parameters
+		• newRackspaceNumber : integer
+		• newPreset : integer
+(Back to top) 
+
+
+SwitchToRackspace : Switch to another rackspace by number and potentially to a specific variation in that rackspace
+ 
+	• Declaration: function SwitchToRackspace (newRackspaceNumber : integer, newVariationNumber : integer)
+	• Category: Rackspaces
+	
+		Parameters
+		• newRackspaceNumber : integer
+		• newVariationNumber : integer
+(Back to top) 
+
+
+SwitchToRackspaceAndVariationByNames : Switch to another rackspace by name and potentially to a specific variation by name in that rackspace
+ 
+	• Declaration: function SwitchToRackspaceAndVariationByNames (rackspaceName : String, variationName : String)
+	• Category: Rackspaces
+	
+		Parameters
+		• rackspaceName : String
+		• variationName : String
+(Back to top) 
+
+
+SwitchToRackspaceByName : Switch to another rackspace by name and potentially to a specific variation in that rackspace
+ 
+	• Declaration: function SwitchToRackspaceByName (rackspaceName : String, newVariationNumber : integer)
+	• Category: Rackspaces
+	
+		Parameters
+		• rackspaceName : String
+		• newVariationNumber : integer
+(Back to top) 
+
+
+SwitchToSetlistByIndex : Switch to the setlist associated with this index
+ 
+	• Declaration: function SwitchToSetlistByIndex (index : integer)
+	• Category: Songs
+	
+		Parameters
+		• index : integer
+(Back to top) 
+
+
+SwitchToSetlistByName : Switch to the named setlist
+ 
+	• Declaration: function SwitchToSetlistByName (name : String)
+	• Category: Songs
+	
+		Parameters
+		• name : String
+(Back to top) 
+
+
+SwitchToSetlistView : Show the song view
+ 
+	• Declaration: function SwitchToSetlistView ()
+	• Category: Actions
+(Back to top) 
+
+
+SwitchToSongByIndex : Switch to the specified song and part
+ 
+	• Declaration: function SwitchToSongByIndex (songIndex : integer, partIndex : integer) Returns Boolean
+	• Category: Songs
+	
+		Parameters
+		• songIndex : integer
+		• partIndex : integer
+	• returns Boolean
+(Back to top) 
+
+
+SwitchToWiringView : Switch to the plugin block wiring view
+ 
+	• Declaration: function SwitchToWiringView ()
+	• Category: Actions
+(Back to top) 
+
+
+TakeSongPartSnapshot : Take a snapshot when in setlist mode - fails silently if not in setlist mode
+ 
+	• Declaration: function TakeSongPartSnapshot ()
+	• Category: Actions
+(Back to top) 
+
+
+Tan : Returns the tan of x
+ 
+	• Declaration: function Tan (x : double) autotype returns double
+	• Category: Math
+	
+		Parameters
+		• x : double
+	• Autotype
+	• returns double
+(Back to top) 
+
+
+Tap : Simulates tap tempo command
+ 
+	• Declaration: function Tap ()
+	• Category: System
+(Back to top) 
+
+
+TestSomething : Internal use only
+ 
+	• Declaration: function TestSomething (i : integer, d : double, s : string) returns String
+	• Category: System
+	
+		Parameters
+		• i : integer
+		• d : double
+		• s : string
+	• returns String
+(Back to top) 
+
+
+ThresholdDetector_Detect : Return true if we crossed over
+ 
+	• Declaration: function ThresholdDetector_Detect (td : ThresholdDetector, newValue : double) Returns Boolean
+	• Category: Math
+	
+		Parameters
+		• td : ThresholdDetector
+		• newValue : double
+	• returns Boolean
+(Back to top) 
+
+
+ThresholdDetector_Setup : Define the conditions to detect an edge
+ 
+	• Declaration: function ThresholdDetector_Setup (td : ThresholdDetector, crossOver : double, initialValue : double, upDirection : boolean)
+	• Category: Math
+	
+		Parameters
+		• td : ThresholdDetector
+		• crossOver : double
+		• initialValue : double
+		• upDirection : boolean
+(Back to top) 
+
+
+TimeNow : Gets the current time in milliseconds - deprecated
+ 
+	• Declaration: function TimeNow () returns integer deprecated "Use TimeSinceStartup"
+	• Warning -- This function is deprecated. Use TimeSinceStartup 
+	• Category: System
+	• returns integer
+(Back to top) 
+
+
+TimeSinceStartup : Gets the time since computer was started in milliseconds
+ 
+	• Declaration: function TimeSinceStartup () returns double
+	• Category: System
+	• returns double
+(Back to top) 
+
+
+TimeStringToDouble : Converts a PROPERLY formatted time string hh:mm::ss::ms to seconds.milliseconds - bogus input will produce bogus output
+ 
+	• Declaration: function TimeStringToDouble (timeString : String) Returns Double
+	• Category: Strings
+	
+		Parameters
+		• timeString : String
+	• returns Double
+(Back to top) 
+
+
+ToLowercase : returns double value of string
+ 
+	• Declaration: function ToLowercase (s : String) Returns String
+	• Category: Strings
+	
+		Parameters
+		• s : String
+	• returns String
+(Back to top) 
+
+
+ToUppercase : returns double value of string
+ 
+	• Declaration: function ToUppercase (s : String) Returns String
+	• Category: Strings
+	
+		Parameters
+		• s : String
+	• returns String
+(Back to top) 
+
+
+ToggleTunerVisible : Switch in or out of tuner view
+ 
+	• Declaration: function ToggleTunerVisible ()
+	• Category: Actions
+(Back to top) 
+
+
+Transpose : Returns a note that has been transposed chromatically by the number of steps
+ 
+	• Declaration: function Transpose (m : NoteMessage, steps : int) returns NoteMessage deprecated "Use WithTranspose"
+	• Warning -- This function is deprecated. Use WithTranspose 
+	• Category: MIDI
+	
+		Parameters
+		• m : NoteMessage
+		• steps : int
+	• returns NoteMessage
+(Back to top) 
+
+
+TriggerOneShotRamp : Trigger a one shot ramp generator - experimental
+ 
+	• Declaration: function TriggerOneShotRamp (r : Ramp, lengthInMilliseconds : integer, coarseness : integer)
+	• Category: Generators
+	
+		Parameters
+		• r : Ramp
+		• lengthInMilliseconds : integer
+		• coarseness : integer
+(Back to top) 
+
+
+TrimString : Remove leading and trailing spaces from a string
+ 
+	• Declaration: function TrimString (source : String) Returns String
+	• Category: Strings
+	
+		Parameters
+		• source : String
+	• returns String
+(Back to top) 
+
+
+UpdateRackspaceBPM : Update the rackspace with this BPM value - does not mark gigfile dirty
+ 
+	• Declaration: function UpdateRackspaceBPM (bpm : double)
+	• Category: Rackspaces
+	
+		Parameters
+		• bpm : double
+(Back to top) 
+
+
+WithCCNumber : Changes the CC number of a ControlChangeMessage MIDI event
+ 
+	• Declaration: function WithCCNumber (m : ControlChangeMessage, number : int) returns ControlChangeMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : ControlChangeMessage
+		• number : int
+	• returns ControlChangeMessage
+(Back to top) 
+
+
+WithCCValue : Changes the value of a CCMessage MIDI event
+ 
+	• Declaration: function WithCCValue (m : ControlChangeMessage, v : int) returns ControlChangeMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : ControlChangeMessage
+		• v : int
+	• returns ControlChangeMessage
+(Back to top) 
+
+
+WithChannel : Changes the channel number of any MIDI event.
+ 
+	• Declaration: function WithChannel (m : MidiMessage, channel : int) autotype returns MidiMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : MidiMessage
+		• channel : int
+	• Autotype
+	• returns MidiMessage
+(Back to top) 
+
+
+WithNoteNumber : Changes the note number of a NoteMessage MIDI event
+ 
+	• Declaration: function WithNoteNumber (m : NoteMessage, number : int) returns NoteMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : NoteMessage
+		• number : int
+	• returns NoteMessage
+(Back to top) 
+
+
+WithNoteNumberAndVelocity : Changes the note number and the velocity value of a NoteMessage MIDI event. Setting to 0 will make the message be a NoteOff
+ 
+	• Declaration: function WithNoteNumberAndVelocity (m : NoteMessage, n : int, v : int) returns NoteMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : NoteMessage
+		• n : int
+		• v : int
+	• returns NoteMessage
+(Back to top) 
+
+
+WithProgramChangeNumber : Changes the program change value of a program change MIDI message.
+ 
+	• Declaration: function WithProgramChangeNumber (m : ProgramChangeMessage, newNumber : int) returns ProgramChangeMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : ProgramChangeMessage
+		• newNumber : int
+	• returns ProgramChangeMessage
+(Back to top) 
+
+
+WithTranspose : Returns a note that has been transposed chromatically by the number of steps
+ 
+	• Declaration: function WithTranspose (m : NoteMessage, steps : int) returns NoteMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : NoteMessage
+		• steps : int
+	• returns NoteMessage
+(Back to top) 
+
+
+WithVelocity : Changes the velocity value of a NoteMessage MIDI event. Setting to 0 will make the message be a NoteOff
+ 
+	• Declaration: function WithVelocity (m : NoteMessage, v : int) returns NoteMessage
+	• Category: MIDI
+	
+		Parameters
+		• m : NoteMessage
+		• v : int
+	• returns NoteMessage
+(Back to top) 
+
+
+iMax : Returns the index of the largest value of an array
+ 
+	• Declaration: function iMax (a : array) autotype returns integer
+	• Category: Arrays
+	
+		Parameters
+		• a : array
+	• Autotype
+	• returns integer
+(Back to top) 
+
+
+iMin : Returns the index of the smallest value of an array
+ 
+	• Declaration: function iMin (a : array) autotype returns integer
+	• Category: Arrays
+	
+		Parameters
+		• a : array
+	• Autotype
+	• returns integer
+(Back to top) 

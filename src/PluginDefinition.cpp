@@ -35,7 +35,7 @@ FuncItem funcItem[nbFunc];
 //
 NppData nppData;
 
-ShortcutKey* scAutoComplete;
+ShortcutKey* scFunctions,*scAutoIndent,*scTipFunctions;
 
 //
 // Initialize your plugin data here
@@ -113,15 +113,26 @@ void onCharAdded(SCNotification* notification) {
 // You should fill your plugins commands here
 void commandMenuInit()
 {
-	scAutoComplete = new ShortcutKey;
-	scAutoComplete->_isCtrl = true;  // Ctrl premuto
-	scAutoComplete->_isAlt = false;
-	scAutoComplete->_isShift = false;
-	scAutoComplete->_key = VK_F10; // Spazio
 	
+	scAutoIndent = new ShortcutKey;
+	scAutoIndent->_isCtrl = true;  // 
+	scAutoIndent->_isAlt = false;
+	scAutoIndent->_isShift = false;
+	scAutoIndent->_key = VK_F10; // 
 
+	scFunctions = new ShortcutKey;
+	scFunctions->_isCtrl = false;  // 
+	scFunctions->_isAlt = false;
+	scFunctions->_isShift = true;
+	scFunctions->_key = VK_SPACE; // 
 	
-	//--------------------------------------------//
+	scTipFunctions = new ShortcutKey;
+	scTipFunctions->_isCtrl = false;  // 
+	scTipFunctions->_isAlt = false;
+	scTipFunctions->_isShift = true;
+	scTipFunctions->_key = VK_TAB; // 
+
+	//---------------------------- ----------------//
 	//-- STEP 3. CUSTOMIZE YOUR PLUGIN COMMANDS --//
 	//--------------------------------------------//
 	// with function :
@@ -131,13 +142,18 @@ void commandMenuInit()
 	//            ShortcutKey *shortcut,          // optional. Define a shortcut to trigger this command
 	//            bool check0nInit                // optional. Make this menu item be checked visually
 	//            );
-	setCommand(0, TEXT("GPScript create Global Script "), CreateGlobalScript, NULL, false);
-	setCommand(1, TEXT("Hello (with dialog)"), helloDlg, NULL, false);
-	setCommand(2, TEXT("Auto Indent"), applyIndentation, NULL, false);
-	setCommand(3, TEXT("Show Autocompletion"), showCalltipFromXML, scAutoComplete, false);
-	
-    
 
+	// Aggiunta della voce principale (dummy, senza funzione associata)
+	setCommand(0, TEXT("GPScript"), NULL, NULL, false);
+
+	setCommand(1, TEXT("GPScript create Global Script "), CreateGlobalScript, NULL, false);
+	setCommand(2, TEXT("Auto Indent"), applyIndentation, scAutoIndent, false);
+	setCommand(3, TEXT("Add function parameters/tip help"), showFunctionsFromXML, scFunctions, false);
+	setCommand(4, TEXT("Show function help"), showTipFunctionsFromXML, scTipFunctions, false);
+
+	setCommand(5, TEXT("Hello (with dialog)"), helloDlg, NULL, false);
+	
+	
 }
 
 //
@@ -146,6 +162,10 @@ void commandMenuInit()
 void commandMenuCleanUp()
 {
 	// Don't forget to deallocate your shortcut here
+	if (scFunctions) {
+		delete scFunctions;
+		scFunctions = NULL;
+	}
 }
 
 
@@ -229,7 +249,7 @@ void CreateGlobalScript()
 
 void helloDlg()
 {
-	::MessageBox(NULL, TEXT("Hello, Notepad++!"), TEXT("GPScript plugin"), MB_OK);
+	::MessageBox(NULL, TEXT("GPSCript extension for  Notepad++!"), TEXT("GPScript plugin"), MB_OK);
 }
 //
 // Select all the text in the current scintilla
@@ -244,28 +264,49 @@ void selectAllText()
 	SendMessage(curScintilla, SCI_SETSEL, 0, textLength);
 }
 
-void showAutoCompletion()
+//
+// Show the autocompletion menu in the current scintilla
+//
+void showAutoCompletion(std::string &text)
 {
 	// Lunghezza minima prima di mostrare il menu (0 per mostrarlo subito)
 	int lengthEntered = 0;
 
 	// Invia il comando a Scintilla per mostrare l'autocompletamento
-	SendMessage(nppData._scintillaMainHandle, SCI_AUTOCSHOW, lengthEntered, (LPARAM)"");
+	SendMessage(nppData._scintillaMainHandle, SCI_AUTOCSHOW, lengthEntered, (LPARAM)text.c_str());
 }
 
-void showCalltip()
+//
+// show the calltip in the current scintilla
+void showCalltip(std::string& text)
 {
+	std::string message = "Function not found ->" + text;
 	HWND curScintilla = getCurrentNppHandle();
 	if (curScintilla == nullptr) return;
 
+
 	LRESULT pos = SendMessage(nppData._scintillaMainHandle, SCI_GETCURRENTPOS, 0, 0);
-	SendMessage(curScintilla, SCI_CALLTIPSHOW, pos, (LPARAM)"NoteOnEvent(m: message)");
+	SendMessage(curScintilla, SCI_CALLTIPSHOW, pos, (LPARAM)message.c_str());
 }
 
+
 //
-// Show the calltip from the XML file
-//
-void showCalltipFromXML()
+// Show the Autocompletation calltip from the XML file
+// If the attribute name is a function insert the parameters declaration to the text editor
+// <KeyWord name="ACos" func="yes">
+// <Overload retVal = "double" descr = "Returns the inverse cos of x">
+// <Param name = "x : double" / >
+// < / Overload>
+// < / KeyWord>
+// 
+// If the name is not a function and there is a tip in the XML file insert to the text editot
+// <KeyWord name="For" func="no" tip="For i = 0; i &lt; 10; i = i + 1 Do&#10;//statements here&#10;end "/>
+// 
+// If the name is not a function and there is no tip in the XML file show comment to the text editor
+// <KeyWord name="NoteMessage" func="no" comment=" Argument parameter see NoteEvent NoteOnEvent NoteOffEvent  "/>
+// 
+// shift+space
+void showFunctionsFromXML()
 {
 	HWND curScintilla = getCurrentNppHandle();
 	if (curScintilla == nullptr) return;
@@ -274,9 +315,6 @@ void showCalltipFromXML()
 	LRESULT lenbuffer = SendMessage(curScintilla, NPPM_GETLANGUAGENAME, 0, 0);
 	char* langBuffer = new char[lenbuffer];
 	SendMessage(curScintilla, NPPM_GETLANGUAGENAME, 0, (LPARAM)langBuffer);
-
-	//if (langType != L_GPSCRIPT) // Sostituisci con il valore esatto di GPScript
-	//	return; // Esce se il linguaggio attuale non è GPScript
 
 	// Ottieni la posizione del cursore
 	LRESULT posResult = SendMessage(curScintilla, SCI_GETCURRENTPOS, 0, 0);
@@ -304,24 +342,181 @@ void showCalltipFromXML()
 	}
 
 	// Controlla se la funzione esiste nel file GPScript.xml
-	std::string calltipText = getCalltipFromXML(functionName);
-	if (!calltipText.empty())
+	std::string calltipFunction = getCalltipFromXML(functionName);
+	std::string calltipFuncParam = getCalltipParamFromXML(functionName);
+	std::string calltipComm = getCalltipCommFromXML(functionName);
+
+	
+	// Show Calltip and add parameters 
+	if (!calltipFunction.empty())
 	{
-		SendMessage(curScintilla, SCI_CALLTIPSHOW, pos, (LPARAM)calltipText.c_str());
+		// Remove the text from the current position to the end of the line
+		LRESULT newpos = SendMessage(curScintilla, SCI_GETCURRENTPOS, 0, 0);
+		LRESULT LinePos = 0;
+		if (newpos != 0) {
+			LRESULT line = SendMessage(curScintilla, SCI_LINEFROMPOSITION, newpos, 0);
+			LinePos = SendMessage(curScintilla, SCI_GETLINEENDPOSITION, line, line);
+		}
+		if (LinePos>newpos) {
+			SendMessage(curScintilla, SCI_DELETERANGE, newpos, LinePos- newpos);
+		}
+
+		SendMessage(curScintilla, SCI_CALLTIPSHOW, pos, (LPARAM)calltipFunction.c_str());
+		SendMessage(curScintilla, SCI_ADDTEXT, (WPARAM)calltipFuncParam.length()-1, (LPARAM)calltipFuncParam.c_str());
+		
 	}
+
+	// Show Calltip and add tip  
+	if (calltipFunction.empty() && !calltipFuncParam.empty())
+	{
+		if (length > 0) {
+			SendMessage(curScintilla, SCI_DELETERANGE, start, length);
+		}
+
+		SendMessage(curScintilla, SCI_CALLTIPSHOW, start, (LPARAM)calltipFunction.c_str());
+
+		//	Replace /n with new line in the calltip parameters
+		for (size_t i = 0; i < calltipFuncParam.length(); ++i) {
+			if (calltipFuncParam[i] == '\n') {
+				SendMessage(curScintilla, SCI_NEWLINE, 0, 0);
+			}
+			else {
+				SendMessage(curScintilla, SCI_ADDTEXT, 1, (LPARAM)&calltipFuncParam[i]);
+			}
+		}
+
+	}
+
+	// Show Calltip with comment
+	if (calltipFunction.empty() && calltipFuncParam.empty() && !calltipComm.empty())
+	{
+	
+		SendMessage(curScintilla, SCI_CALLTIPSHOW, start, (LPARAM)calltipComm.c_str());
+
+
+	}
+
+
 }
 
+
+
 //
-// Get the calltip from the XML file
+// Show the Autocompletation calltip from the XML file
+// If the attribute name is a function insert the parameters declaration to the text editor
+// <KeyWord name="ACos" func="yes">
+// <Overload retVal = "double" descr = "Returns the inverse cos of x">
+// <Param name = "x : double" / >
+// < / Overload>
+// < / KeyWord>
+// 
+
+void showTipFunctionsFromXML()
+{
+	HWND curScintilla = getCurrentNppHandle();
+	if (curScintilla == nullptr) return;
+
+	// Controlla il linguaggio attuale
+	LRESULT lenbuffer = SendMessage(curScintilla, NPPM_GETLANGUAGENAME, 0, 0);
+	char* langBuffer = new char[lenbuffer];
+	SendMessage(curScintilla, NPPM_GETLANGUAGENAME, 0, (LPARAM)langBuffer);
+
+	// Ottieni la posizione del cursore
+	LRESULT posResult = SendMessage(curScintilla, SCI_GETCURRENTPOS, 0, 0);
+	int pos = static_cast<int>(posResult);
+
+	// Trova l'inizio della parola (backtrack fino a uno spazio o carattere speciale)
+	int start = pos;
+	while (start > 0)
+	{
+		LRESULT chResult = SendMessage(curScintilla, SCI_GETCHARAT, start - 1, 0);
+		char ch = static_cast<char>(chResult);
+		if (!isalnum(ch) && ch != '_') break; // Interrompi se trovi un carattere non valido per un nome di funzione
+		start--;
+	}
+
+	// Ottieni il nome della funzione
+	int length = pos - start;
+	if (length <= 0) return; // Evita problemi con stringhe vuote
+
+	std::string functionName(length, '\0');
+	for (int i = 0; i < length; i++)
+	{
+		LRESULT charResult = SendMessage(curScintilla, SCI_GETCHARAT, start + i, 0);
+		functionName[i] = static_cast<char>(charResult);
+	}
+
+	// Controlla se la funzione esiste nel file GPScript.xml
+	std::string calltipFunction = getCalltipFromXML(functionName);
+	std::string calltipFuncParam = getCalltipParamFromXML(functionName);
+	std::string calltipComm = getCalltipCommFromXML(functionName);
+
+
+	// Show Calltip and add parameters 
+	if (!calltipFunction.empty())
+	{
+		// Remove the text from the current position to the end of the line
+		LRESULT newpos = SendMessage(curScintilla, SCI_GETCURRENTPOS, 0, 0);
+		LRESULT LinePos = 0;
+		if (newpos != 0) {
+			LRESULT line = SendMessage(curScintilla, SCI_LINEFROMPOSITION, newpos, 0);
+			LinePos = SendMessage(curScintilla, SCI_GETLINEENDPOSITION, line, line);
+		}
+		if (LinePos > newpos) {
+			//SendMessage(curScintilla, SCI_DELETERANGE, newpos, LinePos - newpos);
+		}
+
+		SendMessage(curScintilla, SCI_CALLTIPSHOW, pos, (LPARAM)calltipFunction.c_str());
+		//SendMessage(curScintilla, SCI_ADDTEXT, (WPARAM)calltipFuncParam.length() - 1, (LPARAM)calltipFuncParam.c_str());
+
+	}
+
+	// Show Calltip and add tip  
+	if (calltipFunction.empty() && !calltipFuncParam.empty())
+	{
+		if (length > 0) {
+			//SendMessage(curScintilla, SCI_DELETERANGE, start, length);
+		}
+
+		SendMessage(curScintilla, SCI_CALLTIPSHOW, start, (LPARAM)calltipFunction.c_str());
+
+		//	Replace /n with new line in the calltip parameters
+	/*	for (size_t i = 0; i < calltipFuncParam.length(); ++i) {
+			if (calltipFuncParam[i] == '\n') {
+				SendMessage(curScintilla, SCI_NEWLINE, 0, 0);
+			}
+			else {
+				SendMessage(curScintilla, SCI_ADDTEXT, 1, (LPARAM)&calltipFuncParam[i]);
+			}
+		}*/
+
+	}
+
+	// Show Calltip with comment
+	if (calltipFunction.empty() && calltipFuncParam.empty() && !calltipComm.empty())
+	{
+
+		SendMessage(curScintilla, SCI_CALLTIPSHOW, start, (LPARAM)calltipComm.c_str());
+
+
+	}
+
+
+}
+
+
+
+
+
+
 //
+// Get the  Function description for calltips from the XML file
+// 
 std::string getCalltipFromXML(const std::string& functionName)
 {
-	//	pugi::xml_parse_result result = doc.load(file);	
-	// Percorso del file XML
 	pugi::xml_document doc;
-	//pugi::xml_parse_result result = doc.load_file("C:\\Program Files\\Notepad++\\autoCompletion\\GPScript.xml");
-
-	pugi::xml_parse_result result = doc.load_file("C:\\Program Files\\Notepad++\\autoCompletion\\GPScript.xml", pugi::parse_minimal);
+	
+	pugi::xml_parse_result result = doc.load_file("C:\\Program Files\\Notepad++\\autoCompletion\\GPScript.xml", pugi::parse_minimal | pugi::parse_escapes);
 	if (!result) {
 		//std::cout << "Errore di caricamento del file XML: " << result.description() << std::endl;
 		return std::string(); // Restituisci una stringa vuota se non trovi nulla
@@ -345,13 +540,33 @@ std::string getCalltipFromXML(const std::string& functionName)
 				if (overloadNode) {
 					// Estrai il valore dell'attributo "descr"
 					std::string descr = overloadNode.attribute("descr").value();
+					std::string param_f = "";
+					std::string param = "";
+
 					//descr= replaceEscapeSequences(descr);
-					return descr;
-					//std::cout << "Contenuto di descr per '" << functionName << "':\n" << descr << std::endl;
+					bool firstParam = true; // Flag per gestire la virgola
+					for (pugi::xml_node paramNode : overloadNode.children("Param")) {
+						if (paramNode) {
+							// Estrai il valore dell'attributo "name"
+							std::string paramName = paramNode.attribute("name").value();
+							// Aggiungi una virgola solo se non è il primo parametro
+							if (!firstParam) {
+								param = param +  ", ";
+							}
+							else {
+								firstParam = false;
+							}
+
+							param += paramName;
+						}
+						else {
+							param = "";
+						}
+					}
+					param_f = functionName + " (" + param + ")" + "\n";
+					return param_f + descr;
 				}
-				else {
-					//std::cerr << "Nodo <Overload> non trovato per '" << functionName << "'!" << std::endl;
-				}
+				
 				break; // Esci dal ciclo dopo aver trovato la corrispondenza
 			}
 		}
@@ -361,7 +576,120 @@ std::string getCalltipFromXML(const std::string& functionName)
 	return std::string(); // Restituisci una stringa vuota se non trovi nulla
 }
 
+//
+// Get the Function parameter or tip  from the XML 
+// 
+std::string getCalltipParamFromXML(const std::string& functionName)
+{
+	pugi::xml_document doc;
 
+	pugi::xml_parse_result result = doc.load_file("C:\\Program Files\\Notepad++\\autoCompletion\\GPScript.xml", pugi::parse_minimal | pugi::parse_escapes);
+	if (!result) {
+		return std::string(); // Restituisci una stringa vuota se non trovi nulla
+
+	}
+	else {
+		// Trova il nodo <AutoComplete>
+		pugi::xml_node autoCompleteNode = doc.child("NotepadPlus").child("AutoComplete");
+		if (!autoCompleteNode) {
+			return std::string(); // Restituisci una stringa vuota se non trovi nulla
+		}
+
+		// Trova tutti i nodi <KeyWord> all'interno di <AutoComplete>
+		for (pugi::xml_node keyWordNode : autoCompleteNode.children("KeyWord")) {
+			// Verifica se l'attributo "name" corrisponde a functionName
+			std::string name = keyWordNode.attribute("name").value();
+			std::string fun = keyWordNode.attribute("func").value();
+			std::string tip = keyWordNode.attribute("tip").value();
+			// Verifica se il campo è una funzione
+			if (name == functionName && fun=="yes") {
+				// Trova il nodo <Overload> all'interno di <KeyWord>
+				pugi::xml_node overloadNode = keyWordNode.child("Overload");
+				if (overloadNode) {
+					std::string param_f = "";
+					std::string param = "";
+
+					bool firstParam = true; // Flag per gestire la virgola
+					for (pugi::xml_node paramNode : overloadNode.children("Param")) {
+						if (paramNode) {
+							// Estrai il valore dell'attributo "name"
+							std::string paramName = paramNode.attribute("name").value();
+							// Aggiungi una virgola solo se non è il primo parametro
+							if (!firstParam) {
+								param = param + ", ";
+							}
+							else {
+								firstParam = false;
+							}
+
+							param += paramName;
+						}
+						else {
+							param = "";
+						}
+						//param_f = functionName + " (" + param + ")" + "\n";
+					}
+					param_f ="(" + param + ")" + "\n";
+					return param_f;
+				}
+				
+				break; // Esci dal ciclo dopo aver trovato la corrispondenza
+			}
+
+			// Verifica se il campo non è una funzione è ha un suggerimento da inserire
+			if (name == functionName && fun == "no" && tip!="") {
+				
+				return tip;
+				break; // Esci dal ciclo dopo aver trovato la corrispondenza
+			}
+
+
+		}
+
+	}
+
+	return std::string(); // Restituisci una stringa vuota se non trovi nulla
+}
+
+
+//
+// Get the  Comment description from the XML file
+// 
+std::string getCalltipCommFromXML(const std::string& functionName) {
+	pugi::xml_document doc;
+
+	pugi::xml_parse_result result = doc.load_file("C:\\Program Files\\Notepad++\\autoCompletion\\GPScript.xml", pugi::parse_minimal | pugi::parse_escapes);
+	if (!result) {
+		return std::string(); // Restituisci una stringa vuota se non trovi nulla
+
+	}
+	else {
+		// Trova il nodo <AutoComplete>
+		pugi::xml_node autoCompleteNode = doc.child("NotepadPlus").child("AutoComplete");
+		if (!autoCompleteNode) {
+			return std::string(); // Restituisci una stringa vuota se non trovi nulla
+		}
+
+		// Trova tutti i nodi <KeyWord> all'interno di <AutoComplete>
+		for (pugi::xml_node keyWordNode : autoCompleteNode.children("KeyWord")) {
+			// Verifica se l'attributo "name" corrisponde a functionName
+			std::string name = keyWordNode.attribute("name").value();
+			std::string fun = keyWordNode.attribute("func").value();
+			std::string tip = keyWordNode.attribute("tip").value();
+			std::string comment = keyWordNode.attribute("comment").value();
+
+			// Verifica se il campo non è una funzione è ha un suggerimento da inserire
+			if (name == functionName && fun == "no" && tip == "" && comment != "") {
+
+				return comment;
+				break; // Esci dal ciclo dopo aver trovato la corrispondenza
+			}
+
+			
+		}
+	}
+	return std::string(); // Restituisci una stringa vuota se non trovi nulla
+}
 
 //
 // Indent the selected text 
@@ -375,9 +703,9 @@ std::string indentText(const std::string& input)
 	const std::string indentStr = "    "; // 4 spazi
 
 	// List of keywords that increase indentation
-	std::vector<std::string> increaseIndentKeywords = { "initialization", "while", "function", "if", "on" };
+	std::vector<std::string> increaseIndentKeywords = { "initialization", "while", "function", "if","elsif", "on" };
 	// List of keywords that decrease indentation
-	std::vector<std::string> decreaseIndentKeywords = { "end" };
+	std::vector<std::string> decreaseIndentKeywords = { "end","End"};
 
 	while (std::getline(in, line))
 	{
@@ -415,7 +743,7 @@ bool findWordVector(std::vector<std::string>& IndentKeywords, std::string& trimm
 			c = (char)tolower(c);
 			});
 		// Check if the word is in the vector
-		if (keyword(temp, word)) {
+		if (keyWord(temp, word)) {
 			return true;
 		}
 	}
@@ -425,10 +753,10 @@ bool findWordVector(std::vector<std::string>& IndentKeywords, std::string& trimm
 //
 // Find a keyword in a string (case-insensitive) as a whole word without any other characters
 //
-bool keyword(const std::string& text_content, const std::string& search_word) {
+bool keyWord(const std::string& text_content, const std::string& search_word) {
 	// Crea un'espressione regolare per cercare la parola come parola intera
 
-	std::regex pattern("\\b" + search_word + "\\b");
+	std::regex pattern("^" + search_word + "\\b");
 	std::smatch match;
 
 	// Find the word in the text

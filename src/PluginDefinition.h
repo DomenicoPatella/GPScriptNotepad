@@ -41,7 +41,7 @@ const TCHAR NPP_PLUGIN_NAME[] = TEXT("GPScript plugin template");
 //
 // Here define the number of your plugin commands
 //
-const int nbFunc = 4;
+const int nbFunc = 5;
 
 
 //
@@ -100,11 +100,16 @@ void logMessage(const std::string& message);
 bool findWordVector(std::vector<std::string>& increaseIndentKeywords, std::string& trimmed);
 
 void applyIndentation();
-bool keyword(const std::string& testo, const std::string& parola);
-void showAutoCompletion();
-void showCalltip();
-void showCalltipFromXML();
+bool keyWord(const std::string& testo, const std::string& parola);
+//void showAutoCompletion();
+//void showCalltip();
+void showFunctionsFromXML();
+void showTipFunctionsFromXML();
+
 std::string getCalltipFromXML(const std::string& functionName);
+std::string getCalltipParamFromXML(const std::string& functionName);
+std::string getCalltipCommFromXML(const std::string& functionName);
+
 
 
 

@@ -2,95 +2,115 @@
 <NotepadPlus>
 	<AutoComplete language="gpscript">
 		<Environment ignoreCase="yes" startFunc="(" stopFunc=")" paramSeparator="," terminal=";" additionalWordChar=".:"/>
-
 		<!-- GPScript syntax-->
 		<KeyWord name="and" func="no"/>
 		<KeyWord name="do" func="no"/>
-		<KeyWord name="else" func="no"/>
-		<KeyWord name="elseif" func="no"/>
+		<KeyWord name="else" func="no" tip="If true Then&#10;//statements here&#10;else&#10;//statements here&#10;end"/>
+		<KeyWord name="Elsif" func="no" tip="If true Then&#10;//statements here&#10;Elsif true Then&#10;//statements here&#10;Else&#10;//statements here&#10;end "/>
+		<!-- 
 		<KeyWord name="end" func="no"/>
 		<KeyWord name="End" func="no"/>
+		-->
 		<KeyWord name="false" func="no"/>
-		<KeyWord name="for" func="no"/>
+		<KeyWord name="For" func="no" tip="For i = 0; i &lt; 10; i = i + 1 Do&#10;//statements here&#10;end "/>
 		<KeyWord name="Function" func="yes"/>
-		<KeyWord name="if" func="no"/>
+		<KeyWord name="If" func="no" tip="If true Then&#10;//statements here&#10;end"/>
 		<KeyWord name="in" func="no"/>
 		<KeyWord name="not" func="no"/>
 		<KeyWord name="or" func="no"/>
 		<KeyWord name="On" func="yes"/>
-		<KeyWord name="then" func="no"/>
+		<KeyWord name="returns" func="yes"/>
+		<KeyWord name="SystemEvent" func="no" tip=""/>
+		<KeyWord name="Then" func="no"/>
 		<KeyWord name="true" func="no"/>
 		<KeyWord name="until" func="no"/>
-		<KeyWord name="var" func="no"/>
-		<KeyWord name="while" func="no"/>
+		<KeyWord name="Var" func="no"/>
+		<KeyWord name="While" func="no" tip="While true Do &#10;//statements here&#10;end"/>
+		<!-- Primitive types -->
+		<KeyWord name="boolean" type="yes" func="no"/>
+		<KeyWord name="int" func="no"/>
+		<KeyWord name="integer" func="no"/>
+		<KeyWord name="double" func="no"/>
+		<KeyWord name="string" func="no"/>
 		<!-- Opaque types -->
-		<KeyWord name="ADSR" func="no" />
-		<KeyWord name="AfterTouchMessage" func="no" />
-		<KeyWord name="AudioMixerBlock" func="no" />
-		<KeyWord name="AutoSustainer" func="no" />
-		<KeyWord name="Block" func="no" />
-		<KeyWord name="Continuous" func="no" />
-		<KeyWord name="ControlChangeMessage" func="no" />
-		<KeyWord name="Discrete" func="no" />
-		<KeyWord name="ExternalApplication" func="no" />
-        <KeyWord name="ExternalWidget" func="no" />
-        <KeyWord name="Generator" func="no" />
-        <KeyWord name="MidiInBlock" func="no" />
-		<KeyWord name="MidiInDevice" func="no" />
-        <KeyWord name="MidiMessage" func="no" />
-        <KeyWord name="MidiOutBlock" func="no" />
-        <KeyWord name="MidiSequence" func="no" />
-        <KeyWord name="MultiChannelNoteTracker" func="no" />
-        <KeyWord name="NoteMapper" func="no" />
-        <KeyWord name="NoteMessage" func="no" />
-        <KeyWord name="NoteTracker" func="no" />
-		<KeyWord name="OSCMessage" func="no" />
-		<KeyWord name="Parameter" func="no" />
-		<KeyWord name="PitchBendMessage" func="no" />
-		<KeyWord name="PluginBlock" func="no" />
-		<KeyWord name="PolyTouchMessage" func="no" />
-		<KeyWord name="ProgramChangeMessage" func="no" />
-		<KeyWord name="Ramp" func="no" />
-		<KeyWord name="Subrange" func="no" />
-		<KeyWord name="SysexMessage" func="no" />
-		<KeyWord name="Widget" func="no" />
-		
+		<KeyWord name="ADSR" func="no" comment=" Category Generators time milliseconds " />
+		<KeyWord name="AfterTouchMessage" func="no"/>
+		<KeyWord name="AudioMixerBlock" func="no"/>
+		<KeyWord name="AutoSustainer" func="no"/>
+		<KeyWord name="Block" func="no"/>
+		<KeyWord name="Continuous" func="no"/>
+		<KeyWord name="ControlChangeMessage" func="no"/>
+		<KeyWord name="Discrete" func="no"/>
+		<KeyWord name="ExternalApplication" func="no"/>
+		<KeyWord name="ExternalWidget" func="no"/>
+		<KeyWord name="Generator" func="no"/>
+		<KeyWord name="MidiInBlock" func="no"/>
+		<KeyWord name="MidiInDevice" func="no"/>
+		<KeyWord name="MidiMessage" func="no"/>
+		<KeyWord name="MidiOutBlock" func="no"/>
+		<KeyWord name="MidiSequence" func="no"/>
+		<KeyWord name="MultiChannelNoteTracker" func="no"/>
+		<KeyWord name="NoteMapper" func="no"/>
+		<KeyWord name="NoteMessage" func="no" comment=" Midi callback -->NoteEvent NoteOnEvent NoteOffEvent  "/>
+		<KeyWord name="NoteTracker" func="no"/>
+		<KeyWord name="OSCMessage" func="no"/>
+		<KeyWord name="Parameter" func="no"/>
+		<KeyWord name="PitchBendMessage" func="no"/>
+		<KeyWord name="PluginBlock" func="no"/>
+		<KeyWord name="PolyTouchMessage" func="no"/>
+		<KeyWord name="ProgramChangeMessage" func="no"/>
+		<KeyWord name="Ramp" func="no"/>
+		<KeyWord name="Subrange" func="no"/>
+		<KeyWord name="SysexMessage" func="no"/>
+		<KeyWord name="Widget" func="no" comment=" Rackspace only"/>
 		<!-- GPScript 5.0  -->
 		<!-- https://gigperformer.com/docs_5_0/LanguageManual/-->
-        
 		<!-- Rackspace callback -->
 		<KeyWord name="Initialization" func="yes">
 			<Overload retVal="" descr="
+Usage (GigFile , Global , Rackspace, Scriptlets):
 Initialization code here. 
 Allows variables to be initialized and functions to be called
 automatically when a script is first loaded. Note that as of GP 4.5, 
 most variables can be initialized during declaration
 GP4 allows multiple initialization sections
+
 Initialization
-  var...
+  Print(&quot;Hello;&quot;)
 End
 ">
 			</Overload>
 		</KeyWord>
-		<KeyWord name="activate" func="yes">
+		<KeyWord name="Activate" func="yes">
 			<Overload retVal="" descr="
+Usage (Rackspace, Scriptlets):
 On activate
-Called whenever a rackspace is activated
+ //Called whenever a rackspace is activated
 End
 ">
 			</Overload>
 		</KeyWord>
-		<KeyWord name="deactivate" func="yes">
+		<KeyWord name="Variation" func="yes">
 			<Overload retVal="" descr="
+Usage (GigFile ,Rackspace, Global Rackspace):
+
+on variation (oldVariation : integer, newVariation : integer)
+   // Called when you switch to another variation
+   // The parameters indicate which one you're in now 
+   // and from which one you came
+end
+">
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Deactivate" func="yes">
+			<Overload retVal="" descr="
+Usage (Rackspace, Scriptlets):
 On deactivate
  // Called whenever we deactivate a rackspace
 End
 ">
 			</Overload>
 		</KeyWord>
-		
-		
-		
 		<!-- Midi callback -->
 		<KeyWord name="NoteOnEvent" func="yes">
 			<Overload retVal="" descr="
@@ -104,6 +124,15 @@ var Arturia : MidiInDevice
 On NoteOnEvent(m : NoteMessage) matching D#6 from Arturia
  ....
 End
+
+Support constraint that specifies either a range or an explicit sequence 
+of numbers for which the callback is triggered. For example:
+
+On NoteOnEvent (m : NoteMessage) Matching [C3..C4] From Arturia
+   // This event is only called if you play a note with 
+   // a MIDI note number that is in the range 60 to 72
+End
+
 ">
 				<Param name="m : NoteMessage"/>
 				<Param name="From 'MidiIn block name'"/>
@@ -117,6 +146,15 @@ var Arturia : MidiInDevice
 On NoteOffEvent(m : NoteMessage) matching D#6 from Arturia
  ....
 End
+
+Support constraint that specifies either a range or an explicit sequence 
+of numbers for which the callback is triggered. For example:
+
+On NoteOffEvent (m : NoteMessage) Matching [C3..C4] From Arturia
+   // This event is only called if you play a note with 
+   // a MIDI note number that is in the range 60 to 72
+End
+
 ">
 				<Param name="m : NoteMessage"/>
 				<Param name="From 'MidiIn block name'"/>
@@ -133,6 +171,14 @@ var Arturia : MidiInDevice
 On NoteEvent(m : NoteMessage) matching D#6 from Arturia
  ....
 End
+
+Support constraint that specifies either a range or an explicit sequence 
+of numbers for which the callback is triggered. For example:
+
+On NoteEvent (m : NoteMessage) Matching [C3..C4] From Arturia
+   // This event is only called if you play a note with 
+   // a MIDI note number that is in the range 60 to 72
+End
 ">
 				<Param name="m : NoteMessage"/>
 				<Param name="From 'MidiIn block name'"/>
@@ -143,19 +189,47 @@ End
 Called when a CC message is received at some MidiIn device
 
 var Arturia : MidiInDevice
-On ControlChangeEvent(m : ControlChangeMessage) from Arturia
+On ControlChangeEvent(c : ControlChangeMessage) from Arturia
  ....
 End
 
 The CC numbers must be within the specified range
-On ControlChangeEvent(m : ControlChangeMessage) Matching [7..10] from Arturia
+On ControlChangeEvent(c : ControlChangeMessage) Matching [7..10] from Arturia
  ....
 End
 
+We saw an example of using a constraint with the ControlChange event callback.
+Here it is again
+
+On ControlChangeEvent (c : ControlChangeMessage) Matching 1,7,14 From Arturia
+   // This event is only called for controller numbers
+   // 1, 7 or 14
+End
+
+ 
+However, if you are using the Rig Manager to because you have to use different keyboards 
+or control surfaces then you may have a problem if you switch to a different surface whose 
+knobs, sliders and/buttons transmit CC messages with different numbers. 
+In such a situation a script that uses a hard-coded CC number will fail.
+To address this problem, the ControlChangeEvent callback now allows you to use Rig Manager 
+defined control aliases instead of explicit numbers in the 'Matching' clause of the callback. 
+If you have defined the name UpperKnob1 (for example) to represent the first knob of your control surface, 
+then you can write the following:
+
+On ControlChangeEvent (c : ControlChangeMessage) Matching &quot;UpperKnob1&quot; From Arturia
+   // This event is called when a CC message arrives from UpperKnob
+End
+
+ 
+At compile time, the Rig Manager will be searched to find the correct CC number for the device being used. 
+If you change your gear and consequently update the Rig Manager, 
+scripts will be recompiled automatically so as to reflect the change.
+Note that the alias name is specified as a string constant.
 
 ">
 				<Param name="m : ControlChangeMessage"/>
 				<Param name="From 'MidiIn block name'"/>
+				<Param name="Matching [..]"/>
 			</Overload>
 		</KeyWord>
 		<KeyWord name="PitchBendEvent" func="yes">
@@ -186,24 +260,140 @@ End
 				<Param name="From 'MidiIn block name'"/>
 			</Overload>
 		</KeyWord>
-		<!-- Widget callback -->
-		
+		<KeyWord name="PolytouchEvent" func="yes">
+			<Overload retVal="" descr="
+var Arturia : MidiInDevice
+On PolytouchEvent (p : PolyTouchMessage) From Arturia
+
+   // This is note-specific pressure
+
+End
+">
+				<Param name="p : PolyTouchMessage"/>
+				<Param name="From 'MidiIn block name'"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ProgramChangeEvent" func="yes">
+			<Overload retVal="" descr="
+var Arturia : MidiInDevice
+On ProgramChangeEvent( p : ProgramChangeMessage) From Arturia
+
+End
+">
+				<Param name="p : ProgramChangeMessage"/>
+				<Param name="From 'MidiIn block name'"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiEvent" func="yes">
+			<Overload retVal="" descr="
+var Arturia : MidiInDevice
+On MidiEvent( m : MidiMessage) From Arturia
+
+   // This callback does not occur if a more specific MIDI event callback was defined
+
+End
+">
+				<Param name="m : MidiMessage"/>
+				<Param name="From 'MidiIn block name'"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SysexEvent" func="yes">
+			<Overload retVal="" descr="
+var Arturia : MidiInDevice
+On SysexEvent( s : SysexMessage) From Arturia
+
+   // Respond to a sysex message
+
+End
+">
+				<Param name="s : SysexMessage"/>
+				<Param name="From 'MidiIn block name'"/>
+			</Overload>
+		</KeyWord>
+		<!-- Widget callback Rackspace only-->
+		<KeyWord name="WidgetValueChanged" func="yes">
+			<Overload retVal="" descr="
+On WidgetValueChanged (newValue : double) from SomeWidget
+// newValue represents a value between 0.0 and 1.0
+End 
+">		
+		<Param name="newValue : double"/>	   
+         </Overload>
+		</KeyWord>
 		<!-- Plugin callback -->
-		
 		<!-- Scriptlet  callback -->
-		
 		<!-- Generator  callback -->
+		<KeyWord name="GeneratorRunning" func="yes">
+			<Overload retVal="" descr="
+On GeneratorRunning(x : integer, y : double) from &lt;some generator&gt;
+   // x is linear time based on the length (or frequency) of the generator
+   // y is an amplitude with a value ranging between 0.0 and 1.0
+   // The actual value for y at some position x depends on the kind
+   // of generator and the settings being used
+End
+">		
+		<Param name="x : integer"/>	   
+        <Param name="y : double"/>	   
+
+         </Overload>
+		</KeyWord>
+		<KeyWord name="GeneratorEndCycle" func="yes">
+			<Overload retVal="" descr="
+On GeneratorEndCycle(x : integer) from &lt;some generator&gt;>
+   // x is linear time that hit the end of the cycle of this generator
+End
+">		
+		<Param name="x : integer"/>	   
+         </Overload>
+		</KeyWord>
 		
 		<!-- OSC  callback -->
-		
 		<!-- Playhead  callback -->
-		
-		<!-- Global Transpose  callback -->
-		
+		<!-- Global callback : Rackspace-->
+		<KeyWord name="Rackspace" func="yes">
+			<Overload retVal="" descr="
+Usage (gig file and Global rackspace scripts only):
+
+On Rackspace(oldRackspaceIndex : integer, newRackspaceIndex : integer)
+
+    // Called when you switch to another rackspace 
+
+End
+
+">
+				<Param name="m : AfterTouchMessage"/>
+				<Param name="From 'MidiIn block name'"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="TimerTick" func="yes">
+			<Overload retVal="" descr="
+Usage:
+
+On TimerTick(milliseconds : double)
+
+    // Called periodically and provides the current time in milliseconds 
+    // You must use call SetTimersRunning(true) to enable this timer to be called
+
+End
+
+ 
+">
+				<Param name="milliseconds : double"/>
+			</Overload>
+		</KeyWord>
 		<!-- Gig  Loaded  callback -->
+		<KeyWord name="SystemEvent" func="yes">
+			<Overload retVal="" descr="
+On SystemEvent Matching GigLoaded 
+  // Indicates that all rackspaces and songs have been loaded
+End
+">
+			</Overload>
+		</KeyWord>
 		
-		<!-- System -->
-			<KeyWord name="Print" func="yes">
+		<!-- System https://gigperformer.com/docs_5_0/SystemFunctionList.html -->
+		<!--
+		<KeyWord name="Print" func="yes">
 			<Overload retVal="" descr="
 Displays the string in the log window
 Declaration: function Print (s : String) Autotype
@@ -220,6 +410,3035 @@ End
 				<Param name="Autotype"/>
 			</Overload>
 		</KeyWord>
-		
+		<KeyWord name="SetTimersRunning" func="yes">
+			<Overload retVal="" descr="
+
+Start or stop the global timers
+
+Declaration: function SetTimersRunning (run : boolean)
+Category: Generators
+Parameters
+run : boolean
+
+On TimerTick(milliseconds : double)
+
+    // Called periodically and provides the current time in milliseconds 
+    // You must use call SetTimersRunning(true) to enable this timer to be called
+
+End
+
+Initialization
+SetTimersRunning(true)
+Print(&quot;Hello&quot;)
+End
+">
+				<Param name="run : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ScaleRangeEx" func="yes">
+			<Overload retVal="Integer" descr="
+ScaleRangeEx : Maps a double value between xMin and xMax into a rounded integer value between yMin and yMax
+
+">
+
+				<Param name="x : Double"/>
+				<Param name="xMin : Double"/>
+				<Param name="xMax : Double"/>
+				<Param name="yMin : Integer"/>
+				<Param name="yMax : Integer"/>
+			</Overload>
+		</KeyWord>
+		  -->
+		<KeyWord name="ACos" func="yes">
+			<Overload retVal="double" descr="Returns the inverse cos of x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ASin" func="yes">
+			<Overload retVal="double" descr="Returns the inverse sin of x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ATan" func="yes">
+			<Overload retVal="double" descr="Returns the inverse tan of x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AbletonLink_Enable" func="yes">
+			<Overload retVal="" descr="Enable or disable Ableton Link">
+				<Param name="enable : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AbletonLink_Enabled" func="yes">
+			<Overload retVal="Boolean" descr="Returns whether Ableton Link is enabled"/>
+		</KeyWord>
+		<KeyWord name="Abs" func="yes">
+			<Overload retVal="double" descr="Returns the absolute value of x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AddChordInterval" func="yes">
+			<Overload retVal="" descr="Add a user defined chord interval to the chord dictionary">
+				<Param name="cr : ChordRecognizer"/>
+				<Param name="interval : integer array"/>
+				<Param name="chordName : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AllNotesOff" func="yes">
+			<Overload retVal="" descr="Send All Notes Off and reset controllers">
+				<Param name="p : MidiInBlock"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AllNotesOff" func="yes">
+			<Overload retVal="" descr="Send All Notes Off and reset controllers"/>
+		</KeyWord>
+		<KeyWord name="AltKeyDown" func="yes">
+			<Overload retVal="Boolean" descr="See if alt key is down"/>
+		</KeyWord>
+		<KeyWord name="AppendBoolean" func="yes">
+			<Overload retVal="" descr="Append the boolean to the end of the array if there is room otherwise fail silently">
+				<Param name="a : Boolean Array"/>
+				<Param name="value : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AppendDouble" func="yes">
+			<Overload retVal="" descr="Append the double to the end of the array if there is room otherwise fail silently">
+				<Param name="a : Double Array"/>
+				<Param name="value : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AppendInteger" func="yes">
+			<Overload retVal="" descr="Append the integer to the end of the array if there is room otherwise fail silently">
+				<Param name="a : Integer Array"/>
+				<Param name="value : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AppendString" func="yes">
+			<Overload retVal="" descr="Append the string to the end of the array if there is room otherwise fail silently">
+				<Param name="a : String Array"/>
+				<Param name="value : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AudioMixer_GetChannelStripName" func="yes">
+			<Overload retVal="String" descr="Returns the name of the channel strip at the given number - zero indexd">
+				<Param name="aBlock : AudioMixerBlock"/>
+				<Param name="channelStripNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AudioMixer_GetNumberOfChannelStrips" func="yes">
+			<Overload retVal="Integer" descr="Returns the number of channels in an audio mixer block">
+				<Param name="aBlock : AudioMixerBlock"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AudioMixer_SetChannelStripName" func="yes">
+			<Overload retVal="" descr="Set the name of the channel strip at the given number - zero indexd">
+				<Param name="aBlock : AudioMixerBlock"/>
+				<Param name="channelStripNumber : integer"/>
+				<Param name="channelStripName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AudioStreamer_GetCurrentTrackNumber" func="yes">
+			<Overload retVal="Integer" descr="Returns the index number of the currently selected track - returns -1 if no track selected - Experimental">
+				<Param name="aBlock : StreamingFilePlayerBlock"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AudioStreamer_GetMarkerCount" func="yes">
+			<Overload retVal="Integer" descr="Returns the number of markers for the specified track number - Experimental">
+				<Param name="aBlock : StreamingFilePlayerBlock"/>
+				<Param name="trackNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AudioStreamer_GetMarkerName" func="yes">
+			<Overload retVal="String" descr="Returns the name of a specific marker in the specified track number - Experimental">
+				<Param name="aBlock : StreamingFilePlayerBlock"/>
+				<Param name="trackNumber : integer"/>
+				<Param name="markerNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AudioStreamer_GetTrackCount" func="yes">
+			<Overload retVal="Integer" descr="Returns the number of tracks in the streamer - Experimental">
+				<Param name="aBlock : StreamingFilePlayerBlock"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AudioStreamer_GetTrackName" func="yes">
+			<Overload retVal="String" descr="Returns the name of the track if it exists - Experimental">
+				<Param name="aBlock : StreamingFilePlayerBlock"/>
+				<Param name="trackNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AudioStreamer_GoToMarkerNumber" func="yes">
+			<Overload retVal="bool" descr="Go to the specific marker in the current track - Experimental">
+				<Param name="aBlock : StreamingFilePlayerBlock"/>
+				<Param name="markerNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AudioStreamer_SwitchToTrack" func="yes">
+			<Overload retVal="" descr="Switch to a tracknumber if it exists otherwise ignore">
+				<Param name="aBlock : StreamingFilePlayerBlock"/>
+				<Param name="trackNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AudioStreamer_getIndexOfFirstTrackStartingWithName" func="yes">
+			<Overload retVal="Integer" descr="Returns the track index for the given name - -1 if not found">
+				<Param name="aBlock : StreamingFilePlayerBlock"/>
+				<Param name="trackName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AutoSustainer_GetHeldNotes" func="yes">
+			<Overload retVal="all" descr="returns all currently held down notes as an integer array without velocities">
+				<Param name="sustainer : AutoSustainer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AutoSustainer_Play" func="yes">
+			<Overload retVal="" descr="Play and sustain an incoming note message through the AutoSustainer">
+				<Param name="sustainer : AutoSustainer"/>
+				<Param name="m : NoteMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AutoSustainer_RespectParameters" func="yes">
+			<Overload retVal="" descr="Indicate whether notes should respect MidiInBlock parameters">
+				<Param name="sustainer : AutoSustainer"/>
+				<Param name="respect : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AutoSustainer_SetTarget" func="yes">
+			<Overload retVal="" descr="Specify the MidiInBlock to use for sending out notes using this AutoSustainer object">
+				<Param name="sustainer : AutoSustainer"/>
+				<Param name="m : MidiInBlock"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="AutoSustainer_Stop" func="yes">
+			<Overload retVal="" descr="Stop all pending notes">
+				<Param name="sustainer : AutoSustainer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="BetweenNotes" func="yes">
+			<Overload retVal="Boolean" descr="Returns true if the MIDI Note message is between the lower and higher values exclusive">
+				<Param name="lowerNote : int"/>
+				<Param name="note : NoteMessage"/>
+				<Param name="upperNote : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="BindExternalWidget" func="yes">
+			<Overload retVal="Boolean" descr="Access a widget in another rackspace - boolean return value indicates whether widget was found - experimental">
+				<Param name="ew : ExternalWidget"/>
+				<Param name="widgetName : String"/>
+				<Param name="rackspaceName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="BindWidget" func="yes">
+			<Overload retVal="Boolean" descr="Access a widget in the rackspace containing this scriptlet - boolean return value indicates whether widget was found - experimental">
+				<Param name="ew : ExternalWidget"/>
+				<Param name="widgetName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="BoolToString" func="yes">
+			<Overload retVal="String" descr="Returns a string representation of a boolean value">
+				<Param name="b : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="BroadcastPluginParameters" func="yes">
+			<Overload retVal="" descr="Send out the current value of every parameter in the scriptlet"/>
+		</KeyWord>
+		<KeyWord name="CC_LoadFromFile" func="yes">
+			<Overload retVal="Boolean" descr="Load a curve that was created with a Curve Component">
+				<Param name="cc : CurveComponent"/>
+				<Param name="filename : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CC_SaveToFile" func="yes">
+			<Overload retVal="Boolean" descr="Save a possibly changed curve to file">
+				<Param name="cc : CurveComponent"/>
+				<Param name="filename : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CC_Scale" func="yes">
+			<Overload retVal="Double" descr="Return the Y value for the inputted x value">
+				<Param name="cc : CurveComponent"/>
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Ceiling" func="yes">
+			<Overload retVal="integer" descr="Rounds x upward returning the smallest integral value that is not less than x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ChangeSelectedPluginBusLayout" func="yes">
+			<Overload retVal="" descr="Show the bus layout of the selected plugin - if any"/>
+		</KeyWord>
+		<KeyWord name="ChordPro_GoToFractionOfPage" func="yes">
+			<Overload retVal="" descr="Set the top of the Chord Pro window to some fraction of the total page">
+				<Param name="fraction : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ChordPro_GotoLine" func="yes">
+			<Overload retVal="" descr="Set the top of the Chord Pro window to the given line number">
+				<Param name="lineNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ChordPro_GotoMarker" func="yes">
+			<Overload retVal="" descr="Set the top of the Chord Pro window to the given marker name">
+				<Param name="marker : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ChordPro_GotoSongPart" func="yes">
+			<Overload retVal="" descr="Set the top of the Chord Pro window to the given songpart">
+				<Param name="songpartName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ClearArray" func="yes">
+			<Overload retVal="" descr="Resets the array size to 0">
+				<Param name="a : array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ClearLogWindow" func="yes">
+			<Overload retVal="" descr="Clear the log window - duh!"/>
+		</KeyWord>
+		<KeyWord name="ClearNoteTracker" func="yes">
+			<Overload retVal="" descr="Reinitializes the note tracker although it is generally not necessary">
+				<Param name="nt : NoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ClearSongPartSnapshot" func="yes">
+			<Overload retVal="" descr="Remove the current snapshot when in setlist mode - fails silently if not in setlist mode"/>
+		</KeyWord>
+		<KeyWord name="ClockTime" func="yes">
+			<Overload retVal="double" descr="Gets the current time in milliseconds"/>
+		</KeyWord>
+		<KeyWord name="CloseAllPluginWindows" func="yes">
+			<Overload retVal="" descr="Close all plugins associated with this rackspace or optionally with all rackspaces - in the GigScript the allRackspaces argument MUST be true">
+				<Param name="allRackspaces : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CloseLogWindow" func="yes">
+			<Overload retVal="" descr="Close the log window - duh!"/>
+		</KeyWord>
+		<KeyWord name="ClosePlugin" func="yes">
+			<Overload retVal="" descr="Close the plugin editor">
+				<Param name="p : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CloseScriptWindow" func="yes">
+			<Overload retVal="" descr="Close the script editor window - if open - for the current rackspace"/>
+		</KeyWord>
+		<KeyWord name="ColorToRGB" func="yes">
+			<Overload retVal="" descr="Convert a color back to R G B A values each between 0.0 and 1.0">
+				<Param name="color : Integer"/>
+				<Param name="RGBA : double Array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="CopySubstring" func="yes">
+			<Overload retVal="String" descr="Return the section of the source string based on the start index and desired length">
+				<Param name="source : String"/>
+				<Param name="startIndex : Integer"/>
+				<Param name="length : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Cos" func="yes">
+			<Overload retVal="double" descr="Returns the cos of x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="DecibelToLinear" func="yes">
+			<Overload retVal="Double" descr="Convert db value to its linear equivalent">
+				<Param name="value : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="DisplayTemporaryMessage" func="yes">
+			<Overload retVal="" descr="Displays the string at the top of the main window">
+				<Param name="s : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="DoubleToString" func="yes">
+			<Overload retVal="String" descr="Converts a double to a string with the specified number of places">
+				<Param name="d : double"/>
+				<Param name="places : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="DuplicateSelectedPlugin" func="yes">
+			<Overload retVal="" descr="Duplicates the selected plugin - if any"/>
+		</KeyWord>
+		<KeyWord name="EA_AddArgument" func="yes">
+			<Overload retVal="" descr="Add an argument to an external application manager">
+				<Param name="ea : ExternalApplication"/>
+				<Param name="arg : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="EA_ClearAllArgs" func="yes">
+			<Overload retVal="" descr="Clear the list of arguments so you can start again">
+				<Param name="ea : ExternalApplication"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="EA_SetProgramName" func="yes">
+			<Overload retVal="" descr="Set the name of the program to be run">
+				<Param name="ea : ExternalApplication"/>
+				<Param name="name : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="EA_Start" func="yes">
+			<Overload retVal="" descr="Open or run the external application">
+				<Param name="ea : ExternalApplication"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="EA_Stop" func="yes">
+			<Overload retVal="" descr="Close or terminate the external application - not guaranteed to work">
+				<Param name="ea : ExternalApplication"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="EnableGenerator" func="yes">
+			<Overload retVal="" descr="Enables or disables any generator (LFO, ramp, squarewave, ADSR, etc)">
+				<Param name="f : Generator"/>
+				<Param name="enable : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="EnableMetronome" func="yes">
+			<Overload retVal="" descr="Turn the metronome on or off">
+				<Param name="enable : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="EnablePlayhead" func="yes">
+			<Overload retVal="" descr="Start or stop the global playhead">
+				<Param name="enable : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Exp" func="yes">
+			<Overload retVal="double" descr="Returns e to the power of x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="FileExists" func="yes">
+			<Overload retVal="whether" descr="Check if a file exists - experimental and unsupported - this could easily blow up Gig Performer or overwrite - returns whether saved">
+				<Param name="filename : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="FindChordName" func="yes">
+			<Overload retVal="String" descr="Given a note tracker with pending notes - get the string name of the chord">
+				<Param name="cr : ChordRecognizer"/>
+				<Param name="nt : NoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Floor" func="yes">
+			<Overload retVal="integer" descr="Rounds x downward returning the largest integral value that is not greater than x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="FormatTime" func="yes">
+			<Overload retVal="String" descr="Returns a formatted timestamp from a given time in milliseconds">
+				<Param name="timeInMS : double"/>
+				<Param name="format : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GPWindowToBack" func="yes">
+			<Overload retVal="" descr="Put this GP main window behind other windows"/>
+		</KeyWord>
+		<KeyWord name="GPWindowToFront" func="yes">
+			<Overload retVal="" descr="Bring this GP window to the front"/>
+		</KeyWord>
+		<KeyWord name="GPWindowVisible" func="yes">
+			<Overload retVal="" descr="Show or hide GP window">
+				<Param name="visible : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetADSRAttackLevel" func="yes">
+			<Overload retVal="double" descr="Get the maximum volume level of the attack phase of an ADSR">
+				<Param name="f : ADSR"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetADSRAttackTime" func="yes">
+			<Overload retVal="int" descr="Get the time in milliseconds of the attack phase of an ADSR">
+				<Param name="f : ADSR"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetADSRDecayTime" func="yes">
+			<Overload retVal="int" descr="Get the time in milliseconds of the decay phase of an ADSR">
+				<Param name="f : ADSR"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetADSRReleaseTime" func="yes">
+			<Overload retVal="int" descr="Get the time in milliseconds of the total release time of an ADSR">
+				<Param name="f : ADSR"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetADSRSustainLevel" func="yes">
+			<Overload retVal="double" descr="Get the level of the sustain phase of an ADSR">
+				<Param name="f : ADSR"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetActivePreset" func="yes">
+			<Overload retVal="Integer" descr="Get the index of the current preset in the plugin block">
+				<Param name="p : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetAfterTouchValue" func="yes">
+			<Overload retVal="Integer" descr="Returns the current aftertouch value of an Aftertouch MIDI message">
+				<Param name="m : AfterTouchMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetBPM" func="yes">
+			<Overload retVal="double" descr="Returns the current global BPM value"/>
+		</KeyWord>
+		<KeyWord name="GetByte" func="yes">
+			<Overload retVal="Integer" descr="Returns one of the byte values of a MIDI message. The byteNumber must be within the range 0..2">
+				<Param name="m : MidiMessage"/>
+				<Param name="byteNumber : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetCCNumber" func="yes">
+			<Overload retVal="Integer" descr="Returns the Controller Number of a ControlChange MIDI message">
+				<Param name="m : ControlChangeMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetCCValue" func="yes">
+			<Overload retVal="Integer" descr="Returns the Controller value of a ControlChange MIDI message">
+				<Param name="m : ControlChangeMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetChannel" func="yes">
+			<Overload retVal="Integer" descr="Returns the MIDI channel number (between 1 and 16) of any MIDI message">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetChordProFileName" func="yes">
+			<Overload retVal="String" descr="Get the name of the associated chordpro file at the given index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetContinuousPreviousValue" func="yes">
+			<Overload retVal="Double" descr="Get the previous value of this parameter">
+				<Param name="p : Continuous"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetCurrentProgramChangeOrBankNumber" func="yes">
+			<Overload retVal="Integer" descr="Returns the PC MSB or LSB of the current varation or song part defined by itemNumber 0 1 2 respectively">
+				<Param name="itemNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetCurrentRackspaceIndex" func="yes">
+			<Overload retVal="integer" descr="Returns the index of the current rackspace"/>
+		</KeyWord>
+		<KeyWord name="GetCurrentSetlistIndex" func="yes">
+			<Overload retVal="Integer" descr="Get the index of the currently active setlist - returns -1 if not in setlist mode"/>
+		</KeyWord>
+		<KeyWord name="GetCurrentSetlistName" func="yes">
+			<Overload retVal="String" descr="Get the name of the current setlist"/>
+		</KeyWord>
+		<KeyWord name="GetCurrentSongIndex" func="yes">
+			<Overload retVal="Integer" descr="Get the index of the current song - negative 1 if it does not exist"/>
+		</KeyWord>
+		<KeyWord name="GetCurrentSongName" func="yes">
+			<Overload retVal="String" descr="Get the name of the current song"/>
+		</KeyWord>
+		<KeyWord name="GetCurrentSongPart" func="yes">
+			<Overload retVal="integer" descr="Get the index of the current song part"/>
+		</KeyWord>
+		<KeyWord name="GetCurrentSongPartIndex" func="yes">
+			<Overload retVal="Integer" descr="Get the index of the current song part - negative 1 if it does not exist"/>
+		</KeyWord>
+		<KeyWord name="GetCurrentSongPartName" func="yes">
+			<Overload retVal="String" descr="Get the name of the current song part"/>
+		</KeyWord>
+		<KeyWord name="GetCurrentVariation" func="yes">
+			<Overload retVal="integer" descr="Returns the index of the current variation"/>
+		</KeyWord>
+		<KeyWord name="GetDiscreteParameterItem" func="yes">
+			<Overload retVal="String" descr="Returns the string item at the given offset for this parameter">
+				<Param name="p : Discrete"/>
+				<Param name="offset : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetDiscreteParameterItemCount" func="yes">
+			<Overload retVal="Integer" descr="Returns the number of strings defined for this parameter">
+				<Param name="p : Discrete"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetDiscretePreviousValue" func="yes">
+			<Overload retVal="String" descr="Get the previous value of this parameter">
+				<Param name="p : Discrete"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetEnvVariable" func="yes">
+			<Overload retVal="String" descr="Return the value of an environment variable">
+				<Param name="name : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetExternalWidgetHideState" func="yes">
+			<Overload retVal="Boolean" descr="Get the current hide state of an external widget">
+				<Param name="ew : ExternalWidget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetExternalWidgetLabel" func="yes">
+			<Overload retVal="String" descr="Get the current label of an external widget">
+				<Param name="ew : ExternalWidget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetExternalWidgetValue" func="yes">
+			<Overload retVal="Double" descr="Get the current value of an external widget">
+				<Param name="ew : ExternalWidget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetGPPresetList" func="yes">
+			<Overload retVal="String" descr="Get the Nth chunk of GP Preset names">
+				<Param name="p : Block"/>
+				<Param name="chunkN : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetGPPresetListCount" func="yes">
+			<Overload retVal="Integer" descr="Returns the number of GP Presets for this plugin">
+				<Param name="p : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetGPWindowKioskMode" func="yes">
+			<Overload retVal="Boolean" descr="Get whether Gig Performer is in kiosk mode"/>
+		</KeyWord>
+		<KeyWord name="GetGPWindowState" func="yes">
+			<Overload retVal="String" descr="Get the current state of the main window"/>
+		</KeyWord>
+		<KeyWord name="GetGPWindowVisible" func="yes">
+			<Overload retVal="Boolean" descr="See if main window is visible"/>
+		</KeyWord>
+		<KeyWord name="GetGeneraterAmplitude" func="yes">
+			<Overload retVal="double" descr="Deprecated - Get the current value of a generator">
+				<Param name="f : Generator"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetGeneratorAmplitude" func="yes">
+			<Overload retVal="double" descr="Get the current value of a generator">
+				<Param name="f : Generator"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetGlobalTranspose" func="yes">
+			<Overload retVal="integer" descr="Get the current transpose value"/>
+		</KeyWord>
+		<KeyWord name="GetIndexOfDiscreteParameterItem" func="yes">
+			<Overload retVal="Integer" descr="Find the index of a discrete item and returns -1 if the item is not found">
+				<Param name="p : Discrete"/>
+				<Param name="itemToFind : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetIndexOfSubrangeParameterItem" func="yes">
+			<Overload retVal="Integer" descr="Find the index of a subrange item and returns -1 if the item is not found">
+				<Param name="p : Subrange"/>
+				<Param name="itemToFind : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetLabelColor" func="yes">
+			<Overload retVal="Integer" descr="Get the color of the widget label">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetMaxNoteFromMidiInBlock" func="yes">
+			<Overload retVal="Integer" descr="Gets the max note number defined for the keyboard split">
+				<Param name="aBlock : MidiInBlock"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetMetronomeVolume" func="yes">
+			<Overload retVal="double" descr="Get the metronome volume"/>
+		</KeyWord>
+		<KeyWord name="GetMidiInDeviceCount" func="yes">
+			<Overload retVal="integer" descr="Returns the number of available MIDI In Devices"/>
+		</KeyWord>
+		<KeyWord name="GetMidiInDeviceFromRigManager" func="yes">
+			<Overload retVal="String" descr="Find the name of a physical MidiIn device given its RigManager name">
+				<Param name="rmDeviceName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetMidiInDeviceName" func="yes">
+			<Overload retVal="String" descr="Returns the name of the MIDI In Device at the specified index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetMidiMessageSize" func="yes">
+			<Overload retVal="Integer" descr="Returns the number of bytes in any MIDI Message">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetMidiOutDeviceCount" func="yes">
+			<Overload retVal="integer" descr="Returns the number of available MIDI Out Devices"/>
+		</KeyWord>
+		<KeyWord name="GetMidiOutDeviceName" func="yes">
+			<Overload retVal="String" descr="Returns the name of the MIDI Out Device at the specified index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetMinNoteFromMidiInBlock" func="yes">
+			<Overload retVal="Integer" descr="Gets the min note number defined for the keyboard split">
+				<Param name="aBlock : MidiInBlock"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetNoteNumber" func="yes">
+			<Overload retVal="int" descr="Returns the note number of a NoteMessage MIDI event">
+				<Param name="m : NoteMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetParameter" func="yes">
+			<Overload retVal="Double" descr="Gets the current parameter value associated with a parameter index of the plugin block. The value will be between 0.0 and 1.0">
+				<Param name="p : Block"/>
+				<Param name="index : Int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetParameterCount" func="yes">
+			<Overload retVal="Integer" descr="Gets the number of parameters in the plugin block">
+				<Param name="p : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetParameterCount" func="yes">
+			<Overload retVal="Integer" descr="Get the number of parameters"/>
+		</KeyWord>
+		<KeyWord name="GetParameterName" func="yes">
+			<Overload retVal="String" descr="Gets the name for the parameter index of the plugin block if available.">
+				<Param name="p : Block"/>
+				<Param name="index : Int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetParameterName" func="yes">
+			<Overload retVal="String" descr="Returns the name of the parameter - preferring the alias if defined">
+				<Param name="p : Parameter"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetParameterText" func="yes">
+			<Overload retVal="String" descr="Gets the value as text of the given parameter index of the plugin block if available.">
+				<Param name="p : Block"/>
+				<Param name="index : Int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetPitchBendValue" func="yes">
+			<Overload retVal="Integer" descr="Returns the pitch bend value from a PitchBend MIDI message">
+				<Param name="m : PitchBendMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetPluginCaption" func="yes">
+			<Overload retVal="String" descr="Gets the caption displayed in the plugin block">
+				<Param name="p : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetPluginInfo" func="yes">
+			<Overload retVal="String" descr="Get information about the actual plugin --- 0=name - 1=manufacturer">
+				<Param name="p : Block"/>
+				<Param name="infoCode : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetPolyTouchNoteNumber" func="yes">
+			<Overload retVal="int" descr="Returns the note number of a PolyTouch MIDI event">
+				<Param name="m : PolyTouchMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetPolyTouchNotePressure" func="yes">
+			<Overload retVal="int" descr="Returns the poly pressure value of a PolyTouch MIDI event">
+				<Param name="m : PolyTouchMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetPresetCount" func="yes">
+			<Overload retVal="Integer" descr="Get the number of available presets in the plugin block">
+				<Param name="p : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetPresetName" func="yes">
+			<Overload retVal="String" descr="Get the name of the preset at the given index of the plugin block">
+				<Param name="p : Block"/>
+				<Param name="index : Int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetProgramChangeNumber" func="yes">
+			<Overload retVal="int" descr="Returns the program change number of a ProgramChangeMessage MIDI event">
+				<Param name="m : ProgramChangeMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetRackspaceBPM" func="yes">
+			<Overload retVal="double" descr="Gets the BPM value associated with this rackspace"/>
+		</KeyWord>
+		<KeyWord name="GetRackspaceCount" func="yes">
+			<Overload retVal="integer" descr="Returns the number of rackspaces in the system"/>
+		</KeyWord>
+		<KeyWord name="GetRackspaceIndex" func="yes">
+			<Overload retVal="Integer" descr="Returns the name of the rackspace at the given index. Returns -1 if rackspace does not exist">
+				<Param name="name : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetRackspaceName" func="yes">
+			<Overload retVal="String" descr="Returns the name of the active rackspace"/>
+		</KeyWord>
+		<KeyWord name="GetRackspaceNameAtIndex" func="yes">
+			<Overload retVal="String" descr="Returns the name of the rackspace at the given index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetReleaseVelocity" func="yes">
+			<Overload retVal="int" descr="Returns the release velocity of a NoteOffEvent MIDI message. You need to make sure that the message is in fact a NoteOff or the result will always be 0">
+				<Param name="m : NoteMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSetlistCount" func="yes">
+			<Overload retVal="integer" descr="Returns the number of setlists"/>
+		</KeyWord>
+		<KeyWord name="GetSetlistName" func="yes">
+			<Overload retVal="String" descr="Get the name of the setlist at the given index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSongArtistName" func="yes">
+			<Overload retVal="String" descr="Get the artist name of the song at the given index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSongBPM" func="yes">
+			<Overload retVal="Double" descr="Get the BPM of the song at the given index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSongCount" func="yes">
+			<Overload retVal="integer" descr="Returns the number of songs in the current setlist"/>
+		</KeyWord>
+		<KeyWord name="GetSongIndex" func="yes">
+			<Overload retVal="Integer" descr="Get the index of the song for the given name - negative 1 if it does not exist">
+				<Param name="songname : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSongKeySignature" func="yes">
+			<Overload retVal="String" descr="Get the key signature of the song at the given index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSongName" func="yes">
+			<Overload retVal="String" descr="Get the name of the song at the given index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSongPartCount" func="yes">
+			<Overload retVal="integer" descr="Returns the number of parts in the current song"/>
+		</KeyWord>
+		<KeyWord name="GetSongPartName" func="yes">
+			<Overload retVal="String" descr="Get the name of the song part at the given index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSongPartTimeSigDenominator" func="yes">
+			<Overload retVal="Integer" descr="Get the denominator of the time signature of the songpart at the given indices">
+				<Param name="songIndex : Integer"/>
+				<Param name="songPartIndex : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSongPartTimeSigNumerator" func="yes">
+			<Overload retVal="Integer" descr="Get the numerator of the time signature of the songpart at the given indices">
+				<Param name="songIndex : Integer"/>
+				<Param name="songPartIndex : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSongTimeSigDenominator" func="yes">
+			<Overload retVal="Integer" descr="Get the denominator of the time signature of the song at the given index">
+				<Param name="songIndex : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSongTimeSigNumerator" func="yes">
+			<Overload retVal="Integer" descr="Get the numerator of the time signature of the song at the given index">
+				<Param name="songIndex : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSongTranspose" func="yes">
+			<Overload retVal="Integer" descr="Get the transpose amount of the song at the given index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSubrangeParameterItem" func="yes">
+			<Overload retVal="Integer" descr="Returns the integer item at the given offset for this parameter">
+				<Param name="p : Subrange"/>
+				<Param name="offset : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSubrangeParameterItemCount" func="yes">
+			<Overload retVal="Integer" descr="Returns the number of integer values defined for this parameter">
+				<Param name="p : Subrange"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetSubrangePreviousValue" func="yes">
+			<Overload retVal="Integer" descr="Get the previous value of this parameter">
+				<Param name="p : Subrange"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetTimeSigDenominator" func="yes">
+			<Overload retVal="Integer" descr="Get the denominator of the global time signature"/>
+		</KeyWord>
+		<KeyWord name="GetTimeSigNumerator" func="yes">
+			<Overload retVal="Integer" descr="Get the numerator of the globaltime signature"/>
+		</KeyWord>
+		<KeyWord name="GetTimersRunning" func="yes">
+			<Overload retVal="Boolean" descr="Indicates whether global timers are running or stopped"/>
+		</KeyWord>
+		<KeyWord name="GetTransposeFromMidiInBlock" func="yes">
+			<Overload retVal="Integer" descr="Gets the max note number defined for the keyboard split">
+				<Param name="aBlock : MidiInBlock"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetUserVariable" func="yes">
+			<Overload retVal="String" descr="Get the value of a user defined variable">
+				<Param name="name : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetVariationCount" func="yes">
+			<Overload retVal="integer" descr="Returns the number of variations in the current rackspace"/>
+		</KeyWord>
+		<KeyWord name="GetVariationCountForRackspaceAtIndex" func="yes">
+			<Overload retVal="Integer" descr="Returns the number of variations in a specified rackspace">
+				<Param name="rackspaceIndex : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetVariationName" func="yes">
+			<Overload retVal="String" descr="Returns the name of a variation">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetVariationNameForRackspaceAtIndex" func="yes">
+			<Overload retVal="String" descr="Returns the name of a variation in a specified rackspace">
+				<Param name="rackspaceIndex : integer"/>
+				<Param name="variationIndex : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetVelocity" func="yes">
+			<Overload retVal="int" descr="Returns the velocity of a NoteEvent MIDI message. The value will be between 0 and 127">
+				<Param name="m : NoteMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetVelocityCurveValue" func="yes">
+			<Overload retVal="Integer" descr="Returns the velocity after applying the scale curve to it">
+				<Param name="aBlock : MidiInBlock"/>
+				<Param name="velocity : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetBounds" func="yes">
+			<Overload retVal="" descr="Fill the first four fields of the bounds array with the widget position and size on a panel">
+				<Param name="w : Widget"/>
+				<Param name="bounds : integer array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetCurveValue" func="yes">
+			<Overload retVal="the" descr="For some value x - returns the y value of a widget after applying the scale curve to it">
+				<Param name="w : Widget"/>
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetFillColor" func="yes">
+			<Overload retVal="Integer" descr="Get the fill color for widgets that support this feature">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetHideState" func="yes">
+			<Overload retVal="the" descr="Possibly returns the hide state of a widget - not guaranteed to be correct!">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetLabel" func="yes">
+			<Overload retVal="String" descr="Get the label of a widget">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetMappedParameterValue" func="yes">
+			<Overload retVal="String" descr="Get the current parameter text of the parameter number of plugin associated with this widget if available">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetOutlineColor" func="yes">
+			<Overload retVal="Integer" descr="Get the outline color for widgets that support this feature">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetOutlineRoundness" func="yes">
+			<Overload retVal="Integer" descr="Get the outline roundness for widgets that support this feature">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetOutlineThickness" func="yes">
+			<Overload retVal="Integer" descr="Get the outline thickness for widgets that support this feature">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetPluginMappedParameterNumber" func="yes">
+			<Overload retVal="Integer" descr="Returns the mapped parameter number of this plugin or -99999 if unmapped">
+				<Param name="w : Widget"/>
+				<Param name="plugin : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetPreviousValue" func="yes">
+			<Overload retVal="Double" descr="Gets the previous value (position) of the widget. The value will be between 0.0 and 1.0">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetResetValue" func="yes">
+			<Overload retVal="Double" descr="Gets the reset value of the widget">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetScriptName" func="yes">
+			<Overload retVal="String" descr="Gets the scripting name of this widget. Useful when widget is passed as a parameter somewhere">
+				<Param name="p : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GetWidgetValue" func="yes">
+			<Overload retVal="Double" descr="Gets the current value (position) of the widget. The value will be between 0.0 and 1.0">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GigPerformerDocumentsFolder" func="yes">
+			<Overload retVal="String" descr="Returns the root folder where GP content is stored"/>
+		</KeyWord>
+		<KeyWord name="GlobalRackspaceVisible" func="yes">
+			<Overload retVal="Boolean" descr="Indicates whether the global rackspace is visible"/>
+		</KeyWord>
+		<KeyWord name="GotNote" func="yes">
+			<Overload retVal="" descr="Track status of an incoming note">
+				<Param name="nt : NoteTracker"/>
+				<Param name="note : NoteMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GotNoteOff" func="yes">
+			<Overload retVal="" descr="Remember that a note was released">
+				<Param name="nt : NoteTracker"/>
+				<Param name="noteNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="GotNoteOn" func="yes">
+			<Overload retVal="" descr="Remember that a note was played">
+				<Param name="nt : NoteTracker"/>
+				<Param name="noteNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="InEditMode" func="yes">
+			<Overload retVal="Boolean" descr="Indicates whether we are in edit mode"/>
+		</KeyWord>
+		<KeyWord name="InPanelView" func="yes">
+			<Overload retVal="Boolean" descr="See if we are in panel view"/>
+		</KeyWord>
+		<KeyWord name="InSetlistMode" func="yes">
+			<Overload retVal="boolean" descr="Returns whether we are currently in setlist mode"/>
+		</KeyWord>
+		<KeyWord name="InSetlistView" func="yes">
+			<Overload retVal="Boolean" descr="See if we are in the setlist view"/>
+		</KeyWord>
+		<KeyWord name="InTunerView" func="yes">
+			<Overload retVal="Boolean" descr="Indicates whether we are in the tuner view"/>
+		</KeyWord>
+		<KeyWord name="InWiringView" func="yes">
+			<Overload retVal="Boolean" descr="See if we are in the wiring view"/>
+		</KeyWord>
+		<KeyWord name="IndexOf" func="yes">
+			<Overload retVal="integer" descr="Returns the index containing the value otherwise returns -1">
+				<Param name="a : Integer array"/>
+				<Param name="value : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IndexOfSubstring" func="yes">
+			<Overload retVal="Integer" descr="Return the zero-based index of the substring or -1 if substring not found">
+				<Param name="source : String"/>
+				<Param name="substring : String"/>
+				<Param name="caseSensitive : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="InitADSR" func="yes">
+			<Overload retVal="" descr="Set all parameters of an ADSR in one function call time milliseconds">
+				<Param name="f : ADSR"/>
+				<Param name="attackTime : int"/>
+				<Param name="attackLevel : double"/>
+				<Param name="decayTime : int"/>
+				<Param name="sustainLevel : double"/>
+				<Param name="releaseTime : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="InjectMidiEvent" func="yes">
+			<Overload retVal="" descr="Inject a message to any Midi Input Port with the specified physical device name">
+				<Param name="physicalDeviceName : String"/>
+				<Param name="m : midiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="InjectMidiEventViaRigManager" func="yes">
+			<Overload retVal="" descr="Inject a message to a MidiInDeviceAlias using its Rig Manager name directly">
+				<Param name="rmDeviceAliasName : MidiInDeviceAlias"/>
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="InjectSysexEvent" func="yes">
+			<Overload retVal="" descr="Inject a sysex message to any Midi Input Port with the specified physical device name">
+				<Param name="physicalDeviceName : String"/>
+				<Param name="s : SysexMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="InjectSysexEventViaRigManager" func="yes">
+			<Overload retVal="" descr="Inject a sysex message to a MidiInDeviceAlias using its Rig Manager name directly">
+				<Param name="rmDeviceAliasName : MidiInDeviceAlias"/>
+				<Param name="s : SysexMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="InsertFavoriteAtMousePosition" func="yes">
+			<Overload retVal="" descr="Insert the named favorite at the current mouse position">
+				<Param name="name : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IntTo7BitHexString" func="yes">
+			<Overload retVal="String" descr="Converts an integer number to at least minByteLength sequence of 7 bit hex bytes as readable strings - intended for use with sysex messages">
+				<Param name="i : Integer"/>
+				<Param name="minByteLength : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IntToFloat" func="yes">
+			<Overload retVal="double" descr="Converts an integer to its floating point equivalent">
+				<Param name="x : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IntToHex" func="yes">
+			<Overload retVal="String" descr="Converts an integer number to a hex notated readable string">
+				<Param name="i : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IntToHexString" func="yes">
+			<Overload retVal="String" descr="Converts an integer number to a hex notated readable string">
+				<Param name="i : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IntToString" func="yes">
+			<Overload retVal="String" descr="Returns a string representation of an integer value">
+				<Param name="i : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsAfterTouch" func="yes">
+			<Overload retVal="boolean" descr="See if the current message is actually an Aftertouch MIDI message">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsController" func="yes">
+			<Overload retVal="boolean" descr="See if the current message is actually a CC MIDI message">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsGeneratorEnabled" func="yes">
+			<Overload retVal="boolean" descr="Queries the state (start or stopped) of any generator">
+				<Param name="f : Generator"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsGigLoading" func="yes">
+			<Overload retVal="Boolean" descr="Returns whether a gig file is currently loading"/>
+		</KeyWord>
+		<KeyWord name="IsMetronomeEnabled" func="yes">
+			<Overload retVal="boolean" descr="See if metronome is running"/>
+		</KeyWord>
+		<KeyWord name="IsNote" func="yes">
+			<Overload retVal="boolean" descr="See if the current message is a NoteOn or a NoteOff message">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsNoteOff" func="yes">
+			<Overload retVal="boolean" descr="See if the current message is actually a noteOff message - this is not the same as a NoteOn with 0 velocity">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsNoteOn" func="yes">
+			<Overload retVal="boolean" descr="See if the current message is actually a noteOn message">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsPitchBend" func="yes">
+			<Overload retVal="boolean" descr="See if the current message is actually a pitchbend message">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsPlayheadEnabled" func="yes">
+			<Overload retVal="Boolean" descr="Indicates whether the playhead is running"/>
+		</KeyWord>
+		<KeyWord name="IsPluginBypassed" func="yes">
+			<Overload retVal="Boolean" descr="Returns whether the plugin block is bypassed">
+				<Param name="p : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsPolyTouch" func="yes">
+			<Overload retVal="boolean" descr="See if the current message is actually a Polytouch MIDI message">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsProgramChange" func="yes">
+			<Overload retVal="boolean" descr="See if the current message is actually a program change message">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="IsRecording" func="yes">
+			<Overload retVal="Boolean" descr="Return whether GP is currently recording audio and/or MIDI"/>
+		</KeyWord>
+		<KeyWord name="LargestDouble" func="yes">
+			<Overload retVal="Double" descr="Returns the maximum value of a double array">
+				<Param name="a : Double array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="LargestInt" func="yes">
+			<Overload retVal="integer" descr="Returns the maximum value in an integer array">
+				<Param name="a : Integer array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Length" func="yes">
+			<Overload retVal="Int" descr="Returns the length of a string">
+				<Param name="s : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="LinearToDecibel" func="yes">
+			<Overload retVal="Double" descr="Convert linear value to its dB equivalent. Returns -99999 if input is invalid">
+				<Param name="value : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Ln" func="yes">
+			<Overload retVal="double" descr="Returns the log (base e) of x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="LoadGPPreset" func="yes">
+			<Overload retVal="" descr="Load a GP plugin preset asychronously - seriously experimental and probably very unsafe">
+				<Param name="p : Block"/>
+				<Param name="presetName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="LoadStringFromTextFile" func="yes">
+			<Overload retVal="String" descr="Load the contents of a file into a string - experimental and unsupported - this could easily blow up Gig Performer">
+				<Param name="filename : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Log" func="yes">
+			<Overload retVal="double" descr="Returns the log (base 10) of x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeAfterTouchMessage" func="yes">
+			<Overload retVal="AfterTouchMessage" descr="Returns an Aftertouch MIDI message with the specified value. The MIDI channel is 1">
+				<Param name="value : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeAfterTouchMessageEx" func="yes">
+			<Overload retVal="AfterTouchMessage" descr="Returns an Aftertouch MIDI message with the specified value and MIDI channel">
+				<Param name="value : int"/>
+				<Param name="channel : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeControlChangeMessage" func="yes">
+			<Overload retVal="ControlChangeMessage" descr="Returns a CC MIDI message with the specified CC number and value. The MIDI channel is 1">
+				<Param name="number : int"/>
+				<Param name="value : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeControlChangeMessageEx" func="yes">
+			<Overload retVal="ControlChangeMessage" descr="Returns a CC MIDI message with the specified CC number and value and MIDI channel">
+				<Param name="number : int"/>
+				<Param name="value : int"/>
+				<Param name="channel : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeMidiMessage" func="yes">
+			<Overload retVal="MidiMessage" descr="Deprecated - Create an three byte MIDI message - you are on your own so make sure you get the values correct">
+				<Param name="byte0 : integer"/>
+				<Param name="byte1 : integer"/>
+				<Param name="byte2 : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeMidiMessage1" func="yes">
+			<Overload retVal="MidiMessage" descr="Create one byte MIDI message - you are on your own so make sure you get the value correct">
+				<Param name="byte0 : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeMidiMessage2" func="yes">
+			<Overload retVal="MidiMessage" descr="Create a 2 byte MIDI message - you are on your own so make sure you get the values correct">
+				<Param name="byte0 : integer"/>
+				<Param name="byte1 : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeMidiMessage3" func="yes">
+			<Overload retVal="MidiMessage" descr="Create an three byte MIDI message - you are on your own so make sure you get the values correct">
+				<Param name="byte0 : integer"/>
+				<Param name="byte1 : integer"/>
+				<Param name="byte2 : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeNoteMessage" func="yes">
+			<Overload retVal="NoteMessage" descr="Returns a Note MIDI message with the specified note number and velocity. The MIDI channel is 1">
+				<Param name="number : int"/>
+				<Param name="velocity : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeNoteMessageEx" func="yes">
+			<Overload retVal="NoteMessage" descr="Returns a Note MIDI message with the specified note number and velocity and MIDI channel">
+				<Param name="number : int"/>
+				<Param name="velocity : int"/>
+				<Param name="channel : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeNoteOffMessage" func="yes">
+			<Overload retVal="NoteMessage" descr="Returns a NoteOff MIDI message with the specified note number and release. The MIDI channel is 1">
+				<Param name="number : int"/>
+				<Param name="release : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeNoteOffMessageEx" func="yes">
+			<Overload retVal="NoteMessage" descr="Returns a NoteOff MIDI message with the specified note number and release and MIDI channel">
+				<Param name="number : int"/>
+				<Param name="release : int"/>
+				<Param name="channel : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakePitchBendMessage" func="yes">
+			<Overload retVal="PitchBendMessage" descr="Returns a new Pitchbend MIDI message with the specified value. The MIDI channel is 1">
+				<Param name="value : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakePitchBendMessageEx" func="yes">
+			<Overload retVal="PitchBendMessage" descr="Returns a new Pitchbend MIDI message with the specified value and MIDI channel">
+				<Param name="value : int"/>
+				<Param name="channel : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakePolyTouchMessage" func="yes">
+			<Overload retVal="PolyTouchMessage" descr="Returns a Polytouch MIDI message with the specified note number and pressure amount. The MIDI channel is 1">
+				<Param name="number : int"/>
+				<Param name="pressure : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakePolyTouchMessageEx" func="yes">
+			<Overload retVal="PolyTouchMessage" descr="Returns a Polytouch - sometimes called poly pressure - MIDI message with the specified note number and pressure ammount and MIDI channel">
+				<Param name="number : int"/>
+				<Param name="pressure : int"/>
+				<Param name="channel : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeProgramChangeMessage" func="yes">
+			<Overload retVal="ProgramChangeMessage" descr="Returns a new ProgramChange MIDI message with the specified value ranging from 0 to 127. The MIDI channel is 1">
+				<Param name="value : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MakeProgramChangeMessageEx" func="yes">
+			<Overload retVal="ProgramChangeMessage" descr="Returns a new ProgramChange MIDI message with the specified value ranging from 0 to 127 and with the specified MIDI channel">
+				<Param name="value : int"/>
+				<Param name="channel : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MapValueToDiscreteString" func="yes">
+			<Overload retVal="String" descr="Select a string based on the proportional fractional value between 0.0 and 1.0">
+				<Param name="x : double"/>
+				<Param name="values : string array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MapWidgetToPlugin" func="yes">
+			<Overload retVal="" descr="Map a widget to the specified parameter of the specified plugin">
+				<Param name="w : Widget"/>
+				<Param name="plugin : Block"/>
+				<Param name="parameterNumber : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Max" func="yes">
+			<Overload retVal="double" descr="Returns the larger of the two values">
+				<Param name="a : double"/>
+				<Param name="b : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiInDeviceExists" func="yes">
+			<Overload retVal="Boolean" descr="Returns whether the physical MIDI in device exists">
+				<Param name="deviceName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiOutDeviceExists" func="yes">
+			<Overload retVal="Boolean" descr="Returns whether the physical MIDI Out device exists">
+				<Param name="deviceName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_CollectEventsNow" func="yes">
+			<Overload retVal="" descr="Collect events at the current position">
+				<Param name="sequence : MidiSequence"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_EndOfSong" func="yes">
+			<Overload retVal="Boolean" descr="True if there are no more events in track">
+				<Param name="sequence : MidiSequence"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_FingerTap" func="yes">
+			<Overload retVal="" descr="Send all the available events for each track to its associated MidiInBlock - optionally restart automatically">
+				<Param name="sequence : MidiSequence"/>
+				<Param name="trackNumbers : integer array"/>
+				<Param name="targets : MidiInBlock array"/>
+				<Param name="resetAtEndOfSong : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_FollowGlobalTranspose" func="yes">
+			<Overload retVal="" descr="When true MIDI note events will be transposed by the global transpose amount">
+				<Param name="sequence : MidiSequence"/>
+				<Param name="trackNumber : integer"/>
+				<Param name="follow : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_GetCurrentBar" func="yes">
+			<Overload retVal="integer" descr="Returns the current bar">
+				<Param name="sequence : MidiSequence"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_GetCurrentBeat" func="yes">
+			<Overload retVal="integer" descr="Returns the current beat of the current bar">
+				<Param name="sequence : MidiSequence"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_GetCurrentEvents" func="yes">
+			<Overload retVal="MidiMessage" descr="Access the current events at the current grid position for the specified track">
+				<Param name="sequence : MidiSequence"/>
+				<Param name="trackNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_GetCurrentTick" func="yes">
+			<Overload retVal="integer" descr="Returns the current tick offset">
+				<Param name="sequence : MidiSequence"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_GetResolution" func="yes">
+			<Overload retVal="" descr="Get the base resolution of the sequence">
+				<Param name="sequence : MidiSequence"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_GetSongLength" func="yes">
+			<Overload retVal="a" descr="Populates and returns a 3 item array containing the length of the song in bar:beat and absolute ticks">
+				<Param name="sequence : MidiSequence"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_GetTrackCount" func="yes">
+			<Overload retVal="integer" descr="Returns the number of tracks in a loaded MIDI file">
+				<Param name="sequence : MidiSequence"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_LoadMidiFile" func="yes">
+			<Overload retVal="the" descr="Loads a midi file and returns the number of tracks">
+				<Param name="sequence : MidiSequence"/>
+				<Param name="fromFile : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_LoadStandardMidiFile" func="yes">
+			<Overload retVal="the" descr="Loads a midi file and returns the number of tracks">
+				<Param name="sequence : MidiSequence"/>
+				<Param name="fromFile : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_MapOutputChannel" func="yes">
+			<Overload retVal="" descr="Map the output channel for a track to the specified number between 1-16. Set to 0 to use individual event channel">
+				<Param name="sequence : MidiSequence"/>
+				<Param name="trackNumber : integer"/>
+				<Param name="channel : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_Quantize" func="yes">
+			<Overload retVal="" descr="Grid quantize - 1 2 4 8 16">
+				<Param name="sequence : MidiSequence"/>
+				<Param name="q : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_ResetToStart" func="yes">
+			<Overload retVal="" descr="Reset to the beginning of the track">
+				<Param name="sequence : MidiSequence"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiSequence_ScriptletFingerTap" func="yes">
+			<Overload retVal="" descr="Send all the available events for each track out using the specified associated channel with 0 meaning unchanged - optionally restart automatically - for use in a scriptlet">
+				<Param name="sequence : MidiSequence"/>
+				<Param name="trackNumbers : integer array"/>
+				<Param name="channelNumbers : integer array"/>
+				<Param name="resetAtEndOfSong : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiToParam" func="yes">
+			<Overload retVal="Double" descr="Maps an integer value between 0 and 127 into a floating point value between 0.0 and 1.0 and is a specialized (slightly) faster version of the generic Scale function">
+				<Param name="m : Int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MidiToParamEx" func="yes">
+			<Overload retVal="Double" descr="Maps a value between xMin and xMax both with type integer into a value between yMin and yMax both with type double. Slightly faster than Scale if you can use the expected types so that no conversion is required">
+				<Param name="x : Int"/>
+				<Param name="xMin : Int"/>
+				<Param name="xMax : Int"/>
+				<Param name="yMin : Double"/>
+				<Param name="yMax : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Min" func="yes">
+			<Overload retVal="double" descr="Returns the smaller of the two values">
+				<Param name="a : double"/>
+				<Param name="b : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MinimizeOrRestoreGPWindow" func="yes">
+			<Overload retVal="" descr="Minimize or restore the GP main window">
+				<Param name="minimize : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ModifierKeys" func="yes">
+			<Overload retVal="integer" descr="Returns the state of the various modifier keys: 1-Shift 2-Ctrl 4-Option 8-Cmd"/>
+		</KeyWord>
+		<KeyWord name="MultiChannelNoteTracker_Clear" func="yes">
+			<Overload retVal="" descr="Reinitializes the note tracker for the specified channel">
+				<Param name="mt : MultiChannelNoteTracker"/>
+				<Param name="channel : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MultiChannelNoteTracker_GetHeldNotes" func="yes">
+			<Overload retVal="all" descr="returns all currently held down notes as an integer array without velocities">
+				<Param name="mt : MultiChannelNoteTracker"/>
+				<Param name="channel : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MultiChannelNoteTracker_GetSpecificNoteOnCount" func="yes">
+			<Overload retVal="integer" descr="Count how many times a specific note on has been played without a corresponding note off">
+				<Param name="mt : MultiChannelNoteTracker"/>
+				<Param name="noteNumber : integer"/>
+				<Param name="channel : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MultiChannelNoteTracker_GotMidiMessage" func="yes">
+			<Overload retVal="" descr="Tracks notes and sustain messages automatically">
+				<Param name="mt : MultiChannelNoteTracker"/>
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MultiChannelNoteTracker_GotNote" func="yes">
+			<Overload retVal="" descr="Track status of an incoming note">
+				<Param name="mt : MultiChannelNoteTracker"/>
+				<Param name="note : NoteMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MultiChannelNoteTracker_GotNoteOff" func="yes">
+			<Overload retVal="" descr="Remember that a note was released">
+				<Param name="mt : MultiChannelNoteTracker"/>
+				<Param name="noteNumber : integer"/>
+				<Param name="channel : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MultiChannelNoteTracker_GotNoteOn" func="yes">
+			<Overload retVal="" descr="Remember that a note was played">
+				<Param name="mt : MultiChannelNoteTracker"/>
+				<Param name="noteNumber : integer"/>
+				<Param name="channel : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MultiChannelNoteTracker_IsNoteOffPending" func="yes">
+			<Overload retVal="whether" descr="returns whether a specific note is still down">
+				<Param name="mt : MultiChannelNoteTracker"/>
+				<Param name="noteNumber : integer"/>
+				<Param name="channel : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MultiChannelNoteTracker_NoteOnCount" func="yes">
+			<Overload retVal="integer" descr="Count number of notes still being played">
+				<Param name="mt : MultiChannelNoteTracker"/>
+				<Param name="channel : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MultiChannelNoteTracker_StopAllPendingNotes" func="yes">
+			<Overload retVal="" descr="Send note offs for all pending notes on all channels in the tracker">
+				<Param name="m : MidiInBlock"/>
+				<Param name="nt : NoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="MultiChannelNoteTracker_StopAllPendingNotes" func="yes">
+			<Overload retVal="" descr="Send note offs for all pending notes on all channels in the tracker">
+				<Param name="nt : MultiChannelNoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Next" func="yes">
+			<Overload retVal="" descr="Switch to next rackspace variation song or song part"/>
+		</KeyWord>
+		<KeyWord name="NextRackspace" func="yes">
+			<Overload retVal="" descr="Switch to the next rackspace"/>
+		</KeyWord>
+		<KeyWord name="NextSong" func="yes">
+			<Overload retVal="" descr="Move to the next song"/>
+		</KeyWord>
+		<KeyWord name="NextVariation" func="yes">
+			<Overload retVal="" descr="Switch to the next variation"/>
+		</KeyWord>
+		<KeyWord name="NoteMapper_CreateScale" func="yes">
+			<Overload retVal="" descr="Given a root note and an array of 12 offsets - create a scale covering the entire MIDI note range">
+				<Param name="nm : NoteMapper"/>
+				<Param name="rootNote : integer"/>
+				<Param name="scale : integer array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteMapper_GetMappedNotes" func="yes">
+			<Overload retVal="Integer" descr="Returns the note or chord associated with the incoming note">
+				<Param name="nm : NoteMapper"/>
+				<Param name="note : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteMapper_MapNote" func="yes">
+			<Overload retVal="" descr="Define note to be returned given an incoming note">
+				<Param name="nm : NoteMapper"/>
+				<Param name="note : integer"/>
+				<Param name="mapToNote : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteMapper_MapNoteToChord" func="yes">
+			<Overload retVal="" descr="Associate a note with a chord">
+				<Param name="nm : NoteMapper"/>
+				<Param name="note : integer"/>
+				<Param name="chord : integer array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteMapper_MapNotes" func="yes">
+			<Overload retVal="" descr="Map a list of source notes to replacement notes - both arrays must be same size">
+				<Param name="nm : NoteMapper"/>
+				<Param name="source : integer array"/>
+				<Param name="dest : integer array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteMapper_Reset" func="yes">
+			<Overload retVal="" descr="Reset note mapper to defaults">
+				<Param name="nm : NoteMapper"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteNameToNoteNumber" func="yes">
+			<Overload retVal="integer" descr="returns integer value of a note name">
+				<Param name="s : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteNumberToNoteName" func="yes">
+			<Overload retVal="String" descr="Returns a string representation of an integer note number">
+				<Param name="i : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteOnCount" func="yes">
+			<Overload retVal="integer" descr="Count number of notes still being played">
+				<Param name="nt : NoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteTracker_Clear" func="yes">
+			<Overload retVal="" descr="Reinitializes the note tracker although it is generally not necessary">
+				<Param name="nt : NoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteTracker_GetHeldNotes" func="yes">
+			<Overload retVal="all" descr="returns all currently held down notes as an integer array without velocities">
+				<Param name="nt : NoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteTracker_GetSpecificNoteOnCount" func="yes">
+			<Overload retVal="integer" descr="Count how many times a specific note on has been played without a corresponding note off">
+				<Param name="nt : NoteTracker"/>
+				<Param name="noteNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteTracker_GotNote" func="yes">
+			<Overload retVal="" descr="Track status of an incoming note">
+				<Param name="nt : NoteTracker"/>
+				<Param name="note : NoteMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteTracker_GotNoteOff" func="yes">
+			<Overload retVal="" descr="Remember that a note was released">
+				<Param name="nt : NoteTracker"/>
+				<Param name="noteNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteTracker_GotNoteOn" func="yes">
+			<Overload retVal="" descr="Remember that a note was played">
+				<Param name="nt : NoteTracker"/>
+				<Param name="noteNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteTracker_IsNoteOffPending" func="yes">
+			<Overload retVal="whether" descr="returns whether a specific note is still down">
+				<Param name="nt : NoteTracker"/>
+				<Param name="noteNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteTracker_NoteOnCount" func="yes">
+			<Overload retVal="integer" descr="Count number of notes still being played">
+				<Param name="nt : NoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteTracker_StopAllPendingNotes" func="yes">
+			<Overload retVal="" descr="Send note offs for all pending notes in the tracker">
+				<Param name="m : MidiInBlock"/>
+				<Param name="nt : NoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="NoteTracker_StopAllPendingNotes" func="yes">
+			<Overload retVal="" descr="Send note offs for all pending notes in the tracker">
+				<Param name="nt : NoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Notify" func="yes">
+			<Overload retVal="" descr="Displays a message on main window that will fade out">
+				<Param name="s : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_AppendDoubleArg" func="yes">
+			<Overload retVal="" descr="Append a double argument to the OSC message">
+				<Param name="m : OSCMessage"/>
+				<Param name="value : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_AppendIntArg" func="yes">
+			<Overload retVal="" descr="Append an integer argument to the OSC message">
+				<Param name="m : OSCMessage"/>
+				<Param name="value : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_AppendStringArg" func="yes">
+			<Overload retVal="" descr="Append a string argument to the OSC message">
+				<Param name="m : OSCMessage"/>
+				<Param name="value : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_ArgCount" func="yes">
+			<Overload retVal="int" descr="Returns the number of arguments in an OSC message">
+				<Param name="m : OSCMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_ClearArgs" func="yes">
+			<Overload retVal="" descr="Clear all arguments but leave the address pattern">
+				<Param name="m : OSCMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_Enabled" func="yes">
+			<Overload retVal="Boolean" descr="Returns whether OSC is enabled for this instance"/>
+		</KeyWord>
+		<KeyWord name="OSC_GetArgAsDouble" func="yes">
+			<Overload retVal="double" descr="Returns the argument at the index - 0 based - as a double">
+				<Param name="m : OSCMessage"/>
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_GetArgAsInteger" func="yes">
+			<Overload retVal="int" descr="Returns the argument at the index - 0 based - as an integer">
+				<Param name="m : OSCMessage"/>
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_GetArgAsString" func="yes">
+			<Overload retVal="String" descr="Returns the argument at the index - 0 based - as a String">
+				<Param name="m : OSCMessage"/>
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_GetGPListeningPort" func="yes">
+			<Overload retVal="Integer" descr="Return the port on which GP listens for incoming OSC messages"/>
+		</KeyWord>
+		<KeyWord name="OSC_GetIPAddressFromTargetName" func="yes">
+			<Overload retVal="String" descr="Returns the IP address or empty string if target does not exist">
+				<Param name="targetName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_GetPortNumberFromTargetName" func="yes">
+			<Overload retVal="Integer" descr="Returns the port number or -1 if target does not exist">
+				<Param name="targetName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_GetTargetNames" func="yes">
+			<Overload retVal="String" descr="Returns the list of available target names"/>
+		</KeyWord>
+		<KeyWord name="OSC_Send" func="yes">
+			<Overload retVal="" descr="Send out the message to the default IP address and port">
+				<Param name="m : OSCMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_SendCommand" func="yes">
+			<Overload retVal="" descr="Send an OSC message with no valueo the default ip address and port">
+				<Param name="address : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_SendCommandSpecific" func="yes">
+			<Overload retVal="" descr="Send an OSC message with no arguments to the specified ip address and port">
+				<Param name="oscAddress : String"/>
+				<Param name="ipAddress : String"/>
+				<Param name="port : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_SendDouble" func="yes">
+			<Overload retVal="" descr="Send an OSC message with a value of type double to the default ip address and port">
+				<Param name="address : String"/>
+				<Param name="value : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_SendDoubleSpecific" func="yes">
+			<Overload retVal="" descr="Send an OSC message with a value of type double to the specified ip address and port">
+				<Param name="address : String"/>
+				<Param name="value : Double"/>
+				<Param name="ipAddress : String"/>
+				<Param name="port : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_SendInteger" func="yes">
+			<Overload retVal="" descr="Send an OSC message with a value of type integer to the default ip address and port">
+				<Param name="address : String"/>
+				<Param name="value : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_SendIntegerSpecific" func="yes">
+			<Overload retVal="" descr="Send an OSC message with a value of type integer to the specified ip address and port">
+				<Param name="address : String"/>
+				<Param name="value : Integer"/>
+				<Param name="ipAddress : String"/>
+				<Param name="port : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_SendSpecific" func="yes">
+			<Overload retVal="" descr="Send out the message to the specified IP address and port">
+				<Param name="m : OSCMessage"/>
+				<Param name="ipAddress : String"/>
+				<Param name="port : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_SendString" func="yes">
+			<Overload retVal="" descr="Send an OSC message with a value of type String to the default ip address and port">
+				<Param name="address : String"/>
+				<Param name="value : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_SendStringSpecific" func="yes">
+			<Overload retVal="" descr="Send an OSC message with a value of type String to the specified ip address and port">
+				<Param name="address : String"/>
+				<Param name="value : String"/>
+				<Param name="ipAddress : String"/>
+				<Param name="port : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_SetAddress" func="yes">
+			<Overload retVal="" descr="Set the address of an OSC message">
+				<Param name="m : OSCMessage"/>
+				<Param name="address : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OSC_TargetNameExists" func="yes">
+			<Overload retVal="Boolean" descr="Returns whether a target name has been defined">
+				<Param name="targetName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OpenLogWindow" func="yes">
+			<Overload retVal="" descr="Open the log window - duh!"/>
+		</KeyWord>
+		<KeyWord name="OpenPlugin" func="yes">
+			<Overload retVal="" descr="Open the plugin editor">
+				<Param name="p : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="OpenScriptWindow" func="yes">
+			<Overload retVal="" descr="Open the script editor window for the current rackspace"/>
+		</KeyWord>
+		<KeyWord name="OverrideParameterText" func="yes">
+			<Overload retVal="" descr="Override the default parameter string of the parameter displayed by a widget">
+				<Param name="p : parameter"/>
+				<Param name="value : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Panic" func="yes">
+			<Overload retVal="" descr="Stop all notes in the current rackspace"/>
+		</KeyWord>
+		<KeyWord name="ParamToMidi" func="yes">
+			<Overload retVal="Int" descr="Maps an double value between 0.0 and 1.0 into an integer value between 0 and 127 and is a specialized (slightly) faster version of the generic Scale function">
+				<Param name="m : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ParamToMidiEx" func="yes">
+			<Overload retVal="Int" descr="Maps a double value between xMin and xMax - both between 0.0 and 1.0 - into a value between yMinMIDI and yMaxMIDI both with type integer and whose values will be constrained between 0 and 127. Slightly faster than Scale if you can use the expected types so that no conversion is required">
+				<Param name="x : Double"/>
+				<Param name="xMin : Double"/>
+				<Param name="xMax : Double"/>
+				<Param name="yMinMIDI : Int"/>
+				<Param name="yMaxMIDI : Int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ParseCSVString" func="yes">
+			<Overload retVal="String" descr="Breaksup a single line of a CSV into its parts">
+				<Param name="line : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="PlayNote" func="yes">
+			<Overload retVal="" descr="Send a noteOn event at startTimeMS and a noteOff event at durationMS later. If duration is less than 1 then we make it 1">
+				<Param name="p : MidiInBlock"/>
+				<Param name="noteNumber : integer"/>
+				<Param name="velocity : integer"/>
+				<Param name="channel : integer"/>
+				<Param name="startTimeMS : integer"/>
+				<Param name="duration : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="PlayNote" func="yes">
+			<Overload retVal="" descr="Send a noteOn event at startTimeMS and a noteOff event at durationMS later. If duration is less than 1 then we make it 1">
+				<Param name="noteNumber : integer"/>
+				<Param name="velocity : integer"/>
+				<Param name="channel : integer"/>
+				<Param name="startTimeMS : integer"/>
+				<Param name="duration : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="PlayNotes" func="yes">
+			<Overload retVal="" descr="Play a collection of note at startTimeMS and stop them durationMS later. If duration is less than 1 then we make it 1">
+				<Param name="p : MidiInBlock"/>
+				<Param name="noteNumbers : integer array"/>
+				<Param name="velocity : integer"/>
+				<Param name="channel : integer"/>
+				<Param name="startTimeMS : integer"/>
+				<Param name="duration : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="PlayNotes" func="yes">
+			<Overload retVal="" descr="Play a collection of note at startTimeMS and stop them durationMS later. If duration is less than 1 then we make it 1">
+				<Param name="noteNumbers : integer array"/>
+				<Param name="velocity : integer"/>
+				<Param name="channel : integer"/>
+				<Param name="startTimeMS : integer"/>
+				<Param name="duration : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Power" func="yes">
+			<Overload retVal="double" descr="Returns base raised to the power of exponent">
+				<Param name="base : double"/>
+				<Param name="exponent : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="PrevSong" func="yes">
+			<Overload retVal="" descr="Move to the previous song"/>
+		</KeyWord>
+		<KeyWord name="Previous" func="yes">
+			<Overload retVal="" descr="Switch to previous rackspace variation song or song part"/>
+		</KeyWord>
+		<KeyWord name="PreviousRackspace" func="yes">
+			<Overload retVal="" descr="Switch to the previous rackspace"/>
+		</KeyWord>
+		<KeyWord name="PreviousVariation" func="yes">
+			<Overload retVal="" descr="Switch to the previous variation"/>
+		</KeyWord>
+		<KeyWord name="Print" func="yes">
+			<Overload retVal="" descr="Displays the string in the log window">
+				<Param name="s : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="PromptToLoadGPUserPreset" func="yes">
+			<Overload retVal="" descr="Prompt to load a GP User Preset for the given plugin">
+				<Param name="p : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="PromptToSaveGPUserPreset" func="yes">
+			<Overload retVal="" descr="Prompt to save a GP User Preset for the given plugin">
+				<Param name="p : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="PushSnapshotToVariation" func="yes">
+			<Overload retVal="" descr="Update the underlying rackspace variation with the current song part overrides - fails silently if not in setlist mode"/>
+		</KeyWord>
+		<KeyWord name="QuickInsertPlugin" func="yes">
+			<Overload retVal="" descr="Uses the Quick Select Dialog to insert a new plugin"/>
+		</KeyWord>
+		<KeyWord name="QuickReplaceSelectedPlugin" func="yes">
+			<Overload retVal="" descr="Use dialog to replace the plugin - if any - under the mouse"/>
+		</KeyWord>
+		<KeyWord name="RGBToColor" func="yes">
+			<Overload retVal="Integer" descr="Convert R G B A values between 0.0 and 1.0 into a color">
+				<Param name="red : double"/>
+				<Param name="green : double"/>
+				<Param name="blue : double"/>
+				<Param name="alpha : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Random" func="yes">
+			<Overload retVal="double" descr="Returns a random value between 0.0 and 1.0"/>
+		</KeyWord>
+		<KeyWord name="RandomRange" func="yes">
+			<Overload retVal="integer" descr="Returns a random integer value between min and max">
+				<Param name="min : integer"/>
+				<Param name="max : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="RecordInputs" func="yes">
+			<Overload retVal="" descr="Start or stop recording audio and/or MIDI">
+				<Param name="enable : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="RedrawWidgetCurve" func="yes">
+			<Overload retVal="" descr="Redraw the curve after making changes to it">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="RefreshWidgetsMappedToPlugin" func="yes">
+			<Overload retVal="" descr="Update widget values to match their mapped parameters - useful when change to plugin preset does not notify the host">
+				<Param name="p : Block"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ReinterpretAsAfterTouch" func="yes">
+			<Overload retVal="AftertouchMessage" descr="Reinterpret an arbitrary MIDI message - you need to know what you are doing">
+				<Param name="m : MidiMessage"/>
+				<Param name="UseThirdByte : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ReinterpretAsControllerMessage" func="yes">
+			<Overload retVal="ControlChangeMessage" descr="Reinterpret an arbitrary MIDI message - you need to know what you are doing">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ReinterpretAsNoteOffMessage" func="yes">
+			<Overload retVal="NoteMessage" descr="Reinterpret an arbitrary MIDI message - you need to know what you are doing">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ReinterpretAsNoteOnMessage" func="yes">
+			<Overload retVal="NoteMessage" descr="Reinterpret an arbitrary MIDI message - you need to know what you are doing">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ReinterpretAsPitchBend" func="yes">
+			<Overload retVal="PitchbendMessage" descr="Reinterpret an arbitrary MIDI message - you need to know what you are doing">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ReinterpretAsPolyTouchMessage" func="yes">
+			<Overload retVal="PolyTouchMessage" descr="Reinterpret an arbitrary MIDI message - you need to know what you are doing">
+				<Param name="m : MidiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ReinterpretAsProgramChange" func="yes">
+			<Overload retVal="ProgramChangeMessage" descr="Reinterpret an arbitrary MIDI message - you need to know what you are doing">
+				<Param name="m : MidiMessage"/>
+				<Param name="UseThirdByte : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="RemoveChordInterval" func="yes">
+			<Overload retVal="" descr="Remove a chord interval from the chord dictionary">
+				<Param name="cr : ChordRecognizer"/>
+				<Param name="interval : integer array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="RemoveLast" func="yes">
+			<Overload retVal="" descr="Remove the last item in the array and so reducing the array size by 1">
+				<Param name="a : array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="RemoveSelectedPlugin" func="yes">
+			<Overload retVal="" descr="Removes the selected plugin - if any"/>
+		</KeyWord>
+		<KeyWord name="RenameSelectedPlugin" func="yes">
+			<Overload retVal="" descr="Opens the dialog to rename the selected plugin - if any"/>
+		</KeyWord>
+		<KeyWord name="ReplacePlugin" func="yes">
+			<Overload retVal="" descr="Replace the plugin in the specified block - optionally load a preset if not blank value - experimental">
+				<Param name="p : Block"/>
+				<Param name="fullPathToFilename : String"/>
+				<Param name="presetToLoad : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ReplaceString" func="yes">
+			<Overload retVal="String" descr="Replace a substring with another string">
+				<Param name="source : String"/>
+				<Param name="replaceThis : String"/>
+				<Param name="withThat : String"/>
+				<Param name="caseSensitive : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ReplaceStringSection" func="yes">
+			<Overload retVal="String" descr="Extract a substring defined by startIndex and length and insert a new substring into that position">
+				<Param name="source : String"/>
+				<Param name="startIndex : integer"/>
+				<Param name="length : integer"/>
+				<Param name="newSubstring : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ResetWidgetValue" func="yes">
+			<Overload retVal="" descr="Reset the widget to its default value - same as double clicking on the widget">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ResyncWidget" func="yes">
+			<Overload retVal="" descr="Resend the message to sync an external associated physical control with the widget">
+				<Param name="p : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Reverse" func="yes">
+			<Overload retVal="" descr="Reverse the list of items in the array">
+				<Param name="a : array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Round" func="yes">
+			<Overload retVal="Int" descr="Rounds a floating point number to the nearest integer">
+				<Param name="x : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SM_ChangeValue" func="yes">
+			<Overload retVal="" descr="Change a byte of a sysex message at some index starting at 0. Note that the F0 and F7 bytes cannot themselves be changed">
+				<Param name="sm : SysexMessage"/>
+				<Param name="index : integer"/>
+				<Param name="newValue : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SM_CreateSysex" func="yes">
+			<Overload retVal="" descr="Store a sysex message efficiently for manipulation and sending">
+				<Param name="sm : SysexManager"/>
+				<Param name="m : SysexMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SM_CreateSysexFromString" func="yes">
+			<Overload retVal="" descr="Interpret a string as a sysex and store it for manipulation and sending">
+				<Param name="sm : SysexManager"/>
+				<Param name="s : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SM_GetByte" func="yes">
+			<Overload retVal="integer" descr="Gets the byte at the specified index">
+				<Param name="sm : SysexMessage"/>
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SM_GetValue" func="yes">
+			<Overload retVal="integer" descr="Gets the byte at the specified index">
+				<Param name="sm : SysexMessage"/>
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SM_GetValues" func="yes">
+			<Overload retVal="integer" descr="Gets the combined bytes starting at the specified index">
+				<Param name="sm : SysexMessage"/>
+				<Param name="first : integer"/>
+				<Param name="second : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SM_Length" func="yes">
+			<Overload retVal="integer" descr="Returns the length of a system message">
+				<Param name="sm : SysexMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SM_Pretty" func="yes">
+			<Overload retVal="String" descr="Returns a nicely formatted sysex message - possibly breaking it up into small blocks between 1 and 8 - blocksize of 0 will display indexing">
+				<Param name="m : SysexMessage"/>
+				<Param name="blockSize : integer"/>
+				<Param name="uppercase : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SM_SendMidiIn" func="yes">
+			<Overload retVal="" descr="Send a stored sysex message from a MidiIn block">
+				<Param name="sm : SysexMessage"/>
+				<Param name="midiIn : MidiInBlock"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SM_SendMidiOut" func="yes">
+			<Overload retVal="" descr="Send a stored sysex message from a MidiOut block to an external MIDI device">
+				<Param name="sm : SysexMessage"/>
+				<Param name="midiOut : MidiOutBlock"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SM_SendMidiOutNow" func="yes">
+			<Overload retVal="" descr="Send a sysex message through a MidiOut block to an external MIDI device">
+				<Param name="midiOut : MidiOutBlock"/>
+				<Param name="sm : SysexMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SaveGPPreset" func="yes">
+			<Overload retVal="" descr="Saves a GP plugin preset in the background - seriously experimental and probably very unsafe - no way to tell programatically if it was successful">
+				<Param name="p : Block"/>
+				<Param name="presetName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SaveGigfile" func="yes">
+			<Overload retVal="" descr="Tries to save the gigfile - displays message in main window indicating success or failure"/>
+		</KeyWord>
+		<KeyWord name="SaveStringToTextFile" func="yes">
+			<Overload retVal="whether" descr="Save a string to a file - experimental and unsupported - this could easily blow up Gig Performer or overwrite - returns whether saved">
+				<Param name="filename : String"/>
+				<Param name="text : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Scale" func="yes">
+			<Overload retVal="Double" descr="Maps a value between xMin and xMax into a value between yMin and yMax. Integers will be converted to doubles. See MidiToParam and ParamToMidi for slightly faster implementations">
+				<Param name="x : Double"/>
+				<Param name="xMin : Double"/>
+				<Param name="xMax : Double"/>
+				<Param name="yMin : Double"/>
+				<Param name="yMax : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ScaleInt" func="yes">
+			<Overload retVal="Integer" descr="Maps a value between xMin and xMax into a value between yMin and yMax. Doubles will be truncated to integers. See MidiToParam and ParamToMidi for slightly faster implementations">
+				<Param name="x : Integer"/>
+				<Param name="xMin : Integer"/>
+				<Param name="xMax : Integer"/>
+				<Param name="yMin : Integer"/>
+				<Param name="yMax : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ScaleRange" func="yes">
+			<Overload retVal="Integer" descr="Maps a double value between 0.0 and 1.0 into a rounded integer value between yMin and yMax">
+				<Param name="x : Double"/>
+				<Param name="yMin : Integer"/>
+				<Param name="yMax : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ScaleRangeEx" func="yes">
+			<Overload retVal="Integer" descr="Maps a double value between xMin and xMax into a rounded integer value between yMin and yMax">
+				<Param name="x : Double"/>
+				<Param name="xMin : Double"/>
+				<Param name="xMax : Double"/>
+				<Param name="yMin : Integer"/>
+				<Param name="yMax : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ScheduleMidiEvent" func="yes">
+			<Overload retVal="" descr="Schedule a MIDI event to be reprocessed at some specified time in the future">
+				<Param name="p : MidiInBlock"/>
+				<Param name="m : midiMessage"/>
+				<Param name="delayInMS : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ScrollFrontPanel" func="yes">
+			<Overload retVal="" descr="Scroll the main panel to the given position as a fraction of the total height">
+				<Param name="toPostion : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ScrollRackspaces" func="yes">
+			<Overload retVal="" descr="Scroll the rackspace view to the given position as a fraction of the total height">
+				<Param name="toPostion : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ScrollSetlist" func="yes">
+			<Overload retVal="" descr="Scroll the setlist view to the given position as a fraction of the total height">
+				<Param name="toPostion : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SelectPreset" func="yes">
+			<Overload retVal="" descr="Change the preset of the block - experimental">
+				<Param name="p : Block"/>
+				<Param name="index : Int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendLater" func="yes">
+			<Overload retVal="" descr="Schedule a MIDI event to be sent out at some specified time in the future">
+				<Param name="p : MidiInBlock"/>
+				<Param name="m : midiMessage"/>
+				<Param name="delayInMS : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendLater" func="yes">
+			<Overload retVal="" descr="Schedule a MIDI event to be sent out in the future - only for use in a Scriptlet">
+				<Param name="m : midiMessage"/>
+				<Param name="delayInMS : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendNoteMessageWithTranspositionsLater" func="yes">
+			<Overload retVal="" descr="Send multiple MIDI noteon or noteoff events out some milliseconds later using note number added to each offset in the array">
+				<Param name="p : MidiInBlock"/>
+				<Param name="m : NoteMessage"/>
+				<Param name="transpositions : integer array"/>
+				<Param name="delayInMS : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendNoteMessageWithTranspositionsNow" func="yes">
+			<Overload retVal="" descr="Send multiple note on or note off events out immediately using note number added to each offset in the array">
+				<Param name="p : MidiInBlock"/>
+				<Param name="m : NoteMessage"/>
+				<Param name="transpositions : integer array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendNoteMessagesLater" func="yes">
+			<Overload retVal="" descr="Create a chord of note on or off events using the array of note numbers and send it out some milliseconds later">
+				<Param name="p : MidiInBlock"/>
+				<Param name="noteNumbers : integer array"/>
+				<Param name="velocity : integer"/>
+				<Param name="channel : integer"/>
+				<Param name="delayInMS : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendNoteMessagesNow" func="yes">
+			<Overload retVal="" descr="Create a chord of note on or off events using the array of note numbers and send it out immediately">
+				<Param name="p : MidiInBlock"/>
+				<Param name="noteNumbers : integer array"/>
+				<Param name="velocity : integer"/>
+				<Param name="channel : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendNotesNow" func="yes">
+			<Overload retVal="" descr="Play a collection of notes now">
+				<Param name="noteNumbers : integer array"/>
+				<Param name="velocity : integer"/>
+				<Param name="channel : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendNow" func="yes">
+			<Overload retVal="" descr="Send a MIDI event out immediately">
+				<Param name="p : MidiInBlock"/>
+				<Param name="m : midiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendNow" func="yes">
+			<Overload retVal="" descr="Send a MIDI event out immediately - only for use in a Scriptlet">
+				<Param name="m : midiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendNowExternal" func="yes">
+			<Overload retVal="" descr="Send a MIDI event out immediately through a MIDI Out block">
+				<Param name="p : MidiOutBlock"/>
+				<Param name="m : midiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendNowRespectingParameters" func="yes">
+			<Overload retVal="" descr="Send a MIDI event out after applying MidiInBlock parameters">
+				<Param name="p : MidiInBlock"/>
+				<Param name="m : midiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendNowToMidiOutDevice" func="yes">
+			<Overload retVal="" descr="Send a MIDI event out immediately through a physical MIDI Out device">
+				<Param name="deviceName : String"/>
+				<Param name="m : midiMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendSysexExternal" func="yes">
+			<Overload retVal="" descr="Send a MIDI sysex message out immediately through a MIDI Out block">
+				<Param name="p : MidiOutBlock"/>
+				<Param name="m : SysexMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendSysexInternal" func="yes">
+			<Overload retVal="" descr="Send a MIDI sysex message out immediately from a MIDI In block">
+				<Param name="p : MidiInBlock"/>
+				<Param name="m : SysexMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendSysexInternalLater" func="yes">
+			<Overload retVal="" descr="Send a MIDI sysex message out at some specified time in the future from a MIDI In block">
+				<Param name="p : MidiInBlock"/>
+				<Param name="m : SysexMessage"/>
+				<Param name="delayInMS : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendSysexInternalNow" func="yes">
+			<Overload retVal="" descr="Send a MIDI sysex message out immediately from a MIDI In block">
+				<Param name="p : MidiInBlock"/>
+				<Param name="m : SysexMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendSysexNow" func="yes">
+			<Overload retVal="" descr="Send a MIDI sysex message out immediately">
+				<Param name="m : SysexMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendSysexNowToMidiOutDevice" func="yes">
+			<Overload retVal="" descr="Send a MIDI sysex message out immediately through a MIDI output device">
+				<Param name="deviceName : String"/>
+				<Param name="m : SysexMessage"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendWidgetToBack" func="yes">
+			<Overload retVal="" descr="Put this widget behind other widgets">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SendWidgetToFront" func="yes">
+			<Overload retVal="" descr="Put this widget in front of other widgets">
+				<Param name="w : Widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetADSRAttackLevel" func="yes">
+			<Overload retVal="" descr="Set the maximum volume level of the attack phase of an ADSR">
+				<Param name="f : ADSR"/>
+				<Param name="level : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetADSRAttackTime" func="yes">
+			<Overload retVal="" descr="Set the time in milliseconds of the attack phase of an ADSR">
+				<Param name="f : ADSR"/>
+				<Param name="milliseconds : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetADSRDecayTime" func="yes">
+			<Overload retVal="" descr="Set the time in milliseconds of the decay phase of an ADSR">
+				<Param name="f : ADSR"/>
+				<Param name="milliseconds : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetADSRReleaseTime" func="yes">
+			<Overload retVal="" descr="Set the time in milliseconds of the total release time of an ADSR">
+				<Param name="f : ADSR"/>
+				<Param name="milliseconds : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetADSRSustainLevel" func="yes">
+			<Overload retVal="" descr="Set the level of the sustain phase of an ADSR">
+				<Param name="f : ADSR"/>
+				<Param name="level : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetArtistName" func="yes">
+			<Overload retVal="" descr="Change the name of artist for the song at the specified index">
+				<Param name="songIndex : integer"/>
+				<Param name="newName : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetBPM" func="yes">
+			<Overload retVal="" descr="Set the global BPM value">
+				<Param name="bpm : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetDisplayMessage" func="yes">
+			<Overload retVal="" descr="Displays a message at the bottom of a Scriptlet editor window">
+				<Param name="value : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetEnvVariable" func="yes">
+			<Overload retVal="" descr="Set an environment variable - be careful - may not be persistent">
+				<Param name="name : String"/>
+				<Param name="value : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetExternalWidgetHideOnPresentation" func="yes">
+			<Overload retVal="" descr="Set the current hide state of an external widget">
+				<Param name="ew : ExternalWidget"/>
+				<Param name="hide : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetExternalWidgetLabel" func="yes">
+			<Overload retVal="" descr="Set the current label of an external widget">
+				<Param name="ew : ExternalWidget"/>
+				<Param name="newValue : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetExternalWidgetValue" func="yes">
+			<Overload retVal="" descr="Set the current value of an external widget">
+				<Param name="ew : ExternalWidget"/>
+				<Param name="newValue : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetExternalWidgetValueEx" func="yes">
+			<Overload retVal="" descr="Set the current value of an external widget - uses modulo arithmetic">
+				<Param name="ew : ExternalWidget"/>
+				<Param name="newValue : Double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetGPWindowFullScreen" func="yes">
+			<Overload retVal="" descr="Make the GP window be full screen or not fullscreen">
+				<Param name="fullScreen : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetGPWindowKioskMode" func="yes">
+			<Overload retVal="" descr="Make the GP window be kiosk or not kiosk">
+				<Param name="kiosk : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetGPWindowState" func="yes">
+			<Overload retVal="" descr="Set the state of the main window">
+				<Param name="state : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetGeneratorCoarseness" func="yes">
+			<Overload retVal="" descr="Controls the jitter time of a callback (trading off accuracy against CPU cycles)">
+				<Param name="f : Generator"/>
+				<Param name="milliseconds : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetGeneratorFrequency" func="yes">
+			<Overload retVal="" descr="Set the frequency in cycles/second of any Generator">
+				<Param name="f : Generator"/>
+				<Param name="hertz : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetGeneratorLength" func="yes">
+			<Overload retVal="" descr="Set the length of a generator cycle">
+				<Param name="f : Generator"/>
+				<Param name="milliseconds : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetGeneratorOneShot" func="yes">
+			<Overload retVal="" descr="Controls whether a Generator repeats indefinitely or only runs once when triggered">
+				<Param name="f : Generator"/>
+				<Param name="oneshot : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetGlobalTranspose" func="yes">
+			<Overload retVal="" descr="Transpose all incoming MIDI messages by semitones amount">
+				<Param name="semitones : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetInfoMessage" func="yes">
+			<Overload retVal="" descr="Defines an info message to be displayed when user clicks on I button">
+				<Param name="value : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetLabelColor" func="yes">
+			<Overload retVal="" descr="Set the label color of a widgets">
+				<Param name="w : Widget"/>
+				<Param name="color : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetMetronomeVolume" func="yes">
+			<Overload retVal="" descr="Set the metronome volume">
+				<Param name="volume : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetParameter" func="yes">
+			<Overload retVal="" descr="Send a parameter value to the plugin block">
+				<Param name="p : Block"/>
+				<Param name="index : Int"/>
+				<Param name="value : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetPluginBypassed" func="yes">
+			<Overload retVal="" descr="Bypass or unbypass the plugin block">
+				<Param name="p : Block"/>
+				<Param name="bypass : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetPluginCaption" func="yes">
+			<Overload retVal="" descr="Sets the caption displayed in the plugin block">
+				<Param name="p : Block"/>
+				<Param name="newCaption : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetPluginEditorXYPosition" func="yes">
+			<Overload retVal="" descr="Open a plugin editor and set its position on screen">
+				<Param name="p : Block"/>
+				<Param name="x : integer"/>
+				<Param name="y : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetSongInformation" func="yes">
+			<Overload retVal="" descr="Change multiple attributes of a song at the specified index - invalid parameters will be ignored">
+				<Param name="songIndex : integer"/>
+				<Param name="songName : string"/>
+				<Param name="artistName : string"/>
+				<Param name="BPM : double"/>
+				<Param name="key : Integer"/>
+				<Param name="scale : String"/>
+				<Param name="sigNumerator : integer"/>
+				<Param name="sigDenominator : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetSongName" func="yes">
+			<Overload retVal="" descr="Change the name of a song at the specified index">
+				<Param name="songIndex : integer"/>
+				<Param name="newName : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetSongPart" func="yes">
+			<Overload retVal="" descr="Switch to another part in the current song">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetSongPartName" func="yes">
+			<Overload retVal="" descr="Change the name of the song part at songpart index in a song at the specified song index">
+				<Param name="songIndex : Integer"/>
+				<Param name="songPartIndex : integer"/>
+				<Param name="newName : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetTimeSignatureDenominator" func="yes">
+			<Overload retVal="" descr="Set the denominator of global time signature">
+				<Param name="denominator : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetTimeSignatureNumerator" func="yes">
+			<Overload retVal="" descr="Set the numerator of the global time signature">
+				<Param name="numerator : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetTimersRunning" func="yes">
+			<Overload retVal="" descr="Start or stop the global timers">
+				<Param name="run : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetVariation" func="yes">
+			<Overload retVal="" descr="Switch to another variation in the active rackspace using zero based offsets">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetVariationByName" func="yes">
+			<Overload retVal="" descr="Switch to another variation in the active rackspace using the variation name">
+				<Param name="name : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetBounds" func="yes">
+			<Overload retVal="" descr="Set a widget x y width height on a panel from the first four fields of the bound array">
+				<Param name="w : Widget"/>
+				<Param name="bounds : integer array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetBoundsFromOtherWidget" func="yes">
+			<Overload retVal="" descr="Make the target widget have the same position and size as the source">
+				<Param name="target : Widget"/>
+				<Param name="source : widget"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetCurveValue" func="yes">
+			<Overload retVal="" descr="Returns the value of a widget after applying the scale curve to it">
+				<Param name="w : Widget"/>
+				<Param name="x : double"/>
+				<Param name="y : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetFillColor" func="yes">
+			<Overload retVal="" descr="Set the fill color for widgets that support this feature">
+				<Param name="w : Widget"/>
+				<Param name="color : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetHideOnPresentation" func="yes">
+			<Overload retVal="" descr="Set widget to be hidden when not in edit mode">
+				<Param name="w : Widget"/>
+				<Param name="hide : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetLabel" func="yes">
+			<Overload retVal="" descr="Set the label of a widget">
+				<Param name="w : Widget"/>
+				<Param name="text : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetOutlineColor" func="yes">
+			<Overload retVal="" descr="Set the outline color for widgets that support this feature">
+				<Param name="w : Widget"/>
+				<Param name="color : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetOutlineRoundness" func="yes">
+			<Overload retVal="" descr="Set the outline roundness for widgets that support this feature">
+				<Param name="w : Widget"/>
+				<Param name="roundness : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetOutlineThickness" func="yes">
+			<Overload retVal="" descr="Set the outline thickness for widgets that support this feature">
+				<Param name="w : Widget"/>
+				<Param name="thickness : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetResetValue" func="yes">
+			<Overload retVal="" descr="Set the reset value of any widget">
+				<Param name="w : Widget"/>
+				<Param name="value : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetValue" func="yes">
+			<Overload retVal="" descr="Set the current value of any widget">
+				<Param name="p : Widget"/>
+				<Param name="value : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWidgetValueEx" func="yes">
+			<Overload retVal="" descr="Set the current value of any widget - uses modulo arithmetic">
+				<Param name="p : Widget"/>
+				<Param name="value : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SetWindowTitle" func="yes">
+			<Overload retVal="" descr="Changes the default rackspace title to the title">
+				<Param name="title : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Shell" func="yes">
+			<Overload retVal="integer" descr="Run an OS Shell command synchronously returning an implementation defined integer indicating success or failure">
+				<Param name="command : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ShellEx" func="yes">
+			<Overload retVal="the" descr="Run an OS Shell command (Mac only) that returns the output of the command">
+				<Param name="command : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ShiftKeyDown" func="yes">
+			<Overload retVal="Boolean" descr="See if shift key is down"/>
+		</KeyWord>
+		<KeyWord name="ShowChordProWindow" func="yes">
+			<Overload retVal="" descr="Show or hide the ChordPro Window">
+				<Param name="show : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ShowEditorForSelectedPlugin" func="yes">
+			<Overload retVal="" descr="Open the editor for the selected plugin - if any"/>
+		</KeyWord>
+		<KeyWord name="ShowGlobalRackspace" func="yes">
+			<Overload retVal="" descr="Show or hide the global rackspace front panel">
+				<Param name="show : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ShowRigManager" func="yes">
+			<Overload retVal="" descr="Open or close the Rig Manager window">
+				<Param name="show : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Sign" func="yes">
+			<Overload retVal="integer" descr="Returns 1 if x &gt; 0 -1 if x &lt; 0 0 if x = 0">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Sin" func="yes">
+			<Overload retVal="double" descr="Returns the sin of x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Size" func="yes">
+			<Overload retVal="integer" descr="Returns the size of an array">
+				<Param name="a : array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Sleep" func="yes">
+			<Overload retVal="" descr="Delay a script for specified milliseconds - experimental - maybe even dangerous">
+				<Param name="milliseconds : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SmallestDouble" func="yes">
+			<Overload retVal="Double" descr="Returns the minimum value in a double array">
+				<Param name="a : Double array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SmallestInt" func="yes">
+			<Overload retVal="integer" descr="Returns the minimum value in an integer array">
+				<Param name="a : Integer array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SongMoveDown" func="yes">
+			<Overload retVal="" descr="Move to the next part or next song if allowed"/>
+		</KeyWord>
+		<KeyWord name="SongMoveUp" func="yes">
+			<Overload retVal="" descr="Move to the previous part or previous song if allowed"/>
+		</KeyWord>
+		<KeyWord name="SongNextPart" func="yes">
+			<Overload retVal="" descr="Move to the next song part of the current song"/>
+		</KeyWord>
+		<KeyWord name="SongPrevPart" func="yes">
+			<Overload retVal="" descr="Move to the previous song part of the current song"/>
+		</KeyWord>
+		<KeyWord name="Sort" func="yes">
+			<Overload retVal="" descr="Sorts an array in ascending order">
+				<Param name="a : array"/>
+				<Param name="ascending : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Sqrt" func="yes">
+			<Overload retVal="double" descr="Returns the square root of x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StartAttackPhase" func="yes">
+			<Overload retVal="" descr="Trigger the ADS phase of an ADSR">
+				<Param name="f : ADSR"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StartRecording" func="yes">
+			<Overload retVal="" descr="Start recording now"/>
+		</KeyWord>
+		<KeyWord name="StartReleasePhase" func="yes">
+			<Overload retVal="" descr="Trigger the release phase of the ADSR">
+				<Param name="f : ADSR"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StopAllPendingNotes" func="yes">
+			<Overload retVal="" descr="Send note offs for all pending notes in the tracker">
+				<Param name="m : MidiInBlock"/>
+				<Param name="nt : NoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StopAllPendingNotes" func="yes">
+			<Overload retVal="" descr="Send note offs for all pending notes in the tracker">
+				<Param name="nt : NoteTracker"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StopOneShotRamp" func="yes">
+			<Overload retVal="" descr="Stop a one shot ramp generator before it normally finishes - - experimental">
+				<Param name="r : Ramp"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StopRecording" func="yes">
+			<Overload retVal="" descr="Stop recording now"/>
+		</KeyWord>
+		<KeyWord name="StringAfterFirstOccurence" func="yes">
+			<Overload retVal="String" descr="Deprecated - Return the section of the source string after the first occurrence of substringToStartFrom - optionally including the substring">
+				<Param name="source : String"/>
+				<Param name="substringToStartFrom : String"/>
+				<Param name="includeSubstring : Boolean"/>
+				<Param name="ignoreCase : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringAfterFirstOccurrence" func="yes">
+			<Overload retVal="String" descr="Return the section of the source string after the first occurrence of substringToStartFrom - optionally including the substring">
+				<Param name="source : String"/>
+				<Param name="substringToStartFrom : String"/>
+				<Param name="includeSubstring : Boolean"/>
+				<Param name="ignoreCase : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringAfterLastOccurence" func="yes">
+			<Overload retVal="String" descr="Deprecated - Return the section of the source string after the last occurrence of substringToFind - optionally including the substring">
+				<Param name="source : String"/>
+				<Param name="substringToFind : String"/>
+				<Param name="includeSubstring : Boolean"/>
+				<Param name="ignoreCase : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringAfterLastOccurrence" func="yes">
+			<Overload retVal="String" descr="Return the section of the source string after the last occurrence of substringToFind - optionally including the substring">
+				<Param name="source : String"/>
+				<Param name="substringToFind : String"/>
+				<Param name="includeSubstring : Boolean"/>
+				<Param name="ignoreCase : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringToBool" func="yes">
+			<Overload retVal="true" descr="returns true if string = &quot;true&quot; otherwise false">
+				<Param name="s : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringToDouble" func="yes">
+			<Overload retVal="double" descr="returns double value of string">
+				<Param name="s : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringToHex" func="yes">
+			<Overload retVal="String" descr="Converts text characters to their hex equivalent values - intended for use with sysex messages">
+				<Param name="s : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringToHexString" func="yes">
+			<Overload retVal="String" descr="Converts text characters to their hex equivalent values - intended for use with sysex messages">
+				<Param name="s : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringToInt" func="yes">
+			<Overload retVal="integer" descr="returns integer value of string">
+				<Param name="s : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringUpToFirstOccurence" func="yes">
+			<Overload retVal="String" descr="Deprecated - Return the section of the source string up to the first occurrence of substringToEndWith - optionally including the substring">
+				<Param name="source : String"/>
+				<Param name="substringToEndWith : String"/>
+				<Param name="includeSubstring : Boolean"/>
+				<Param name="ignoreCase : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringUpToFirstOccurrence" func="yes">
+			<Overload retVal="String" descr="Return the section of the source string up to the first occurrence of substringToEndWith - optionally including the substring">
+				<Param name="source : String"/>
+				<Param name="substringToEndWith : String"/>
+				<Param name="includeSubstring : Boolean"/>
+				<Param name="ignoreCase : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringUpToLastOccurence" func="yes">
+			<Overload retVal="String" descr="Deprecated - Return the section of the source string up to the last occurrence of substringToFind - optionally including the substring">
+				<Param name="source : String"/>
+				<Param name="substringToFind : String"/>
+				<Param name="includeSubstring : Boolean"/>
+				<Param name="ignoreCase : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="StringUpToLastOccurrence" func="yes">
+			<Overload retVal="String" descr="Return the section of the source string up to the last occurrence of substringToFind - optionally including the substring">
+				<Param name="source : String"/>
+				<Param name="substringToFind : String"/>
+				<Param name="includeSubstring : Boolean"/>
+				<Param name="ignoreCase : Boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SwitchToNextRack" func="yes">
+			<Overload retVal="" descr="Switch to the next rackspace"/>
+		</KeyWord>
+		<KeyWord name="SwitchToNextVariation" func="yes">
+			<Overload retVal="" descr="Switch to the next variation"/>
+		</KeyWord>
+		<KeyWord name="SwitchToPanelView" func="yes">
+			<Overload retVal="" descr="Show the rackspace panel view"/>
+		</KeyWord>
+		<KeyWord name="SwitchToPreset" func="yes">
+			<Overload retVal="" descr="Switch to another preset in the rackspace">
+				<Param name="newPreset : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SwitchToPrevRack" func="yes">
+			<Overload retVal="" descr="Switch to the previous rackspace"/>
+		</KeyWord>
+		<KeyWord name="SwitchToPrevVariation" func="yes">
+			<Overload retVal="" descr="Switch to the previous variation"/>
+		</KeyWord>
+		<KeyWord name="SwitchToProgramNumber" func="yes">
+			<Overload retVal="" descr="Switch to zero-based program number and bank Number if latter is greater than -1">
+				<Param name="programNumber : integer"/>
+				<Param name="bankNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SwitchToProgramNumberEx" func="yes">
+			<Overload retVal="" descr="Switch to zero-based program number and optionally use MSB and LSB values if they are greater than -1">
+				<Param name="programNumber : integer"/>
+				<Param name="MSB : integer"/>
+				<Param name="LSB : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SwitchToRack" func="yes">
+			<Overload retVal="" descr="Switch to another rackspace by number and potentially to a specific newPreset in that rackspace">
+				<Param name="newRackspaceNumber : integer"/>
+				<Param name="newPreset : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SwitchToRackspace" func="yes">
+			<Overload retVal="" descr="Switch to another rackspace by number and potentially to a specific variation in that rackspace">
+				<Param name="newRackspaceNumber : integer"/>
+				<Param name="newVariationNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SwitchToRackspaceAndVariationByNames" func="yes">
+			<Overload retVal="" descr="Switch to another rackspace by name and potentially to a specific variation by name in that rackspace">
+				<Param name="rackspaceName : String"/>
+				<Param name="variationName : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SwitchToRackspaceByName" func="yes">
+			<Overload retVal="" descr="Switch to another rackspace by name and potentially to a specific variation in that rackspace">
+				<Param name="rackspaceName : String"/>
+				<Param name="newVariationNumber : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SwitchToSetlistByIndex" func="yes">
+			<Overload retVal="" descr="Switch to the setlist associated with this index">
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SwitchToSetlistByName" func="yes">
+			<Overload retVal="" descr="Switch to the named setlist">
+				<Param name="name : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SwitchToSetlistView" func="yes">
+			<Overload retVal="" descr="Show the song view"/>
+		</KeyWord>
+		<KeyWord name="SwitchToSongByIndex" func="yes">
+			<Overload retVal="Boolean" descr="Switch to the specified song and part">
+				<Param name="songIndex : integer"/>
+				<Param name="partIndex : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="SwitchToWiringView" func="yes">
+			<Overload retVal="" descr="Switch to the plugin block wiring view"/>
+		</KeyWord>
+		<KeyWord name="TakeSongPartSnapshot" func="yes">
+			<Overload retVal="" descr="Take a snapshot when in setlist mode - fails silently if not in setlist mode"/>
+		</KeyWord>
+		<KeyWord name="Tan" func="yes">
+			<Overload retVal="double" descr="Returns the tan of x">
+				<Param name="x : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Tap" func="yes">
+			<Overload retVal="" descr="Simulates tap tempo command"/>
+		</KeyWord>
+		<KeyWord name="TestSomething" func="yes">
+			<Overload retVal="String" descr="Internal use only">
+				<Param name="i : integer"/>
+				<Param name="d : double"/>
+				<Param name="s : string"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ThresholdDetector_Detect" func="yes">
+			<Overload retVal="Boolean" descr="Return true if we crossed over">
+				<Param name="td : ThresholdDetector"/>
+				<Param name="newValue : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ThresholdDetector_Setup" func="yes">
+			<Overload retVal="" descr="Define the conditions to detect an edge">
+				<Param name="td : ThresholdDetector"/>
+				<Param name="crossOver : double"/>
+				<Param name="initialValue : double"/>
+				<Param name="upDirection : boolean"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="TimeNow" func="yes">
+			<Overload retVal="integer" descr="Gets the current time in milliseconds - deprecated"/>
+		</KeyWord>
+		<KeyWord name="TimeSinceStartup" func="yes">
+			<Overload retVal="double" descr="Gets the time since computer was started in milliseconds"/>
+		</KeyWord>
+		<KeyWord name="TimeStringToDouble" func="yes">
+			<Overload retVal="Double" descr="Converts a PROPERLY formatted time string hh:mm::ss::ms to seconds.milliseconds - bogus input will produce bogus output">
+				<Param name="timeString : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ToLowercase" func="yes">
+			<Overload retVal="double" descr="returns double value of string">
+				<Param name="s : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ToUppercase" func="yes">
+			<Overload retVal="double" descr="returns double value of string">
+				<Param name="s : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="ToggleTunerVisible" func="yes">
+			<Overload retVal="" descr="Switch in or out of tuner view"/>
+		</KeyWord>
+		<KeyWord name="Transpose" func="yes">
+			<Overload retVal="NoteMessage" descr="Returns a note that has been transposed chromatically by the number of steps">
+				<Param name="m : NoteMessage"/>
+				<Param name="steps : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="TriggerOneShotRamp" func="yes">
+			<Overload retVal="" descr="Trigger a one shot ramp generator - experimental">
+				<Param name="r : Ramp"/>
+				<Param name="lengthInMilliseconds : integer"/>
+				<Param name="coarseness : integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="TrimString" func="yes">
+			<Overload retVal="String" descr="Remove leading and trailing spaces from a string">
+				<Param name="source : String"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="UpdateRackspaceBPM" func="yes">
+			<Overload retVal="" descr="Update the rackspace with this BPM value - does not mark gigfile dirty">
+				<Param name="bpm : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="WithCCNumber" func="yes">
+			<Overload retVal="ControlChangeMessage" descr="Changes the CC number of a ControlChangeMessage MIDI event">
+				<Param name="m : ControlChangeMessage"/>
+				<Param name="number : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="WithCCValue" func="yes">
+			<Overload retVal="ControlChangeMessage" descr="Changes the value of a CCMessage MIDI event">
+				<Param name="m : ControlChangeMessage"/>
+				<Param name="v : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="WithChannel" func="yes">
+			<Overload retVal="MidiMessage" descr="Changes the channel number of any MIDI event.">
+				<Param name="m : MidiMessage"/>
+				<Param name="channel : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="WithNoteNumber" func="yes">
+			<Overload retVal="NoteMessage" descr="Changes the note number of a NoteMessage MIDI event">
+				<Param name="m : NoteMessage"/>
+				<Param name="number : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="WithNoteNumberAndVelocity" func="yes">
+			<Overload retVal="NoteMessage" descr="Changes the note number and the velocity value of a NoteMessage MIDI event. Setting to 0 will make the message be a NoteOff">
+				<Param name="m : NoteMessage"/>
+				<Param name="n : int"/>
+				<Param name="v : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="WithProgramChangeNumber" func="yes">
+			<Overload retVal="ProgramChangeMessage" descr="Changes the program change value of a program change MIDI message.">
+				<Param name="m : ProgramChangeMessage"/>
+				<Param name="newNumber : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="WithTranspose" func="yes">
+			<Overload retVal="NoteMessage" descr="Returns a note that has been transposed chromatically by the number of steps">
+				<Param name="m : NoteMessage"/>
+				<Param name="steps : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="WithVelocity" func="yes">
+			<Overload retVal="NoteMessage" descr="Changes the velocity value of a NoteMessage MIDI event. Setting to 0 will make the message be a NoteOff">
+				<Param name="m : NoteMessage"/>
+				<Param name="v : int"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="iMax" func="yes">
+			<Overload retVal="integer" descr="Returns the index of the largest value of an array">
+				<Param name="a : array"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="iMin" func="yes">
+			<Overload retVal="integer" descr="Returns the index of the smallest value of an array">
+				<Param name="a : array"/>
+			</Overload>
+		</KeyWord>
 	</AutoComplete>
 </NotepadPlus>

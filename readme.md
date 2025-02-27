@@ -38,7 +38,7 @@ Open Notepad++.
 ### Installing the Auto-Completion File
 The auto-completion XML file provides automatic suggestions for functions, primitive types, and opaque types in GPScript.
 
-
+[Download GPScript.xml](https://github.com/DomenicoPatella/GPScriptNotepad/blob/main/Notepad%2B%2B/autoCompletion/gpscript.xml)
 - Copy the file GPScript.xml into the Notepad++ auto-completion folder.
 > Default path on Windows: C:\Program Files\Notepad++\autoCompletion\
 > 💡 **Tip:**  If you installed Notepad++ in a custom location, use that instead.

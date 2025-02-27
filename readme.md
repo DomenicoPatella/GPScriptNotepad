@@ -1,6 +1,6 @@
 # GPScript Support for Notepad++
 
-##  Description (English)
+##  Description 
 This project provides an advanced integration for writing **GPScript** code in **Notepad++**, the scripting language used in **Gig Performer**.
 
 ### Main Features:

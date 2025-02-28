@@ -106,9 +106,9 @@ bool keyWord(const std::string& testo, const std::string& parola);
 void showFunctionsFromXML();
 void showTipFunctionsFromXML();
 
-std::string getCalltipFromXML(const std::string& functionName);
-std::string getCalltipParamFromXML(const std::string& functionName);
-std::string getCalltipCommFromXML(const std::string& functionName);
+std::string getFunctionFromXML(const std::string& keyWord);
+std::string getFunctionParamFromXML(const std::string& keyWord);
+std::string getCommentFromXML(const std::string& keyWord);
 
 
 

@@ -120,37 +120,37 @@ a matching NoteOff event, NoteOff events will not be passed on
 by the receiving MIDI In block because of the way note tracking
 is managed.
 
-var Arturia : MidiInDevice
-On NoteOnEvent(m : NoteMessage) matching D#6 from Arturia
+var keyboard : MidiInDevice
+On NoteOnEvent(m : NoteMessage) matching D#6 from keyboard
  ....
 End
 
 Support constraint that specifies either a range or an explicit sequence 
 of numbers for which the callback is triggered. For example:
 
-On NoteOnEvent (m : NoteMessage) Matching [C3..C4] From Arturia
+On NoteOnEvent (m : NoteMessage) Matching [C3..C4] From keyboard
    // This event is only called if you play a note with 
    // a MIDI note number that is in the range 60 to 72
 End
 
 ">
 				<Param name="m : NoteMessage"/>
-				<Param name="From 'MidiIn block name'"/>
+				
 			</Overload>
 		</KeyWord>
 		<KeyWord name="NoteOffEvent" func="yes">
 			<Overload retVal="" descr="
 Called whenever a Note Off message is received
 
-var Arturia : MidiInDevice
-On NoteOffEvent(m : NoteMessage) matching D#6 from Arturia
+var keyboard : MidiInDevice
+On NoteOffEvent(m : NoteMessage) matching D#6 from keyboard
  ....
 End
 
 Support constraint that specifies either a range or an explicit sequence 
 of numbers for which the callback is triggered. For example:
 
-On NoteOffEvent (m : NoteMessage) Matching [C3..C4] From Arturia
+On NoteOffEvent (m : NoteMessage) Matching [C3..C4] From keyboard
    // This event is only called if you play a note with 
    // a MIDI note number that is in the range 60 to 72
 End
@@ -167,15 +167,15 @@ Warning: this callback will not be invoked for NoteOn events
 or for NoteOff events if you have defined 
 NoteOnEvent or NoteOffEvent respectively callbacks
 
-var Arturia : MidiInDevice
-On NoteEvent(m : NoteMessage) matching D#6 from Arturia
+var keyboard : MidiInDevice
+On NoteEvent(m : NoteMessage) matching D#6 from keyboard
  ....
 End
 
 Support constraint that specifies either a range or an explicit sequence 
 of numbers for which the callback is triggered. For example:
 
-On NoteEvent (m : NoteMessage) Matching [C3..C4] From Arturia
+On NoteEvent (m : NoteMessage) Matching [C3..C4] From keyboard
    // This event is only called if you play a note with 
    // a MIDI note number that is in the range 60 to 72
 End
@@ -188,20 +188,20 @@ End
 			<Overload retVal="" descr="
 Called when a CC message is received at some MidiIn device
 
-var Arturia : MidiInDevice
-On ControlChangeEvent(c : ControlChangeMessage) from Arturia
+var keyboard : MidiInDevice
+On ControlChangeEvent(c : ControlChangeMessage) from keyboard
  ....
 End
 
 The CC numbers must be within the specified range
-On ControlChangeEvent(c : ControlChangeMessage) Matching [7..10] from Arturia
+On ControlChangeEvent(c : ControlChangeMessage) Matching [7..10] from keyboard
  ....
 End
 
 We saw an example of using a constraint with the ControlChange event callback.
 Here it is again
 
-On ControlChangeEvent (c : ControlChangeMessage) Matching 1,7,14 From Arturia
+On ControlChangeEvent (c : ControlChangeMessage) Matching 1,7,14 From keyboard
    // This event is only called for controller numbers
    // 1, 7 or 14
 End
@@ -216,7 +216,7 @@ defined control aliases instead of explicit numbers in the 'Matching' clause of 
 If you have defined the name UpperKnob1 (for example) to represent the first knob of your control surface, 
 then you can write the following:
 
-On ControlChangeEvent (c : ControlChangeMessage) Matching &quot;UpperKnob1&quot; From Arturia
+On ControlChangeEvent (c : ControlChangeMessage) Matching &quot;UpperKnob1&quot; From keyboard
    // This event is called when a CC message arrives from UpperKnob
 End
 
@@ -236,8 +236,8 @@ Note that the alias name is specified as a string constant.
 			<Overload retVal="" descr="
 Called when a pitchbend message is received at some MidiIn device
 
-var Arturia : MidiInDevice
-On PitchBendEvent(m : PitchBendMessage) from Arturia
+var keyboard : MidiInDevice
+On PitchBendEvent(m : PitchBendMessage) from keyboard
  ....
 End
 
@@ -250,8 +250,8 @@ End
 			<Overload retVal="" descr="
 Called when an aftertouch (channel pressure) message is received at some MidiIn device
 
-var Arturia : MidiInDevice
-On AfterTouchEvent(m : AfterTouchMessage) from Arturia
+var keyboard : MidiInDevice
+On AfterTouchEvent(m : AfterTouchMessage) from keyboard
  ....
 End
 
@@ -262,8 +262,8 @@ End
 		</KeyWord>
 		<KeyWord name="PolytouchEvent" func="yes">
 			<Overload retVal="" descr="
-var Arturia : MidiInDevice
-On PolytouchEvent (p : PolyTouchMessage) From Arturia
+var keyboard : MidiInDevice
+On PolytouchEvent (p : PolyTouchMessage) From keyboard
 
    // This is note-specific pressure
 
@@ -275,8 +275,8 @@ End
 		</KeyWord>
 		<KeyWord name="ProgramChangeEvent" func="yes">
 			<Overload retVal="" descr="
-var Arturia : MidiInDevice
-On ProgramChangeEvent( p : ProgramChangeMessage) From Arturia
+var keyboard : MidiInDevice
+On ProgramChangeEvent( p : ProgramChangeMessage) From keyboard
 
 End
 ">
@@ -286,8 +286,8 @@ End
 		</KeyWord>
 		<KeyWord name="MidiEvent" func="yes">
 			<Overload retVal="" descr="
-var Arturia : MidiInDevice
-On MidiEvent( m : MidiMessage) From Arturia
+var keyboard : MidiInDevice
+On MidiEvent( m : MidiMessage) From keyboard
 
    // This callback does not occur if a more specific MIDI event callback was defined
 
@@ -299,8 +299,8 @@ End
 		</KeyWord>
 		<KeyWord name="SysexEvent" func="yes">
 			<Overload retVal="" descr="
-var Arturia : MidiInDevice
-On SysexEvent( s : SysexMessage) From Arturia
+var keyboard : MidiInDevice
+On SysexEvent( s : SysexMessage) From keyboard
 
    // Respond to a sysex message
 
@@ -2677,6 +2677,38 @@ ScaleRangeEx : Maps a double value between xMin and xMax into a rounded integer 
 				<Param name="m : midiMessage"/>
 			</Overload>
 		</KeyWord>
+		<KeyWord name="SendOSCMessage" func="yes">
+		 <Overload retVal="" descr="
+
+SendOSCMessage   OSCMessage [OSCMessage] [target] [Synced]
+OSCMessage:   { OSCAddress  Arguments }
+Arguments: expressions of type integer, floating point or string, separated by commas.
+The first argument must either be a valid OSC address of type OSCAddress or type String 
+containing a valid OSCAddress
+
+target:   to ipAddress : port
+ipAddress:  a valid IP address or resolvable domain name
+port: an integer port
+
+The target clause is optional. If it is not included, SendOSCMessage will use the default 
+target and port as defined in OSC options.
+Examples:
+
+1.SendOSCMessage { /Start } // Send a single message with no arguments to the default remote IP address and port
+2.SendOSCMessage {  /SetBPM, 120.0 }    // Send a single OSC message to the default remote IP address and port
+3.SendOSCMessage   { /SetBPM, 120.0  } to '192.168.1.34' :  1234 // Send the message to the specified IP address and port number
+4.SendOSCMessage   { /Songname, 'My Song' }  { /SongLength, 3.5 }  { /SongTempo, 80} { /TimeSignature, 5, 4 }
+
+The last example consists of four separate messages. In this case, the messages will be sent out together as an OSC Bundle.
+Note that commas are used  to separate arguments in each messages.
+However, if you are sending a bundle, commas are not used to separate individual OSC messages Synced
+You should generally not use this option unless you need to send a really large number of messages in which using 
+this option will cause all the messages to be buffered and sent out on a separate thread.
+
+">
+		      
+         </Overload>
+		</KeyWord>		
 		<KeyWord name="SendSysexExternal" func="yes">
 			<Overload retVal="" descr="Send a MIDI sysex message out immediately through a MIDI Out block">
 				<Param name="p : MidiOutBlock"/>

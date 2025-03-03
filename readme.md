@@ -12,7 +12,7 @@ This project provides an advanced integration for writing **GPScript** code in *
 
   
 - **Custom Plugin DLL for extended support:** A **custom DLL** adds the following functionalities:
-  - **Automatic indentation:** Select the code and press **Ctrl + F10** to format it properly.
+  - **Automatic indentation:** Code indentation function while entering code or select the code and press **Ctrl + F10** to format it properly.
   - **Function and data type calltips:** Press **Shift + Tab** to display detailed hints.
   - **Function parameter insertion:** If available, insert parameters automatically with **Shift + Space**.
 

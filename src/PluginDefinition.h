@@ -42,6 +42,7 @@ const TCHAR NPP_PLUGIN_NAME[] = TEXT("GPScript plugin template");
 // Here define the number of your plugin commands
 //
 const int nbFunc = 5;
+#define EOL -1
 
 
 //
@@ -101,8 +102,6 @@ bool findWordVector(std::vector<std::string>& increaseIndentKeywords, std::strin
 
 void applyIndentation();
 bool keyWord(const std::string& testo, const std::string& parola);
-//void showAutoCompletion();
-//void showCalltip();
 void showFunctionsFromXML();
 void showTipFunctionsFromXML();
 
@@ -111,6 +110,9 @@ std::string getFunctionParamFromXML(const std::string& keyWord);
 std::string getCommentFromXML(const std::string& keyWord);
 
 
-
+int getModified();
+void setModified();
+void setModified(int& line, int& indentlevel);
+HWND getCurrentNppHandle();
 
 #endif //PLUGINDEFINITION_H

@@ -83,15 +83,25 @@ extern "C" __declspec(dllexport) void beNotified(SCNotification *notifyCode)
 		{
 			// Filtra solo le modifiche di inserimento testo
 			if (notifyCode->modificationType & (SC_MOD_INSERTTEXT | SC_MOD_DELETETEXT) ) {
-				
-
-				if (notifyCode->text != nullptr && notifyCode->text[1] == '\n') {
+				if (notifyCode->text != nullptr && notifyCode->text[0] == '\r') {
 					// Your code here
+					onCharAdded(notifyCode);
 				}
-
 				
 			}
 			
+		}
+		case SCN_UPDATEUI:
+		{
+			
+			if (notifyCode->updated & SC_UPDATE_CONTENT) {
+				if (getModified()!=-1) {
+					setModified();
+				}
+
+			}
+			
+
 		}
 		break;
 

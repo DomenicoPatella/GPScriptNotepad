@@ -37,6 +37,11 @@ NppData nppData;
 
 ShortcutKey* scFunctions, * scAutoIndent, * scTipFunctions;
 
+int _MODIFIED = EOL;
+int _LINE=0;
+int _INDENTLEVEL = 0;
+
+
 //
 // Initialize your plugin data here
 // It will be called while plugin loading
@@ -54,59 +59,85 @@ void pluginCleanUp()
 {
 }
 
+//
+// Return the global var 
+int getModified(){
+	return _MODIFIED;
+}
 
+//
+// Add Tab when a keyword is found 
+// if the keyword is 'end' select all text and execute the code identation
+void setModified() {
+	LRESULT startLine;
 
+	HWND curScintilla = getCurrentNppHandle();
+	if (curScintilla != nullptr) {
+		if (_MODIFIED == 1) {
+			SendMessage(curScintilla, SCI_TAB, 0, 0);
+			OutputDebugStringA("Modified\n");
+		}
+		if (_MODIFIED == 0 && _INDENTLEVEL >= 0) {
+			startLine = (SendMessage(nppData._scintillaMainHandle, SCI_GETLINEENDPOSITION, _LINE, 0));
+			if (startLine >= 0) {
+				SendMessage(curScintilla, SCI_SETSEL, 0, startLine);
+				OutputDebugStringA("Ident\n");
+				applyIndentation();
+			}
+	
+	}
+
+	}
+	_MODIFIED = -1;
+}
+
+//
+// onCharAdded send a notification if the text match a keword to indent while the text is writing
 void onCharAdded(SCNotification* notification) {
 
-	if (notification->ch == '\n') {
-		CreateGlobalScript();
-		int line = static_cast<int>(SendMessage(nppData._scintillaMainHandle, SCI_LINEFROMPOSITION, notification->position, 0));
+	
+	   
+	   _LINE = static_cast<int>(SendMessage(nppData._scintillaMainHandle, SCI_LINEFROMPOSITION, notification->position, 0));
 
-		// Ottieni il testo della riga precedente
-		int prevLineStart = static_cast<int>(SendMessage(nppData._scintillaMainHandle, SCI_POSITIONFROMLINE, line - 1, 0));
-		int prevLineEnd = static_cast<int>(SendMessage(nppData._scintillaMainHandle, SCI_GETLINEENDPOSITION, line - 1, 0));
-		int length = prevLineEnd - prevLineStart;
+		// Ottieni il testo della riga corrente
+		int LineStart = static_cast<int>(SendMessage(nppData._scintillaMainHandle, SCI_POSITIONFROMLINE, _LINE, 0));
+		int LineEnd = static_cast<int>(SendMessage(nppData._scintillaMainHandle, SCI_GETLINEENDPOSITION, _LINE, 0));
+		int length = LineEnd - LineStart;
+		
 
 		if (length <= 0) return;
 
 		char* buffer = new char[length + 1];
-		SendMessage(nppData._scintillaMainHandle, SCI_GETRANGEPOINTER, prevLineStart, (LPARAM)buffer);
+		SendMessage(nppData._scintillaMainHandle, SCI_GETLINE, _LINE, (LPARAM)buffer);
 		buffer[length] = '\0';
 
 		std::string prevLine(buffer);
-		delete[] buffer;
+		//delete[] buffer;
 
-		// Lista di parole chiave che aumentano l'indentazione
-		std::vector<std::string> increaseIndentKeywords = { "if", "while", "function", "select", "on" };
-		// Lista di parole chiave che riducono l'indentazione
-		std::vector<std::string> decreaseIndentKeywords = { "end", "}" };
+		// List of keywords that increase indentation
+		std::vector<std::string> increaseIndentKeywords = { "initialization","select", "while", "function", "if","elsif", "on","for"};
+		// List of keywords that decrease indentation
+		std::vector<std::string> decreaseIndentKeywords = { "end","End"};
+		
+		std::string trimmed = prevLine;
+		trimmed.erase(0, trimmed.find_first_not_of(" \t")); // Remove spaces and tabs at the beginning
 
-		int prevIndent = static_cast<int>(SendMessage(nppData._scintillaMainHandle, SCI_GETLINEINDENTATION, line - 1, 0));
-		int newIndent = prevIndent;
-
-		// Controlla se la riga precedente contiene una parola chiave che aumenta l'indentazione
-		for (const std::string& keyword : increaseIndentKeywords) {
-			if (prevLine.find(keyword) != std::string::npos) {
-				newIndent += 4; // Aumenta indentazione di 4 spazi
-				break;
-			}
+		// Find the keyword in the line and decrease the indent level
+		if (findWordVector(decreaseIndentKeywords, trimmed)) {
+			_INDENTLEVEL = max(0, _INDENTLEVEL - 1);
+			_MODIFIED = 0;
 		}
 
-		// Controlla se la riga attuale contiene parole chiave che riducono l'indentazione
-		for (const std::string& keyword : decreaseIndentKeywords) {
-			if (prevLine.find(keyword) != std::string::npos) {
-				newIndent -= 4; // Riduci indentazione di 4 spazi
-				break;
-			}
+		// Find the keyword in the line and increase the indent level
+		if (findWordVector(increaseIndentKeywords, trimmed)) {
+			// Ottieni il testo della riga corrente
+			_INDENTLEVEL++;
+			_MODIFIED = 1;
 		}
 
-		// Imposta l'indentazione
-		//SendMessage(nppData._scintillaMainHandle, SCI_SETLINEINDENTATION, line, newIndent);
-		// Imposta la nuova indentazione
-		SendMessage(nppData._scintillaMainHandle, SCI_SETLINEINDENTATION, line, 4);
-
+		
+		
 	}
-}
 
 //
 // Initialization of your plugin commands
@@ -234,13 +265,13 @@ End
 )";
 	//(^[ \t]+)
 	//hello = std::regex_replace(hello, std::regex(R"(^[ \t+)"), "");
-	hello = std::regex_replace(hello, std::regex(R"(^[ \t]+)"), "");
+	hello = std::regex_replace(hello, std::regex("\n"), "\r\n");
 
 	// Scintilla control has no Unicode mode, so we use (char *) here
 	::SendMessage(curScintilla, SCI_SETTEXT, 0, (LPARAM)hello.c_str());
 	/*::SendMessage(curScintilla, NPPM_SETCURRENTLANGTYPE, 0, langBuffer);*/
 
-	::SendMessage(nppData._scintillaMainHandle, SCI_SETAUTOMATICFOLD, SC_AUTOMATICFOLD_CHANGE, 0);
+	//::SendMessage(nppData._scintillaMainHandle, SCI_SETAUTOMATICFOLD, SC_AUTOMATICFOLD_CHANGE, 0);
 	selectAllText();
 	applyIndentation();
 }
@@ -366,15 +397,22 @@ void showFunctionsFromXML()
 	{
 		if (length > 0) {
 			SendMessage(curScintilla, SCI_DELETERANGE, startPos, length);
-		}
+			//SendMessage(curScintilla, SCI_INSERTTEXT, startPos, (LPARAM)FuncParam.c_str());
 
-		// Replace /n with new line in the calltip parameters
+		}
+		SendMessage(curScintilla, SCI_SETCURRENTPOS, startPos, 0);
+		SendMessage(curScintilla, SCI_CANCEL, 0, 0);
+
+		// Replace /n with new line in the calltip parameters  FuncParam.length()
 		for (size_t i = 0; i < FuncParam.length(); ++i) {
-			if (FuncParam[i] == '\n') {
+			if (FuncParam[i] == '\n' ) {
+
 				SendMessage(curScintilla, SCI_NEWLINE, 0, 0);
+				
 			}
 			else {
 				SendMessage(curScintilla, SCI_ADDTEXT, 1, (LPARAM)&FuncParam[i]);
+				
 			}
 		}
 
@@ -666,10 +704,10 @@ std::string indentText(const std::string& input)
 	const std::string indentStr = " "; // 4 spazi
 
 	// List of keywords that increase indentation
-	std::vector<std::string> increaseIndentKeywords = { "initialization", "while", "function", "if","elsif", "on" };
+	std::vector<std::string> increaseIndentKeywords = { "initialization", "while","select", "function", "if","elsif", "on" ,"for"};
 	// List of keywords that decrease indentation
 	std::vector<std::string> decreaseIndentKeywords = { "end","End" };
-
+	
 	while (std::getline(in, line))
 	{
 		std::string trimmed = line;
@@ -680,8 +718,18 @@ std::string indentText(const std::string& input)
 			indentLevel = max(0, indentLevel - 1);
 		}
 
-		out << std::string(indentLevel * 4, ' ') << trimmed << "\n"; // Add identation to the line
+		//out << std::string(indentLevel * 4, ' ') << trimmed << "\n"; // Add identation to the line
+		// Se l'ultima linea  trova "End" solo nuova linea
+		if (indentLevel >= 0) {
+			out << std::string(indentLevel * 1, '\t') << trimmed << "\n"; // Add identation to the line
+			//HWND curScintilla = getCurrentNppHandle();
+			//SendMessage(curScintilla, SCI_NEWLINE, 0, 0);
+		}
+		else {
 
+			
+		}
+		
 		// Find the keyword in the line and increase the indent level
 		if (findWordVector(increaseIndentKeywords, trimmed)) {
 			indentLevel++;
@@ -762,6 +810,9 @@ void applyIndentation()
 		std::string selectedBuffer;
 		selectedBuffer.assign(buffer.data(), length);
 
+		// Ottieni la prima riga visibile prima della modifica
+		LRESULT firstVisibleLine = SendMessage(curScintilla, SCI_GETFIRSTVISIBLELINE, 0, 0);
+		
 		// if the buffer is not empty then indent the selected text
 		if (!selectedBuffer.empty()) {
 			std::string indentedText = indentText(selectedBuffer);
@@ -770,6 +821,10 @@ void applyIndentation()
 			SendMessage(curScintilla, SCI_REPLACESEL, 0, (LPARAM)indentedText.c_str());
 
 			SendMessage(curScintilla, NPPM_SETCURRENTLANGTYPE, 0, (LPARAM)langBuffer);
+
+			// Ripristina la prima riga visibile
+			SendMessage(curScintilla, SCI_SETFIRSTVISIBLELINE, firstVisibleLine, 0);
+
 		}
 	}
 }

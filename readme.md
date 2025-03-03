@@ -15,7 +15,9 @@ This project provides an advanced integration for writing **GPScript** code in *
   - **Automatic indentation:** Code indentation function while entering code or select the code and press **Ctrl + F10** to format it properly.
   - **Function and data type calltips:** Press **Shift + Tab** to display detailed hints. The descriptions are from the official documentation 
        https://gigperformer.com/docs_5_0/SystemFunctionList.html
+    
        https://gigperformer.com/docs_5_0/LanguageManual/
+    
   - **Function parameter insertion:** If available, insert parameters automatically with **Shift + Space**.
 
 

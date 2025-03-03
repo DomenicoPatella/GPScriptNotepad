@@ -7,20 +7,26 @@
 		<KeyWord name="do" func="no"/>
 		<KeyWord name="else" func="no" tip="If true Then&#10;//statements here&#10;else&#10;//statements here&#10;end"/>
 		<KeyWord name="Elsif" func="no" tip="If true Then&#10;//statements here&#10;Elsif true Then&#10;//statements here&#10;Else&#10;//statements here&#10;end "/>
-		<!-- 
-		<KeyWord name="end" func="no"/>
-		<KeyWord name="End" func="no"/>
-		-->
 		<KeyWord name="false" func="no"/>
 		<KeyWord name="For" func="no" tip="For i = 0; i &lt; 10; i = i + 1 Do&#10;//statements here&#10;end "/>
-		<KeyWord name="Function" func="yes"/>
-		<KeyWord name="If" func="no" tip="If true Then&#10;//statements here&#10;end"/>
+		<KeyWord name="Function" func="no" tip="Function myFun()&#10;// &#10;End&#10;"/>
+		<KeyWord name="If" func="no" tip="If true Then&#10;//statements here&#10;end" comment="If statement"/>
+		<KeyWord name="Initialization" func="no" tip="Initialization&#10;// &#10;End&#10;" comment="Usage (GigFile , Global , Rackspace, Scriptlets):
+Allows variables to be initialized and functions to be called
+automatically when a script is first loaded. Note that as of GP 4.5, 
+most variables can be initialized during declaration
+GP4 allows multiple initialization sections
+Initialization
+	Print(&quot;Hello;&quot;)
+End"/>
+		<KeyWord name="Include" func="no" comment=" Include external file.. Include &quot;name&quot;  .. &quot;/path/to/file&quot; "/>
 		<KeyWord name="in" func="no"/>
 		<KeyWord name="not" func="no"/>
 		<KeyWord name="or" func="no"/>
 		<KeyWord name="On" func="yes"/>
 		<KeyWord name="returns" func="yes"/>
-		<KeyWord name="SystemEvent" func="no" tip=""/>
+		<KeyWord name="Select" func="no" tip="Select&#10;&lt;boolean expression&gt; do &lt;statements&gt;&#10;&lt;boolean expression&gt; do &lt;statements&gt;&#10;&lt;boolean expression&gt; do &lt;statements&gt;&#10;// as many as you need&#10;//Optionally include this for when none of the above matched&#10;  True do &lt;statements&gt;&#10;End"></KeyWord>
+		<KeyWord name="SystemEvent" func="no" tip="On SystemEvent Matching GigLoaded " comment=" Gig  Loaded  callback "/>
 		<KeyWord name="Then" func="no"/>
 		<KeyWord name="true" func="no"/>
 		<KeyWord name="until" func="no"/>
@@ -33,7 +39,7 @@
 		<KeyWord name="double" func="no"/>
 		<KeyWord name="string" func="no"/>
 		<!-- Opaque types -->
-		<KeyWord name="ADSR" func="no" comment=" Category Generators time milliseconds " />
+		<KeyWord name="ADSR" func="no" comment=" Category Generators   "/>
 		<KeyWord name="AfterTouchMessage" func="no"/>
 		<KeyWord name="AudioMixerBlock" func="no"/>
 		<KeyWord name="AutoSustainer" func="no"/>
@@ -51,7 +57,7 @@
 		<KeyWord name="MidiSequence" func="no"/>
 		<KeyWord name="MultiChannelNoteTracker" func="no"/>
 		<KeyWord name="NoteMapper" func="no"/>
-		<KeyWord name="NoteMessage" func="no" comment=" Midi callback -->NoteEvent NoteOnEvent NoteOffEvent  "/>
+		<KeyWord name="NoteMessage" func="no" comment=" Midi callback (NoteEvent NoteOnEvent NoteOffEvent) "/>
 		<KeyWord name="NoteTracker" func="no"/>
 		<KeyWord name="OSCMessage" func="no"/>
 		<KeyWord name="Parameter" func="no"/>
@@ -59,306 +65,407 @@
 		<KeyWord name="PluginBlock" func="no"/>
 		<KeyWord name="PolyTouchMessage" func="no"/>
 		<KeyWord name="ProgramChangeMessage" func="no"/>
-		<KeyWord name="Ramp" func="no"/>
+		<KeyWord name="Ramp" func="no" comment=" Category Generators   "/>
 		<KeyWord name="Subrange" func="no"/>
 		<KeyWord name="SysexMessage" func="no"/>
 		<KeyWord name="Widget" func="no" comment=" Rackspace only"/>
 		<!-- GPScript 5.0  -->
 		<!-- https://gigperformer.com/docs_5_0/LanguageManual/-->
 		<!-- Rackspace callback -->
-		<KeyWord name="Initialization" func="yes">
-			<Overload retVal="" descr="
-Usage (GigFile , Global , Rackspace, Scriptlets):
-Initialization code here. 
-Allows variables to be initialized and functions to be called
-automatically when a script is first loaded. Note that as of GP 4.5, 
-most variables can be initialized during declaration
-GP4 allows multiple initialization sections
-
-Initialization
-  Print(&quot;Hello;&quot;)
-End
-">
-			</Overload>
-		</KeyWord>
 		<KeyWord name="Activate" func="yes">
 			<Overload retVal="" descr="
-Usage (Rackspace, Scriptlets):
-On activate
- //Called whenever a rackspace is activated
-End
-">
+			Usage (Rackspace, Scriptlets):
+			On activate
+				//Called whenever a rackspace is activated
+			End
+			">
 			</Overload>
 		</KeyWord>
 		<KeyWord name="Variation" func="yes">
 			<Overload retVal="" descr="
-Usage (GigFile ,Rackspace, Global Rackspace):
+			Usage (GigFile ,Rackspace, Global Rackspace):
 
-on variation (oldVariation : integer, newVariation : integer)
-   // Called when you switch to another variation
-   // The parameters indicate which one you're in now 
-   // and from which one you came
-end
-">
+			on variation (oldVariation : integer, newVariation : integer)
+				// Called when you switch to another variation
+				// The parameters indicate which one you're in now 
+				// and from which one you came
+			end
+			">
 			</Overload>
 		</KeyWord>
 		<KeyWord name="Deactivate" func="yes">
 			<Overload retVal="" descr="
-Usage (Rackspace, Scriptlets):
-On deactivate
- // Called whenever we deactivate a rackspace
-End
-">
-			</Overload>
+			Usage (Rackspace, Scriptlets):
+			On deactivate
+				// Called whenever we deactivate a rackspace
+			End
+			">
+		</Overload>
 		</KeyWord>
 		<!-- Midi callback -->
 		<KeyWord name="NoteOnEvent" func="yes">
 			<Overload retVal="" descr="
-Called whenever a Note On message is received
-Warning: if you define this callback but you do not define
-a matching NoteOff event, NoteOff events will not be passed on
-by the receiving MIDI In block because of the way note tracking
-is managed.
+			Called whenever a Note On message is received
+			Warning: if you define this callback but you do not define
+			a matching NoteOff event, NoteOff events will not be passed on
+			by the receiving MIDI In block because of the way note tracking
+			is managed.
 
-var keyboard : MidiInDevice
-On NoteOnEvent(m : NoteMessage) matching D#6 from keyboard
- ....
-End
+			var keyboard : MidiInDevice
+			On NoteOnEvent(m : NoteMessage) matching D#6 from keyboard
+				....
+			End
 
-Support constraint that specifies either a range or an explicit sequence 
-of numbers for which the callback is triggered. For example:
+			Support constraint that specifies either a range or an explicit sequence 
+			of numbers for which the callback is triggered. For example:
 
-On NoteOnEvent (m : NoteMessage) Matching [C3..C4] From keyboard
-   // This event is only called if you play a note with 
-   // a MIDI note number that is in the range 60 to 72
-End
+			On NoteOnEvent (m : NoteMessage) Matching [C3..C4] From keyboard
+				// This event is only called if you play a note with 
+				// a MIDI note number that is in the range 60 to 72
+			End
 
-">
+			">
 				<Param name="m : NoteMessage"/>
-				
 			</Overload>
 		</KeyWord>
 		<KeyWord name="NoteOffEvent" func="yes">
 			<Overload retVal="" descr="
-Called whenever a Note Off message is received
+			Called whenever a Note Off message is received
 
-var keyboard : MidiInDevice
-On NoteOffEvent(m : NoteMessage) matching D#6 from keyboard
- ....
-End
+			var keyboard : MidiInDevice
+			On NoteOffEvent(m : NoteMessage) matching D#6 from keyboard
+				....
+			End
 
-Support constraint that specifies either a range or an explicit sequence 
-of numbers for which the callback is triggered. For example:
+			Support constraint that specifies either a range or an explicit sequence 
+			of numbers for which the callback is triggered. For example:
 
-On NoteOffEvent (m : NoteMessage) Matching [C3..C4] From keyboard
-   // This event is only called if you play a note with 
-   // a MIDI note number that is in the range 60 to 72
-End
+			On NoteOffEvent (m : NoteMessage) Matching [C3..C4] From keyboard
+				// This event is only called if you play a note with 
+				// a MIDI note number that is in the range 60 to 72
+			End
 
-">
+			">
 				<Param name="m : NoteMessage"/>
-				<Param name="From 'MidiIn block name'"/>
+			
 			</Overload>
 		</KeyWord>
 		<KeyWord name="NoteEvent" func="yes">
 			<Overload retVal="" descr="
-Called whenever a Note On or Note Off message is received
-Warning: this callback will not be invoked for NoteOn events
-or for NoteOff events if you have defined 
-NoteOnEvent or NoteOffEvent respectively callbacks
+			Called whenever a Note On or Note Off message is received
+			Warning: this callback will not be invoked for NoteOn events
+			or for NoteOff events if you have defined 
+			NoteOnEvent or NoteOffEvent respectively callbacks
 
-var keyboard : MidiInDevice
-On NoteEvent(m : NoteMessage) matching D#6 from keyboard
- ....
-End
+			var keyboard : MidiInDevice
+			On NoteEvent(m : NoteMessage) matching D#6 from keyboard
+				....
+			End
 
-Support constraint that specifies either a range or an explicit sequence 
-of numbers for which the callback is triggered. For example:
+			Support constraint that specifies either a range or an explicit sequence 
+			of numbers for which the callback is triggered. For example:
 
-On NoteEvent (m : NoteMessage) Matching [C3..C4] From keyboard
-   // This event is only called if you play a note with 
-   // a MIDI note number that is in the range 60 to 72
-End
-">
+			On NoteEvent (m : NoteMessage) Matching [C3..C4] From keyboard
+				// This event is only called if you play a note with 
+				// a MIDI note number that is in the range 60 to 72
+			End
+			">
 				<Param name="m : NoteMessage"/>
-				<Param name="From 'MidiIn block name'"/>
 			</Overload>
 		</KeyWord>
 		<KeyWord name="ControlChangeEvent" func="yes">
 			<Overload retVal="" descr="
-Called when a CC message is received at some MidiIn device
+			Called when a CC message is received at some MidiIn device
 
-var keyboard : MidiInDevice
-On ControlChangeEvent(c : ControlChangeMessage) from keyboard
- ....
-End
+			var keyboard : MidiInDevice
+			On ControlChangeEvent(c : ControlChangeMessage) from keyboard
+				....
+			End
 
-The CC numbers must be within the specified range
-On ControlChangeEvent(c : ControlChangeMessage) Matching [7..10] from keyboard
- ....
-End
+			The CC numbers must be within the specified range
+			On ControlChangeEvent(c : ControlChangeMessage) Matching [7..10] from keyboard
+				....
+			End
 
-We saw an example of using a constraint with the ControlChange event callback.
-Here it is again
+			We saw an example of using a constraint with the ControlChange event callback.
+			Here it is again
 
-On ControlChangeEvent (c : ControlChangeMessage) Matching 1,7,14 From keyboard
-   // This event is only called for controller numbers
-   // 1, 7 or 14
-End
+			On ControlChangeEvent (c : ControlChangeMessage) Matching 1,7,14 From keyboard
+				// This event is only called for controller numbers
+				// 1, 7 or 14
+			End
 
- 
-However, if you are using the Rig Manager to because you have to use different keyboards 
-or control surfaces then you may have a problem if you switch to a different surface whose 
-knobs, sliders and/buttons transmit CC messages with different numbers. 
-In such a situation a script that uses a hard-coded CC number will fail.
-To address this problem, the ControlChangeEvent callback now allows you to use Rig Manager 
-defined control aliases instead of explicit numbers in the 'Matching' clause of the callback. 
-If you have defined the name UpperKnob1 (for example) to represent the first knob of your control surface, 
-then you can write the following:
 
-On ControlChangeEvent (c : ControlChangeMessage) Matching &quot;UpperKnob1&quot; From keyboard
-   // This event is called when a CC message arrives from UpperKnob
-End
-
- 
-At compile time, the Rig Manager will be searched to find the correct CC number for the device being used. 
-If you change your gear and consequently update the Rig Manager, 
-scripts will be recompiled automatically so as to reflect the change.
-Note that the alias name is specified as a string constant.
-
-">
-				<Param name="m : ControlChangeMessage"/>
-				<Param name="From 'MidiIn block name'"/>
-				<Param name="Matching [..]"/>
+			However, if you are using the Rig Manager to because you have to use different keyboards 
+			or control surfaces then you may have a problem if you switch to a different surface whose 
+			knobs, sliders and/buttons transmit CC messages with different numbers. 
+			In such a situation a script that uses a hard-coded CC number will fail.
+			To address this problem, the ControlChangeEvent callback now allows you to use Rig Manager 
+			defined control aliases instead of explicit numbers in the 'Matching' clause of the callback. 
+			If you have defined the name UpperKnob1 (for example) to represent the first knob of your control surface, 
+				then you can write the following:
+				
+				On ControlChangeEvent (c : ControlChangeMessage) Matching &quot;UpperKnob1&quot; From keyboard
+					// This event is called when a CC message arrives from UpperKnob
+				End
+				
+				
+				At compile time, the Rig Manager will be searched to find the correct CC number for the device being used. 
+				If you change your gear and consequently update the Rig Manager, 
+					scripts will be recompiled automatically so as to reflect the change.
+					Note that the alias name is specified as a string constant.
+					
+					">
+				<Param name="c : ControlChangeMessage"/>
+				
 			</Overload>
 		</KeyWord>
 		<KeyWord name="PitchBendEvent" func="yes">
 			<Overload retVal="" descr="
-Called when a pitchbend message is received at some MidiIn device
-
-var keyboard : MidiInDevice
-On PitchBendEvent(m : PitchBendMessage) from keyboard
- ....
-End
-
-">
-				<Param name="m : PitchBendMessage"/>
-				<Param name="From 'MidiIn block name'"/>
+		Called when a pitchbend message is received at some MidiIn device
+		
+		var keyboard : MidiInDevice
+		On PitchBendEvent(p : PitchBendMessage) from keyboard
+			....
+		End
+		
+		">
+				<Param name="p : PitchBendMessage"/>
 			</Overload>
 		</KeyWord>
 		<KeyWord name="AfterTouchEvent" func="yes">
 			<Overload retVal="" descr="
-Called when an aftertouch (channel pressure) message is received at some MidiIn device
-
-var keyboard : MidiInDevice
-On AfterTouchEvent(m : AfterTouchMessage) from keyboard
- ....
-End
-
-">
-				<Param name="m : AfterTouchMessage"/>
-				<Param name="From 'MidiIn block name'"/>
+		Called when an aftertouch (channel pressure) message is received at some MidiIn device
+		
+		var keyboard : MidiInDevice
+		On AfterTouchEvent(a : AfterTouchMessage) from keyboard
+			....
+		End
+		
+		">
+				<Param name="a : AfterTouchMessage"/>
 			</Overload>
 		</KeyWord>
 		<KeyWord name="PolytouchEvent" func="yes">
 			<Overload retVal="" descr="
-var keyboard : MidiInDevice
-On PolytouchEvent (p : PolyTouchMessage) From keyboard
-
-   // This is note-specific pressure
-
-End
-">
+		var keyboard : MidiInDevice
+		On PolytouchEvent (p : PolyTouchMessage) From keyboard
+			
+			// This is note-specific pressure
+			
+		End
+		">
 				<Param name="p : PolyTouchMessage"/>
-				<Param name="From 'MidiIn block name'"/>
 			</Overload>
 		</KeyWord>
 		<KeyWord name="ProgramChangeEvent" func="yes">
 			<Overload retVal="" descr="
-var keyboard : MidiInDevice
-On ProgramChangeEvent( p : ProgramChangeMessage) From keyboard
-
-End
-">
+		var keyboard : MidiInDevice
+		On ProgramChangeEvent( p : ProgramChangeMessage) From keyboard
+			
+		End
+		">
 				<Param name="p : ProgramChangeMessage"/>
-				<Param name="From 'MidiIn block name'"/>
 			</Overload>
 		</KeyWord>
 		<KeyWord name="MidiEvent" func="yes">
 			<Overload retVal="" descr="
-var keyboard : MidiInDevice
-On MidiEvent( m : MidiMessage) From keyboard
-
-   // This callback does not occur if a more specific MIDI event callback was defined
-
-End
-">
+		var keyboard : MidiInDevice
+		On MidiEvent( m : MidiMessage) From keyboard
+			
+			// This callback does not occur if a more specific MIDI event callback was defined
+			
+		End
+		">
 				<Param name="m : MidiMessage"/>
-				<Param name="From 'MidiIn block name'"/>
 			</Overload>
 		</KeyWord>
 		<KeyWord name="SysexEvent" func="yes">
 			<Overload retVal="" descr="
-var keyboard : MidiInDevice
-On SysexEvent( s : SysexMessage) From keyboard
-
-   // Respond to a sysex message
-
-End
-">
+		var keyboard : MidiInDevice
+		On SysexEvent( s : SysexMessage) From keyboard
+			
+			// Respond to a sysex message
+			
+		End
+		">
 				<Param name="s : SysexMessage"/>
-				<Param name="From 'MidiIn block name'"/>
 			</Overload>
 		</KeyWord>
 		<!-- Widget callback Rackspace only-->
 		<KeyWord name="WidgetValueChanged" func="yes">
 			<Overload retVal="" descr="
-On WidgetValueChanged (newValue : double) from SomeWidget
-// newValue represents a value between 0.0 and 1.0
-End 
-">		
-		<Param name="newValue : double"/>	   
-         </Overload>
+		On WidgetValueChanged (newValue : double) from SomeWidget
+			// newValue represents a value between 0.0 and 1.0
+		End
+		On WidgetValueChanged (w: Widget, i: integer, v: double) from SomeWidget [,SomeWidget]* 
+			// In this version, you can use a single callback to respond to 
+			// changes from multiple widgets
+			// The first parameter, w, is the widget that triggered the callback
+			// The second parameter, index, (0-based)refers to one of the widgets in the 'from' clause.
+			// So, if were triggered by EvenOneMoreWidget, the value of index would be 2. 
+			// newValue represents a value between 0.0 and 1.0
+		End
+		
+		">
+				<Param name="newValue : double"/>
+			</Overload>
 		</KeyWord>
 		<!-- Plugin callback -->
+		<KeyWord name="ParameterValueChanged" func="yes">
+			<Overload retVal="" descr="
+		On ParameterValueChanged(index : integer, value : double) from SomePlugin
+			
+			// The parameter number and new value of the parameter
+			
+		End
+		">
+				<Param name="index : integer"/>
+				<Param name="value : double"/>
+			</Overload>
+		</KeyWord>
 		<!-- Scriptlet  callback -->
+		<KeyWord name="ParameterValueChanged" func="yes">
+			<Overload retVal="" descr="
+		On ParameterValueChanged(p : ParameterType, index : integer) matching SomeParameterVariableList
+			// The ParameterType needs to be continuous, subrange or discrete and must match the types of the parameter variable list. 
+			// The index variable indicates which parameter in the match list triggered the callback, 0 based
+		End
+		">
+				<Param name="p : ParameterType"/>
+				<Param name="index : integer"/>
+			</Overload>
+		</KeyWord>
 		<!-- Generator  callback -->
 		<KeyWord name="GeneratorRunning" func="yes">
 			<Overload retVal="" descr="
-On GeneratorRunning(x : integer, y : double) from &lt;some generator&gt;
-   // x is linear time based on the length (or frequency) of the generator
-   // y is an amplitude with a value ranging between 0.0 and 1.0
-   // The actual value for y at some position x depends on the kind
-   // of generator and the settings being used
-End
-">		
-		<Param name="x : integer"/>	   
-        <Param name="y : double"/>	   
-
-         </Overload>
+		On GeneratorRunning(x : integer, y : double) from &lt;some generator&gt;
+			// x is linear time based on the length (or frequency) of the generator
+			// y is an amplitude with a value ranging between 0.0 and 1.0
+			// The actual value for y at some position x depends on the kind
+			// of generator and the settings being used
+		End
+		">
+				<Param name="x : integer"/>
+				<Param name="y : double"/>
+			</Overload>
 		</KeyWord>
 		<KeyWord name="GeneratorEndCycle" func="yes">
 			<Overload retVal="" descr="
-On GeneratorEndCycle(x : integer) from &lt;some generator&gt;>
-   // x is linear time that hit the end of the cycle of this generator
-End
-">		
-		<Param name="x : integer"/>	   
-         </Overload>
+		On GeneratorEndCycle(x : integer) from &lt;some generator&gt;>
+			// x is linear time that hit the end of the cycle of this generator
+		End
+		">
+				<Param name="x : integer"/>
+			</Overload>
 		</KeyWord>
-		
 		<!-- OSC  callback -->
+		<KeyWord name="OSCMessageReceived" func="yes">
+			<Overload retVal="" descr="
+		On OSCMessageReceived(message : OSCMessage) Matching StringConstant
+			// The StringConstant will be an explicit OSC Address to which this
+			// callback will respond,
+			// Use the OSC functions in the system library to access the
+			// arguments of the received message
+		End
+		On OSCMessageReceived(index : integer, message : OSCMessage) Matching StringConstant, StringConstant, ...
+			// Each StringConstant must be a unique OSC Address 
+			// The index parameter (zero based) indicates which of the OSC addresses triggered the callback
+		End
+		
+		">
+				<Param name="message : OSCMessage"/>
+			</Overload>
+		</KeyWord>
 		<!-- Playhead  callback -->
+		<KeyWord name="SystemEvent" func="yes">
+			<Overload retVal="" descr="
+		Usage (system event – rackspace and gig file script only):
+		On SystemEvent(newValue : double) Matching PlayheadStateChanged
+			// Indicate that the playhead has been started (1.0) or stopped (0.0)
+		End
+		">
+				<Param name="newValue : double"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="BeatChanged" func="yes">
+			<Overload retVal="" descr="
+		Notes: This is a simple callback that is triggered on every beat.
+		It is useful for simple operations such as doing something on every bar or on every 4th bar etc. 
+		While this callback has historically been used to create more sophisticated timeline events, we now recommend the new On Timeline 
+			callback which is much more efficient for tying events to particular bar/beat pair and 
+			does not require any testing to see determine the current bar or beat.
+			
+			On BeatChanged(barNumber : Integer, BeatNumber : Integer)
+				// Called every time the beat changes
+			End
+			">
+				<Param name="barNumber : Integer"/>
+				<Param name="BeatNumber : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="TempoChanged" func="yes">
+			<Overload retVal="" descr="
+			On BeatChanged(barNumber : Integer, BeatNumber : Integer)
+				// Called when the BPM changes
+			End
+			">
+				<Param name="newBPM  : double"/>
+				<Param name="BeatNumber : Integer"/>
+			</Overload>
+		</KeyWord>
+		<KeyWord name="Timeline" func="yes">
+			<Overload retVal="" descr="
+			This callback should generally be used instead of the On BeatChanged callback,
+			particularly if you want to construct a long timeline as, rather than having to use 
+			IF THEN tests to determine the current bar (and actions), 
+				this callback is optimized so that the appropriate actions will be called 
+				in constant time without the need for user tests.
+				Example 1:
+				
+				On Timeline
+					1:1
+					Print(&quot;Playhead just started&quot;)
+					2:2
+					Print(&quot;We are at bar 2 beat 2&quot;)
+					SetWidgetValue(SomeWidget, 0.5)
+					84:3
+					Print(&quot;OK -- we are a long way into the timeline now&quot;)
+				End
+				The example above is very simple --- you define some bar:beat values and a 
+				sequence of GPScript statements to execute when the playhead reaches that point
+				
+				Example 2:
+				On Timeline
+					Prolog
+					Print(&quot;This optional code gets executed before the code for the specific beat is triggered&quot;)
+				    End 
+					1:1
+					Print(&quot;Playhead just started&quot;)
+					2:2
+					Print(&quot;We are at bar 2 beat 2&quot;)
+					SetWidgetValue(SomeWidget, 0.5)
+					84:3
+					Print(&quot;OK -- we are a long way into the timeline now&quot;)
+					Epilog
+					Print(&quot;This optional code gets executed after the code for the specific beat is triggered&quot;)
+					End
+				End
+			">
+				<Param name="barNumber  : Integer"/>
+				<Param name="BeatNumber : Integer"/>
+			</Overload>
+		</KeyWord>
 		<!-- Global callback : Rackspace-->
 		<KeyWord name="Rackspace" func="yes">
 			<Overload retVal="" descr="
-Usage (gig file and Global rackspace scripts only):
+			Usage (gig file and Global rackspace scripts only):
 
-On Rackspace(oldRackspaceIndex : integer, newRackspaceIndex : integer)
+			On Rackspace(oldRackspaceIndex : integer, newRackspaceIndex : integer)
 
-    // Called when you switch to another rackspace 
+				// Called when you switch to another rackspace 
 
-End
+			End
 
 ">
 				<Param name="m : AfterTouchMessage"/>
@@ -367,88 +474,22 @@ End
 		</KeyWord>
 		<KeyWord name="TimerTick" func="yes">
 			<Overload retVal="" descr="
-Usage:
+			Usage:
 
-On TimerTick(milliseconds : double)
+			On TimerTick(milliseconds : double)
 
-    // Called periodically and provides the current time in milliseconds 
-    // You must use call SetTimersRunning(true) to enable this timer to be called
+				// Called periodically and provides the current time in milliseconds 
+				// You must use call SetTimersRunning(true) to enable this timer to be called
 
-End
+			End
 
- 
-">
+			 
+			">
 				<Param name="milliseconds : double"/>
 			</Overload>
 		</KeyWord>
 		<!-- Gig  Loaded  callback -->
-		<KeyWord name="SystemEvent" func="yes">
-			<Overload retVal="" descr="
-On SystemEvent Matching GigLoaded 
-  // Indicates that all rackspaces and songs have been loaded
-End
-">
-			</Overload>
-		</KeyWord>
-		
 		<!-- System https://gigperformer.com/docs_5_0/SystemFunctionList.html -->
-		<!--
-		<KeyWord name="Print" func="yes">
-			<Overload retVal="" descr="
-Displays the string in the log window
-Declaration: function Print (s : String) Autotype
-Category: System
-Parameters
-
-Autotype
-
-Initialization
-Print(&quot;Hello&quot;)
-End
-">
-				<Param name="s : String"/>
-				<Param name="Autotype"/>
-			</Overload>
-		</KeyWord>
-		<KeyWord name="SetTimersRunning" func="yes">
-			<Overload retVal="" descr="
-
-Start or stop the global timers
-
-Declaration: function SetTimersRunning (run : boolean)
-Category: Generators
-Parameters
-run : boolean
-
-On TimerTick(milliseconds : double)
-
-    // Called periodically and provides the current time in milliseconds 
-    // You must use call SetTimersRunning(true) to enable this timer to be called
-
-End
-
-Initialization
-SetTimersRunning(true)
-Print(&quot;Hello&quot;)
-End
-">
-				<Param name="run : boolean"/>
-			</Overload>
-		</KeyWord>
-		<KeyWord name="ScaleRangeEx" func="yes">
-			<Overload retVal="Integer" descr="
-ScaleRangeEx : Maps a double value between xMin and xMax into a rounded integer value between yMin and yMax
-
-">
-
-				<Param name="x : Double"/>
-				<Param name="xMin : Double"/>
-				<Param name="xMax : Double"/>
-				<Param name="yMin : Integer"/>
-				<Param name="yMax : Integer"/>
-			</Overload>
-		</KeyWord>
-		  -->
 		<KeyWord name="ACos" func="yes">
 			<Overload retVal="double" descr="Returns the inverse cos of x">
 				<Param name="x : double"/>
@@ -2678,7 +2719,7 @@ ScaleRangeEx : Maps a double value between xMin and xMax into a rounded integer 
 			</Overload>
 		</KeyWord>
 		<KeyWord name="SendOSCMessage" func="yes">
-		 <Overload retVal="" descr="
+			<Overload retVal="" descr="
 
 SendOSCMessage   OSCMessage [OSCMessage] [target] [Synced]
 OSCMessage:   { OSCAddress  Arguments }
@@ -2708,7 +2749,7 @@ this option will cause all the messages to be buffered and sent out on a separat
 ">
 		      
          </Overload>
-		</KeyWord>		
+		</KeyWord>
 		<KeyWord name="SendSysexExternal" func="yes">
 			<Overload retVal="" descr="Send a MIDI sysex message out immediately through a MIDI Out block">
 				<Param name="p : MidiOutBlock"/>

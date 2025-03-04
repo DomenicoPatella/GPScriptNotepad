@@ -115,7 +115,7 @@ void onCharAdded(SCNotification* notification) {
 		//delete[] buffer;
 
 		// List of keywords that increase indentation
-		std::vector<std::string> increaseIndentKeywords = { "initialization","select", "while", "function", "if","elsif", "on","for"};
+		std::vector<std::string> increaseIndentKeywords = { "initialization","select", "while", "function", "if","elsif", "on","for","prolog","epilog"};
 		// List of keywords that decrease indentation
 		std::vector<std::string> decreaseIndentKeywords = { "end","End"};
 		
@@ -704,7 +704,7 @@ std::string indentText(const std::string& input)
 	const std::string indentStr = " "; // 4 spazi
 
 	// List of keywords that increase indentation
-	std::vector<std::string> increaseIndentKeywords = { "initialization", "while","select", "function", "if","elsif", "on" ,"for"};
+	std::vector<std::string> increaseIndentKeywords = { "initialization", "while","select", "function", "if","elsif", "on" ,"for","prolog","epilog"};
 	// List of keywords that decrease indentation
 	std::vector<std::string> decreaseIndentKeywords = { "end","End" };
 	

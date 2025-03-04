@@ -26,7 +26,7 @@ End"/>
 		<KeyWord name="On" func="yes"/>
 		<KeyWord name="returns" func="yes"/>
 		<KeyWord name="Select" func="no" tip="Select&#10;&lt;boolean expression&gt; do &lt;statements&gt;&#10;&lt;boolean expression&gt; do &lt;statements&gt;&#10;&lt;boolean expression&gt; do &lt;statements&gt;&#10;// as many as you need&#10;//Optionally include this for when none of the above matched&#10;  True do &lt;statements&gt;&#10;End"></KeyWord>
-		<KeyWord name="SystemEvent" func="no" tip="On SystemEvent Matching GigLoaded " comment=" Gig  Loaded  callback "/>
+		<!--<KeyWord name="SystemEvent" func="no" tip="SystemEvent Matching GigLoaded " comment=" Gig  Loaded  callback "/>-->
 		<KeyWord name="Then" func="no"/>
 		<KeyWord name="true" func="no"/>
 		<KeyWord name="until" func="no"/>
@@ -384,6 +384,12 @@ End"/>
 		On SystemEvent(newValue : double) Matching PlayheadStateChanged
 			// Indicate that the playhead has been started (1.0) or stopped (0.0)
 		End
+		On SystemEvent Matching GigLoaded 
+			// Indicates that all rackspaces and songs have been loaded
+		End
+		On SystemEvent(newValue : Integer) Matching GlobalTransposeChanged
+			// Indicate that the global transpose changed
+		End
 		">
 				<Param name="newValue : double"/>
 			</Overload>
@@ -406,7 +412,8 @@ End"/>
 		</KeyWord>
 		<KeyWord name="TempoChanged" func="yes">
 			<Overload retVal="" descr="
-			On BeatChanged(barNumber : Integer, BeatNumber : Integer)
+			Allowed in rackspace script only
+			On TempoChanged(newBPM : double)
 				// Called when the BPM changes
 			End
 			">

@@ -112,7 +112,7 @@ std::string getCommentFromXML(const std::string& keyWord);
 
 int getModified();
 void setModified();
-void setModified(int& line, int& indentlevel);
 HWND getCurrentNppHandle();
+std::string getNotepadPlusPlusDir();
 
 #endif //PLUGINDEFINITION_H

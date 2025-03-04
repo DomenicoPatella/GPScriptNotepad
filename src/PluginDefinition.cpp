@@ -16,6 +16,7 @@
 //Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
 #include "PluginDefinition.h"
+#include "Script.h"
 #include "menuCmdID.h"
 #include <string>
 #include <vector>
@@ -249,29 +250,11 @@ void CreateGlobalScript()
 	HWND curScintilla = getCurrentNppHandle();
 	if (curScintilla == nullptr) return;
 
-
-	std::string hello =
-		R"(/******************************************************
-//
-// Global Script
-//
-******************************************************/
-var keyboard : MidiInDevice
-
-Initialization
-// var ..
-Print("Hello")
-End
-)";
-	//(^[ \t]+)
-	//hello = std::regex_replace(hello, std::regex(R"(^[ \t+)"), "");
-	hello = std::regex_replace(hello, std::regex("\n"), "\r\n");
+	std::string script;
+	script = std::regex_replace(global_script, std::regex("\n"), "\r\n");
 
 	// Scintilla control has no Unicode mode, so we use (char *) here
-	::SendMessage(curScintilla, SCI_SETTEXT, 0, (LPARAM)hello.c_str());
-	/*::SendMessage(curScintilla, NPPM_SETCURRENTLANGTYPE, 0, langBuffer);*/
-
-	//::SendMessage(nppData._scintillaMainHandle, SCI_SETAUTOMATICFOLD, SC_AUTOMATICFOLD_CHANGE, 0);
+	::SendMessage(curScintilla, SCI_SETTEXT, 0, (LPARAM)script.c_str());
 	selectAllText();
 	applyIndentation();
 }
@@ -508,6 +491,13 @@ void showTipFunctionsFromXML()
 
 }
 
+std::string getNotepadPlusPlusDir() {
+	char path[MAX_PATH];
+	GetModuleFileNameA(NULL, path, MAX_PATH); // Ottiene il percorso di notepad++.exe
+	std::string exePath(path);
+	size_t pos = exePath.find_last_of("\\/");
+	return (pos != std::string::npos) ? exePath.substr(0, pos) : exePath;
+}
 
 
 //
@@ -515,11 +505,16 @@ void showTipFunctionsFromXML()
 //
 std::string getFunctionFromXML(const std::string& keyWord)
 {
-	pugi::xml_document doc;
+	std::string notepadDir = getNotepadPlusPlusDir();
+	std::string xmlPath = notepadDir + "\\autoCompletion\\GPScript.xml";
 
-	pugi::xml_parse_result result = doc.load_file("C:\\Program Files\\Notepad++\\autoCompletion\\GPScript.xml", pugi::parse_minimal | pugi::parse_escapes);
+	pugi::xml_document doc;
+	pugi::xml_parse_result result = doc.load_file(xmlPath.c_str(), pugi::parse_minimal | pugi::parse_escapes);
+
+	
 	if (!result) {
-		//std::cout << "Errore di caricamento del file XML: " << result.description() << std::endl;
+		std::string error = "Error loading XML :" + std::string(xmlPath.c_str());
+		MessageBoxA(NULL, (std::string(error.c_str()) + " ErrResult:" + std::string(result.description())).c_str(), "Error", MB_OK | MB_ICONERROR);
 		return std::string(); // Restituisci una stringa vuota se non trovi nulla
 
 	}
@@ -527,7 +522,7 @@ std::string getFunctionFromXML(const std::string& keyWord)
 		// Trova il nodo <AutoComplete>
 		pugi::xml_node autoCompleteNode = doc.child("NotepadPlus").child("AutoComplete");
 		if (!autoCompleteNode) {
-			//std::cerr << "Nodo <AutoComplete> non trovato!" << std::endl;
+			
 			return std::string(); // Restituisci una stringa vuota se non trovi nulla
 		}
 
@@ -582,10 +577,15 @@ std::string getFunctionFromXML(const std::string& keyWord)
 //
 std::string getFunctionParamFromXML(const std::string& keyWord)
 {
-	pugi::xml_document doc;
+	std::string notepadDir = getNotepadPlusPlusDir();
+	std::string xmlPath = notepadDir + "\\autoCompletion\\GPScript.xml";
 
-	pugi::xml_parse_result result = doc.load_file("C:\\Program Files\\Notepad++\\autoCompletion\\GPScript.xml", pugi::parse_minimal | pugi::parse_escapes);
+	pugi::xml_document doc;
+	pugi::xml_parse_result result = doc.load_file(xmlPath.c_str(), pugi::parse_minimal | pugi::parse_escapes);
+
 	if (!result) {
+		std::string error = "Error loading XML :" +  std::string(xmlPath.c_str());
+		MessageBoxA(NULL, (std::string(error.c_str()) + " ErrResult:" + std::string(result.description())).c_str(), "Error", MB_OK | MB_ICONERROR);
 		return std::string(); // Restituisci una stringa vuota se non trovi nulla
 
 	}

@@ -76,6 +76,6 @@ def main(input_file, output_file):
         file.write(prettify(root))
 
 if __name__ == "__main__":
-    input_file = 'functionlist.txt'  # Sostituisci con il percorso del tuo file di input
+    input_file = 'functionlistnew.txt'  # Sostituisci con il percorso del tuo file di input
     output_file = 'output.xml'  # Sostituisci con il percorso del file di output desiderato
     main(input_file, output_file)

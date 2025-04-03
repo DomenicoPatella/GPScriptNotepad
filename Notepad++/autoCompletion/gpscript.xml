@@ -24,6 +24,8 @@ End"/>
 		<KeyWord name="not" func="no"/>
 		<KeyWord name="or" func="no"/>
 		<KeyWord name="On" func="yes"/>
+		<KeyWord name="Prolog" func="no"/>
+		<KeyWord name="Epilog" func="no"/>
 		<KeyWord name="returns" func="yes"/>
 		<KeyWord name="Select" func="no" tip="Select&#10;&lt;boolean expression&gt; do &lt;statements&gt;&#10;&lt;boolean expression&gt; do &lt;statements&gt;&#10;&lt;boolean expression&gt; do &lt;statements&gt;&#10;// as many as you need&#10;//Optionally include this for when none of the above matched&#10;  True do &lt;statements&gt;&#10;End"></KeyWord>
 		<!--<KeyWord name="SystemEvent" func="no" tip="SystemEvent Matching GigLoaded " comment=" Gig  Loaded  callback "/>-->
@@ -246,7 +248,7 @@ End"/>
 				<Param name="a : AfterTouchMessage"/>
 			</Overload>
 		</KeyWord>
-		<KeyWord name="PolytouchEvent" func="yes">
+		<KeyWord name="PolyTouchEvent" func="yes">
 			<Overload retVal="" descr="
 		var keyboard : MidiInDevice
 		On PolytouchEvent (p : PolyTouchMessage) From keyboard
@@ -418,7 +420,6 @@ End"/>
 			End
 			">
 				<Param name="newBPM  : double"/>
-				<Param name="BeatNumber : Integer"/>
 			</Overload>
 		</KeyWord>
 		<KeyWord name="Timeline" func="yes">
@@ -430,7 +431,7 @@ End"/>
 				in constant time without the need for user tests.
 				Example 1:
 				
-				On Timeline
+				On Timeline(barNumber  : Integer , BeatNumber : Integer)
 					1:1
 					Print(&quot;Playhead just started&quot;)
 					2:2
@@ -443,7 +444,7 @@ End"/>
 				sequence of GPScript statements to execute when the playhead reaches that point
 				
 				Example 2:
-				On Timeline
+				On Timeline(barNumber  : Integer , BeatNumber : Integer)
 					Prolog
 					Print(&quot;This optional code gets executed before the code for the specific beat is triggered&quot;)
 				    End 

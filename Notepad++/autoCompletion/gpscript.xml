@@ -476,8 +476,8 @@ End"/>
 			End
 
 ">
-				<Param name="m : AfterTouchMessage"/>
-				<Param name="From 'MidiIn block name'"/>
+				<Param name="oldRackspaceIndex : integer "/>
+				<Param name="newRackspaceIndex : integer "/>
 			</Overload>
 		</KeyWord>
 		<KeyWord name="TimerTick" func="yes">

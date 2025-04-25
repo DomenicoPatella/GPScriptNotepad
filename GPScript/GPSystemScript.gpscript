@@ -124,17 +124,16 @@ Function KeylabLED(i : integer, colour : integer ) returns String
 	
 End
 
-//  Function to create a System Exclusive Message for the pad with a color 
-//  i: index of pad 
-//  colour:  index of color table RGB[] 
+//  Function to create a System Exclusive Message for the monochrom led  
+//  i: index of led 
+//  brightness:  0..127 
 Function KeylabLEDmono(i: integer , bright : integer ) returns String	
 	var
 	SysExMsg : String
 	LED : string
 	
-	//i = i and 15       // limit LED index, just in case of...
-	//LED = IntToHexString(i+96)  //0x60
-	LED = IntToHexString(i)  //0x60
+	
+	LED = IntToHexString(i)  //0x10..96
 		
 	If bright>0 and bright<=MAX_BRIGHT Then
 		//Get from color table

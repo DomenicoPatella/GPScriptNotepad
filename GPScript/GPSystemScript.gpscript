@@ -1,0 +1,172 @@
+//******************************************************
+//
+// GPSystem Script 
+// 
+//
+//******************************************************/
+
+//DEFINE GLOBAL VAR
+var 
+LCDRows : string[2]
+CURR_PAGE: integer
+SySx : SysexMessage
+
+// DON'T MODIFY 
+const
+KEYLAB_LCD_HEAD  : String  = "F0 00 20 6B 7F 42 04 00 60 01 " 
+KEYLAB_LCD_SEP   : String  = "00 02 "
+KEYLAB_LCD_END   : String  = "00 F7"
+KEYLAB_LED_HEAD  : String  = "F0 00 20 6B 7F 42 02 00 16 "
+KEYLAB_LEDM_HEAD  : String  = "F0 00 20 6B 7F 42 02 00 10 "
+MAX_BRIGHT       : integer = 127  
+
+
+// LIMIT, CAN BE CHANGED 
+MAX_COLOUR       : integer = 8   //Max color in color table RGB
+LEDCOUNT         : integer = 8   //Max Led Pad used   (Keylab61 is 8 )
+// Console debug 
+DEBUG : boolean = false
+
+//Color table RGB  [ ..color1 ,..color2,..color3,..color4,..color5,..color6,..color7,..color8]
+var
+RGB 			: string Array = ["7F 00 00", "1E 24 00","00 41 7F", "00 1A 00 " ,"7F 7F 1C ", "18 3b 00 ","46 32 7F ", "3F 00 7B ","00 00 00 " ]   
+
+
+//Console :Console if DEBUG is on
+Function Console (str: string)
+	If DEBUG Then
+		Print(str)
+	end	
+End
+
+
+
+// Get SysexMessage format to send Text Row 1/2 to KeyLab LCD   
+Function KeylabLCD(rowStr1 : string ,rowStr2 :string) returns String
+	
+	result = KEYLAB_LCD_HEAD + StringToHexString(rowStr1) + KEYLAB_LCD_SEP + StringToHexString(rowStr2) + KEYLAB_LCD_END
+	
+End
+
+
+// Split a string in two strings array of 16 char or with a separator '%'
+// str: string to send
+// If the lengh of the string is greater then 16 Char the last char will be repalced wiht '*'
+// Return  Array string[2]  in GLOBAL VAR 
+// LCDRows[1] 
+// LCDRows[2] 
+Function SpiltStringArray(str : string) 
+	
+	var len: integer
+	var fd: integer 
+	var len2 : integer
+	
+	LCDRows[1] = ""
+	LCDRows[2] = ""
+	fd = IndexOfSubstring(str, "%", false)
+	//Print("# " + fd)
+	
+	len = Length(str)
+	
+	if len > 0 and fd == -1 Then
+		LCDRows[1] = CopySubstring(str, 0, 16)
+		
+	end
+	
+	if len > 16 and fd == -1 Then
+		if len > 32 Then
+			LCDRows[2] = CopySubstring(str, 16, 15) + "*"
+		else
+			LCDRows[2] = CopySubstring(str, 16, 16)
+		end
+	end
+	
+	if len > 0 and fd > 0 Then
+		if fd > 16 Then
+			LCDRows[1] = CopySubstring(str, 0, 15) + "*"
+		else
+			LCDRows[1] = CopySubstring(str, 0, fd)
+		end
+	end
+	
+	if len > fd + 1 and fd >= 0 Then
+		len2 = len - (fd + 1)
+		if len2 > 16 Then
+			LCDRows[2] = CopySubstring(str, fd + 1, 15) + "*"
+		else
+			LCDRows[2] = CopySubstring(str, fd + 1, 16)
+		end
+	end
+	
+End
+
+
+//  Function to create a System Exclusive Message for the pad with a color 
+//  i: index of pad 
+//  colour:  index of color table RGB[] 
+Function KeylabLED(i : integer, colour : integer ) returns String	
+	var
+	SysExMsg : String
+	LED : string
+	
+	i = i and 15       // limit LED index, just in case of...
+	LED = IntToHexString(i+112)  //0x70
+		
+	If colour>=0 and colour<MAX_COLOUR Then
+		//Get from color table
+		SysExMsg =KEYLAB_LED_HEAD + LED  +  (RGB[colour]) + "F7"
+		else
+		// Blank color (Led OFF)
+		SysExMsg =KEYLAB_LED_HEAD + LED  + RGB[8] + "F7"
+	end	
+	
+	result = SysExMsg
+	
+End
+
+//  Function to create a System Exclusive Message for the pad with a color 
+//  i: index of pad 
+//  colour:  index of color table RGB[] 
+Function KeylabLEDmono(i: integer , bright : integer ) returns String	
+	var
+	SysExMsg : String
+	LED : string
+	
+	//i = i and 15       // limit LED index, just in case of...
+	//LED = IntToHexString(i+96)  //0x60
+	LED = IntToHexString(i)  //0x60
+		
+	If bright>0 and bright<=MAX_BRIGHT Then
+		//Get from color table
+		SysExMsg =KEYLAB_LEDM_HEAD + LED  +  IntToHexString(bright) + "F7"
+		else
+		// Blank color (Led OFF)
+		SysExMsg =KEYLAB_LEDM_HEAD + LED  + IntToHexString(0) + "F7"
+	end	
+	
+	result = SysExMsg
+	
+End
+
+
+
+
+
+// Function to create a System Exclusive Message for the pad with a color 
+// i: index of pad
+// red , green ,blue : string of hex color '00..1F'
+Function KeylabLEDOSC(i : integer, red : string , green : string , blue: string ) returns String
+	var
+	SysExMsg : String
+	LED : string
+	
+	i = i and 15       // limit LED index, just in case of...
+	LED = IntToHexString(i+112)  //0x70
+	
+	SysExMsg =KEYLAB_LED_HEAD + LED  + red + " " + green + " "+ blue + " F7"
+	//Print (SysExMsg)
+	result = SysExMsg
+	
+End
+
+

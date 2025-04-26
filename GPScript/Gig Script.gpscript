@@ -1,0 +1,490 @@
+/* Include the GPSystemScript if defined in the AutoLoad subdirectory of your scripts folder
+** Write Text to LCD
+//Function KeylabLCD(rowStr1 : string ,rowStr2 :string) returns String for SysexMessage
+
+** Split a string in two strings array of 16 char or with a separator % (if string >16 char last char will be '*'  
+//Function SpiltStringArray(str : string) (internal)  
+
+** Write Led PAD Color/Off 
+//Function KeylabLED(i : integer, colour : integer ) returns String	for SysexMessage 
+*/
+Include "$system$"
+
+/******************************************************
+//
+// Gig Script
+//
+// KeyLab Essential 61  Map  : DAW
+//
+******************************************************/
+
+var
+ArturiaMidiEx : MidiInDevice
+Arturia : MidiInDevice
+gv_KMenu 	: integer   
+gv_Knob 	: integer   
+gv_KBpm 	: integer   
+gv_KRack 	: integer   
+gv_KTrans	: integer                  
+gv_KNumerator : integer   
+gv_KDenominator : integer 
+gv_KHoldMenu   :integer
+
+sngCnt  : integer     //Max program number
+
+const 
+KEYLAB_KNOB 	: integer = 60    
+KEYLAB_KNOB_INC	: integer = 1 
+KEYLAB_KNOB_DEC	: integer = 65 
+KEYLAB_METRO    : integer = F5 
+KEYLAB_PLAY     : integer = A#5
+
+KEYLAB_CAT      : integer = F6 
+KEYLAB_PRESET 	: integer = E6
+KEYLAB_SHIFT_P	: integer = D#6 
+KEYLAB_SHIFT_M	: integer = D6 
+KEYLAB_ENTER	: integer = C5 
+
+
+// OSC internal 
+IP              : string = "127.0.0.1"
+PORT            : integer = 11000     
+
+var 
+PAGE : string Array = ["SetList ","Rackspace","Set BPM" ,"Time%Signature Num." ,"Time%Signature Den."  ,"Transp."]
+
+Initialization
+	CURR_PAGE=0
+	gv_KMenu=0
+	SendOSCMessage   { /LCD, "## WELCOME TO ##"," #### GIG #####"  } to IP : PORT // Send the message to the specified IP address and port number
+	
+	
+End
+
+On SystemEvent Matching GigLoaded 
+	//SendOSCMessage   { /LCD, "GIG LOADED" } to IP : PORT // Send the message to the specified IP address and port number
+End
+
+// Generate a value from Knob rotation
+Function Encoder (iValCC: integer , gv : integer , max : integer) returns integer
+	// Knob rotation inc/dec  
+	If iValCC== KEYLAB_KNOB_INC Then
+		//Inc Knob
+		gv =gv+ 1
+	end	
+	
+	If iValCC== KEYLAB_KNOB_DEC Then
+		//Dec Knob
+		gv =gv - 1
+	end	
+	
+	if gv>max then
+		gv=max
+	end
+	if gv<0 then
+		gv=0
+	end
+	
+	result = gv
+End
+
+//Show menu page
+Function PageMenu()
+	SendOSCMessage   { /LCD, "Gig Menu%<- Knob -> " } to IP : PORT // Send the message to the specified IP address and port number
+End
+
+// Program change from Knob CW=Inc CCW=Dec
+Function PageSetlist(c : ControlChangeMessage)
+	var 
+	iVal: integer
+	channel : integer
+	pchange : ProgramChangeMessage
+	ccm    : ControlChangeMessage
+	
+	channel = GetChannel(c)
+	iVal= GetCCValue(c)
+	Console("PageSetlist: " +iVal )
+	//Get the numbere of songs in the  current list 
+	if InSetlistMode() then
+		sngCnt= GetSongCount()
+		Console("Song Count" + sngCnt)
+		gv_Knob=Encoder(iVal , gv_Knob  , sngCnt-1 ) 
+	end
+	Console("Knob: " +gv_Knob )
+	
+	pchange = MakeProgramChangeMessageEx(gv_Knob ,1)
+	// Send a PC to Arturia MidiInDevice
+	InjectMidiEventViaRigManager(Arturia ,pchange) 
+	// Send throught Control Change Message for Global Rackspace
+	ccm= MakeControlChangeMessageEx(KEYLAB_KNOB,iVal,1)
+	InjectMidiEventViaRigManager(Arturia ,ccm) 
+	
+	
+End
+
+// Page Rackspace
+Function PageRackspace (c: ControlChangeMessage)
+	var 
+	iVal: integer
+	ret : string
+	getRack,setRack: integer
+	
+	If InPanelView()== true Then
+		getRack= GetCurrentRackspaceIndex()
+		gv_KRack= getRack
+	end	
+	
+	iVal= GetCCValue(c)
+	gv_KRack=Encoder(iVal , gv_KRack  , GetRackspaceCount()-1 ) 
+	Console("PageRackspace: " +gv_KRack )
+	Console("RackspaceCnt: " +GetRackspaceCount() )
+	
+	If InPanelView()== true Then
+		SwitchToRackspace(gv_KRack,GetCurrentVariation())
+		else
+		SwitchToPanelView()
+	end	
+	
+	ret= "Rack: "+GetRackspaceNameAtIndex(gv_KRack) +"%" + GetVariationNameForRackspaceAtIndex(gv_KRack,GetCurrentVariation())
+	Console(ret)
+	SendOSCMessage   { /LCD, ret } to IP : PORT // Send the message to the specified IP address and port number
+	
+	
+End
+
+
+
+// Page BPM 
+Function PageBPM(c : ControlChangeMessage)
+	var 
+	iVal : integer
+	setBpm,getBPM , mapBPM: double
+	str    : string
+	
+	iVal= GetCCValue(c)
+	
+	if iVal==0 then 
+		getBPM= GetBPM()
+		mapBPM= Scale(getBPM,80.0,210.0,0,2048)
+		gv_KBpm= Ceiling(mapBPM-1)
+	end
+	
+	Console("getBPM: " +gv_KBpm  + "mapBPM" + mapBPM )
+	gv_KBpm=Encoder(iVal , gv_KBpm  , 2048 ) 
+	setBpm= Scale(gv_KBpm,0,2048,80.0,210.0)
+	str= DoubleToString(setBpm,1)
+	
+	Console("PageBPM: " +str )
+	SendOSCMessage   { /LCD, "BPM",str } to IP : PORT // Send the message to the specified IP address and port number
+	SetBPM(StringToDouble(str))
+End	
+
+
+// Page Trasponse
+Function PageTransponse(c : ControlChangeMessage)
+	var 
+	iVal : integer
+	setTransponse , getTransponse: integer
+	
+	iVal= GetCCValue(c)
+	
+	if iVal==0 then 
+		getTransponse= GetGlobalTranspose()
+		setTransponse= ScaleInt(getTransponse,-48,48,0,97)
+		gv_KTrans= setTransponse
+		Console("iVal: " +iVal )
+	end
+	Console("gv_KTrans: " +gv_KTrans )
+	
+	gv_KTrans=Encoder(iVal , gv_KTrans  , 97 ) 
+	setTransponse= ScaleInt(gv_KTrans,0,97,-48,48)
+
+	Console("PageTrasp: " +setTransponse )
+	
+	SendOSCMessage   { /LCD, "TRANS.",setTransponse } to IP : PORT // Send the message to the specified IP address and port number
+	
+	SetGlobalTranspose(setTransponse)
+End	
+
+
+// Page Signature Numerator 
+Function PageSignNum (c : ControlChangeMessage)
+	var 
+	iVal, getDen : integer
+	str : string
+
+	iVal= GetCCValue(c)
+	
+	if iVal==0 then 
+		gv_KNumerator= GetTimeSigNumerator()
+		
+	end
+	
+	gv_KNumerator=Encoder(iVal , gv_KNumerator  , 32 ) 
+	
+	Console("PageSignNum: " +gv_KNumerator )
+	
+	getDen= GetTimeSigDenominator()
+	str="/" + IntToString(getDen)
+	
+	SendOSCMessage   { /LCD, "TIME SIGN. NUM", gv_KNumerator,str} to IP : PORT // Send the message to the specified IP address and port number
+	SetTimeSignatureNumerator (gv_KNumerator)
+	
+End	
+
+
+// Page Signature Denominator 
+Function PageSignDen (c : ControlChangeMessage)
+	var 
+	iVal, getNum :integer
+	str : string
+	pow : integer Array = [1,2,4,8,16,32]
+	
+	iVal= GetCCValue(c)
+	
+	if iVal==0 then 
+		gv_KDenominator= GetTimeSigDenominator()
+	
+	end
+	
+	gv_KDenominator=Encoder(iVal , gv_KDenominator  , 5 ) 
+	
+	Console("PageSignDen: " + gv_KDenominator )
+	
+	getNum= GetTimeSigNumerator()
+	str= IntToString(getNum) + "/" 
+	
+	SendOSCMessage   { /LCD, "TIME SIGN. DEN", str , pow[gv_KDenominator]} to IP : PORT // Send the message to the specified IP address and port number
+	SetTimeSignatureDenominator (pow[gv_KDenominator])
+	
+End	
+
+
+//Switch page from number 
+Function SwitchPage(page : integer , c: ControlChangeMessage)
+	if CURR_PAGE== 0 then 
+		Select
+			gv_KMenu==0 do  SendOSCMessage   { /LCD, PAGE[0] } to IP : PORT // Send the message to the specified IP address and port number   //PageSetlist(c)
+			gv_KMenu==1 do  SendOSCMessage   { /LCD, PAGE[1] } to IP : PORT // Send the message to the specified IP address and port number   //PageBPM(c)
+			gv_KMenu==2 do  SendOSCMessage   { /LCD, PAGE[2] } to IP : PORT // Send the message to the specified IP address and port number   //PageBPM(c)
+			gv_KMenu==3 do  SendOSCMessage   { /LCD, PAGE[3] } to IP : PORT // Send the message to the specified IP address and port number   //PageBPM(c)
+			gv_KMenu==4 do  SendOSCMessage   { /LCD, PAGE[4] } to IP : PORT // Send the message to the specified IP address and port number   //PageBPM(c)
+			gv_KMenu==5 do  SendOSCMessage   { /LCD, PAGE[5] } to IP : PORT // Send the message to the specified IP address and port number   //PageBPM(c)
+			
+			True do 
+			gv_KMenu=0
+			SendOSCMessage   { /LCD, "Gig Menu%<- Knob -> " } to IP : PORT // Send the message to the specified IP address and port number
+		End	
+	end
+	
+	if CURR_PAGE> 0 then 
+		Select
+			page==10 do PageSetlist(c)
+			page==11 do PageRackspace(c)
+			page==12 do PageBPM(c)
+			page==13 do PageSignNum(c) 
+			page==14 do PageSignDen(c)
+			page==15 do PageTransponse(c)
+			
+			True do PageMenu()
+		End	
+	End
+End
+
+
+// Central Knob 
+// Usage:  Program Change
+On ControlChangeEvent(c : ControlChangeMessage) matching KEYLAB_KNOB from ArturiaMidiEx 
+	var iVal: integer
+	iVal= GetCCValue(c)
+	gv_KMenu=Encoder(iVal , gv_KMenu  , Size(PAGE)-1 )
+	Console("ControlChangeEvent: " + gv_KMenu)
+	Console("CURR_PAGE: " + CURR_PAGE)
+	
+	SwitchPage(CURR_PAGE,c)
+End
+
+
+
+
+
+/// Central Knob  Enter
+// Usage:  Menu
+On NoteOnEvent(m : NoteMessage) matching KEYLAB_ENTER from ArturiaMidiEx
+	var 
+	iVal: integer
+	ccm    : ControlChangeMessage
+	
+	iVal = GetVelocity(m)
+	
+	Console("KEYLAB_ENTER: " +iVal )
+	if iVal==127 and CURR_PAGE < 10 then 
+		//CURR_PAGE=gv_KMenu
+		CURR_PAGE =gv_KMenu +10
+		gv_KHoldMenu=gv_KMenu
+		//ccm= MakeControlChangeMessageEx(KEYLAB_KNOB,0,1)
+		//InjectMidiEventViaRigManager(Arturia ,ccm) 
+		Console("CURR_PAGE: " +CURR_PAGE )
+		SwitchPage(CURR_PAGE ,ccm )
+		else
+		CURR_PAGE=0
+		gv_KMenu=gv_KHoldMenu
+		//ccm= MakeControlChangeMessageEx(KEYLAB_KNOB,0,1)
+		//InjectMidiEventViaRigManager(Arturia ,ccm) 
+		Console("gv_KMenu: " +gv_KMenu )
+		SwitchPage(CURR_PAGE ,ccm )
+	end
+	
+	
+End
+
+
+//Switch to  Next SetList  
+//key [Preset] 
+On NoteOnEvent(m : NoteMessage) matching KEYLAB_PRESET from ArturiaMidiEx
+	var 
+	iVal: integer
+	channel : integer
+	index,count : integer
+	
+	iVal = GetVelocity(m)
+	if InSetlistMode() and iVal>0  then
+		
+		index= GetCurrentSetlistIndex()
+		count = GetSetlistCount()
+		Console("setlist" + index)
+		If  index<count  and index<>-1 Then
+			//Inc Knob
+			index=index +1 
+			SwitchToSetlistByIndex(index)
+			Console("setlist +" + index)
+			
+		end	
+	end
+	
+end
+
+//Switch to  Prev SetList  
+//key [Cat/Char]
+On NoteOnEvent(m : NoteMessage) matching KEYLAB_CAT from ArturiaMidiEx
+	var 
+	iVal: integer
+	channel : integer
+	index,count : integer
+	
+	iVal = GetVelocity(m)
+	if InSetlistMode() and iVal>0  then 
+		index= GetCurrentSetlistIndex()
+		count = GetSetlistCount()
+		If    index<count  and index<>-1 Then
+			//Inc Knob
+			index=index -1 
+			SwitchToSetlistByIndex(index)
+			Console("setlist -" + index)
+		end
+	end
+End
+
+//Switch to  Next/Prev SongPart  
+//key [->] 
+On NoteOnEvent(m : NoteMessage) matching KEYLAB_SHIFT_P from ArturiaMidiEx 
+	var 
+	iVal: integer
+	channel : integer
+	index,count :integer
+	ccm    : ControlChangeMessage
+	
+	iVal= GetVelocity(m)
+	
+	if InSetlistMode() then
+		index= GetCurrentSongPartIndex()
+		count = GetCurrentSongPart()
+		Console("GetCurrentSongPart" + count)
+		If iVal== 127  Then
+			SongNextPart()
+			Console("SongNextPart" + index)
+			
+		end	
+	end
+	
+	if InPanelView() then
+		index= GetCurrentVariation()
+		count = GetVariationCount()
+		Console("GetVariationCount" + count)
+		If iVal== 127  Then
+			NextVariation()
+			Console("NextVar" + index)
+			
+		end
+		if CURR_PAGE > 0 then 
+			SwitchPage(CURR_PAGE,ccm)
+		end
+	end
+	
+End
+
+//Switch to  Next/Prev SongPart  
+//key [<-] 
+On NoteOnEvent(m : NoteMessage)  matching KEYLAB_SHIFT_M from ArturiaMidiEx 
+	var 
+	iVal: integer
+	channel : integer
+	index,count : integer
+	ccm    : ControlChangeMessage
+	
+	iVal= GetVelocity(m)
+	
+	if InSetlistMode() then
+		index= GetCurrentSongPartIndex()
+		count = GetCurrentSongPart()
+		Console("GetCurrentSongPart" + count)
+		If iVal== 127  Then
+			index=index -1 
+			SongPrevPart()
+			Console("PrevPart" + index)
+		end
+	end	
+	
+	if InPanelView() then
+		index= GetCurrentVariation()
+		count = GetVariationCount()
+		Console("GetVariationCount" + count)
+		If iVal== 127  Then
+			PreviousVariation()
+			Console("SongNextPart" + index)
+			
+		end
+		if CURR_PAGE > 0 then 
+			SwitchPage(CURR_PAGE,ccm)
+		end
+	end
+	
+	
+	
+End
+
+//Switch to  Next/Prev SongPart  
+//key Metro
+On NoteOnEvent(m : NoteMessage)  matching KEYLAB_METRO from ArturiaMidiEx 
+	var 
+	iVal: integer
+	channel : integer
+	index,count : integer
+	
+	iVal= GetVelocity(m)
+	
+	If iVal== 127 and not IsMetronomeEnabled()  Then
+		EnableMetronome(true)
+		else
+		EnableMetronome(false)
+	end
+	
+End
+
+// Prrogram Change event 
+// Only to block program change message from PAD 
+On ProgramChangeEvent(p : ProgramChangeMessage) from Arturia
+  
+End
+
+	

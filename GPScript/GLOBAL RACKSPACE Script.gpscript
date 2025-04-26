@@ -1,0 +1,145 @@
+Include "$system$"
+
+/******************************************************
+//
+// Global Script
+//
+******************************************************/
+var 
+Arturia : MidiInBlock
+
+const
+TIMETRS : integer= 4000  // ms Transintion time to display song part 
+
+
+
+Initialization
+	var i : integer
+	//SetWidgetLabel(txtLed1,RGB[0])
+	//Init set Pad Led ON 
+	For i=0;i<LEDCOUNT ; i=i+1 Do
+		SySx=KeylabLED(i,i)
+		SendSysexInternalNow(Arturia,SySx)
+	End
+	
+	
+End
+
+
+// On Activate Song 
+On Song(oldSongIndex : integer , newSongIndex : integer)
+	var sngArtist : string  
+	var i : integer
+	//Get cuurent song name 
+	if (InSetlistMode()) then
+		SpiltStringArray(GetCurrentSongName())
+		// Show song name
+		SySx=KeylabLCD(LCDRows[1],LCDRows[2])
+		SendSysexInternalNow(Arturia,SySx)
+		// Clear Pad Led 
+		For i = 0; i < LEDCOUNT; i = i + 1 Do
+			SySx=KeylabLED(i,99)
+			SendSysexInternalNow(Arturia,SySx)
+		end 
+		//Set Pad Led 
+		SySx=KeylabLED(0,0)
+		SendSysexInternalNow(Arturia,SySx)
+		
+	end
+	
+	
+End
+
+// On Activate Song Part 
+On Songpart(oldSongpartIndex : integer, newSongpartIndex : integer)
+	var i : integer
+	var ccm :ControlChangeMessage
+	
+	if (newSongpartIndex ==0 and InSetlistMode()) then
+		//Get cuurent song name
+		SpiltStringArray(GetCurrentSongName())
+		// Show song name
+		SySx=KeylabLCD(LCDRows[1],LCDRows[2])
+		SendSysexInternalNow(Arturia,SySx)
+	end
+	
+	
+	if (InSetlistMode())  then  // newSongpartIndex <> oldSongpartIndex
+		// Get current song  part name
+		SpiltStringArray(GetSongPartName(newSongpartIndex))
+		SySx=KeylabLCD(LCDRows[1],LCDRows[2])
+		
+		//First song part index
+		if newSongpartIndex==0 then 
+			// Delay display song part name 
+			SendSysexInternalLater(Arturia,SySx,TIMETRS)
+			else
+			SendSysexInternalNow(Arturia,SySx)
+		end
+		// Clear Pad Led 
+		For i = 0; i < LEDCOUNT; i = i + 1 Do
+			SySx=KeylabLED(i,99)
+			SendSysexInternalNow(Arturia,SySx)
+		end 
+		//Set Pad Led for current song part index
+		SySx=KeylabLED(newSongpartIndex,newSongpartIndex)
+		SendSysexInternalNow(Arturia,SySx)
+		
+	end
+End
+
+
+// Process message for send text to Display
+On OSCMessageReceived(message : OSCMessage) matching "/LCD"
+	var arg0,arg1,arg2 : string
+	var cnt : integer
+	
+	arg0= OSC_GetArgAsString(message,0)
+	arg1= OSC_GetArgAsString(message,1)
+	arg2= OSC_GetArgAsString(message,2)
+	
+	cnt= OSC_ArgCount(message)
+	
+	If cnt>1 Then
+		//statements here
+		Console(arg0)
+		SySx=KeylabLCD(arg0, arg1+arg2)
+		else
+		Console(arg0)
+		SpiltStringArray(arg0)
+		SySx=KeylabLCD(LCDRows[1], LCDRows[2])
+	end	
+	
+	SendSysexInternalNow(Arturia,SySx)
+	
+End
+
+
+//Set Led1..8  Color 1..8  {/LED , 11 }   Type LED,COLOR
+On OSCMessageReceived(message : OSCMessage) matching "/LED"
+	var 
+	arg0 : string
+	color : string
+	val : integer
+	led : string
+	
+	arg0= OSC_GetArgAsString(message,0)
+	val =StringToInt(arg0)
+	
+	If val>=10 and val <=88 Then
+		//statements here
+		color = CopySubstring(arg0,1,1)
+		
+		led = CopySubstring(arg0,0,1)
+		if color==0 then 
+			color=99
+		end
+		Console("val " + val)
+		Console("color " + color)
+		Console("led " + StringToInt(led))
+		
+		SySx=KeylabLED(StringToInt(led)-1,StringToInt(color)-1)
+		SendSysexInternalNow(Arturia,SySx)
+	end	
+	
+End

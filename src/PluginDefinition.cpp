@@ -26,7 +26,7 @@
 #include <cctype> // Necessario per std::tolower
 #include <pugixml.hpp>
 
-//
+//	
 // The plugin data that Notepad++ needs
 //
 FuncItem funcItem[nbFunc];
